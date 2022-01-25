@@ -1,0 +1,140 @@
+import React ,{useState ,useEffect} from 'react'
+import OwlCarousel from 'react-owl-carousel';  
+import 'owl.carousel/dist/assets/owl.carousel.css';  
+import 'owl.carousel/dist/assets/owl.theme.default.css'; 
+import '../App.css';
+import { useDispatch } from 'react-redux';
+import {login,userDetail} from "../features/Userslice";
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux'
+import { selectUser } from '../features/Userslice';
+import axios from 'axios';
+import Dashboard from './Dashboard';
+
+
+
+
+export default function Login() {
+    
+    const initalvalue = {username:'',password:''};
+    const [formValues, setFormValues] = useState(initalvalue);
+    const [formErrors, setformErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+    
+   
+    const dispatch = useDispatch();
+    let navigate = useNavigate();
+    const user = useSelector(selectUser);
+    const handleChange =(e)=>{
+        const{name , value} = e.target;
+        setFormValues({ ...formValues,[name]:value});
+    };
+    const auth = localStorage.getItem("userInfo");
+    
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        setformErrors(validate(formValues));
+        setIsSubmit(true);         
+    };
+    
+
+    useEffect(() => {
+        if(Object.keys(formErrors).length === 0 && isSubmit){
+        setIsSubmit(true)
+          const dataForm =  {
+                 UserName: formValues.username,
+                 Pwd: formValues.password,      
+            }
+            
+            axios.post('api1/cooppay/api/CoOperative/BLB_Authentication',dataForm)
+              .then(function (response) {
+                const  res = response.data
+                const result = response.data.STATUS_CODE
+               
+                if(result === "0"){
+                    // window.localStorage.setItem('loginInfo',JSON.stringify(dataForm))
+                   dispatch(login(dataForm))   
+                  const  userInfo= {
+                    UserID:  res.UserID,
+                    UserName: res.UserName,
+                    UserType: res.UserType,
+                   }
+                   localStorage.setItem('userInfo',JSON.stringify(userInfo))
+                   dispatch(userDetail(userInfo))  
+                   setIsSubmit(false)
+                }
+                
+                else{
+                    setformErrors({ ...formErrors,errorv:"Please Enter Valid Credentials"})
+                }
+              })
+
+          }
+    },[formErrors]);
+
+    const  validate = (values) => {
+        const errors ={}
+       
+        if(!values.username){
+         errors.username = "username is required";
+        }
+    
+        if(!values.password){
+            errors.password = "Password  is required";
+           } else if (values.password.length < 4){
+               errors.password = "password must ve more than 4 Characters"
+           }else if (values.password.length >10){
+               errors.password = "password cannot exceed more than 10 charecters"
+           }
+        return errors;
+    }
+    return (
+    
+        <div>
+        {!auth ? 
+               <div className="container login-container">
+                        <div className="row">
+                            <div className="col-md-6 login-form-1">
+                                <img src={process.env.PUBLIC_URL + '/img/logo.png'}/>
+                                <h5>Log in</h5>
+                                <p>Enter your valid credentials below</p>
+                                <form>
+                                <p className="errormsg"> {formErrors.errorv}</p>
+                        
+                                    <div className="form-group">
+                                        <label htmlFor="exampleInputEmail1">Username</label>
+                                        <p className="errormsg">{formErrors.username}</p>
+                                        <input type="text" className="form-control" name="username" value={ formValues.username} onChange={handleChange} placeholder="Enter your username" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="exampleInputPassword1">Password</label>
+                                        <p className="errormsg">{formErrors.password}</p>
+                                        <input type="password" className="form-control" name="password" value={formValues.password} onChange={handleChange}  placeholder="Enter your password"/>
+                                    </div>
+                                    <div className="form-group">
+                                        <span className="fa-flip-vertical" style={{display: "inline-block"}}>
+                                    <i className="fa fa-download fa-rotate-270"></i>
+                                        </span>
+                                <button type="submit" onClick={handleSubmit}className="btnSubmit">{ isSubmit ? <p  style={{marginLeft: "15%"}} >Loading ...</p>  :  <p>Login</p>}</button>
+                          
+                                    </div>
+                                    </form>
+                            </div>
+                            <div className="col-md-6 login-form-2 text-center">
+                            <h3>Welcome to the easy software</h3>
+                                <h6>Banking Software</h6>
+                                <OwlCarousel items={1} margin={8} autoplay ={true} >  
+                                <div className="item"><img src={'../img/banking.png'} /> </div>
+                                <div className="item"><img src={'../img/banking.png'} /></div>
+                                <div className="item"><img src={'../img/banking.png'} /></div>
+                                </OwlCarousel>
+                            <p>2021 Easy Software Pvt.Ltd. All Rights Reserved</p>
+                            </div>
+                        </div>
+                    </div>
+            
+           : <Dashboard/>} 
+        </div>
+    )
+}
