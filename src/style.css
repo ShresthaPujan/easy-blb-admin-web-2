@@ -222,11 +222,7 @@ table td {
     width: 105px;
     box-shadow: 5px 10px #888888;
 }
-footer{
-    padding:10px;
-    margin: 20px 0 0 0;
-    background: #fff;
-}
+
 .dragndrop  {
     border:1px solid black;
     width: 150px;
@@ -247,7 +243,7 @@ footer{
     display: none;
 }
 
-@media only screen and (max-width: 1200px) {
+/* @media only screen and (max-width: 1200px) {
     #side-nav nav li a{
         font-size: 14px;
     }
@@ -273,4 +269,4 @@ footer{
         display: block;
     }
   }
- 
+  */

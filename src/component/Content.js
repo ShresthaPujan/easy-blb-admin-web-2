@@ -5,11 +5,12 @@ import Login from './Login';
 import '../style.css';
 import { logout} from '../features/Userslice';
 import Footer from './Footer';
+import AddCooperative from './AddCooperative';
 
 export default function Content() {
  
     const [data, setData] = useState([]);
-
+    const [popup, setPopup] = useState(false);
     useEffect(() => {
         fetchFunction()
     },[] );
@@ -24,10 +25,14 @@ export default function Content() {
          
         }
       }
+const handleAddCooperative= (e) =>{
+        e.preventDefault();
+        setPopup(true);
+}
   return <>
 
-         <div className="content offset-lg-2 col-lg-10">
-                     <section className="content-section">
+         <div className="col-lg-12">
+                     <section className="content-section contentmain-popup">
                                                 <div className="col-lg-10 sub_menu">
                                                         Company |DashBoard
                                                 </div>
@@ -40,7 +45,7 @@ export default function Content() {
                                                         <h4>Company List</h4>
                                                     </div>
                                                     <div className="col-lg-6 p-2 text-end">
-                                                            <button className="btn btn-primary"> Add New Company +</button>
+                                                            <button className="btn btn-primary" onClick={handleAddCooperative}> Add Cooperative +</button>
                                                     </div>
                                                 </div>
                                                 <div className="row">
@@ -123,6 +128,9 @@ export default function Content() {
                                 </div>
                             </section>
          </div>
+         <AddCooperative trigger ={popup} setTrigger={setPopup}>
+             <h4 className="text-center">Add Cooperative</h4>
+         </AddCooperative>
         
    
   </>;
