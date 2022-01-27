@@ -5,7 +5,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import '../App.css';
 import { useDispatch } from 'react-redux';
 import {login,userDetail} from "../features/Userslice";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Navigate,useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { selectUser } from '../features/Userslice';
 import axios from 'axios';
@@ -25,6 +25,7 @@ export default function Login() {
     const dispatch = useDispatch();
     let navigate = useNavigate();
     const user = useSelector(selectUser);
+    
     const handleChange =(e)=>{
         const{name , value} = e.target;
         setFormValues({ ...formValues,[name]:value});
@@ -37,9 +38,15 @@ export default function Login() {
         setformErrors(validate(formValues));
         setIsSubmit(true);         
     };
-    
+    let location = useLocation()
 
     useEffect(() => {
+        if(auth){
+                navigate('/')
+        }
+        else{
+
+    
         if(Object.keys(formErrors).length === 0 && isSubmit){
         setIsSubmit(true)
           const dataForm =  {
@@ -63,14 +70,17 @@ export default function Login() {
                    localStorage.setItem('userInfo',JSON.stringify(userInfo))
                    dispatch(userDetail(userInfo))  
                    setIsSubmit(false)
+                   navigate('/')
                 }
                 
                 else{
+                    setIsSubmit(false)
                     setformErrors({ ...formErrors,errorv:"Please Enter Valid Credentials"})
                 }
               })
-
-          }
+        }
+        
+        }
     },[formErrors]);
 
     const  validate = (values) => {
@@ -89,10 +99,10 @@ export default function Login() {
            }
         return errors;
     }
+
     return (
-    
+   
         <div>
-        {!auth ? 
                <div className="container login-container">
                         <div className="row">
                             <div className="col-md-6 login-form-1">
@@ -134,7 +144,7 @@ export default function Login() {
                         </div>
                     </div>
             
-           : <Dashboard/>} 
+         
         </div>
     )
 }

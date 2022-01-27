@@ -33,7 +33,7 @@ const handleAddCooperative= (e) =>{
 
          <div className="col-lg-12">
                      <section className="content-section contentmain-popup">
-                                                <div className="col-lg-10 sub_menu">
+                                                <div className="col-lg-12 sub_menu">
                                                         Company |DashBoard
                                                 </div>
                      </section>
@@ -58,28 +58,10 @@ const handleAddCooperative= (e) =>{
                                                                 <div className=" offset-lg-6 offset-md-6  offset-sm-0 col-lg-6  col-md-6 col-sm-12">
                                                                     <div className="row">
                                                                             <div className="col-lg-6 col-md-6  col-sm-6   ">
-                                                                                <div className="dropdown">
-                                                                                    <button className="btn  dropdown-toggle dropmenu" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                    Filter By
-                                                                                    </button>
-                                                                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                                                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                                                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                                                                    </ul>
-                                                                                </div>
+                                                                             
                                                                             </div>
                                                                             <div className="col-lg-6 col-md-6 col-sm-6">
-                                                                                <div className="dropdown">
-                                                                                    <button className="btn dropdown-toggle dropmenu" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                    Sort By
-                                                                                    </button>
-                                                                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                                                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                                                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                                                                    </ul>
-                                                                                </div>
+                                            
                                                                             </div>
                                                                     </div>
                                                                 </div>
@@ -89,37 +71,47 @@ const handleAddCooperative= (e) =>{
 
                                                 <div className="row">
                                                     <div className="col-lg-12 table-responsive">
+                                                    <div className="outer-wrapper">
+                                                    <div className="table-wrapper">
                                                     <table className="table ">
+                                                   
                                                         <thead>
                                                             <tr>
-                                                                <td >Address</td>
-                                                                <td >CoOperativeCode</td>
-                                                                <td >CoOperativeName</td>
-                                                                <td>ContactNum</td>
-                                                                <td> CreditLimit</td>
-                                                                <td>IsOnline</td>
-                                                                <td>Logo</td>
-                                                                <td> NoOfUser</td>
-                                                                <td> licenseExpiry</td>
+                                                                <td>S.N.</td>
+                                                                <td >Logo</td>
+                                                                <td >Co Operative Code</td>
+                                                                <td >Co Operative Name</td>
+                                                                <td>Address</td>
+                                                                <td> No of User</td>
+                                                                <td>Exipry Date</td>
+                                                                <td> Credit Limit</td>
+                                                                <td>Contact</td>   
+                                                                <td> Action</td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                    {data.map((item,i) => 
                                                             <tr key={i + 1}>
-                                                            <td >{item.Address}</td>
+                                                               <td>{i +1}</td>
+                                                                <td className="contentLogo"><img src={item.Logo}  alt="" /></td>
                                                                 <td >{item.CoOperativeCode}</td>
-                                                                <td >{item.CoOperativeName}</td>
-                                                                <td>{item.ContactNum}</td>
-                                                                <td> {item.CreditLimit}</td>
-                                                                <td>{item.IsOnline}</td>
-                                                                <td>{item.Logo}</td>
+                                                                <td >{item.CoOperativeName}</td>                       
+                                                                <td >{item.Address}</td>
                                                                 <td> {item.NoOfUser}</td>
                                                                 <td> {item.licenseExpiry}</td>
+                                                                <td> {item.CreditLimit}</td>
+                                                                <td>{item.ContactNum}</td>
+                                                                
+                                                                <td><span className='editspan badge '>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               
                                                             </tr>
                                                             )}
+                                                            
                                                            
                                                         </tbody>
+                                                        
                                                         </table>
+                                                        </div>
+                                                        </div>
                                                     </div>
 
                                                 </div>

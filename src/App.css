@@ -34,6 +34,16 @@ body{
   display: block;
   width: 70%;
   }
+.popUP .form-control {
+  width: 100%;
+  }
+.popUP input{
+  padding: 8px;
+  font-size: 13px;
+}
+.popUP .form-label {
+  font-size: 14px;
+}
 .fa {
   position: absolute;
   color: #fff;
@@ -76,7 +86,7 @@ body{
   width: 90%;
 }
 .errormsg{
-  font-size: 14px;
+  font-size: 13px;
   color:red;
 }
 .input-group-text{
@@ -91,12 +101,16 @@ body{
   background-color: rgba(0, 0, 0, 0.6);
   border: 1px solid black;
   box-shadow: 5px 10px 8px #888888;
+  z-index: 5;
+  overflow:scroll;
 }
 .popup-inner.container {
   background: #fff;
-  top:20%;
+  top:5%;
+width: 900px;
   position: absolute;
-  left:20%;
+  left:10%;
+  
 }
 button.btn.closebtn {
   position: absolute;
@@ -118,4 +132,25 @@ footer {
 }
 .addresbtn{
   width: 100px;
+  font-size: 13px;
+}
+.input-group.flex-nowrap.p-2 {
+  width: 300px;
+}
+@media only screen and (max-width: 1366px)
+{
+  
+  .popup-inner.container {
+    width: 725px !important;
+    
+    top:5%;
+    left:25%;
+   
+  }
+
+}
+.contentLogo img{
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 34px;
 }
