@@ -14,7 +14,7 @@ import Content from './component/Content';
 
 function App() {
   //const user = useSelector(selectUser);
-  const auth = sessionStorage.getItem("loginInfo");
+  const auth = localStorage.getItem("userInfo");
   return (
     <div className="App">
  

@@ -17,12 +17,10 @@ export default function Sidebarone() {
         dispatch(logout())  
         navigate("/login")
     }
-  
 
   return <>
   { auth ?
-  <>
-      
+  <>  
                 <div className="col-lg-2" id="side-nav"> 
                     <div className="menu " >
                         <div className="img text-center">

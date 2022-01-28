@@ -99,7 +99,7 @@ margin-top: 25px;
 }
 .content-section{
     background: #F8F8FB;
-    padding: 10px 10px 0 10px;
+    padding: 10px 10px 10px 10px;
 }
 .sub_menu{
     background: #fff;
@@ -180,14 +180,14 @@ table td {
     position: relative;
 }
 .table-wrapper th:nth-child(1){ 
-    z-index: 9999;
+    z-index: 3;
     position: sticky;
     left:0;
     width: 95px;
 }
 
 .table-wrapper td:nth-child(1){
-    z-index: 999;
+    z-index: 2;
     position: sticky;
     left:0;
     background: white;
@@ -195,14 +195,14 @@ table td {
 }
 .table-wrapper th:nth-child(2){
     width: 70px;
-    z-index: 9999;
+    z-index: 3;
     position: sticky;
     left:95px;
     width: 95px;
 }
 
 .table-wrapper td:nth-child(2){
-    z-index: 999;
+    z-index: 2;
     position: sticky;
     left:95px;
     width: 95px;
@@ -211,16 +211,15 @@ table td {
 .table-wrapper th:last-child{
     position: sticky;
     right: 0;
-    z-index: 9999;
-    width: 105px;    
+    z-index: 3;
+    width: 160px;    
 }
 .table-wrapper td:last-child{
     position: sticky;
     right: 0;
-    z-index: 999;
+    z-index: 2;
     background: white;
-    width: 105px;
-    box-shadow: 5px 10px #888888;
+    width: 160px;
 }
 
 .dragndrop  {
@@ -241,6 +240,18 @@ table td {
 }
 #halfside-nav{
     display: none;
+}
+.editspan{
+    background: #007bff;
+    padding: 5px;
+    font-size: 13px;
+  
+}
+.deletespan{
+    background: red;
+    padding:5px;
+    font-size: 13px;
+    
 }
 
 /* @media only screen and (max-width: 1200px) {
