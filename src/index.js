@@ -8,6 +8,7 @@ import {applyMiddleware, createStore} from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import Reducer from "./features/Userslice";
 import thunk from 'redux-thunk';
+import { AuthContextProvider } from './component/auth-context';
 
 export const store = createStore(Reducer , {},composeWithDevTools(applyMiddleware(thunk)))
 
@@ -16,10 +17,11 @@ export const store = createStore(Reducer , {},composeWithDevTools(applyMiddlewar
 
 ReactDOM.render(
   
-
+<AuthContextProvider> 
     <Provider store={store}>
            <App />
-    </Provider>,
+    </Provider>
+</AuthContextProvider>,
  
   document.getElementById('root')
 );

@@ -1,21 +1,22 @@
-import React ,{useState ,useEffect} from 'react'
+import React ,{useState ,useEffect ,useContext} from 'react'
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 import '../App.css';
 import { useDispatch } from 'react-redux';
 import {login,userDetail} from "../features/Userslice";
-import { useNavigate ,Navigate,useLocation } from 'react-router-dom';
+import { useNavigate ,Navigate,useLocation} from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { selectUser } from '../features/Userslice';
 import axios from 'axios';
 import Dashboard from './Dashboard';
+import AuthContext from './auth-context';
 
 
 
 
 export default function Login() {
-    
+    const authCtx= useContext(AuthContext);
     const initalvalue = {username:'',password:''};
     const [formValues, setFormValues] = useState(initalvalue);
     const [formErrors, setformErrors] = useState({});
@@ -44,9 +45,7 @@ export default function Login() {
         if(auth){
                 navigate('/')
         }
-        else{
-
-    
+        else{    
         if(Object.keys(formErrors).length === 0 && isSubmit){
         setIsSubmit(true)
           const dataForm =  {
@@ -57,19 +56,19 @@ export default function Login() {
               .then(function (response) {
                 const  res = response.data
                 const result = response.data.STATUS_CODE
-                console.log(result)
-                if(result === "0"){
-                    // window.localStorage.setItem('loginInfo',JSON.stringify(dataForm))
+                if(result === "0"){     
                     const  userInfo= {
                     UserID:  res.UserID,
                     UserName: res.UserName,
                     UserType: res.UserType,
                    }
                    localStorage.setItem('userInfo',JSON.stringify(userInfo))
-                   dispatch(userDetail(userInfo))  
-                   setIsSubmit(false)
-                  
+                   dispatch(userDetail(userInfo)) 
+                   authCtx.login(res.UserID);
                    navigate('/')
+                   setIsSubmit(false)   
+                   
+                  
                 }
                 
                 else{
