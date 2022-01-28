@@ -1,18 +1,21 @@
 import '../style.css';
-import React, { useEffect , useState } from 'react'
+import React, { useEffect , useState ,useContext } from 'react'
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Login from './Login';
 import '../style.css';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
 import { logout} from '../features/Userslice';
+import AuthContext from './auth-context';
 export default function Sidebarone() {
     let navigate = useNavigate();
     const dispatch = useDispatch();
+    const authCtx= useContext(AuthContext);
     const auth = localStorage.getItem("userInfo");
 
     function logOut(e){
         e.preventDefault();
+        authCtx.logout();
         localStorage.clear();
         dispatch(logout())  
         navigate("/login")

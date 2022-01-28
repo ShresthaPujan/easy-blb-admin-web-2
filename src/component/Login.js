@@ -42,10 +42,7 @@ export default function Login() {
     let location = useLocation()
 
     useEffect(() => {
-        if(auth){
-                navigate('/')
-        }
-        else{    
+       
         if(Object.keys(formErrors).length === 0 && isSubmit){
         setIsSubmit(true)
           const dataForm =  {
@@ -67,16 +64,13 @@ export default function Login() {
                    authCtx.login(res.UserID);
                    navigate('/')
                    setIsSubmit(false)   
-                   
-                  
                 }
-                
                 else{
                     setIsSubmit(false)
                     setformErrors({ ...formErrors,errorv:"Please Enter Valid Credentials"})
                 }
               })
-        }
+              //eslint-disable-next-line     
         
         }
     },[formErrors]);
@@ -95,7 +89,8 @@ export default function Login() {
            }
         return errors;
     }
-    return (
+    
+    return authCtx.isLoggedIn ? <Navigate to="/" replace state={{from :location}}/> :(
    
         <>
                <div className="container login-container">

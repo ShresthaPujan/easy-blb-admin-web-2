@@ -17,21 +17,17 @@ function App() {
   //const user = useSelector(selectUser);
   const auth = localStorage.getItem("userInfo");
   const authCtx= useContext(AuthContext);
-  console.log(authCtx.isLoggedIn);
+
   return (
     <div className="App">
- 
-     
-    
-
-            <BrowserRouter>
-            <Routes>
-                {!auth &&( <Route path="/login" element={<Login />} />)} 
-                {authCtx.isLoggedIn && (  <Route path="/" element={<Dashboard />} />)} 
-                <Route path="/sidebar" element={<Sidebarone/>} />
-                <Route path="/content" element={<Content/>} />
-                <Route path="*" element={<Login />} />
-            </Routes>
+         <BrowserRouter>
+              <Routes>
+                  {!auth &&( <Route path="/login" element={<Login />} />)} 
+                  {authCtx.isLoggedIn && (  <Route path="/" element={<Dashboard />} />)} 
+                  <Route path="/sidebar" element={<Sidebarone/>} />
+                  <Route path="/content" element={<Content/>} />
+                  <Route path="*" element={<Login />} />
+              </Routes>
             
             </BrowserRouter>
            
