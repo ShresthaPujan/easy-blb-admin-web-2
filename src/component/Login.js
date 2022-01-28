@@ -68,8 +68,8 @@ export default function Login() {
                    localStorage.setItem('userInfo',JSON.stringify(userInfo))
                    dispatch(userDetail(userInfo))  
                    setIsSubmit(false)
-                   console.log(isSubmit)
-                   <Navigate to="/" />
+                  
+                   navigate('/')
                 }
                 
                 else{

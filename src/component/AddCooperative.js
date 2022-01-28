@@ -85,10 +85,17 @@ useEffect(() => {
                     <button className='btn closebtn' onClick={handlePopupClose}><i className="bi bi-x"></i></button>
                     <div className="popup-inner container p-4">
                         <form action="">
+<<<<<<< HEAD
                                 <div className="col-lg-12 col-md-12 col-sm-12">        
                                     {props.children}
                                     <div className="row">
                                         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+=======
+                                <div className="col-lg-12">        
+                                    {props.children}
+                                    <div className="row">
+                                        <div className="col-lg-6">
+>>>>>>> 4a7991f16d086b5a9b3ef4234ad5503f1889f049
                                                     <div >  
                                                         <label htmlFor="Address" className="form-label">Address</label>
                                                             <input
@@ -156,7 +163,11 @@ useEffect(() => {
                                                         </div>
                                                         <span className="errormsg">{formErrors.creditlimit}</span>
                                             </div>
+<<<<<<< HEAD
                                         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+=======
+                                        <div className="col-lg-6">
+>>>>>>> 4a7991f16d086b5a9b3ef4234ad5503f1889f049
                                             <div >
                                             <label htmlFor="isOnline" className="form-label">Is Online</label>
                                                 <input
@@ -213,7 +224,11 @@ useEffect(() => {
                                         </div>
                                     </div>
                                     <div className="row">
+<<<<<<< HEAD
                                         <div className="col-lg-12 col-md-12 col-sm-12 text-center  col-xs-12">
+=======
+                                        <div className="col-lg-12 text-center ">
+>>>>>>> 4a7991f16d086b5a9b3ef4234ad5503f1889f049
                                             <button className="btn btn-primary m-2 px-4 addresbtn" onClick={handleAddCooperative} > ADD</button>
                                             <button className="btn btn-danger px-2 addresbtn"> RESET</button>
                                         </div>
