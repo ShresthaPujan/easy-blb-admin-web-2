@@ -190,7 +190,7 @@ table td {
     z-index: 2;
     position: sticky;
     left:0;
-    background: white;
+   
     width: 95px;
 }
 .table-wrapper th:nth-child(2){
@@ -200,13 +200,16 @@ table td {
     left:95px;
     width: 95px;
 }
+.table-wrapper th:nth-of-type(odd){
+    background: #E6E6E6;
+}
 
 .table-wrapper td:nth-child(2){
     z-index: 2;
     position: sticky;
     left:95px;
     width: 95px;
-    background: white;
+ 
 }
 .table-wrapper th:last-child{
     position: sticky;
@@ -218,7 +221,7 @@ table td {
     position: sticky;
     right: 0;
     z-index: 2;
-    background: white;
+  
     width: 160px;
 }
 

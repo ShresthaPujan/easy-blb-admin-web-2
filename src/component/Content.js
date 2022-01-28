@@ -74,7 +74,7 @@ const handleAddCooperative= (e) =>{
                                                     <div className="col-lg-12 table-responsive">
                                                     <div className="outer-wrapper">
                                                     <div className="table-wrapper">
-                                                    <table className="table ">
+                                                    <table className="table table-striped">
                                                    
                                                         <thead>
                                                             <tr>
@@ -92,6 +92,21 @@ const handleAddCooperative= (e) =>{
                                                         </thead>
                                                         <tbody>
                                                    {data.map((item,i) => 
+                                                            <tr key={i + 1}>
+                                                               <td>{i +1}</td>
+                                                                <td className="contentLogo"><img src={item.Logo}  alt="" /></td>
+                                                                <td >{item.CoOperativeCode}</td>
+                                                                <td >{item.CoOperativeName}</td>                       
+                                                                <td >{item.Address}</td>
+                                                                <td> {item.NoOfUser}</td>
+                                                                <td> {item.licenseExpiry}</td>
+                                                                <td> {item.CreditLimit}</td>
+                                                                <td>{item.ContactNum}</td>
+                                                                
+                                                                <td><span className='editspan badge '>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               
+                                                            </tr>
+                                                            )}
+                                                            {data.map((item,i) => 
                                                             <tr key={i + 1}>
                                                                <td>{i +1}</td>
                                                                 <td className="contentLogo"><img src={item.Logo}  alt="" /></td>
