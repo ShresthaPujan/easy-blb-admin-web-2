@@ -85,17 +85,11 @@ useEffect(() => {
                     <button className='btn closebtn' onClick={handlePopupClose}><i className="bi bi-x"></i></button>
                     <div className="popup-inner container p-4">
                         <form action="">
-<<<<<<< HEAD
                                 <div className="col-lg-12 col-md-12 col-sm-12">        
                                     {props.children}
                                     <div className="row">
                                         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-=======
-                                <div className="col-lg-12">        
-                                    {props.children}
-                                    <div className="row">
-                                        <div className="col-lg-6">
->>>>>>> 4a7991f16d086b5a9b3ef4234ad5503f1889f049
+
                                                     <div >  
                                                         <label htmlFor="Address" className="form-label">Address</label>
                                                             <input
