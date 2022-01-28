@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 module.exports = function (app) {
   app.use(
     createProxyMiddleware('/api1', {
-      target: 'https://esnepal.com', // API endpoint 1
+      target: ' http://gharelukam.com/', // API endpoint 1
       changeOrigin: true,
       pathRewrite: {
         "^/api1": "",

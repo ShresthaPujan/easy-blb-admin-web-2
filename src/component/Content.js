@@ -16,7 +16,7 @@ export default function Content() {
     },[] );
     async function fetchFunction() {
         try{
-          const response = await fetch(`api2/gharelukam/Getcoperative`);
+          const response = await fetch(`api1/gharelukam/Getcoperative`);
           const jsonData = await response.json();
           setData(jsonData)
           console.log(jsonData)
