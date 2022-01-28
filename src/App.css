@@ -108,19 +108,12 @@
 }
 .popup-inner.container {
   background: #fff;
-<<<<<<< HEAD
   top: 20%;
   width: 100%;
   max-width: 900px;
   position: absolute;
   left:25%;
-=======
-  top:5%;
-width: 900px;
-  position: absolute;
-  left:10%;
->>>>>>> 4a7991f16d086b5a9b3ef4234ad5503f1889f049
-  
+
 }
 button.btn.closebtn {
   position: absolute;
