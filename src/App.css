@@ -1,13 +1,6 @@
 .login-container{
   margin-top: 5%;
 }
-body{
-  position: relative;
-}
-.App{
-  width: 100%;
-  overflow: hidden;
-}
 .login-form-1{
   padding-left: 12%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
@@ -34,16 +27,6 @@ body{
   display: block;
   width: 70%;
   }
-.popUP .form-control {
-  width: 100%;
-  }
-.popUP input{
-  padding: 8px;
-  font-size: 13px;
-}
-.popUP .form-label {
-  font-size: 14px;
-}
 .fa {
   position: absolute;
   color: #fff;
@@ -85,12 +68,20 @@ body{
   display: initial;
   width: 90%;
 }
+
 .errormsg{
   font-size: 13px;
   color:red;
 }
 .input-group-text{
   background-color: #fff !important;
+}
+.popUp .input{
+  padding:8px;
+  font-size: 13px;
+}
+.popUP .form-label{
+  font-size: 14px;
 }
 .popUP{
   position: fixed;

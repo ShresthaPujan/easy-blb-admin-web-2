@@ -53,16 +53,14 @@ export default function Login() {
                  UserName: formValues.username,
                  Pwd: formValues.password,      
             }
-            
-            axios.post('api1/cooppay/api/CoOperative/BLB_Authentication',dataForm)
+            axios.post('api2/BLBApi/api/BLBAUTH',dataForm)
               .then(function (response) {
                 const  res = response.data
                 const result = response.data.STATUS_CODE
                 console.log(result)
                 if(result === "0"){
                     // window.localStorage.setItem('loginInfo',JSON.stringify(dataForm))
-                   dispatch(login(dataForm))   
-                  const  userInfo= {
+                    const  userInfo= {
                     UserID:  res.UserID,
                     UserName: res.UserName,
                     UserType: res.UserType,
@@ -70,7 +68,8 @@ export default function Login() {
                    localStorage.setItem('userInfo',JSON.stringify(userInfo))
                    dispatch(userDetail(userInfo))  
                    setIsSubmit(false)
-                   navigate('/')
+                   console.log(isSubmit)
+                   <Navigate to="/" />
                 }
                 
                 else{
@@ -99,7 +98,7 @@ export default function Login() {
     }
     return (
    
-        <div>
+        <>
                <div className="container login-container">
                         <div className="row">
                             <div className="col-md-6 login-form-1">
@@ -142,6 +141,6 @@ export default function Login() {
                     </div>
             
          
-        </div>
+        </>
     )
 }
