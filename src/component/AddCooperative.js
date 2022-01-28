@@ -83,7 +83,7 @@ useEffect(() => {
         ? (
             <div className="popUP container-fluid  col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button className='btn closebtn' onClick={handlePopupClose}><i className="bi bi-x"></i></button>
-                    <div className="popup-inner container p-4">
+                    <div className="popup-inner container p-4 ">
                         <form action="">
                                 <div className="col-lg-12 col-md-12 col-sm-12">        
                                     {props.children}
