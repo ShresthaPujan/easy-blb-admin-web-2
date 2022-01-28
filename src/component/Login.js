@@ -44,7 +44,6 @@ export default function Login() {
     useEffect(() => {
        
         if(Object.keys(formErrors).length === 0 && isSubmit){
-        setIsSubmit(true)
           const dataForm =  {
                  UserName: formValues.username,
                  Pwd: formValues.password,      
@@ -71,8 +70,10 @@ export default function Login() {
                 }
               })
               //eslint-disable-next-line     
-        
         }
+        else{
+        setIsSubmit(false)
+    }
     },[formErrors]);
 
     const  validate = (values) => {
