@@ -152,6 +152,18 @@ footer {
   }
 
 }
+@media only screen and (max-width: 1200px)
+{
+i.fa.fa-download.fa-rotate-270 {
+  margin-left: 100px;
+}
+}
+@media only screen and (max-width: 990px)
+{
+  i.fa.fa-download.fa-rotate-270 {
+    margin-left: 62px;
+  }
+}
 @media only screen and (max-width: 1366px)
 {
   .popUP{

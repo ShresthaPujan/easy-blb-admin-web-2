@@ -114,10 +114,10 @@ export default function Login() {
                                         <input type="password" className="form-control" name="password" value={formValues.password} onChange={handleChange}  placeholder="Enter your password"/>
                                     </div>
                                     <div className="form-group">
-                                        <span className="fa-flip-vertical" style={{display: "inline-block"}}>
-                                    <i className="fa fa-download fa-rotate-270"></i>
-                                        </span>
-                                <button type="submit" onClick={handleSubmit}className="btnSubmit">{ isSubmit ? <p  style={{marginLeft: "15%"}} >Loading ...</p>  :  <p>Login</p>}</button>
+                                    <span className="fa-flip-vertical" style={{display: "inline-block"}}>
+                                         <i className="fa fa-download fa-rotate-270"></i>
+                                    </span>
+                                <button type="submit" onClick={handleSubmit} className="btnSubmit">{ isSubmit ? <span  style={{marginLeft: "15%"}} >Loading ...</span>  :  <span style={{marginLeft: "15%"}}>Login</span>}</button>
                           
                                     </div>
                                     </form>
