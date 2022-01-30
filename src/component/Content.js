@@ -137,7 +137,7 @@ const handleAddCooperative= (e) =>{
                             </section>
          </div>
          <AddCooperative trigger ={popup} setTrigger={setPopup}>
-             <h4 className="text-center">Add Cooperative</h4>
+             <h4 >Add Cooperative</h4>
          </AddCooperative>
         
    

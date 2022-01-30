@@ -90,7 +90,49 @@ useEffect(() => {
                                     <div className="row">
                                         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
-                                                    <div >  
+                                                    
+                                                        <div >
+                                                        <label htmlFor="cooperaticecode" className="form-label">Cooperaticecode</label>    
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                value={ formValues.cooperativeCode} onChange={handleChange}
+                                                                name="cooperaticecode"
+                                                                placeholder="Co Operative Code"
+                                                                aria-label="Co Operative Code"
+                                                                id="cooperaticecode"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                  <span className="errormsg">{formErrors.cooperaticecode}</span>
+                                                        </div>
+                                                      
+                                                        <div >
+                                                        <label htmlFor="cooperativename" className="form-label">Co Operativename</label>   
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                value={ formValues.coOperativeName} onChange={handleChange}
+                                                                placeholder="Co Operative Name"
+                                                                name="cooperativename"
+                                                                id="cooperativename"
+                                                                aria-label="Co Operative Name"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.cooperativename}</span>
+                                                        </div>
+                                                        
+                                                        <div >
+                                                        <label htmlFor="contactnumber" className="form-label">Contact Number</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                value={ formValues.contactNumber} onChange={handleChange}
+                                                                placeholder="Contact Number"
+                                                                aria-label="Contact Number"
+                                                                name="contactnumber"
+                                                                id="contactnumber"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.contactnumber}</span>
+                                                        </div>
+                                                        <div >  
                                                         <label htmlFor="Address" className="form-label">Address</label>
                                                             <input
                                                                 type="text"
@@ -105,45 +147,24 @@ useEffect(() => {
                                                         <span className="errormsg">{formErrors.address}</span>
                                                         </div>
                                                         <div >
-                                                        <label htmlFor="cooperaticecode" className="form-label">Cooperaticecode</label>    
+                                                        <label htmlFor="noOfUser" className="form-label">No of User</label>
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
-                                                                value={ formValues.cooperativeCode} onChange={handleChange}
-                                                                name="cooperaticecode"
-                                                                placeholder="Co Operative Code"
-                                                                aria-label="Co Operative Code"
-                                                                id="cooperaticecode"
+                                                                value={ formValues.noOfUser} onChange={handleChange}
+                                                                placeholder="No Of User"
+                                                                aria-label="No Of User"
+                                                                name="noOfUser"
+                                                                id="noOfUser"
                                                                 aria-describedby="addon-wrapping"/>
-                                                        </div>
-                                                        <span className="errormsg">{formErrors.cooperaticecode}</span>
-                                                        <div >
-                                                        <label htmlFor="cooperativename" className="form-label">Co Operativename</label>   
-                                                            <input
-                                                                type="text"
-                                                                className="form-control"
-                                                                value={ formValues.coOperativeName} onChange={handleChange}
-                                                                placeholder="Co Operative Name"
-                                                                name="cooperativename"
-                                                                id="cooperativename"
-                                                                aria-label="Co Operative Name"
-                                                                aria-describedby="addon-wrapping"/>
-                                                        </div>
-                                                        <span className="errormsg">{formErrors.cooperativename}</span>
-                                                        <div >
-                                                        <label htmlFor="contactnumber" className="form-label">Contact Number</label>
-                                                            <input
-                                                                type="text"
-                                                                className="form-control"
-                                                                value={ formValues.contactNumber} onChange={handleChange}
-                                                                placeholder="Contact Number"
-                                                                aria-label="Contact Number"
-                                                                name="contactnumber"
-                                                                id="contactnumber"
-                                                                aria-describedby="addon-wrapping"/>
-                                                        </div>
-                                                        <span className="errormsg">{formErrors.contactnumber}</span>
-                                                        <div >
+                                                                <span className="errormsg">{formErrors.noOfUser}</span>
+                                                      </div>
+                                                        
+                                                       
+                                            </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                                        <div >
                                                         <label htmlFor="creditlimit" className="form-label">Credit Limit</label>
                                                             <input
                                                                 type="text"
@@ -154,64 +175,40 @@ useEffect(() => {
                                                                 name="creditlimit"
                                                                 id="creditlimit"
                                                                 aria-describedby="addon-wrapping"/>
+                                                                 <span className="errormsg">{formErrors.creditlimit}</span>
                                                         </div>
-                                                        <span className="errormsg">{formErrors.creditlimit}</span>
-                                            </div>
-                                        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
+                                                        <div >
+                                                            <label htmlFor="licenseExipry" className="form-label">license Exipry</label>
+                                                                <input
+                                                                    type="text"
+                                                                    className="form-control"
+                                                                    value={ formValues.licenseExpiry} onChange={handleChange}
+                                                                    placeholder="license Expiry"
+                                                                    aria-label="license Expiry"
+                                                                    id="licenseExipry"
+                                                                    name="licenseExipry"
+                                                                    aria-describedby="addon-wrapping"/>
+                                                                    <span className="errormsg">{formErrors.licenseExipry}</span>
+                                                        </div>
+                                           
                                             <div >
-                                            <label htmlFor="isOnline" className="form-label">Is Online</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    value={ formValues.isOnline} onChange={handleChange}
-                                                    placeholder="Is Online"
-                                                    aria-label="Is Online"
-                                                    name="isOnline"
-                                                    id="isOnline"
-                                                    aria-describedby="addon-wrapping"/>
-                                            </div>
-                                            <span className="errormsg">{formErrors.isOnline}</span>
-                                            <div >
-                                            <label htmlFor="Logo" className="form-label">Logo</label>
-                                                <input
-                                                    className   ="form-control"
-                                                    type="file"
-                                                    className="form-control"
-                                                    value={ formValues.logo} onChange={handleChange}
-                                                    placeholder="Logo"
-                                                    aria-label="Logo"
-                                                    id="Logo"
-                                                    name="logo"
-                                                    aria-describedby="addon-wrapping"/>
+                                                <label htmlFor="Logo" className="form-label">Logo</label>
+                                                    <input
+                                                        className   ="form-control"
+                                                        type="file"
+                                                        className="form-control"
+                                                        value={ formValues.logo} onChange={handleChange}
+                                                        placeholder="Logo"
+                                                        aria-label="Logo"
+                                                        id="Logo"
+                                                        name="logo"
+                                                        aria-describedby="addon-wrapping"/>
                                             </div>
                                             <span className="errormsg">{formErrors.logo}</span>
-                                            <div >
-                                            <label htmlFor="noOfUser" className="form-label">No of User</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    value={ formValues.noOfUser} onChange={handleChange}
-                                                    placeholder="No Of User"
-                                                    aria-label="No Of User"
-                                                    name="noOfUser"
-                                                    id="noOfUser"
-                                                    aria-describedby="addon-wrapping"/>
-                                            </div>
-                                            <span className="errormsg">{formErrors.noOfUser}</span>
-                                            <div >
-                                            <label htmlFor="licenseExipry" className="form-label">license Exipry</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    value={ formValues.licenseExpiry} onChange={handleChange}
-                                                    placeholder="license Expiry"
-                                                    aria-label="license Expiry"
-                                                    id="licenseExipry"
-                                                    name="licenseExipry"
-                                                    aria-describedby="addon-wrapping"/>
-                                            </div>
-                                            <span className="errormsg">{formErrors.licenseExipry}</span>
+                                   
+                                           
+                                            
+                                           
                                         </div>
                                     </div>
                                     <div className="row">
