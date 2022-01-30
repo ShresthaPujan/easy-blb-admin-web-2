@@ -158,7 +158,7 @@ table {
 table th{
     position: sticky; 
     top: 0px;
-    background-color: #F8F8FB;
+    background-color: red;
     color: black;
     text-align: center;
     font-weight: normal;
@@ -179,10 +179,12 @@ table td {
 .table-wrapper{
     position: relative;
 }
+
 .table-wrapper th:nth-child(1){ 
     z-index: 3;
     position: sticky;
     left:0;
+    background: white;
     width: 95px;
 }
 
@@ -190,7 +192,7 @@ table td {
     z-index: 2;
     position: sticky;
     left:0;
-   
+    background: white;
     width: 95px;
 }
 .table-wrapper th:nth-child(2){
@@ -199,16 +201,23 @@ table td {
     position: sticky;
     left:95px;
     width: 95px;
+    background: white;
 }
 .table-wrapper th:nth-of-type(odd){
     background: #E6E6E6;
 }
-
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    background: #E6E6E6;
+}
+.table-striped>tbody>tr:nth-of-type(even)>* {
+    background: white;
+}
 .table-wrapper td:nth-child(2){
     z-index: 2;
     position: sticky;
     left:95px;
     width: 95px;
+    background: white;
  
 }
 .table-wrapper th:last-child{
@@ -216,12 +225,13 @@ table td {
     right: 0;
     z-index: 3;
     width: 160px;    
+    background: white;
 }
 .table-wrapper td:last-child{
     position: sticky;
     right: 0;
     z-index: 2;
-  
+  background: white;
     width: 160px;
 }
 
