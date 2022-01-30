@@ -134,7 +134,7 @@ svg.svg-inline--fa.fa-magnifying-glass {
 
 
 .outer-wrapper {
-    max-width: fit-content;
+    /* //max-width: fit-content; */
     max-height: fit-content;  
 }
 .table-wrapper {
