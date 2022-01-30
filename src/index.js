@@ -9,6 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import Reducer from "./features/Userslice";
 import thunk from 'redux-thunk';
 import { AuthContextProvider } from './component/auth-context';
+import { BrowserRouter } from "react-router-dom";
 
 export const store = createStore(Reducer , {},composeWithDevTools(applyMiddleware(thunk)))
 
@@ -19,7 +20,9 @@ ReactDOM.render(
   
 <AuthContextProvider> 
     <Provider store={store}>
+       <BrowserRouter>
            <App />
+           </BrowserRouter>
     </Provider>
 </AuthContextProvider>,
  

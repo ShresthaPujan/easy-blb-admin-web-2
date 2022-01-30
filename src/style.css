@@ -24,7 +24,7 @@ menu nav ul{
     list-style: none;
    
 }
-.menu nav ul li {
+.menu nav ul li a{
     padding:10px;
     display: block;
 }
@@ -34,7 +34,7 @@ menu nav ul{
     display:block;
 }
 
-.menu nav ul li:hover{
+.menu nav ul li a:hover{
     color:#004AAD;
     background: #F8F8FB;
     border-radius: 10px;
@@ -266,7 +266,12 @@ table td {
     font-size: 13px;
     
 }
-
+.active {
+    color:red;
+}
+.mystyle{
+    background: red;
+}
 /* @media only screen and (max-width: 1200px) {
     #side-nav nav li a{
         font-size: 14px;

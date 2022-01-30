@@ -1,12 +1,13 @@
 import '../style.css';
 import React, { useEffect , useState ,useContext } from 'react'
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
 import Login from './Login';
 import '../style.css';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
 import { logout} from '../features/Userslice';
 import AuthContext from './auth-context';
+import classes from'../abs.css';
 export default function Sidebarone() {
     let navigate = useNavigate();
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export default function Sidebarone() {
         dispatch(logout())  
         navigate("/login")
     }
-
+  
   return <>
   { auth ?
   <>  
@@ -30,16 +31,16 @@ export default function Sidebarone() {
                             <img src={'../img/logo3.png'} alt=""/>
                         <p>kalimati <br/> 981234055</p>  
                         </div>
-                        <nav id="ram">
+                        <nav >
                             <ul >
-                                <li ><Link to="/"><i className="bi bi-folder-fill mx-3"></i>DashBoard</Link></li>
-                                <li ><Link className="arrow "  to="/"><i className="bi bi-people mx-3"></i>Profile</Link> </li>
-                                <li><Link className="arrow "  to="/"><i className="bi bi-people mx-3"></i>Cooperative</Link> </li>
-                                <li><Link className="arrow " to="/"><i className="bi bi-people mx-3"></i>Setting</Link> </li>
-                                <li ><Link className="arrow "   to="/"><i className="bi bi-people mx-3"></i>Lead</Link> </li>
+                                <li ><NavLink activeclassname={classes.active} to="/" ><i className="bi bi-folder-fill mx-3"></i>DashBoard</NavLink></li>
+                                <li ><NavLink activeclassname={classes.active} className="arrow "  to="/profile"><i className="bi bi-people mx-3"></i>Profile</NavLink> </li>
+                                <li><NavLink activeclassname={classes.active} className="arrow "  to="/test"><i className="bi bi-people mx-3"></i>Cooperative</NavLink> </li>
+                                <li><NavLink activeclassname={classes.active} className="arrow " to="/asdf"><i className="bi bi-people mx-3"></i>Setting</NavLink> </li>
+                                <li ><NavLink activeclassname={classes.active} className="arrow "   to="/asdf"><i className="bi bi-people mx-3"></i>Lead</NavLink> </li>
                           
-                                <li ><Link to="/"> <i className="bi bi-gear mx-3"></i>Setting</Link> </li>
-                                <li  onClick={logOut} ><Link  to="/"><i className="bi bi-people mx-3" ></i>Logout</Link> </li>
+                                <li ><NavLink activeclassname={classes.active} to="/asdfsadf"> <i className="bi bi-gear mx-3"></i>Setting</NavLink> </li>
+                                <li  onClick={logOut} ><NavLink activeclassname={classes.active}  to="/asdf"><i className="bi bi-people mx-3" ></i>Logout</NavLink> </li>
                             </ul>
                         </nav>
                     </div>
@@ -50,7 +51,7 @@ export default function Sidebarone() {
         : 
         <>
             <li className="nav-item">
-                <Link className="nav-link" to="/login">Login</Link>
+                <NavLink activeClassName={classes.active} className="nav-link" to="/login">Login</NavLink>
             </li>
           </>
     }

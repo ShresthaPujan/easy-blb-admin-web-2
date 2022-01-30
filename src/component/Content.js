@@ -6,24 +6,28 @@ import '../style.css';
 import { logout} from '../features/Userslice';
 import Footer from './Footer';
 import AddCooperative from './AddCooperative';
+import Spinner from './Spinner/Spinner'
 
 export default function Content() {
  
     const [data, setData] = useState([]);
     const [popup, setPopup] = useState(false);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         fetchFunction()
     },[] );
     async function fetchFunction() {
+        setLoading(true)
         try{
           const response = await fetch(`api1/gharelukam/Getcoperative`);
           const jsonData = await response.json();
           setData(jsonData)
-          console.log(jsonData)
+         setLoading(false)
                    }
         catch(err) {
-          throw err;
-         
+            setLoading(false)
+            throw err;
+          
         }
       }
 const handleAddCooperative= (e) =>{
@@ -31,7 +35,7 @@ const handleAddCooperative= (e) =>{
         setPopup(true);
 }
   return <>
-
+                
          <div className="col-lg-12">
                      <section className="content-section contentmain-popup">
                                                 <div className="col-lg-12 sub_menu">
@@ -72,10 +76,11 @@ const handleAddCooperative= (e) =>{
 
                                                 <div className="row">
                                                     <div className="col-lg-12 table-responsive">
+                                                    {loading && (<Spinner/>)}
                                                     <div className="outer-wrapper">
                                                     <div className="table-wrapper">
                                                     <table className="table table-striped">
-                                                   
+                                                    
                                                         <thead>
                                                             <tr>
                                                                 <td>S.N.</td>
@@ -91,6 +96,7 @@ const handleAddCooperative= (e) =>{
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+           
                                                    {data.map((item,i) => 
                                                             <tr key={i + 1}>
                                                                <td>{i +1}</td>
