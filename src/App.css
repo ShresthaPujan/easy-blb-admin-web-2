@@ -133,6 +133,7 @@ footer {
   margin: 20px 0 0 0;
   background: #fff;
   z-index: -1;
+  border-top:10px solid #F8F8FB;
 }
 .addresbtn{
   width: 100px;
