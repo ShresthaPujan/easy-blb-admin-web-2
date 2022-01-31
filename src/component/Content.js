@@ -1,5 +1,5 @@
 import Sidebarone from './Sidebarone';
-import React, { useEffect , useState } from 'react'
+import React, { useEffect , useState ,useRef} from 'react'
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Login from './Login';
 import '../style.css';
@@ -7,12 +7,22 @@ import { logout} from '../features/Userslice';
 import Footer from './Footer';
 import AddCooperative from './AddCooperative';
 import Spinner from './Spinner/Spinner'
+import Contenttable from './Pages/Contenttable';
 
 export default function Content() {
  
     const [data, setData] = useState([]);
     const [popup, setPopup] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [first, setfirst] = useState({address:'aaaaa',
+                        cooperaticecode:"",
+                    cooperativename:'',
+                    cooperaticecode:'',
+                    contactnumber:'',
+                    creditlimit:'',
+                    logo:'',
+                    noOfUser:'',
+                    licenseExipry:''});
     useEffect(() => {
         fetchFunction()
     },[] );
@@ -33,6 +43,26 @@ export default function Content() {
 const handleAddCooperative= (e) =>{
         e.preventDefault();
         setPopup(true);
+
+}
+    const ref = useRef(null);
+
+const handleEdit = (item) =>{
+    const data = {
+        logo:item.Logo,
+        cooperaticecode: item.CoOperativeCode,
+        cooperativename:item.CoOperativeName,
+        address:item.Address,
+        noOfUser:item.NoOfUser,
+        licenseExipry: item.licenseExpiry,
+        creditlimit:item.CreditLimit,
+        contactnumber:item.ContactNum,
+    };
+   setfirst(data)
+    setPopup(true);
+ 
+  
+ 
 }
   return <>
                 
@@ -50,7 +80,7 @@ const handleAddCooperative= (e) =>{
                                                         <h4>Company List</h4>
                                                     </div>
                                                     <div className="col-lg-6 p-2 text-end">
-                                                            <button className="btn btn-primary" onClick={handleAddCooperative}> Add Cooperative +</button>
+                                                            <button className="btn btn-primary"  ref={ref} onClick={handleAddCooperative}> Add Cooperative +</button>
                                                     </div>
                                                 </div>
                                                 <div className="row">
@@ -82,53 +112,25 @@ const handleAddCooperative= (e) =>{
                                                     <table className="table table-striped">
                                                     
                                                         <thead>
-                                                            <tr>
+                                                            <tr className='tableHead'>
                                                                 <td>S.N.</td>
-                                                                <td >Logo</td>
+                                                                <td className='tc'>Logo</td>
                                                                 <td >Co Operative Code</td>
-                                                                <td >Co Operative Name</td>
-                                                                <td>Address</td>
-                                                                <td> No of User</td>
-                                                                <td>Exipry Date</td>
+                                                                <td className="tl">Co Operative Name</td>
+                                                                <td className='tl'>Address</td>
+                                                                <td className='tc'> No of User</td>
+                                                                <td className='tc'>Exipry Date</td>
                                                                 <td> Credit Limit</td>
-                                                                <td>Contact</td>   
+                                                                <td className='tl'>Contact</td>   
                                                                 <td> Action</td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
            
-                                                   {data.map((item,i) => 
-                                                            <tr key={i + 1}>
-                                                               <td>{i +1}</td>
-                                                                <td className="contentLogo"><img src={item.Logo}  alt="" /></td>
-                                                                <td >{item.CoOperativeCode}</td>
-                                                                <td >{item.CoOperativeName}</td>                       
-                                                                <td >{item.Address}</td>
-                                                                <td> {item.NoOfUser}</td>
-                                                                <td> {item.licenseExpiry}</td>
-                                                                <td> {item.CreditLimit}</td>
-                                                                <td>{item.ContactNum}</td>
-                                                                
-                                                                <td><span className='editspan badge '>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               
-                                                            </tr>
-                                                            )}
-                                                            {data.map((item,i) => 
-                                                            <tr key={i + 1}>
-                                                               <td>{i +1}</td>
-                                                                <td className="contentLogo"><img src={item.Logo}  alt="" /></td>
-                                                                <td >{item.CoOperativeCode}</td>
-                                                                <td >{item.CoOperativeName}</td>                       
-                                                                <td >{item.Address}</td>
-                                                                <td> {item.NoOfUser}</td>
-                                                                <td> {item.licenseExpiry}</td>
-                                                                <td> {item.CreditLimit}</td>
-                                                                <td>{item.ContactNum}</td>
-                                                                
-                                                                <td><span className='editspan badge '>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               
-                                                            </tr>
-                                                            )}
-                                                            
-                                                           
+                                                   {data.map((item,i) => {
+                                                        return <Contenttable key={i} index={i} handleEdit={handleEdit} item={item}/>
+                                          
+                                                   })}                               
                                                         </tbody>
                                                         
                                                         </table>
@@ -142,7 +144,7 @@ const handleAddCooperative= (e) =>{
                                 </div>
                             </section>
          </div>
-         <AddCooperative trigger ={popup} setTrigger={setPopup}>
+         <AddCooperative trigger ={popup} setTrigger={setPopup} item={first}>
              <h4 >Add Cooperative</h4>
          </AddCooperative>
         

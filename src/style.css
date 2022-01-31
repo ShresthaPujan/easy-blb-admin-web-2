@@ -30,7 +30,7 @@ menu nav ul{
 }
 .menu nav ul li a{
     text-decoration: none;
-    color: #000;
+    
     display:block;
 }
 
@@ -39,10 +39,12 @@ menu nav ul{
     background: #F8F8FB;
     border-radius: 10px;
 }
-.menu nav ul li a:hover{
-    color:#004AAD;
+.tc{
+    text-align: center;
 }
-
+.tl{
+    text-align:left;
+}
 
 .menu img{
     width: 70px;
@@ -172,9 +174,11 @@ table th, table td {
 }
 
 table td {
-    text-align: left;
     font-size: 15px;
     padding-left: 20px;   
+}
+.tableHead td{
+    font-weight: bold;
 }
 .table-wrapper{
     position: relative;
@@ -269,9 +273,7 @@ table td {
 .active {
     color:red;
 }
-.mystyle{
-    background: red;
-}
+
 /* @media only screen and (max-width: 1200px) {
     #side-nav nav li a{
         font-size: 14px;

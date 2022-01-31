@@ -14,15 +14,17 @@ export default function AddCooperative(props) {
                 licenseExipry:'',
 
             };
+    
     const [formValues, setFormValues] = useState(initalvalue);
     const [formErrors, setformErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+    const [first, setfirst] = useState({});
 
     const handleChange =(e)=>{
         const{name , value} = e.target;
         setFormValues({ ...formValues,[name]:value});
     };
-
+console.log(props.item)
     const handlePopupClose = (e) =>{
         e.preventDefault();
         props.setTrigger(false);
@@ -34,12 +36,16 @@ export default function AddCooperative(props) {
         setformErrors(validate(formValues));
         setIsSubmit(true);         
     }
+
+  
 useEffect(() => {
     if(Object.keys(formErrors).length === 0 && isSubmit){
       console.log("Form subbmitted")
         
   }
 },[formErrors]);
+
+
 
     const  validate = (values) => {
         const errors ={}
@@ -79,6 +85,7 @@ useEffect(() => {
 
         return errors;
     }
+ 
     return (props.trigger)
         ? (
             <div className="popUP container-fluid  col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -96,7 +103,7 @@ useEffect(() => {
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
-                                                                value={ formValues.cooperativeCode} onChange={handleChange}
+                                                                value={ props.item.cooperaticecode} onChange={handleChange}
                                                                 name="cooperaticecode"
                                                                 placeholder="Co Operative Code"
                                                                 aria-label="Co Operative Code"
@@ -104,33 +111,67 @@ useEffect(() => {
                                                                 aria-describedby="addon-wrapping"/>
                                                                   <span className="errormsg">{formErrors.cooperaticecode}</span>
                                                         </div>
-                                                      
-                                                        <div >
-                                                        <label htmlFor="cooperativename" className="form-label">Co Operativename</label>   
-                                                            <input
-                                                                type="text"
-                                                                className="form-control"
-                                                                value={ formValues.coOperativeName} onChange={handleChange}
-                                                                placeholder="Co Operative Name"
-                                                                name="cooperativename"
-                                                                id="cooperativename"
-                                                                aria-label="Co Operative Name"
-                                                                aria-describedby="addon-wrapping"/>
-                                                                <span className="errormsg">{formErrors.cooperativename}</span>
-                                                        </div>
-                                                        
                                                         <div >
                                                         <label htmlFor="contactnumber" className="form-label">Contact Number</label>
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
-                                                                value={ formValues.contactNumber} onChange={handleChange}
+                                                                value={ props.item.contactnumber} onChange={handleChange}
                                                                 placeholder="Contact Number"
                                                                 aria-label="Contact Number"
                                                                 name="contactnumber"
                                                                 id="contactnumber"
                                                                 aria-describedby="addon-wrapping"/>
                                                                 <span className="errormsg">{formErrors.contactnumber}</span>
+                                                        </div>
+                                                        <div >
+                                                        <label htmlFor="noOfUser" className="form-label">No of User</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                value={ formValues.noOfUser} onChange={handleChange}
+                                                                placeholder="No Of User"
+                                                                aria-label="No Of User"
+                                                                name="noOfUser"
+                                                                id="noOfUser"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.noOfUser}</span>
+                                                      </div>
+                                                      
+                                                      <div >
+                                                            <label htmlFor="licenseExipry" className="form-label">license Exipry</label>
+                                                                <input
+                                                                    type="text"
+                                                                    className="form-control"
+                                                                    value={ formValues.licenseExpiry} onChange={handleChange}
+                                                                    placeholder="license Expiry"
+                                                                    aria-label="license Expiry"
+                                                                    id="licenseExipry"
+                                                                    name="licenseExipry"
+                                                                    aria-describedby="addon-wrapping"/>
+                                                                    <span className="errormsg">{formErrors.licenseExipry}</span>
+                                                        </div>
+                                                        
+                                                       
+                                                  
+                                                      
+                                                        
+                                                       
+                                            </div>
+                                        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                                                    <div >
+                                                        <label htmlFor="cooperativename" className="form-label">Co Operativename</label>   
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                value={ props.item.cooperativename} onChange={handleChange}
+                                                                placeholder="Co Operative Name"
+                                                                name="cooperativename"
+                                                                id="cooperativename"
+                                                                aria-label="Co Operative Name"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.cooperativename}</span>
                                                         </div>
                                                         <div >  
                                                         <label htmlFor="Address" className="form-label">Address</label>
@@ -147,24 +188,6 @@ useEffect(() => {
                                                         <span className="errormsg">{formErrors.address}</span>
                                                         </div>
                                                         <div >
-                                                        <label htmlFor="noOfUser" className="form-label">No of User</label>
-                                                            <input
-                                                                type="text"
-                                                                className="form-control"
-                                                                value={ formValues.noOfUser} onChange={handleChange}
-                                                                placeholder="No Of User"
-                                                                aria-label="No Of User"
-                                                                name="noOfUser"
-                                                                id="noOfUser"
-                                                                aria-describedby="addon-wrapping"/>
-                                                                <span className="errormsg">{formErrors.noOfUser}</span>
-                                                      </div>
-                                                        
-                                                       
-                                            </div>
-                                        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
-                                        <div >
                                                         <label htmlFor="creditlimit" className="form-label">Credit Limit</label>
                                                             <input
                                                                 type="text"
@@ -177,19 +200,7 @@ useEffect(() => {
                                                                 aria-describedby="addon-wrapping"/>
                                                                  <span className="errormsg">{formErrors.creditlimit}</span>
                                                         </div>
-                                                        <div >
-                                                            <label htmlFor="licenseExipry" className="form-label">license Exipry</label>
-                                                                <input
-                                                                    type="text"
-                                                                    className="form-control"
-                                                                    value={ formValues.licenseExpiry} onChange={handleChange}
-                                                                    placeholder="license Expiry"
-                                                                    aria-label="license Expiry"
-                                                                    id="licenseExipry"
-                                                                    name="licenseExipry"
-                                                                    aria-describedby="addon-wrapping"/>
-                                                                    <span className="errormsg">{formErrors.licenseExipry}</span>
-                                                        </div>
+                                                       
                                            
                                             <div >
                                                 <label htmlFor="Logo" className="form-label">Logo</label>
@@ -197,7 +208,7 @@ useEffect(() => {
                                                         className   ="form-control"
                                                         type="file"
                                                         className="form-control"
-                                                        value={ formValues.logo} onChange={handleChange}
+                                                        value="" onChange={handleChange}
                                                         placeholder="Logo"
                                                         aria-label="Logo"
                                                         id="Logo"
@@ -213,7 +224,7 @@ useEffect(() => {
                                     </div>
                                     <div className="row">
 
-                                        <div className="col-lg-12 col-md-12 col-sm-12 text-center  col-xs-12">
+                                        <div className="col-lg-12 col-md-12 col-sm-12 text-right  my-3 col-xs-12">
 
                                             <button className="btn btn-primary m-2 px-4 addresbtn" onClick={handleAddCooperative} > ADD</button>
                                             <button className="btn btn-danger px-2 addresbtn"> RESET</button>

@@ -18,3 +18,8 @@
  -fully dynamic dashboard 
  -loading spinner added 
  -active menu added
+
+ 31 jan 2022
+ -On edit data popup but cannot change the text
+ -table text center/left done
+ -add coperative lineup fixed

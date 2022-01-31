@@ -1,9 +1,5 @@
 nav li a.active{
-    background: #0069d9;
-    color:#fff;
-    border-radius: 15px;
-  
-}
-a:active li{
-    background: red;
+    color:#004AAD;
+    background: #F8F8FB;
+    border-radius: 10px; 
 }

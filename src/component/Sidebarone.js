@@ -36,11 +36,11 @@ export default function Sidebarone() {
                                 <li ><NavLink activeclassname={classes.active} to="/" ><i className="bi bi-folder-fill mx-3"></i>DashBoard</NavLink></li>
                                 <li ><NavLink activeclassname={classes.active} className="arrow "  to="/profile"><i className="bi bi-people mx-3"></i>Profile</NavLink> </li>
                                 <li><NavLink activeclassname={classes.active} className="arrow "  to="/test"><i className="bi bi-people mx-3"></i>Cooperative</NavLink> </li>
-                                <li><NavLink activeclassname={classes.active} className="arrow " to="/asdf"><i className="bi bi-people mx-3"></i>Setting</NavLink> </li>
-                                <li ><NavLink activeclassname={classes.active} className="arrow "   to="/asdf"><i className="bi bi-people mx-3"></i>Lead</NavLink> </li>
+                                <li><NavLink activeclassname={classes.active} className="arrow " to="/test1"><i className="bi bi-people mx-3"></i>Setting</NavLink> </li>
+                                <li ><NavLink activeclassname={classes.active} className="arrow "   to="/test2"><i className="bi bi-people mx-3"></i>Lead</NavLink> </li>
                           
-                                <li ><NavLink activeclassname={classes.active} to="/asdfsadf"> <i className="bi bi-gear mx-3"></i>Setting</NavLink> </li>
-                                <li  onClick={logOut} ><NavLink activeclassname={classes.active}  to="/asdf"><i className="bi bi-people mx-3" ></i>Logout</NavLink> </li>
+                                <li ><NavLink activeclassname={classes.active} to="/test4"> <i className="bi bi-gear mx-3"></i>Setting</NavLink> </li>
+                                <li  onClick={logOut} ><NavLink activeclassname={classes.active}  to="/"><i className="bi bi-people mx-3" ></i>Logout</NavLink> </li>
                             </ul>
                         </nav>
                     </div>
