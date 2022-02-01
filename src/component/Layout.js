@@ -8,7 +8,7 @@ export default function Layout(props) {
       <div className="container-fluid">
         <div className="row">
           <Sidebarone />
-          <div  className="col-lg-10" id="upper-nav">
+          <div  className="col-lg-10 col-md-10 -col-sm-10" id="upper-nav">
                 <Uppersidebar/>
                     {props.children}
           </div>

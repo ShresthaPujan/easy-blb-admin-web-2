@@ -33,7 +33,19 @@ useEffect(() => {
   }
 },[formErrors]);
 
-
+const handleReset =(event)=>{
+    event.preventDefault();
+    props.eitem({
+        logo:"",
+        cooperaticecode: "",
+        cooperativename:'',
+        address:"",
+        noOfUser:'',
+        licenseExipry: '',
+        creditlimit:'',
+        contactnumber:'',
+    })
+}
 
     const  validate = (values) => {
         const errors ={}
@@ -211,7 +223,7 @@ useEffect(() => {
                                         <div className="col-lg-12 col-md-12 col-sm-12 text-right  my-3 col-xs-12">
 
                                             <button className="btn btn-primary m-2 px-4 addresbtn" onClick={handleAddCooperative} > ADD</button>
-                                            <button className="btn btn-danger px-2 addresbtn"> RESET</button>
+                                            <button className="btn btn-danger px-2 addresbtn" onClick={handleReset}> RESET</button>
                                         </div>
                                     </div>
                                 </div>

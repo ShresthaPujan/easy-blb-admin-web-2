@@ -68,7 +68,7 @@ const handleEdit = (item) =>{
 
   return <>
                 
-         <div className="col-lg-12">
+         <div className="col-lg-12 col-md-12 col-sm-12">
                      <section className="content-section contentmain-popup">
                                                 <div className="col-lg-12 sub_menu">
                                                         Company |DashBoard

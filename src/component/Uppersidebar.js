@@ -3,7 +3,7 @@ import React from 'react';
 export default function Uppersidebar() {
   return <>
        
-                        <div className="col-lg-12">
+                        <div className="col-lg-12 col-md-12 col-sm-12">
                             <div className="wrapper">
                                 <div className="navbar">
                                     <div>
