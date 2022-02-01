@@ -1,6 +1,6 @@
 import Sidebarone from './Sidebarone';
 import React, { useEffect , useState ,useRef} from 'react'
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, useSearchParams } from "react-router-dom";
 import Login from './Login';
 import '../style.css';
 import { logout} from '../features/Userslice';
@@ -14,15 +14,16 @@ export default function Content() {
     const [data, setData] = useState([]);
     const [popup, setPopup] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [edit, setEdit] = useState(false);
     const [handleedit, setHandleEdit] = useState({
-        logo:"aaa",
+        logo:"",
         cooperaticecode: "",
         cooperativename:'',
-        address:"aaa",
+        address:"",
         noOfUser:'',
-        licenseExipry: 'aaa',
+        licenseExipry: '',
         creditlimit:'',
-        contactnumber:'123',
+        contactnumber:'',
     });
     useEffect(() => {
         fetchFunction()
@@ -49,16 +50,16 @@ const handleAddCooperative= (e) =>{
     const ref = useRef(null);
 
 const handleEdit = (item) =>{
-    
+    setEdit(true)
     const dataaa = {
-        logo:item.Logo,
+        logo:(item.Logo? item.logo:'Add a Logo'),
         cooperaticecode: item.CoOperativeCode,
         cooperativename:item.CoOperativeName,
         address:item.Address,
         noOfUser:item.NoOfUser,
-        licenseExipry: item.licenseExpiry,
+        licenseExipry: (item.licenseExpiry?item.licenseExipry:'Add license Exipry'),
         creditlimit:item.CreditLimit,
-        contactnumber:item.ContactNum,
+        contactnumber:(item.ContactNum?item.contactnumber:'Add contact number'),
     };
     setHandleEdit(dataaa)
     setPopup(true);
@@ -160,9 +161,15 @@ const handleEdit = (item) =>{
                                 </div>
                             </section>
          </div>
+         {edit? (
          <AddCooperative trigger ={popup} setTrigger={setPopup} item={handleedit} eitem = {setHandleEdit}>
              <h4 >Add Cooperative</h4>
-         </AddCooperative>
+         </AddCooperative>):
+         (
+         <AddCooperative trigger ={popup} setTrigger={setPopup} item={handleedit}>
+             <h4 >Add Cooperative</h4>
+         </AddCooperative>)
+         }
         
    
   </>;
