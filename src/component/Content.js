@@ -11,11 +11,11 @@ export default function Content() {
     const [popup, setPopup] = useState(false);
     const [loading, setLoading] = useState(false);
     const [edit, setEdit] = useState(false);
-
+    const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
     const {getCoperative,cooperative,setCoperativeEdit} = context;
 
-    
+ 
 
   useEffect(() => {
     getCoperative()
@@ -29,6 +29,11 @@ export default function Content() {
 
 }
 
+const handleSearch = (e)=>{
+    e.preventDefault();
+    setSearchTerm(e.target.value);
+    
+}
 const handleEdit = (item) =>{
     setEdit(true);
   setCoperativeEdit( {logo:(item.Logo? item.logo:'Add a Logo'),
@@ -62,8 +67,8 @@ const handleEdit = (item) =>{
                                                     </div>
                                                 </div>
                                                 <div className="row">
-                                                    <div className="col-lg-6 col-md-6 col-sm-6 p-2 Search">
-                                                        <input type="text" placeholder="Search" id=""/>
+                                                    <div className="col-lg-6 col-md-4 col-sm-3 p-2 Search">
+                                                        <input type="text" placeholder="Search" onChange={handleSearch} id=""/>
                                                         <i className="fas fa-search"></i>
                                                     </div>
                                                     <div className="col-lg-6 col-md-6  col-sm-6 p-2 text-end">
@@ -105,10 +110,16 @@ const handleEdit = (item) =>{
                                                         </thead>
                                                         <tbody>
            
-                                                   {cooperative.map((item,i) => 
+                                                   {cooperative.filter((item)=>{
+                                                        if (searchTerm == ""){
+                                                            return item
+                                                        } else if(item.CoOperativeCode.toLowerCase().includes(searchTerm.toLowerCase())){
+                                                            return item
+                                                        }
+                                                    }).map((item,i) => 
                                                       
                                                     <tr key={i+1}>
-                                                      {console.log(item)}
+                    
                                                 <td className='tc'>{i + 1}</td>
                                                 <td className="contentLogo tc"><img src={item.Logo}  alt="" /></td>
                                                 <td className='tc'>{item.CoOperativeCode}</td>
