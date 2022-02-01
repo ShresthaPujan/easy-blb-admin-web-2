@@ -262,7 +262,7 @@ table td {
     background: #007bff;
     padding: 5px;
     font-size: 13px;
-  
+    cursor: pointer;
 }
 .deletespan{
     background: red;

@@ -1,74 +1,50 @@
 import Sidebarone from './Sidebarone';
-import React, { useEffect , useState ,useRef} from 'react'
-import { Routes, Route, Link, useNavigate, useSearchParams } from "react-router-dom";
-import Login from './Login';
+import React, { useEffect , useState ,useContext} from 'react'
+import cooperativeContext from './Cooperative/cooperativeContext';
 import '../style.css';
-import { logout} from '../features/Userslice';
-import Footer from './Footer';
 import AddCooperative from './AddCooperative';
 import Spinner from './Spinner/Spinner'
-import Contenttable from './Pages/Contenttable';
+
 
 export default function Content() {
- 
-    const [data, setData] = useState([]);
+
     const [popup, setPopup] = useState(false);
     const [loading, setLoading] = useState(false);
     const [edit, setEdit] = useState(false);
-    const [handleedit, setHandleEdit] = useState({
-        logo:"",
-        cooperaticecode: "",
-        cooperativename:'',
-        address:"",
-        noOfUser:'',
-        licenseExipry: '',
-        creditlimit:'',
-        contactnumber:'',
-    });
-    useEffect(() => {
-        fetchFunction()
-    },[] );
-    async function fetchFunction() {
-        setLoading(true)
-        try{
-          const response = await fetch(`api1/gharelukam/Getcoperative`);
-          const jsonData = await response.json();
-          setData(jsonData)
-         setLoading(false)
-                   }
-        catch(err) {
-            setLoading(false)
-            throw err;
-          
-        }
-      }
-const handleAddCooperative= (e) =>{
-        e.preventDefault();
-        setPopup(true);
+
+    const context = useContext(cooperativeContext)
+    const {getCoperative,cooperative,setCoperativeEdit} = context;
+
+    
+
+  useEffect(() => {
+    getCoperative()
+   
+  }, []);
+
+  const handleAddCooperative= (e) =>{
+    e.preventDefault();
+    setEdit(false);
+    setPopup(true);
 
 }
-    const ref = useRef(null);
 
 const handleEdit = (item) =>{
-    setEdit(true)
-    const dataaa = {
-        logo:(item.Logo? item.logo:'Add a Logo'),
-        cooperaticecode: item.CoOperativeCode,
-        cooperativename:item.CoOperativeName,
-        address:item.Address,
-        noOfUser:item.NoOfUser,
-        licenseExipry: (item.licenseExpiry?item.licenseExipry:'Add license Exipry'),
-        creditlimit:item.CreditLimit,
-        contactnumber:(item.ContactNum?item.contactnumber:'Add contact number'),
-    };
-    setHandleEdit(dataaa)
-    setPopup(true);
- }
+    setEdit(true);
+  setCoperativeEdit( {logo:(item.Logo? item.logo:'Add a Logo'),
+  cooperaticecode: item.CoOperativeCode,
+  cooperativename:item.CoOperativeName,
+  address:item.Address,
+  noOfUser:item.NoOfUser,
+  licenseExipry: (item.licenseExpiry?item.licenseExipry:'Add license Exipry'),
+  creditlimit:item.CreditLimit,
+  contactnumber:(item.ContactNum?item.contactnumber:'Add contact number'),})
 
-
+  setPopup(true);
+}
+  
   return <>
-                
-         <div className="col-lg-12 col-md-12 col-sm-12">
+   <div className="col-lg-12 col-md-12 col-sm-12">
                      <section className="content-section contentmain-popup">
                                                 <div className="col-lg-12 sub_menu">
                                                         Company |DashBoard
@@ -82,7 +58,7 @@ const handleEdit = (item) =>{
                                                         <h4>Company List</h4>
                                                     </div>
                                                     <div className="col-lg-6 p-2 text-end">
-                                                            <button className="btn btn-primary"  ref={ref} onClick={handleAddCooperative}> Add Cooperative +</button>
+                                                            <button className="btn btn-primary"   onClick={handleAddCooperative}> Add Cooperative +</button>
                                                     </div>
                                                 </div>
                                                 <div className="row">
@@ -129,7 +105,7 @@ const handleEdit = (item) =>{
                                                         </thead>
                                                         <tbody>
            
-                                                   {data.map((item,i) => 
+                                                   {cooperative.map((item,i) => 
                                                       
                                                     <tr key={i+1}>
                                                       {console.log(item)}
@@ -161,16 +137,16 @@ const handleEdit = (item) =>{
                                 </div>
                             </section>
          </div>
-         {edit? (
-         <AddCooperative trigger ={popup} setTrigger={setPopup} item={handleedit} eitem = {setHandleEdit}>
-             <h4 >Add Cooperative</h4>
+         {edit ? (
+         <AddCooperative trigger ={popup} setTrigger={setPopup} edit={edit}>
+             <h4 >Edit Cooperative</h4>
          </AddCooperative>):
          (
-         <AddCooperative trigger ={popup} setTrigger={setPopup} item={handleedit}>
+         <AddCooperative trigger ={popup} setTrigger={setPopup} edit={edit}>
              <h4 >Add Cooperative</h4>
          </AddCooperative>)
          }
         
-   
+
   </>;
 }

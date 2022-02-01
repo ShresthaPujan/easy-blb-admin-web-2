@@ -16,11 +16,12 @@ import Notfound from './Notfound';
 import Layout from './component/Layout';
 import Test from './component/Test';
 import Profile from './component/Profile';
-
+import CooperativeState from './component/Cooperative/CooperativeState';
 function App() {
   //const user = useSelector(selectUser);
   const auth = localStorage.getItem("userInfo");
   const authCtx= useContext(AuthContext);
+
    
   const lazyProfile = React.lazy(()=> import('./component/Profile'));
   const lazyContent = React.lazy(()=> import('./component/Content'));
@@ -33,16 +34,18 @@ function App() {
               </Routes>
                   
                   {authCtx.isLoggedIn && ( 
-                    <Layout>
-                   
-                      <Routes>
-                        <Route path="/" element={ <Suspense fallback={<div>asdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffasdfasfasfdasfsadf....</div>}> <Content /> </Suspense>} />
-                        <Route path="/content" element={<Content/>} />
-                        <Route path="/profile" element={<Profile/>} />
-                        <Route path="/test" element={<Test/>} />
-                      </Routes>
-                     
-                  </Layout>
+                    <CooperativeState>
+                      <Layout>
+                      
+                        <Routes>
+                          <Route path="/" element={ <Suspense fallback={<div>asdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffasdfasfasfdasfsadf....</div>}> <Content /> </Suspense>} />
+                          <Route path="/content" element={<Content/>} />
+                          <Route path="/profile" element={<Profile/>} />
+                          <Route path="/test" element={<Test/>} />
+                        </Routes>
+                      
+                    </Layout>
+                  </CooperativeState>
                   )}
            </>
    

@@ -10,11 +10,11 @@ export default function Notfound() {
         console.log("check")
         if(authCtx.isLoggedIn){
             navigate('/')
-            console.log("auth")
+          
         }
         else{
            navigate('/login')
-            console.log("not auth")
+           
         }
     
    

@@ -1,27 +1,31 @@
-import React,{useState ,useEffect} from 'react';
-
+import React,{useState ,useEffect,useContext} from 'react';
+import cooperativeContext from './Cooperative/cooperativeContext';
 export default function AddCooperative(props) {
 
-    // const initalvalue = props.item;
+    const context = useContext(cooperativeContext)
+    const {setCoperativeEdit,cooperativeEdit} = context;
+        
 
-    const [formValues, setFormValues] = useState(props.item);
+    // const initalvalue = props.item;
+      
+  
     const [formErrors, setformErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [first, setfirst] = useState({});
 
     const handleChange =(e)=>{
         const{name , value} = e.target;
-        props.eitem({ ...formValues,[name]:value});
+        setCoperativeEdit({ ...cooperativeEdit,[name]:value});
     };
 
-    const handlePopupClose = (e) =>{
+    const handlePopupClose = (e) =>{    
         e.preventDefault();
         props.setTrigger(false);
         setformErrors({})
     }
     const handleAddCooperative =(e) =>{
         e.preventDefault();
-        setformErrors(validate(formValues));
+        setformErrors(validate(cooperativeEdit));
         setIsSubmit(true);         
     }
   
@@ -35,7 +39,7 @@ useEffect(() => {
 
 const handleReset =(event)=>{
     event.preventDefault();
-    props.eitem({
+    setCoperativeEdit({
         logo:"",
         cooperaticecode: "",
         cooperativename:'',
@@ -85,7 +89,7 @@ const handleReset =(event)=>{
 
         return errors;
     }
-    console.log(props.item)
+    
  
     return (props.trigger)
         ? (
@@ -104,7 +108,7 @@ const handleReset =(event)=>{
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
-                                                                value={ props.item.cooperaticecode} onChange={handleChange}
+                                                                value={cooperativeEdit.cooperaticecode} onChange={handleChange}
                                                                 name="cooperaticecode"
                                                                 placeholder="Co Operative Code"
                                                                 aria-label="Co Operative Code"
@@ -117,7 +121,7 @@ const handleReset =(event)=>{
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
-                                                                value={ props.item.contactnumber} onChange={handleChange}
+                                                                value={cooperativeEdit.contactnumber} onChange={handleChange}
                                                                 placeholder="Contact Number"
                                                                 aria-label="Contact Number"
                                                                 name="contactnumber"
@@ -130,7 +134,7 @@ const handleReset =(event)=>{
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
-                                                                value={ props.item.noOfUser} onChange={handleChange}
+                                                                value={ cooperativeEdit.noOfUser} onChange={handleChange}
                                                                 placeholder="No Of User"
                                                                 aria-label="No Of User"
                                                                 name="noOfUser"
@@ -144,7 +148,7 @@ const handleReset =(event)=>{
                                                                 <input
                                                                     type="text"
                                                                     className="form-control"
-                                                                    value={ props.item.licenseExipry} onChange={handleChange}
+                                                                    value={cooperativeEdit.licenseExipry} onChange={handleChange}
                                                                     placeholder="license Expiry"
                                                                     aria-label="license Expiry"
                                                                     id="licenseExipry"
@@ -161,7 +165,7 @@ const handleReset =(event)=>{
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
-                                                                value={ props.item.cooperativename} onChange={handleChange}
+                                                                value={ cooperativeEdit.cooperativename} onChange={handleChange}
                                                                 placeholder="Co Operative Name"
                                                                 name="cooperativename"
                                                                 id="cooperativename"
@@ -178,7 +182,7 @@ const handleReset =(event)=>{
                                                                 aria-label="Address"
                                                                 name="address"
                                                                 id="Address" 
-                                                                value={ props.item.address} onChange={handleChange}
+                                                                value={cooperativeEdit.address} onChange={handleChange}
                                                                 aria-describedby="addon-wrapping"/>
                                                         
                                                         <span className="errormsg">{formErrors.address}</span>
@@ -188,7 +192,7 @@ const handleReset =(event)=>{
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
-                                                                value={ props.item.creditlimit} onChange={handleChange}
+                                                                value={ cooperativeEdit.creditlimit} onChange={handleChange}
                                                                 placeholder="Credit Limit"
                                                                 aria-label="Credit Limit"
                                                                 name="creditlimit"
@@ -222,7 +226,7 @@ const handleReset =(event)=>{
 
                                         <div className="col-lg-12 col-md-12 col-sm-12 text-right  my-3 col-xs-12">
 
-                                            <button className="btn btn-primary m-2 px-4 addresbtn" onClick={handleAddCooperative} > ADD</button>
+                                            <button className="btn btn-primary m-2 px-4 addresbtn" onClick={handleAddCooperative} >{props.edit ? 'Edit' : 'ADD'} </button>
                                             <button className="btn btn-danger px-2 addresbtn" onClick={handleReset}> RESET</button>
                                         </div>
                                     </div>

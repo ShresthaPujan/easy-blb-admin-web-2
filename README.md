@@ -23,3 +23,7 @@
  -On edit data popup but cannot change the text
  -table text center/left done
  -add coperative lineup fixed
+
+ 1 Feb 2022
+ - Fetching data from API using Context API ; State can be easily accessed using context api
+ -edit popup populuation data working
