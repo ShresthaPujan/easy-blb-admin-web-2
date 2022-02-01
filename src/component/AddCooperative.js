@@ -2,29 +2,18 @@ import React,{useState ,useEffect} from 'react';
 
 export default function AddCooperative(props) {
 
-    const initalvalue = {address:'',
-                    cooperaticecode:'',
-                cooperativename:'',
-                cooperaticecode:'',
-                contactnumber:'',
-                creditlimit:'',
-                isOnline:'',
-                logo:'',
-                noOfUser:'',
-                licenseExipry:'',
+    // const initalvalue = props.item;
 
-            };
-    
-    const [formValues, setFormValues] = useState(initalvalue);
+    const [formValues, setFormValues] = useState(props.item);
     const [formErrors, setformErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [first, setfirst] = useState({});
 
     const handleChange =(e)=>{
         const{name , value} = e.target;
-        setFormValues({ ...formValues,[name]:value});
+        props.eitem({ ...formValues,[name]:value});
     };
-console.log(props.item)
+
     const handlePopupClose = (e) =>{
         e.preventDefault();
         props.setTrigger(false);
@@ -32,11 +21,10 @@ console.log(props.item)
     }
     const handleAddCooperative =(e) =>{
         e.preventDefault();
-        console.log("klikled")
         setformErrors(validate(formValues));
         setIsSubmit(true);         
     }
-
+  
   
 useEffect(() => {
     if(Object.keys(formErrors).length === 0 && isSubmit){
@@ -85,6 +73,7 @@ useEffect(() => {
 
         return errors;
     }
+    console.log(props.item)
  
     return (props.trigger)
         ? (
@@ -129,7 +118,7 @@ useEffect(() => {
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
-                                                                value={ formValues.noOfUser} onChange={handleChange}
+                                                                value={ props.item.noOfUser} onChange={handleChange}
                                                                 placeholder="No Of User"
                                                                 aria-label="No Of User"
                                                                 name="noOfUser"
@@ -143,7 +132,7 @@ useEffect(() => {
                                                                 <input
                                                                     type="text"
                                                                     className="form-control"
-                                                                    value={ formValues.licenseExpiry} onChange={handleChange}
+                                                                    value={ props.item.licenseExipry} onChange={handleChange}
                                                                     placeholder="license Expiry"
                                                                     aria-label="license Expiry"
                                                                     id="licenseExipry"
@@ -151,12 +140,7 @@ useEffect(() => {
                                                                     aria-describedby="addon-wrapping"/>
                                                                     <span className="errormsg">{formErrors.licenseExipry}</span>
                                                         </div>
-                                                        
-                                                       
-                                                  
-                                                      
-                                                        
-                                                       
+  
                                             </div>
                                         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
@@ -182,7 +166,7 @@ useEffect(() => {
                                                                 aria-label="Address"
                                                                 name="address"
                                                                 id="Address" 
-                                                                value={ formValues.address} onChange={handleChange}
+                                                                value={ props.item.address} onChange={handleChange}
                                                                 aria-describedby="addon-wrapping"/>
                                                         
                                                         <span className="errormsg">{formErrors.address}</span>
@@ -192,7 +176,7 @@ useEffect(() => {
                                                             <input
                                                                 type="text"
                                                                 className="form-control"
-                                                                value={ formValues.creditLimit} onChange={handleChange}
+                                                                value={ props.item.creditlimit} onChange={handleChange}
                                                                 placeholder="Credit Limit"
                                                                 aria-label="Credit Limit"
                                                                 name="creditlimit"

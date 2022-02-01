@@ -14,15 +14,16 @@ export default function Content() {
     const [data, setData] = useState([]);
     const [popup, setPopup] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [first, setfirst] = useState({address:'aaaaa',
-                        cooperaticecode:"",
-                    cooperativename:'',
-                    cooperaticecode:'',
-                    contactnumber:'',
-                    creditlimit:'',
-                    logo:'',
-                    noOfUser:'',
-                    licenseExipry:''});
+    const [handleedit, setHandleEdit] = useState({
+        logo:"aaa",
+        cooperaticecode: "",
+        cooperativename:'',
+        address:"aaa",
+        noOfUser:'',
+        licenseExipry: 'aaa',
+        creditlimit:'',
+        contactnumber:'123',
+    });
     useEffect(() => {
         fetchFunction()
     },[] );
@@ -48,7 +49,8 @@ const handleAddCooperative= (e) =>{
     const ref = useRef(null);
 
 const handleEdit = (item) =>{
-    const data = {
+    
+    const dataaa = {
         logo:item.Logo,
         cooperaticecode: item.CoOperativeCode,
         cooperativename:item.CoOperativeName,
@@ -58,12 +60,11 @@ const handleEdit = (item) =>{
         creditlimit:item.CreditLimit,
         contactnumber:item.ContactNum,
     };
-   setfirst(data)
+    setHandleEdit(dataaa)
     setPopup(true);
- 
-  
- 
-}
+ }
+
+
   return <>
                 
          <div className="col-lg-12">
@@ -127,10 +128,25 @@ const handleEdit = (item) =>{
                                                         </thead>
                                                         <tbody>
            
-                                                   {data.map((item,i) => {
-                                                        return <Contenttable key={i} index={i} handleEdit={handleEdit} item={item}/>
+                                                   {data.map((item,i) => 
+                                                      
+                                                    <tr key={i+1}>
+                                                      {console.log(item)}
+                                                <td className='tc'>{i + 1}</td>
+                                                <td className="contentLogo tc"><img src={item.Logo}  alt="" /></td>
+                                                <td className='tc'>{item.CoOperativeCode}</td>
+                                                <td >{item.CoOperativeName}</td>                       
+                                                <td >{item.Address}</td>
+                                                <td> {item.NoOfUser}</td>
+                                                <td> {item.licenseExpiry}</td>
+                                                <td className='tc'> {item.CreditLimit}</td>
+                                                <td>{item.ContactNum}</td>
+                                                
+                                                <td><span className='editspan badge'  onClick={()=>handleEdit(item)}>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               
+  
+                                                        </tr>
                                           
-                                                   })}                               
+                                                   )}                               
                                                         </tbody>
                                                         
                                                         </table>
@@ -144,7 +160,7 @@ const handleEdit = (item) =>{
                                 </div>
                             </section>
          </div>
-         <AddCooperative trigger ={popup} setTrigger={setPopup} item={first}>
+         <AddCooperative trigger ={popup} setTrigger={setPopup} item={handleedit} eitem = {setHandleEdit}>
              <h4 >Add Cooperative</h4>
          </AddCooperative>
         
