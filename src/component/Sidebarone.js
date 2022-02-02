@@ -1,13 +1,12 @@
 import '../style.css';
-import React, { useEffect , useState ,useContext } from 'react'
-import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
-import Login from './Login';
-import '../style.css';
-import { useSelector } from 'react-redux'
+import React, { useContext } from 'react'
+import { Link,NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { logout} from '../features/Userslice';
 import AuthContext from './auth-context';
 import classes from'../abs.css';
+import Swal from 'sweetalert2'
+import logo from './logo3.png'
 export default function Sidebarone() {
     let navigate = useNavigate();
     const dispatch = useDispatch();
@@ -16,16 +15,28 @@ export default function Sidebarone() {
 
     function logOut(e){
         e.preventDefault();
-        authCtx.logout();
-        localStorage.clear();
-        dispatch(logout())  
-        navigate("/login")
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to Logout",
+            iconHtml: `<img  class="logoImg" src=${logo} >`,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Logout!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                authCtx.logout();
+                localStorage.clear();
+                dispatch(logout())  
+                navigate("/login")
+            }
+          })   
     }
   
   return <>
   { auth ?
   <>  
-                <div className="col-lg-2 col-md-1 col-sm-2" id="side-nav"> 
+               
                     <div className="menu " >
                         <div className="img text-center">
                             <img src={'../img/logo3.png'} alt=""/>
@@ -40,11 +51,11 @@ export default function Sidebarone() {
                                 <li ><NavLink activeclassname={classes.active} className="arrow "   to="/test2"><i className="bi bi-people mx-3"></i>Lead</NavLink> </li>
                           
                                 <li ><NavLink activeclassname={classes.active} to="/test4"> <i className="bi bi-gear mx-3"></i>Setting</NavLink> </li>
-                                <li  onClick={logOut} ><NavLink activeclassname={classes.active}  to="/logout"><i className="bi bi-people mx-3" ></i>Logout</NavLink> </li>
+                                <li  onClick={logOut} ><Link  to=""><i className="bi bi-people mx-3" ></i>Logout</Link> </li>
                             </ul>
                         </nav>
                     </div>
-                </div>
+              
             
        
         </>

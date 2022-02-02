@@ -2,8 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap');
 *{
     font-family: 'Poppins', sans-serif;
-    
+    padding: 0;
+  
 }
+
 .hide{
     display: none;
     transition: all 3s ease-in-out;
@@ -21,9 +23,13 @@ ul li a{
 }
 #side-nav{
     background: white;
+    border-right: 10px solid #F8F8FB;
+    height: 100vh;
+    z-index: 2;
 }
 #upper-nav{
     background: white;
+    padding: 0;
 }
 .menu nav ul{
     list-style: none;
@@ -53,11 +59,9 @@ ul li a{
 .menu img{
     width: 70px;
     height: 70px;
-
 }
 
-.menu{
-    
+.menu{   
     position: relative;
 }
 /* .arrow::after{
@@ -71,7 +75,7 @@ ul li a{
 }
 .wrapper{
     margin:15px 12px 12px 12px;
-    background: #F8F8FB;
+
 }
 .navbar{
     display: flex;
@@ -95,26 +99,56 @@ margin-top: 25px;
     border: none;
     background: #fff;
 }
+
 .navbar__right{   
     display: flex;
    flex-direction: row;
+   position: relative;
 }
 .navbar__right img{
-    width: 30px;
+    width: 58px;
     height: 30px;
+    object-fit: contain;
+}
+.dropLogomenu{
+    background: white;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    z-index: 2;
+    padding:11px 30px 2px 30px;
+    box-shadow: 5px 10px 18px #888888;
+  }
+  .dropLogomenu:hover{
+    color:#004AAD;
+
+  }
+.dropLogomenu a{
+    text-decoration: none;
+}
+.logoImg{
+        width: 58px;
+        height: 30px;
+        object-fit: contain;
 }
 .content-section{
-    background: #F8F8FB;
-    padding: 10px 10px 10px 10px;
+   border:10px solid #F8F8FB;
+   border-left: 0;
+   border-top: 0;
+}
+.swal2-icon {
+border:0 !important;
+}
+.main-content{
+    padding:10px;
 }
 .sub_menu{
-    background: #fff;
     padding:5px;
    text-align: right;
+   border-bottom: 0;
 }
 .content{
     padding:20px  15px;
-    background: #fff;
 }
 .first_content{
     border-bottom: 2px solid #dfdfe0;
@@ -122,11 +156,23 @@ margin-top: 25px;
 .col-lg-6.col-md-6.col-sm-6.p-2.Search {
     margin-top: 7px;
     position: relative;
+    outline: none;
+    padding: 4px;
+    border-color: 3px solid gray;
 }
-svg.svg-inline--fa.fa-magnifying-glass {
+.Search input[type=text]{
+    padding:5px;
+    border: 3px solid #E6E6E6;
+}
+.Search input[type=text]:focus{
+    outline:none;
+    border:3px solid #004AAD;
+}
+
+i.fas.fa-search {
     position: absolute;
-    left: 3%;
-    top: 27%;
+    top: 32%;
+    left: 33%;
 }
 .col-lg-6.col-md-6.col-sm-6.p-2.Search input[type="text"] {
     background: #F8F8FB;
@@ -271,13 +317,26 @@ table td {
 .deletespan{
     background: red;
     padding:5px;
+    cursor: pointer;
     font-size: 13px;
     
 }
 .active {
     color:red;
 }
+.box{
+    width: 400px;
+    height: 400px;
 
+}
+.alert{
+    z-index: 9999;
+}
+@media (min-width: 992px){
+.col-lg-12 {
+ padding:0;
+}
+}
 /* @media only screen and (max-width: 1200px) {
     #side-nav nav li a{
         font-size: 14px;

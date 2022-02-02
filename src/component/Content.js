@@ -4,6 +4,7 @@ import cooperativeContext from './Cooperative/cooperativeContext';
 import '../style.css';
 import AddCooperative from './AddCooperative';
 import Spinner from './Spinner/Spinner'
+import { Alert } from './Alert';
 
 
 export default function Content() {
@@ -13,7 +14,7 @@ export default function Content() {
     const [edit, setEdit] = useState(false);
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
-    const {getCoperative,cooperative,setCoperativeEdit} = context;
+    const {getCoperative,cooperative,setCoperativeEdit,alert,setAlert} = context;
 
  
 
@@ -51,11 +52,11 @@ const handleEdit = (item) =>{
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
                      <section className="content-section contentmain-popup">
-                                                <div className="col-lg-12 sub_menu">
+                                                <div className="col-lg-12 sub_menu p-3">
                                                         Company |DashBoard
                                                 </div>
                      </section>
-                           <section className="content-section">
+                           <section className="content-section main-content">
                                 <div className="content">
                                         <div className=" col-lg-12 col-sm-12">
                                                 <div className="row first_content">
@@ -68,7 +69,7 @@ const handleEdit = (item) =>{
                                                 </div>
                                                 <div className="row">
                                                     <div className="col-lg-6 col-md-4 col-sm-3 p-2 Search">
-                                                        <input type="text" placeholder="Search" onChange={handleSearch} id=""/>
+                                                        <input type="text" placeholder="Search" onChange={handleSearch}  />
                                                         <i className="fas fa-search"></i>
                                                     </div>
                                                     <div className="col-lg-6 col-md-6  col-sm-6 p-2 text-end">
@@ -105,7 +106,7 @@ const handleEdit = (item) =>{
                                                                 <td className='tc'>Exipry Date</td>
                                                                 <td> Credit Limit</td>
                                                                 <td className='tl'>Contact</td>   
-                                                                <td> Action</td>
+                                                                <td className='tc'> Action</td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -122,13 +123,13 @@ const handleEdit = (item) =>{
                                                                     <td className='tc'>{i + 1}</td>
                                                                     <td className="contentLogo tc"><img src={item.Logo}  alt="" /></td>
                                                                     <td className='tc'>{item.CoOperativeCode}</td>
-                                                                    <td >{item.CoOperativeName}</td>                       
-                                                                    <td >{item.Address}</td>
-                                                                    <td> {item.NoOfUser}</td>
-                                                                    <td> {item.licenseExpiry}</td>
+                                                                    <td  className="tl">{item.CoOperativeName}</td>                       
+                                                                    <td className='tl'>{item.Address}</td>
+                                                                    <td className='tc'> {item.NoOfUser}</td>
+                                                                    <td className='tc'> {item.licenseExpiry}</td>
                                                                     <td className='tc'> {item.CreditLimit}</td>
-                                                                    <td>{item.ContactNum}</td>
-                                                                    <td><span className='editspan badge'  onClick={()=>handleEdit(item)}>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               
+                                                                    <td className='tl'>{item.ContactNum}</td>
+                                                                    <td className='tc'><span className='editspan badge'  onClick={()=>handleEdit(item)}>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               
   
                                                         </tr>
                                           
@@ -146,6 +147,8 @@ const handleEdit = (item) =>{
                                 </div>
                             </section>
          </div>
+         
+        
          {edit ? (
          <AddCooperative trigger ={popup} setTrigger={setPopup} edit={edit}>
              <h4 >Edit Cooperative</h4>

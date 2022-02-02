@@ -1,6 +1,7 @@
 .login-container{
   margin-top: 5%;
 }
+
 .login-form-1{
   padding-left: 12%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
@@ -116,12 +117,23 @@
   left:25%;
 
 }
+
+.popUP-alert{
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  top: 0;
+  height: 100vh;
+  z-index: 5;
+}
 button.btn.closebtn {
   position: absolute;
   right: 0;
+  top :0;
   font-size: 45px;
-  color: white;
+  color: black;
   font-weight: 100;
+  z-index: 1;
 }
 footer {
   position: fixed;
@@ -132,7 +144,7 @@ footer {
   padding:10px;
   margin: 20px 0 0 0;
   background: #fff;
- z-index: -3;
+
   border-top:10px solid #F8F8FB;
 }
 .addresbtn{
@@ -142,6 +154,7 @@ footer {
 .input-group.flex-nowrap.p-2 {
   width: 300px;
 }
+
 @media only screen and (max-width: 1600px)
 {
   .popup-inner.container {

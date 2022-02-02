@@ -57,10 +57,11 @@ contactnumber:'d',
         }
       }
     
-   
+   const [alert, setAlert] = useState(false);
+   const [logout, setLogout] = useState(false);
 
 return (
-    <cooperativeContext.Provider value={{getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit}}>
+    <cooperativeContext.Provider value={{logout,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
       {props.children}
     </cooperativeContext.Provider>
   )
