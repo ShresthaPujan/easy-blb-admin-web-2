@@ -25,7 +25,7 @@ export default function Sidebarone() {
   return <>
   { auth ?
   <>  
-                <div className="col-lg-2 col-md-2 col-sm-2" id="side-nav"> 
+                <div className="col-lg-2 col-md-1 col-sm-2" id="side-nav"> 
                     <div className="menu " >
                         <div className="img text-center">
                             <img src={'../img/logo3.png'} alt=""/>

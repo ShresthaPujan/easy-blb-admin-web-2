@@ -42,7 +42,8 @@ export default function Login() {
     let location = useLocation()
 
     useEffect(() => {
-       
+        localStorage.setItem("userInfo",'asdf');
+        localStorage.setItem('token',1);
         if(Object.keys(formErrors).length === 0 && isSubmit){
           const dataForm =  {
                  UserName: formValues.username,
@@ -68,6 +69,12 @@ export default function Login() {
                     setIsSubmit(false)
                     setformErrors({ ...formErrors,errorv:"Please Enter Valid Credentials"})
                 }
+              })
+              .catch((error) => {
+                  console.log(error)
+                  setIsSubmit(false)
+                  setformErrors({ ...formErrors,errorv:"Problem in Server Please Try Again Later"})
+
               })
               //eslint-disable-next-line     
         }

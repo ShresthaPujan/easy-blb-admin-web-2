@@ -19,8 +19,13 @@ ul{
 ul li a{
     color:#000;
 }
-
-menu nav ul{
+#side-nav{
+    background: white;
+}
+#upper-nav{
+    background: white;
+}
+.menu nav ul{
     list-style: none;
    
 }
@@ -29,8 +34,7 @@ menu nav ul{
     display: block;
 }
 .menu nav ul li a{
-    text-decoration: none;
-    
+    text-decoration: none; 
     display:block;
 }
 
@@ -301,3 +305,19 @@ table td {
     }
   }
   */
+@media only screen and (max-width : 1200px){
+    .menu nav ul li a{
+       font-size: 13px;
+    }
+}
+
+@media only screen and(max-width:1060px){
+    .menu nav ul li{
+            text-align: center;
+        
+        }
+        .menu nav ul li a{
+            padding:8px;
+        }
+    }
+

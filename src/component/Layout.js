@@ -14,6 +14,8 @@ export default function Layout(props) {
           </div>
      </div>
      </div>
-     <Footer/>
+     <div className="container-fluid">
+         <Footer/>
+     </div>
   </Fragment>;
 }
