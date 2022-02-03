@@ -49,23 +49,24 @@ export default function Sidebarsmall() {
     <>  
                       <div className="sm-menu " >
                             <div className="row">
-                                <div className="col-lg-12">
+                                <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div className="img text-center">
                                         <img src={logo} alt=""/>
                                     </div>   
-                                </div>
+                                
                              </div>
                             <nav className='text-center'>
                                 <ul>
                                     <li><NavLink activeclassname={classes.active} to="/"><i className="bi bi-folder-fill mx-3"></i></NavLink></li>
                                     <li><NavLink activeclassname={classes.active} to="/profile"><i className="bi bi-people mx-3"></i></NavLink> </li>
-                                    <li><NavLink activeclassname={classes.active} to="/test"><i className="bi bi-people mx-3"></i></NavLink> </li>
+                                    <li><NavLink activeclassname={classes.active} to="/cooperative"><i className="bi bi-people mx-3"></i></NavLink> </li>
                                     <li><NavLink activeclassname={classes.active} to="/test1"><i className="bi bi-people mx-3"></i></NavLink> </li>
                                     <li><NavLink activeclassname={classes.active} to="/test2"><i className="bi bi-people mx-3"></i></NavLink> </li>
                                     <li><NavLink activeclassname={classes.active} to="/test3"> <i className="bi bi-gear mx-3"></i></NavLink> </li>
                                     <li onClick={logOut} ><Link  to=""><i className="bi bi-people mx-3"></i></Link> </li>
                                 </ul>
                             </nav>
+                            </div>
                 </div>
                 
               

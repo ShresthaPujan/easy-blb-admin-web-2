@@ -39,8 +39,8 @@ function App() {
                       <Layout>
                       
                         <Routes>
-                          <Route path="/" element={ <Suspense fallback={<div>asdffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffasdfasfasfdasfsadf....</div>}> <Content /> </Suspense>} />
-                          <Route path="/content" element={<Content/>} />
+                          <Route path="/" element={ <Suspense fallback={<div>aaaa.</div>}> <Dashboard /> </Suspense>} />
+                          <Route path="/cooperative" element={<Content/>} />
                           <Route path="/profile" element={<Profile/>} />
                           <Route path="/test" element={<Test/>} />
                         </Routes>

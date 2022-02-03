@@ -28,10 +28,10 @@ export default function Layout(props) {
       <div className="container-fluid main-wrapper" style={{position:"relative"}}>
         <div className="row">
         
-            <div className={menutoggle ?"col-lg-1 col-md-1 col-sm-1":"col-lg-2 col-md-1 col-sm-1"} id= {menutoggle ? "halfside-nav" :"side-nav"}> 
+            <div className={menutoggle ?"col-lg-1 col-md-1 col-sm-1 col-1":"col-lg-2 col-md-1 col-sm-1 col-1"} id= {menutoggle ? "halfside-nav" :"side-nav"}> 
             {menutoggle ? <Sidebarsmall/> :  <Sidebarone />}
               </div>
-              <div  className={menutoggle ? "col-lg-11 col-md-11 -col-sm-11" : "col-lg-10 col-md-11 -col-sm-11"} id="upper-nav">
+              <div  className={menutoggle ? "col-lg-11 col-md-11  col-sm-11 col-11" : "col-lg-10 col-md-11 col-sm-11 col-11"} id="upper-nav">
                     <Uppersidebar/>
                         {props.children}
                     <Footer/>

@@ -13,13 +13,7 @@ export default function Dashboard() {
   
   return  <>
     <div className="container-fluid">
-        <div className="row">
-          <Sidebarone />
-          <div  className="col-lg-10" id="upper-nav">
-                <Uppersidebar/>
-                <Content/>
-          </div>
-     </div>
+    This is dashboard
      </div>
      <Footer/>
     </>

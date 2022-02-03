@@ -3,7 +3,7 @@ import cooperativeContext from './Cooperative/cooperativeContext';
 export default function AddCooperative(props) {
 
     const context = useContext(cooperativeContext)
-    const {setCoperativeEdit,cooperativeEdit} = context;
+    const {setCoperativeEdit,cooperativeEdit,addCoperative} = context;
         
 
     // const initalvalue = props.item;
@@ -32,7 +32,16 @@ export default function AddCooperative(props) {
   
 useEffect(() => {
     if(Object.keys(formErrors).length === 0 && isSubmit){
-      console.log("Form subbmitted")
+        addCoperative(
+            cooperativeEdit.address,
+            cooperativeEdit.contactnumber,
+            cooperativeEdit.cooperaticecode,
+            cooperativeEdit.cooperativename,
+            cooperativeEdit.creditlimit,
+            cooperativeEdit.licenseExipry,
+            cooperativeEdit.logo,
+            cooperativeEdit.noOfUser,
+        );
         
   }
 },[formErrors]);
@@ -63,7 +72,7 @@ const handleReset =(event)=>{
             errors.cooperaticecode = "Co operative Code  is required";
            } 
         if(!values.cooperativename){
-            errors.cooperaticecode = "Co operative Code  is required";
+            errors.cooperativename = "Co operative Name  is required";
         }
         if(!values.contactnumber){
             errors.contactnumber = "contactnumber  is required";
@@ -73,9 +82,6 @@ const handleReset =(event)=>{
           }
         if(!values.creditlimit){
             errors.creditlimit = "creditlimit  is required";
-        }
-        if(!values.isOnline){
-            errors.isOnline = "isOnline  is required";
         }
         if(!values.logo){
             errors.logo = "logo is required";
@@ -206,9 +212,10 @@ const handleReset =(event)=>{
                                                 <label htmlFor="Logo" className="form-label">Logo</label>
                                                     <input
                                                         className   ="form-control"
-                                                        type="file"
+                                                        type="text"
+                                                        value={ cooperativeEdit.logo}
                                                         className="form-control"
-                                                        value="" onChange={handleChange}
+                                                    onChange={handleChange}
                                                         placeholder="Logo"
                                                         aria-label="Logo"
                                                         id="Logo"

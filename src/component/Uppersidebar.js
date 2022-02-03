@@ -51,7 +51,7 @@ export default function Uppersidebar() {
                                         <button className="toggle" onClick={handleMenuChange} ><i className="fas fa-bars"></i></button><span className="mx-3">DashBoard</span>
                                     </div>
                                     <div className="navbar__right">
-                                    <div  className="mx-2"><i className="fas fa-bell"></i> </div>  
+                                     
                                         <div  className="mx-2">EasySoftware pvt.Ltd</div>
                                         <div className="mx-2" onClick={handleLogoClick}><img  src={'../img/logo3.png'} alt=""/></div>
                                        {active &&( <div className="dropLogomenu">
