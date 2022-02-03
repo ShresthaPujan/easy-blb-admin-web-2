@@ -7,30 +7,30 @@ const CooperativeState =(props) =>{
     const cooperativeInital = [{
       logo:"a",
       CoOperativeCode: "a",
-cooperativename:'a',
-address:"d",
-noOfUser:'s',
-licenseExipry: 'd',
-creditlimit:'d',
-contactnumber:'d',
-    },{
+      cooperativename:'a',
+      address:"d",
+      noOfUser:'s',
+      licenseExipry: 'd',
+      creditlimit:'d',
+      contactnumber:'d',
+          },{
       logo:"a",
       CoOperativeCode: "b",
-cooperativename:'a',
-address:"d",
-noOfUser:'s',
-licenseExipry: 'd',
-creditlimit:'d',
-contactnumber:'d',
+      cooperativename:'a',
+      address:"d",
+      noOfUser:'s',
+      licenseExipry: 'd',
+      creditlimit:'d',
+      contactnumber:'d',
     },{
       logo:"a",
       CoOperativeCode: "c",
-cooperativename:'c',
-address:"d",
-noOfUser:'s',
-licenseExipry: 'd',
-creditlimit:'d',
-contactnumber:'d',
+      cooperativename:'c',
+      address:"d",
+      noOfUser:'s',
+      licenseExipry: 'd',
+      creditlimit:'d',
+      contactnumber:'d',
     }]
     const [cooperative, setCoperative] = useState( cooperativeInital);
     const [cooperativeEdit,setCoperativeEdit]= useState({
@@ -58,10 +58,10 @@ contactnumber:'d',
       }
     
    const [alert, setAlert] = useState(false);
-   const [logout, setLogout] = useState(false);
-
+   const [logoutdata, setLogout] = useState(false);
+   const[menutoggle,setMenutoggle]=useState(false);
 return (
-    <cooperativeContext.Provider value={{logout,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
+    <cooperativeContext.Provider value={{menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
       {props.children}
     </cooperativeContext.Provider>
   )

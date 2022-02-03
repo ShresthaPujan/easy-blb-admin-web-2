@@ -84,6 +84,9 @@ ul li a{
     background:#fff;    
     
 }
+#halfside-nav{
+    border-right: 10px solid #F8F8FB;
+}
 #halfside-nav  img{
 width: 70px;
 height: 40px;
@@ -98,6 +101,9 @@ margin-top: 25px;
 .toggle{
     border: none;
     background: #fff;
+}
+.sm-menu nav ul li{
+    margin-bottom: 10px;
 }
 
 .navbar__right{   
@@ -172,7 +178,7 @@ border:0 !important;
 i.fas.fa-search {
     position: absolute;
     top: 32%;
-    left: 33%;
+    left: 190px;
 }
 .col-lg-6.col-md-6.col-sm-6.p-2.Search input[type="text"] {
     background: #F8F8FB;
@@ -305,9 +311,9 @@ table td {
     color: #004AAD;
     border-bottom:  1px solid black;
 }
-#halfside-nav{
+/* #halfside-nav{
     display: none;
-}
+} */
 .editspan{
     background: #007bff;
     padding: 5px;

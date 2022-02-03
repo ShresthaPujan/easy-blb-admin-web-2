@@ -1,13 +1,25 @@
-import '../style.css';
-import React, { useContext } from 'react'
-import { Link,NavLink, useNavigate } from "react-router-dom";
+
+import classes from'../abs.css';
+import React ,{useState,useContext,useEffect}from 'react';
+import { NavLink,Link, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { logout} from '../features/Userslice';
 import AuthContext from './auth-context';
-import classes from'../abs.css';
 import Swal from 'sweetalert2'
+import cooperativeContext from './Cooperative/cooperativeContext';
 import logo from './logo3.png'
+
+
 export default function Sidebarone() {
+    const context = useContext(cooperativeContext)
+    const {alert,setAlert,logoutdata,menutoggle,setMenutoggle} = context;
+    const [active, setActive] = useState(false);
+    const handleLogoClick = (e) =>{
+        e.preventDefault();
+        setActive(!active);
+        
+    }
+   
     let navigate = useNavigate();
     const dispatch = useDispatch();
     const authCtx= useContext(AuthContext);
@@ -15,23 +27,23 @@ export default function Sidebarone() {
 
     function logOut(e){
         e.preventDefault();
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You want to Logout",
-            iconHtml: `<img  class="logoImg" src=${logo} >`,
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, Logout!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                authCtx.logout();
-                localStorage.clear();
-                dispatch(logout())  
-                navigate("/login")
-            }
-          })   
+        setAlert(true)
     }
+    function logoutFunction(){
+        authCtx.logout();
+        localStorage.clear();
+        dispatch(logout())  
+        navigate("/login")
+    }
+    const handleMenuChange = () =>{
+        setMenutoggle(!menutoggle);
+    }
+    useEffect(()=>{
+    if(logoutdata){
+        logoutFunction()
+    }
+    },[logoutdata]);
+
   
   return <>
   { auth ?

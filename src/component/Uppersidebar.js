@@ -1,4 +1,4 @@
-import React ,{useState,useContext}from 'react';
+import React ,{useState,useContext,useEffect}from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { logout} from '../features/Userslice';
@@ -10,13 +10,14 @@ import logo from './logo3.png'
 
 export default function Uppersidebar() {
     const context = useContext(cooperativeContext)
-    const {alert,setAlert} = context;
+    const {alert,setAlert,logoutdata,menutoggle,setMenutoggle} = context;
     const [active, setActive] = useState(false);
     const handleLogoClick = (e) =>{
         e.preventDefault();
         setActive(!active);
         
     }
+   
     let navigate = useNavigate();
     const dispatch = useDispatch();
     const authCtx= useContext(AuthContext);
@@ -26,14 +27,28 @@ export default function Uppersidebar() {
         e.preventDefault();
         setAlert(true)
     }
-    console.log({logo});
+    function logoutFunction(){
+        authCtx.logout();
+        localStorage.clear();
+        dispatch(logout())  
+        navigate("/login")
+    }
+    const handleMenuChange = () =>{
+        setMenutoggle(!menutoggle);
+    }
+    useEffect(()=>{
+    if(logoutdata){
+        logoutFunction()
+    }
+    },[logoutdata]);
+
   return <>
        
                         <div className="col-lg-12 col-md-12 col-sm-12">
                             <div className="wrapper">
                                 <div className="navbar">
                                     <div>
-                                        <button className="toggle" ><i className="fas fa-bars"></i></button><span className="mx-3">DashBoard</span>
+                                        <button className="toggle" onClick={handleMenuChange} ><i className="fas fa-bars"></i></button><span className="mx-3">DashBoard</span>
                                     </div>
                                     <div className="navbar__right">
                                     <div  className="mx-2"><i className="fas fa-bell"></i> </div>  

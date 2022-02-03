@@ -28,3 +28,11 @@
  - Fetching data from API using Context API ; State can be easily accessed using context api
  - edit popup populuation data working
  -Search function based on co-operative code
+
+2 Feb 2022
+-Ui design bug fixed
+
+ 3rd feb 2022
+-Popup logout added
+-Side Nav small menu added 
+-Side Nav responsive toggle
