@@ -11,14 +11,15 @@ export default function Content() {
 
     const [popup, setPopup] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [edit, setEdit] = useState(false);
+    
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
-    const {getCoperative,cooperative,setCoperativeEdit,alert,setAlert} = context;
-    console.log(cooperative)
+    const {edit, setEdit,getCoperative,cooperative,setCoperativeEdit,alert,setAlert} = context;
+    
   useEffect(() => {
+    console.log(cooperative)
     getCoperative()
-   
+    
   }, []);
 
   const handleAddCooperative= (e) =>{
@@ -35,14 +36,16 @@ const handleSearch = (e)=>{
 }
 const handleEdit = (item) =>{
     setEdit(true);
-  setCoperativeEdit( {logo:(item.Logo? item.logo:'Add a Logo'),
+    console.log(cooperative)
+  setCoperativeEdit( {
+      logo:(item.Logo),
   cooperaticecode: item.CoOperativeCode,
   cooperativename:item.CoOperativeName,
   address:item.Address,
   noOfUser:item.NoOfUser,
-  licenseExipry: (item.licenseExpiry?item.licenseExipry:'Add license Exipry'),
+  licenseExipry:item.licenseExpiry,
   creditlimit:item.CreditLimit,
-  contactnumber:(item.ContactNum?item.contactnumber:'Add contact number'),})
+  contactnumber:item.ContactNum,})
 
   setPopup(true);
 }
@@ -85,9 +88,10 @@ const handleEdit = (item) =>{
                                                             </div>
                                                     </div>
                                                 </div>
-
-                                                <div className="row">
-                                                    <div className="col-lg-12 table-responsive">
+                                                </div>
+                                                { <div className="row">
+                                                    <div className="ramram">
+                                                    <div className="col-lg-12 ">
                                                     {loading && (<Spinner/>)}
                                                     <div className="outer-wrapper">
                                                     <div className="table-wrapper">
@@ -138,21 +142,21 @@ const handleEdit = (item) =>{
                                                         </div>
                                                         </div>
                                                     </div>
-
-                                                </div>
+                                                    </div>
+                                                </div> }
                                             
-                                        </div>
+                                        
                                 </div>
                             </section>
          </div>
          
         
          {edit ? (
-         <AddCooperative trigger ={popup} setTrigger={setPopup} edit={edit}>
+         <AddCooperative trigger ={popup} setTrigger={setPopup} >
              <h4 >Edit Cooperative</h4>
          </AddCooperative>):
          (
-         <AddCooperative trigger ={popup} setTrigger={setPopup} edit={edit}>
+         <AddCooperative trigger ={popup} setTrigger={setPopup} >
              <h4 >Add Cooperative</h4>
          </AddCooperative>)
          }

@@ -34,10 +34,11 @@ export default function Layout(props) {
               <div  className={menutoggle ? "col-lg-11 col-md-11  col-sm-11 col-11" : "col-lg-10 col-md-11 col-sm-11 col-11"} id="upper-nav">
                     <Uppersidebar/>
                         {props.children}
-                    <Footer/>
+                    
               </div>
          </div>
      </div>
+     <Footer/>
      <div className="col-lg-12 col-md-12 col-sm-12">
         <Alert trigger={alert}/>
     </div>

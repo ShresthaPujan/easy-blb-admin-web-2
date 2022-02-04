@@ -1,19 +1,13 @@
 import cooperativeContext from './cooperativeContext'
 
 import { useState } from "react";
+import { useNavigate} from 'react-router-dom';
 
 
 const CooperativeState =(props) =>{
-    const cooperativeInital = [{
-      logo:"a",
-      CoOperativeCode: "a",
-      cooperativename:'a',
-      address:"d",
-      noOfUser:'s',
-      licenseExipry: 'd',
-      creditlimit:'d',
-      contactnumber:'d',
-    }]
+  const [edit, setEdit] = useState(false);
+  let navigate = useNavigate();
+    const cooperativeInital = []
     const [cooperative, setCoperative] = useState( cooperativeInital);
     const [cooperativeEdit,setCoperativeEdit]= useState({
       logo:"",
@@ -67,6 +61,24 @@ const CooperativeState =(props) =>{
         });
                 const cooptive = await response.json();
                 console.log(cooptive);
+                console.log(cooperative)
+              
+              if(edit){
+                if(cooptive.STATUS_CODE === "0")
+                  {
+                    let newCooprative = JSON.parse(JSON.stringify(cooperative))
+                    // Logic to edit in client
+                    for (let index = 0; index < newCooprative.length; index++) {
+                      const element = newCooprative[index];
+                      if (element.CoOperativeCode === cooperaticecode) {
+                        newCooprative[index].CoOperativeName = cooperativename;             
+                        break; 
+                      }
+                    }  
+                    setCoperative(newCooprative);
+                  }
+              }
+              else{
                 if(cooptive.STATUS_CODE === "0")
                 {
                   setCoperative(cooperative.concat({
@@ -74,12 +86,14 @@ const CooperativeState =(props) =>{
                     CoOperativeCode:formData.CoOperativeCode,
                     CoOperativeName:cooptive.CoOperativeName,
                     Address:cooptive.Address,
-                    noOfUser:cooptive.AllowNumOFUser,
+                    NoOfUser:formData.AllowNumOFUser,
                     licenseExipry: cooptive.LicenceExpiry,
                     CreditLimit:cooptive.CreditLimit,
                     ContactNum:cooptive.PhoneNum,
                   }))
+                  navigate("/cooperative")
                 }
+              }
            
                 // setCoperative(cooperative.concat(cooptive))
      }
@@ -87,8 +101,9 @@ const CooperativeState =(props) =>{
    const [alert, setAlert] = useState(false);
    const [logoutdata, setLogout] = useState(false);
    const[menutoggle,setMenutoggle]=useState(false);
+   
 return (
-    <cooperativeContext.Provider value={{addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
+    <cooperativeContext.Provider value={{edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
       {props.children}
     </cooperativeContext.Provider>
   )

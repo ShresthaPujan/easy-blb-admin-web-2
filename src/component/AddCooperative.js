@@ -3,7 +3,7 @@ import cooperativeContext from './Cooperative/cooperativeContext';
 export default function AddCooperative(props) {
 
     const context = useContext(cooperativeContext)
-    const {setCoperativeEdit,cooperativeEdit,addCoperative} = context;
+    const {setCoperativeEdit,cooperativeEdit,addCoperative,edit, setEdit} = context;
         
 
     // const initalvalue = props.item;
@@ -26,12 +26,21 @@ export default function AddCooperative(props) {
     const handleAddCooperative =(e) =>{
         e.preventDefault();
         setformErrors(validate(cooperativeEdit));
-        setIsSubmit(true);         
+           
     }
   
-  
+
 useEffect(() => {
-    if(Object.keys(formErrors).length === 0 && isSubmit){
+    if(Object.keys(formErrors).length === 0){
+        setIsSubmit(true);     
+        
+  }
+},[formErrors]);
+useEffect(()=>{
+    console.log(isSubmit)
+    if(isSubmit){
+       
+        console.log("chiryo")
         addCoperative(
             cooperativeEdit.address,
             cooperativeEdit.contactnumber,
@@ -42,9 +51,21 @@ useEffect(() => {
             cooperativeEdit.logo,
             cooperativeEdit.noOfUser,
         );
-        
-  }
-},[formErrors]);
+        setIsSubmit(false)
+        props.setTrigger(false);
+        setCoperativeEdit({
+            logo:"",
+            cooperaticecode: "",
+            cooperativename:'',
+            address:"",
+            noOfUser:'',
+            licenseExipry: '',
+            creditlimit:'',
+            contactnumber:'',
+        })
+    }
+},[isSubmit])
+
 
 const handleReset =(event)=>{
     event.preventDefault();
@@ -233,7 +254,7 @@ const handleReset =(event)=>{
 
                                         <div className="col-lg-12 col-md-12 col-sm-12 text-right  my-3 col-xs-12">
 
-                                            <button className="btn btn-primary m-2 px-4 addresbtn" onClick={handleAddCooperative} >{props.edit ? 'Edit' : 'ADD'} </button>
+                                            <button className="btn btn-primary m-2 px-4 addresbtn" onClick={handleAddCooperative} >{edit ? 'Edit' : 'ADD'} </button>
                                             <button className="btn btn-danger px-2 addresbtn" onClick={handleReset}> RESET</button>
                                         </div>
                                     </div>
