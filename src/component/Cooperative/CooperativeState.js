@@ -59,7 +59,7 @@ const CooperativeState =(props) =>{
               PhNum: "0984834985",
               CreatedUserID:"1"
         }
-        console.log("this is ",JSON.stringify(formData))
+   
         const response = await fetch ('api2/BLBApi/BLB/CoOperativeSetting',{
             method:'POST',
             headers: {'Content-Type': 'application/json'},
