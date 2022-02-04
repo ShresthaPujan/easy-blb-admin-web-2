@@ -15,6 +15,7 @@ export default function Content() {
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
     const {getCoperative,cooperative,setCoperativeEdit,alert,setAlert} = context;
+    console.log(cooperative)
   useEffect(() => {
     getCoperative()
    

@@ -42,14 +42,13 @@ export default function Login() {
     let location = useLocation()
 
     useEffect(() => {
-        localStorage.setItem("userInfo",'asdf');
-        localStorage.setItem('token',1);
         if(Object.keys(formErrors).length === 0 && isSubmit){
           const dataForm =  {
                  UserName: formValues.username,
                  Pwd: formValues.password,      
             }
-            axios.post('api2/BLBApi/api/BLBAUTH',dataForm)
+         
+            axios.post('api1/BLBApi/BLB/BLBAUTH',dataForm)
               .then(function (response) {
                 const  res = response.data
                 const result = response.data.STATUS_CODE
