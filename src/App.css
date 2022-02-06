@@ -224,12 +224,24 @@ i.fa.fa-download.fa-rotate-270 {
 
 
 }
-@media only screen and (max-width: 400px)
+@media only screen and (max-width: 500px)
+{
+  .popup-inner.container {
+    width: 380px;
+    top: 20%;
+    left: 12%;
+  }
+  .popup-inner-alert {
+    max-width:  380px; 
+  }
+}
+
+@media only screen and (max-width: 480px)
 {
   .popup-inner.container {
     width: 340px;
     top: 20%;
-    left: 12%;
+    left: 8%;
   }
   .popup-inner-alert {
     max-width:  340px; 

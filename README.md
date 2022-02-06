@@ -29,11 +29,21 @@
  - edit popup populuation data working
  -Search function based on co-operative code
 
-2 Feb 2022
--Ui design bug fixed
 
- 3rd feb 2022
--Popup logout added
+ 2nd feb 2022
+ -UI bug fixed
+
+3rd feb 2022 
+-Popup logout added 
 -Side Nav small menu added 
--Side Nav responsive toggle
+-Side Nav responsive toggle 
 -add cooperative
+
+4rd feb 2022
+-add/edit Api
+-search error fixed
+-footer fixed
+
+6 feb 2022
+-add coperative responsive done
+-Reset button bug fixed

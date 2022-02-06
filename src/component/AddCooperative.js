@@ -1,4 +1,4 @@
-import React,{useState ,useEffect,useContext} from 'react';
+import React,{useState ,useEffect,useContext , useRef} from 'react';
 import cooperativeContext from './Cooperative/cooperativeContext';
 export default function AddCooperative(props) {
 
@@ -7,7 +7,7 @@ export default function AddCooperative(props) {
         
 
     // const initalvalue = props.item;
-      
+     const ref = useRef(null); 
   
     const [formErrors, setformErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -36,11 +36,11 @@ useEffect(() => {
         
   }
 },[formErrors]);
+
 useEffect(()=>{
     console.log(isSubmit)
     if(isSubmit){
        
-        console.log("chiryo")
         addCoperative(
             cooperativeEdit.address,
             cooperativeEdit.contactnumber,
@@ -66,9 +66,9 @@ useEffect(()=>{
     }
 },[isSubmit])
 
-
 const handleReset =(event)=>{
     event.preventDefault();
+    console.log("click reset")
     setCoperativeEdit({
         logo:"",
         cooperaticecode: "",
@@ -79,6 +79,9 @@ const handleReset =(event)=>{
         creditlimit:'',
         contactnumber:'',
     })
+    setformErrors({reset:1})
+    
+   
 }
 
     const  validate = (values) => {
@@ -122,7 +125,7 @@ const handleReset =(event)=>{
         ? (
             <div className="popUP container-fluid  col-lg-12 col-md-12 col-sm-12 col-xs-12">   
                     <div className="popup-inner container p-4 ">
-                         <button className='btn closebtn' onClick={handlePopupClose}><i className="bi bi-x"></i></button>
+                         <button className='btn closebtn' ref ={ref} onClick={handlePopupClose}><i className="bi bi-x"></i></button>
                         <form action="">
                                 <div className="col-lg-12 col-md-12 col-sm-12">        
                                     {props.children}
@@ -252,7 +255,7 @@ const handleReset =(event)=>{
                                     </div>
                                     <div className="row">
 
-                                        <div className="col-lg-12 col-md-12 col-sm-12 text-right  my-3 col-xs-12">
+                                        <div className="col-lg-12 col-md-12 col-sm-12 text-right  my-3 col-12">
 
                                             <button className="btn btn-primary m-2 px-4 addresbtn" onClick={handleAddCooperative} >{edit ? 'Edit' : 'ADD'} </button>
                                             <button className="btn btn-danger px-2 addresbtn" onClick={handleReset}> RESET</button>
