@@ -1,7 +1,8 @@
 {
   "name": "easy-blb",
-  "homepage": "https://easysoftwareoffical.github.io/easy-blb-admin-web",
+  "homepage": "http://easysoftwareoffical.github.io/easy-blb-admin-web",
   "version": "0.1.0",
+  "proxy": "http://esnep.com",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
