@@ -134,15 +134,17 @@ const handleReset =(event)=>{
 
                                                     
                                                         <div >
-                                                        <label htmlFor="cooperaticecode" className="form-label">Cooperaticecode</label>    
+                                                        <label htmlFor="cooperaticecode" className="form-label">Cooperatice Code</label>    
                                                             <input
                                                                 type="text"
-                                                                className="form-control"
+                                                                className="form-control mb-1"
                                                                 value={cooperativeEdit.cooperaticecode} onChange={handleChange}
                                                                 name="cooperaticecode"
                                                                 placeholder="Co Operative Code"
                                                                 aria-label="Co Operative Code"
                                                                 id="cooperaticecode"
+                                                                disabled={edit}
+                         
                                                                 aria-describedby="addon-wrapping"/>
                                                                   <span className="errormsg">{formErrors.cooperaticecode}</span>
                                                         </div>
@@ -150,7 +152,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="contactnumber" className="form-label">Contact Number</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control"
+                                                                className="form-control mb-1"
                                                                 value={cooperativeEdit.contactnumber} onChange={handleChange}
                                                                 placeholder="Contact Number"
                                                                 aria-label="Contact Number"
@@ -163,7 +165,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="noOfUser" className="form-label">No of User</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control"
+                                                                className="form-control mb-1"
                                                                 value={ cooperativeEdit.noOfUser} onChange={handleChange}
                                                                 placeholder="No Of User"
                                                                 aria-label="No Of User"
@@ -177,7 +179,7 @@ const handleReset =(event)=>{
                                                             <label htmlFor="licenseExipry" className="form-label">license Exipry</label>
                                                                 <input
                                                                     type="text"
-                                                                    className="form-control"
+                                                                    className="form-control mb-1"
                                                                     value={cooperativeEdit.licenseExipry} onChange={handleChange}
                                                                     placeholder="license Expiry"
                                                                     aria-label="license Expiry"
@@ -191,10 +193,10 @@ const handleReset =(event)=>{
                                         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
                                                     <div >
-                                                        <label htmlFor="cooperativename" className="form-label">Co Operativename</label>   
+                                                        <label htmlFor="cooperativename" className="form-label">Cooperative Name</label>   
                                                             <input
                                                                 type="text"
-                                                                className="form-control"
+                                                                className="form-control mb-1"
                                                                 value={ cooperativeEdit.cooperativename} onChange={handleChange}
                                                                 placeholder="Co Operative Name"
                                                                 name="cooperativename"
@@ -207,7 +209,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="Address" className="form-label">Address</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control"
+                                                                className="form-control mb-1"
                                                                 placeholder="Address"
                                                                 aria-label="Address"
                                                                 name="address"
@@ -221,7 +223,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="creditlimit" className="form-label">Credit Limit</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control"
+                                                                className="form-control mb-1"
                                                                 value={ cooperativeEdit.creditlimit} onChange={handleChange}
                                                                 placeholder="Credit Limit"
                                                                 aria-label="Credit Limit"
@@ -238,7 +240,7 @@ const handleReset =(event)=>{
                                                         className   ="form-control"
                                                         type="text"
                                                         value={ cooperativeEdit.logo}
-                                                        className="form-control"
+                                                        className="form-control mb-1"
                                                     onChange={handleChange}
                                                         placeholder="Logo"
                                                         aria-label="Logo"
@@ -246,20 +248,18 @@ const handleReset =(event)=>{
                                                         name="logo"
                                                         aria-describedby="addon-wrapping"/>
                                             </div>
-                                            <span className="errormsg">{formErrors.logo}</span>
-                                   
-                                           
-                                            
-                                           
+                                            <span className="errormsg">{formErrors.logo}</span>                                                                             
                                         </div>
                                     </div>
-                                    <div className="row">
+                                    <div className="container">
+                                    <div className="row ">
 
-                                        <div className="col-lg-12 col-md-12 col-sm-12 text-right  my-3 col-12">
+                                        <div className="  col-lg-12 col-md-12 col-sm-12 text-right p-0  my-3 col-12">
 
-                                            <button className="btn btn-primary m-2 px-4 addresbtn" onClick={handleAddCooperative} >{edit ? 'Edit' : 'ADD'} </button>
-                                            <button className="btn btn-danger px-2 addresbtn" onClick={handleReset}> RESET</button>
+                                            <button className="btn btn-primary mx-2 addresbtn" onClick={handleAddCooperative} >{edit ? 'Edit' : 'ADD'} </button>
+                                            <button className="btn btn-danger  addresbtn" onClick={handleReset}> RESET</button>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
                             </form>

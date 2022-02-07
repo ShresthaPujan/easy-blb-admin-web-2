@@ -23,12 +23,22 @@ ul li a{
 }
 #side-nav{
     background: white;
-    border-right: 10px solid #F8F8FB;
+    border-right: 5px solid #F8F8FB;
     z-index: 2;
+    height: 100vh;
+    position:fixed;
+    top:0;
+    width: 250px;
 }
+
 #upper-nav{
     background: white;
     padding: 0;
+    position:absolute;
+    right: 0;
+    top: 0;
+   
+    
 }
 .menu nav ul{
     list-style: none;
@@ -85,9 +95,13 @@ ul li a{
     
 }
 #halfside-nav{
-    border-right: 10px solid #F8F8FB;
+    border-right: 5px solid #F8F8FB;
     margin: 0;
     padding: 0;
+    position:fixed;
+    height: 100vh;
+    top:0;
+    z-index: 2;
 }
 #halfside-nav  img{
 width: 70px;
@@ -104,6 +118,7 @@ margin-top: 25px;
     border: none;
     background: #fff;
 }
+
 .sm-menu nav ul li{
     margin-bottom: 10px;
 }
@@ -154,7 +169,8 @@ border:0 !important;
     padding:5px;
    text-align: right;
    border-bottom: 0;
-   border-top:10px solid #F8F8FB;
+   border-top:5px solid #F8F8FB;
+   border-bottom:  5px solid #F8F8FB;
 }
 .content{
     padding:20px  15px;
@@ -168,9 +184,11 @@ border:0 !important;
     outline: none;
     padding: 4px;
     border-color: 3px solid gray;
+   
 }
 .Search input[type=text]{
     padding:5px;
+    border-radius: 10px;
     border: 3px solid #E6E6E6;
 }
 .Search input[type=text]:focus{
@@ -197,12 +215,14 @@ i.fas.fa-search {
 .outer-wrapper {
     max-width: fit-content; 
     max-height: fit-content;  
+    
 }
 .table-wrapper {
+  
     overflow-y: scroll;
     overflow-x: scroll;
     height: fit-content;
-    max-height: 66.4vh;   
+    max-height: 50vh;   
     margin-top: 22px;
     padding-bottom: 20px;
     

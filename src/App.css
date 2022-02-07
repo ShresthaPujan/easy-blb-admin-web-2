@@ -144,13 +144,14 @@ button.btn.closebtn {
   z-index: 1;
 }
 footer {
-  
   width: 100%;
   text-align: center;
   padding:10px;
   margin: 20px 0 0 0;
   background: #fff;
-  border-top:10px solid #F8F8FB;
+  border-top:5px solid #F8F8FB;
+ 
+  z-index: -9999;
 }
 .addresbtn{
   width: 100px;

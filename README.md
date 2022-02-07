@@ -47,3 +47,9 @@
 6 feb 2022
 -add coperative responsive done
 -Reset button bug fixed
+-search addon coooperative code and address
+
+7 feb 2022
+-github live added
+-footer fixed 
+-UI Design fixed

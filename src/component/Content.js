@@ -39,13 +39,13 @@ const handleEdit = (item) =>{
     console.log(cooperative)
   setCoperativeEdit( {
       logo:(item.Logo),
-  cooperaticecode: item.CoOperativeCode,
-  cooperativename:item.CoOperativeName,
-  address:item.Address,
-  noOfUser:item.NoOfUser,
-  licenseExipry:item.licenseExpiry,
-  creditlimit:item.CreditLimit,
-  contactnumber:item.ContactNum,})
+      cooperaticecode: item.CoOperativeCode,
+      cooperativename:item.CoOperativeName,
+     address:item.Address,
+     noOfUser:item.NoOfUser,
+     licenseExipry:item.licenseExpiry,
+    creditlimit:item.CreditLimit,
+    contactnumber:item.ContactNum,})
 
   setPopup(true);
 }
@@ -62,7 +62,7 @@ const handleEdit = (item) =>{
                                         <div className=" col-lg-12 col-sm-12">
                                                 <div className="row first_content">
                                                     <div className="col-lg-6 p-2">
-                                                        <h4>Company List</h4>
+                                                        <h5>Company List</h5>
                                                     </div>
                                                     <div className="col-lg-6 p-2 text-end">
                                                             <button className="btn btn-primary"   onClick={handleAddCooperative}> Add Cooperative +</button>
@@ -114,9 +114,12 @@ const handleEdit = (item) =>{
                                                         <tbody>
            
                                                    {cooperative.filter((item)=>{
-                                                        if (searchTerm == ""){
+                                                        if (searchTerm === ""){
                                                             return item
-                                                        } else if(item.CoOperativeName.toLowerCase().includes(searchTerm.toLowerCase())){
+                                                        } else if(item.CoOperativeName.toLowerCase().includes(searchTerm.toLowerCase())||
+                                                                     item.CoOperativeCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                                                     item.Address.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                                                     item.ContactNum.toLowerCase().includes(searchTerm.toLowerCase()) ){
                                                             return item
                                                         }
                                                     }).map((item,i) => 
@@ -134,7 +137,6 @@ const handleEdit = (item) =>{
                                                                     <td className='tc'><span className='editspan badge'  onClick={()=>handleEdit(item)}>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               
   
                                                         </tr>
-                                          
                                                    )}                               
                                                         </tbody>
                                                         
@@ -154,6 +156,7 @@ const handleEdit = (item) =>{
          {edit ? (
          <AddCooperative trigger ={popup} setTrigger={setPopup} >
              <h4 >Edit Cooperative</h4>
+             <hr/>
          </AddCooperative>):
          (
          <AddCooperative trigger ={popup} setTrigger={setPopup} >

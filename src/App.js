@@ -29,7 +29,7 @@ function App() {
         <>
          
               <Routes>
-              <Route path="/login" element={<Login />} />
+              <Route path="easy-blb-admin-web/login" element={<Login />} />
                     {!auth &&( <Route path="/login" element={<Login />} />)} 
                     <Route path="*" element={<Notfound />}/>
               </Routes>
