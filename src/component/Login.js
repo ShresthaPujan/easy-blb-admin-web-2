@@ -11,7 +11,7 @@ import { selectUser } from '../features/Userslice';
 import axios from 'axios';
 import Dashboard from './Dashboard';
 import AuthContext from './auth-context';
-import bankingimage from '../../public/img/banking.png'
+import bankingimage from './banking.png'
 
 
 
