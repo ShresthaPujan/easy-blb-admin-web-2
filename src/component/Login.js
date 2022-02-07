@@ -132,9 +132,9 @@ export default function Login() {
                             <h3>Welcome to the easy software</h3>
                                 <h6>Banking Software</h6>
                                 <OwlCarousel items={1} margin={8} autoplay ={true} >  
-                                <div className="item"><img src={'../img/banking.png'} /> </div>
-                                <div className="item"><img src={'../img/banking.png'} /></div>
-                                <div className="item"><img src={'../img/banking.png'} /></div>
+                                <div className="item"><img src={'../public/img/banking.png'} /> </div>
+                                <div className="item"><img src={'../public/img/banking.png'} /></div>
+                                <div className="item"><img src={'../public/img/banking.png'} /></div>
                                 </OwlCarousel>
                             <p>2021 Easy Software Pvt.Ltd. All Rights Reserved</p>
                             </div>
