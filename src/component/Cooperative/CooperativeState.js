@@ -22,7 +22,7 @@ const CooperativeState =(props) =>{
 
    const getCoperative = async()=> {   
         try{
-          const response = await fetch(`easy-blb-admin-web/BLBApi/BLB/GetCoOperativeList`);
+          const response = await fetch(`https://esnep.com/BLBApi/BLB/GetCoOperativeList`);
           const jsonData = await response.json();
           setCoperative(jsonData.CopayLst)
                    }
