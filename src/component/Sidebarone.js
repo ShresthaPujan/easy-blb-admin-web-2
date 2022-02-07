@@ -51,7 +51,7 @@ export default function Sidebarone() {
                
                     <div className="menu " >
                         <div className="img text-center">
-                            <img src={'../img/logo3.png'} alt=""/>
+                            <img src={logo} alt=""/>
                         <p>kalimati <br/> 981234055</p>  
                         </div>
                         <nav >
