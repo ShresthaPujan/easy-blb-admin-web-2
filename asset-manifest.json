@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/easy-blb-admin-web/static/css/main.c8ea9108.css",
+    "main.js": "/easy-blb-admin-web/static/js/main.81d02256.js",
+    "static/js/787.9b77c4fa.chunk.js": "/easy-blb-admin-web/static/js/787.9b77c4fa.chunk.js",
+    "static/media/logo3.png": "/easy-blb-admin-web/static/media/logo3.284db40b6e0295eaad83.png",
+    "static/media/loading.gif": "/easy-blb-admin-web/static/media/loading.f4d71b7e2329eafbaea7.gif",
+    "index.html": "/easy-blb-admin-web/index.html",
+    "main.c8ea9108.css.map": "/easy-blb-admin-web/static/css/main.c8ea9108.css.map",
+    "main.81d02256.js.map": "/easy-blb-admin-web/static/js/main.81d02256.js.map",
+    "787.9b77c4fa.chunk.js.map": "/easy-blb-admin-web/static/js/787.9b77c4fa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c8ea9108.css",
+    "static/js/main.81d02256.js"
+  ]
+}
