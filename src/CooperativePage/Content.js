@@ -1,27 +1,53 @@
-import Sidebarone from './Sidebarone';
 import React, { useEffect , useState ,useContext} from 'react'
-import cooperativeContext from './Cooperative/cooperativeContext';
+import cooperativeContext from '../component/Cooperative/cooperativeContext'
 import '../style.css';
 import AddCooperative from './AddCooperative';
-import Spinner from './Spinner/Spinner'
-import { Alert } from './Alert';
+import Spinner from '../component/Spinner/Spinner'
+import { Alert } from '../component/Alert';
 
 
 export default function Content() {
 
     const [popup, setPopup] = useState(false);
     const [loading, setLoading] = useState(false);
-    
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
     const {edit, setEdit,getCoperative,cooperative,setCoperativeEdit,alert,setAlert} = context;
+
+    var classexpire = {
+        class : "",
+    };
     
+        function dateCalculator(licensedate){
+            const now = new Date();
+            const day = now.getDate();
+            const month = now.getMonth() + 1;
+            const year = now.getFullYear();
+            const hour = now.getHours();
+            const min = now.getMinutes();
+        
+            const currentdate = `${month}/${day}/${year}`
+            const date1 = new Date(currentdate);
+            const date2 = new Date(licensedate);
+            var difference=  date2-date1 ;
+            const  days = difference/(1000 * 3600 * 24)
+            if (days < 0){
+                
+                return  <td className='expired tc'> License Expired</td>
+            }
+            else if (days === 0){
+                return <td className=' tc'> Expires Today </td>
+            }
+            else{
+                
+                return <td className=' tc'>{days} days Remaining</td>
+            }
+        }
   useEffect(() => {
-    console.log(cooperative)
     getCoperative()
     
   }, []);
-
+  console.log(classexpire)
   const handleAddCooperative= (e) =>{
     e.preventDefault();
     setEdit(false);
@@ -36,16 +62,15 @@ const handleSearch = (e)=>{
 }
 const handleEdit = (item) =>{
     setEdit(true);
-    console.log(cooperative)
   setCoperativeEdit( {
-      logo:(item.Logo),
-      cooperaticecode: item.CoOperativeCode,
-      cooperativename:item.CoOperativeName,
-     address:item.Address,
-     noOfUser:item.NoOfUser,
-     licenseExipry:item.licenseExpiry,
-    creditlimit:item.CreditLimit,
-    contactnumber:item.ContactNum,})
+        logo:(item.Logo),
+        cooperaticecode: item.CoOperativeCode,
+        cooperativename:item.CoOperativeName,
+        address:item.Address,
+        noOfUser:item.NoOfUser,
+        licenseExipry:item.licenseExpiry,
+        creditlimit:item.CreditLimit,
+        contactnumber:item.ContactNum,})
 
   setPopup(true);
 }
@@ -123,15 +148,16 @@ const handleEdit = (item) =>{
                                                             return item
                                                         }
                                                     }).map((item,i) => 
-                                                      
+                                                    
                                                     <tr key={i+1}>
+                                                          
                                                                     <td className='tc'>{i + 1}</td>
                                                                     <td className="contentLogo tc"><img src={item.Logo}  alt="" /></td>
                                                                     <td className='tc'>{item.CoOperativeCode}</td>
                                                                     <td  className="tl">{item.CoOperativeName}</td>                       
                                                                     <td className='tl'>{item.Address}</td>
                                                                     <td className='tc'> {item.NoOfUser}</td>
-                                                                    <td className='tc'> {item.licenseExpiry}</td>
+                                                                    {dateCalculator(item.licenseExpiry.split(/(\s+)/)[0])}
                                                                     <td className='tc'> {item.CreditLimit}</td>
                                                                     <td className='tl'>{item.ContactNum}</td>
                                                                     <td className='tc'><span className='editspan badge'  onClick={()=>handleEdit(item)}>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               

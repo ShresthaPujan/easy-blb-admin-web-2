@@ -11,6 +11,7 @@ export default function UsewindowDimension() {
         height,
       };
     }
+    
   
     const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   

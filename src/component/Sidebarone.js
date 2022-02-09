@@ -27,13 +27,19 @@ export default function Sidebarone() {
 
     function logOut(e){
         e.preventDefault();
-        setAlert(true)
+        setAlert({
+            fade:'fade-in'
+        })
     }
     function logoutFunction(){
         authCtx.logout();
         localStorage.clear();
         dispatch(logout())  
+        setAlert({
+            fade:'fade-default'
+        })
         navigate("/login")
+        
     }
     const handleMenuChange = () =>{
         setMenutoggle(!menutoggle);
@@ -59,7 +65,8 @@ export default function Sidebarone() {
                                 <li ><NavLink activeclassname={classes.active} to="/" ><i className="bi bi-folder-fill mx-3"></i>DashBoard</NavLink></li>
                                 <li ><NavLink activeclassname={classes.active} className="arrow "  to="/profile"><i className="bi bi-people mx-3"></i>Profile</NavLink> </li>
                                 <li><NavLink activeclassname={classes.active} className="arrow "  to="/cooperative"><i className="bi bi-people mx-3"></i>Cooperative</NavLink> </li>
-                                <li><NavLink activeclassname={classes.active} className="arrow " to="/test1"><i className="bi bi-people mx-3"></i>Setting</NavLink> </li>
+                                <li><NavLink activeclassname={classes.active} className="arrow "  to="/collector"><i className="bi bi-people mx-3"></i>Collector</NavLink> </li>
+                                <li><NavLink activeclassname={classes.active} className="arrow " to="/esc"><i className="bi bi-people mx-3"></i>Setting</NavLink> </li>
                                 <li ><NavLink activeclassname={classes.active} className="arrow "   to="/test2"><i className="bi bi-people mx-3"></i>Lead</NavLink> </li>
                           
                                 <li ><NavLink activeclassname={classes.active} to="/test4"> <i className="bi bi-gear mx-3"></i>Setting</NavLink> </li>

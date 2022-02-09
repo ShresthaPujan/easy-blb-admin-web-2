@@ -1,5 +1,6 @@
 import React,{useState ,useEffect,useContext , useRef} from 'react';
-import cooperativeContext from './Cooperative/cooperativeContext';
+import cooperativeContext from '../component/Cooperative/cooperativeContext'
+import Escpdetect from '../component/Escpdetect';
 export default function AddCooperative(props) {
 
     const context = useContext(cooperativeContext)
@@ -8,7 +9,6 @@ export default function AddCooperative(props) {
 
     // const initalvalue = props.item;
      const ref = useRef(null); 
-  
     const [formErrors, setformErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [first, setfirst] = useState({});
@@ -17,7 +17,7 @@ export default function AddCooperative(props) {
         const{name , value} = e.target;
         setCoperativeEdit({ ...cooperativeEdit,[name]:value});
     };
-
+    
     const handlePopupClose = (e) =>{    
         e.preventDefault();
         props.setTrigger(false);
@@ -26,10 +26,13 @@ export default function AddCooperative(props) {
     const handleAddCooperative =(e) =>{
         e.preventDefault();
         setformErrors(validate(cooperativeEdit));
+        if(Escpdetect()){
+            props.setTrigger(false);
+        }
            
     }
   
-
+    
 useEffect(() => {
     if(Object.keys(formErrors).length === 0){
         setIsSubmit(true);     
@@ -38,7 +41,6 @@ useEffect(() => {
 },[formErrors]);
 
 useEffect(()=>{
-    console.log(isSubmit)
     if(isSubmit){
        
         addCoperative(
@@ -68,7 +70,6 @@ useEffect(()=>{
 
 const handleReset =(event)=>{
     event.preventDefault();
-    console.log("click reset")
     setCoperativeEdit({
         logo:"",
         cooperaticecode: "",

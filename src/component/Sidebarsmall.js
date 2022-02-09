@@ -27,7 +27,9 @@ export default function Sidebarsmall() {
 
     function logOut(e){
         e.preventDefault();
-        setAlert(true)
+        setAlert({
+            fade:'fade-in'
+        })
     }
     function logoutFunction(){
         authCtx.logout();
@@ -60,6 +62,7 @@ export default function Sidebarsmall() {
                                     <li><NavLink activeclassname={classes.active} to="/"><i className="bi bi-folder-fill mx-3"></i></NavLink></li>
                                     <li><NavLink activeclassname={classes.active} to="/profile"><i className="bi bi-people mx-3"></i></NavLink> </li>
                                     <li><NavLink activeclassname={classes.active} to="/cooperative"><i className="bi bi-people mx-3"></i></NavLink> </li>
+                                    <li><NavLink activeclassname={classes.active} to="/collector"><i className="bi bi-people mx-3"></i></NavLink> </li>
                                     <li><NavLink activeclassname={classes.active} to="/test1"><i className="bi bi-people mx-3"></i></NavLink> </li>
                                     <li><NavLink activeclassname={classes.active} to="/test2"><i className="bi bi-people mx-3"></i></NavLink> </li>
                                     <li><NavLink activeclassname={classes.active} to="/test3"> <i className="bi bi-gear mx-3"></i></NavLink> </li>

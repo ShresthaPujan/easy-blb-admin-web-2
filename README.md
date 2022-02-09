@@ -53,3 +53,12 @@
 -github live added
 -footer fixed 
 -UI Design fixed
+
+8th feb 2022
+-Add collector added
+-Edit collector template added
+
+9th feb 2022 
+-popup animation added
+-on esc click popup close
+-Remaining Date  added

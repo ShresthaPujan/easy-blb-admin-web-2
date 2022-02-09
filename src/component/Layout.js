@@ -12,7 +12,9 @@ export default function Layout(props) {
   const {alert,setAlert,menutoggle,setMenutoggle } = context;
 
   const { height, width } = useWindowDimensions();
+ 
   useEffect(() => {
+    
     if(width < 1120){
       setMenutoggle(true)
     }
@@ -45,7 +47,7 @@ export default function Layout(props) {
       </div>
      
 
-     <div className="col-lg-12 col-md-12 col-sm-12">
+     <div className={`${alert.fade} col-lg-12 col-md-12 col-sm-12`}>
         <Alert trigger={alert}/>
     </div>
 

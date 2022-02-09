@@ -9,7 +9,7 @@ import Login from './component/Login';
 import { useSelector } from 'react-redux'
 import { selectUser } from './features/Userslice';
 import Sidebarone from './component/Sidebarone';
-import Content from './component/Content';
+import Content from './CooperativePage/Content';
 import { computeHeadingLevel } from '@testing-library/react';
 import AuthContext from './component/auth-context';
 import Notfound from './Notfound';
@@ -17,6 +17,9 @@ import Layout from './component/Layout';
 import Test from './component/Test';
 import Profile from './component/Profile';
 import CooperativeState from './component/Cooperative/CooperativeState';
+import Collector from './CollectorPage/Collector';
+import CollectorState from './component/Collector/CollectorState';
+import Escpdetect from './component/Escpdetect';
 function App() {
   //const user = useSelector(selectUser);
   const auth = localStorage.getItem("userInfo");
@@ -24,7 +27,7 @@ function App() {
 
    
   const lazyProfile = React.lazy(()=> import('./component/Profile'));
-  const lazyContent = React.lazy(()=> import('./component/Content'));
+  const lazyContent = React.lazy(()=> import('./CooperativePage/Content'));
   return (
         <>
          
@@ -36,16 +39,18 @@ function App() {
                   
                   {authCtx.isLoggedIn && ( 
                     <CooperativeState>
-                      <Layout>
-                      
-                        <Routes>
-                          <Route path="/" element={ <Suspense fallback={<div>aaaa.</div>}> <Dashboard /> </Suspense>} />
-                          <Route path="/cooperative" element={<Content/>} />
-                          <Route path="/profile" element={<Profile/>} />
-                          <Route path="/test" element={<Test/>} />
-                        </Routes>
-                      
-                    </Layout>
+                       <CollectorState>
+                          <Layout>
+                            <Routes>
+                              <Route path="/" element={ <Suspense fallback={<div>aaaa.</div>}> <Dashboard /> </Suspense>} />
+                              <Route path="/cooperative" element={<Content/>} />
+                              <Route path="/collector" element={<Collector/>} />
+                              <Route path="/profile" element={<Profile/>} />
+                              <Route path="/esc" element={<Escpdetect/>} />
+                              <Route path="/test" element={<Test/>} />
+                            </Routes>      
+                        </Layout>
+                    </CollectorState>
                   </CooperativeState>
                  )}
            </>

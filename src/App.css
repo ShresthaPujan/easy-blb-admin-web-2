@@ -105,6 +105,8 @@
   border: 1px solid black;
   box-shadow: 5px 10px 8px #888888;
   z-index: 15;
+  transition: all 3s ease;
+  overflow: hidden;
 
 }
 .popup-inner.container {
@@ -114,6 +116,7 @@
   max-width: 900px;
   position: absolute;
   left:25%;
+  transition: all 3s ease;
 
 }
 .popup-inner-alert {
@@ -123,7 +126,7 @@
   max-width: 900px;
   position: absolute;
   left:25%;
-
+  transition: all 3s ease;
 }
 
 .popUP-alert{
@@ -186,7 +189,7 @@ i.fa.fa-download.fa-rotate-270 {
     margin-left: 62px;
   }
 }
-@media only screen and (max-width: 1366px)
+@media only screen and (max-width: 1350px)
 {
   .popUP{
     overflow: scroll;

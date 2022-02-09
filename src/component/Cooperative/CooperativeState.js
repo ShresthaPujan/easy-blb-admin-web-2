@@ -60,8 +60,6 @@ const CooperativeState =(props) =>{
             body:JSON.stringify(formData)
         });
                 const cooptive = await response.json();
-                console.log(cooptive);
-                console.log(cooperative)
               
               if(edit){
                 if(cooptive.STATUS_CODE === "0")
@@ -98,7 +96,7 @@ const CooperativeState =(props) =>{
                 // setCoperative(cooperative.concat(cooptive))
      }
     
-   const [alert, setAlert] = useState(false);
+   const [alert, setAlert] = useState({fade:'fade-default'});
    const [logoutdata, setLogout] = useState(false);
    const[menutoggle,setMenutoggle]=useState(false);
    

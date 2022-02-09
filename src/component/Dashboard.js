@@ -3,7 +3,6 @@ import Footer from './Footer';
 import '../style.css';
 import  { useEffect , useState ,useContext} from 'react'
 import cooperativeContext from './Cooperative/cooperativeContext';
-import Content from './Content';
 import Sidebarone from './Sidebarone';
 import Uppersidebar from './Uppersidebar';
 // import { useContext } from 'react';

@@ -37,7 +37,7 @@ ul li a{
     position:absolute;
     right: 0;
     top: 0;
-   
+    z-index: 2;
     
 }
 .menu nav ul{
@@ -360,7 +360,7 @@ table td {
 
 }
 .alert{
-    z-index: 9999;
+    z-index: 20;
 }
 @media (min-width: 992px){
 .col-lg-12 {
@@ -424,3 +424,23 @@ table td {
         }
     }
 
+.fade-in{
+    opacity: 1;
+    z-index: 999;
+    transition: all 0.9s ease;
+}
+
+.fade-out{
+    animation-name: fadeOut;
+  animation-duration: 5s;
+}
+.fade-default{
+    opacity: 0;
+}
+@keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;} 
+ } 
+ .expired {
+     color:red !important;
+ }

@@ -25,13 +25,20 @@ export default function Uppersidebar() {
 
     function logOut(e){
         e.preventDefault();
-        setAlert(true)
+        setActive(!active);
+        setAlert({
+            fade:'fade-in'
+        })
     }
     function logoutFunction(){
         authCtx.logout();
         localStorage.clear();
         dispatch(logout())  
+        setAlert({
+            fade:'fade-default'
+        })
         navigate("/login")
+
     }
     const handleMenuChange = () =>{
         setMenutoggle(!menutoggle);

@@ -3,16 +3,18 @@ import cooperativeContext from './Cooperative/cooperativeContext';
 export const Alert = (props) => {
 
   const context = useContext(cooperativeContext)
-  const {setAlert,setLogout} = context;
+  const {setAlert,setLogout,Alert} = context;
   const handleClose =()=>{
-      setAlert(false)
+      setAlert({
+        fade:'fade-default'
+      })
   }
   const logoutConform = () =>{
     setLogout(true)
     console.log("test")
   }
 
-  return (props.trigger)?<div className="popUP container-fluid  col-lg-12 col-md-12 col-sm-12 col-xs-12">   
+  return<div className="popUP container-fluid  col-lg-12 col-md-12 col-sm-12 col-xs-12">   
             <div className="popup-inner-alert container col-lg-12 col-md-12 col-sm-12 col-xs-12  p-4 ">
                 <button className='btn closebtn' onClick={handleClose} ><i className="bi bi-x"></i></button>
                 <div className='text-center col-lg-12 col-md-12 col-sm-12 col-xs-12  p-4'>
@@ -23,5 +25,5 @@ export const Alert = (props) => {
                   </div> 
                 </div>
              </div>
-       </div>:"";
+       </div>
 };
