@@ -105,8 +105,7 @@
   border: 1px solid black;
   box-shadow: 5px 10px 8px #888888;
   z-index: 15;
-  transition: all 3s ease;
-  overflow: hidden;
+  overflow: scroll;
 
 }
 .popup-inner.container {
@@ -116,7 +115,7 @@
   max-width: 900px;
   position: absolute;
   left:25%;
-  transition: all 3s ease;
+
 
 }
 .popup-inner-alert {
@@ -126,7 +125,6 @@
   max-width: 900px;
   position: absolute;
   left:25%;
-  transition: all 3s ease;
 }
 
 .popUP-alert{
@@ -171,6 +169,7 @@ footer {
     max-width: 725px !important;
     top: 20%;
     left: 25%;
+
   }
   .popup-inner-alert {
     max-width:  725px; 

@@ -27,7 +27,6 @@ export default function AddCollector(props) {
 
     const handleAddCollector =(e) =>{
         e.preventDefault();
-      
         setformErrors(validate(collectorEdit));
         console.log("clicked");
            
@@ -51,7 +50,6 @@ useEffect(()=>{
             collectorEdit.Fullname,
             collectorEdit.IsActive,
             collectorEdit.Username );
-            console.log("test");
             setIsSubmitcollector(false)
             props.setTriggerc(false)
             setCollectorEdit({
@@ -74,8 +72,6 @@ const handleReset =(event)=>{
         Username:""
     })
     setformErrors({reset:1})
-    
-   
 }
 
     const  validate = (values) => {
@@ -98,7 +94,6 @@ const handleReset =(event)=>{
         if(!values.IsActive){
             errors.IsActive = "IsActive is required";
         }
-
         return errors;
     }
     

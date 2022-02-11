@@ -1,9 +1,10 @@
-import React, { useEffect , useState ,useContext} from 'react'
+import React, { useEffect , useState ,useCallback,useContext} from 'react'
 import cooperativeContext from '../component/Cooperative/cooperativeContext'
 import '../style.css';
 import AddCooperative from './AddCooperative';
 import Spinner from '../component/Spinner/Spinner'
 import { Alert } from '../component/Alert';
+import useEscapse from '../component/hooks/Use-escape';
 
 
 export default function Content() {
@@ -12,12 +13,13 @@ export default function Content() {
     const [loading, setLoading] = useState(false);
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
-    const {edit, setEdit,getCoperative,cooperative,setCoperativeEdit,alert,setAlert} = context;
+    const {edit, setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,alert,setAlert} = context;
 
-    var classexpire = {
-        class : "",
-    };
-    
+   
+    const userId =JSON.parse(localStorage.getItem("userInfo"));
+       useEscapse(setPopup);
+
+
         function dateCalculator(licensedate){
             const now = new Date();
             const day = now.getDate();
@@ -47,7 +49,7 @@ export default function Content() {
     getCoperative()
     
   }, []);
-  console.log(classexpire)
+
   const handleAddCooperative= (e) =>{
     e.preventDefault();
     setEdit(false);
@@ -61,19 +63,43 @@ const handleSearch = (e)=>{
     
 }
 const handleEdit = (item) =>{
-    setEdit(true);
-  setCoperativeEdit( {
-        logo:(item.Logo),
-        cooperaticecode: item.CoOperativeCode,
-        cooperativename:item.CoOperativeName,
-        address:item.Address,
-        noOfUser:item.NoOfUser,
-        licenseExipry:item.licenseExpiry,
-        creditlimit:item.CreditLimit,
-        contactnumber:item.ContactNum,})
-
-  setPopup(true);
+        setEdit(true);
+     getCoperativeInfo(item).then(data => {
+         console.log(data.LicenceExpiry.split(/(\s+)/)[0].split("/").reverse().join("-"))
+         var datedummy = data.LicenceExpiry.split(/(\s+)/)[0].split("/")
+         var time = data.LicenceExpiry.split(/(\s+)/)[2].split(":")
+        if(datedummy[0]<10){
+            datedummy[0] = `0${datedummy[0]}`
+        }
+        if(datedummy[1]<10){
+            datedummy[1] = `0${datedummy[1]}`
+        }
+        var date = datedummy.reverse().join("-")
+         var dateTime = `${date}T${time[0]}:${time[1]}`
+         
+        setCoperativeEdit({  logo:data.Logo,
+            cooperaticecode: item,
+            cooperativename:data.CoOperativeName,
+            address:data.Address,
+            noOfUser:data.AllowNumOFUser,
+            licenseExipry:dateTime,
+            creditlimit:data.CreditLimit,
+            contactnumber:data.PhoneNum,
+            NickName: data.NickName,
+            ColorCode: data.ColorCode,
+            IsOnline: data.IsOnline,
+            IsPaid:data.IsPaid,
+            ScopeType: data.ScopeType,
+            CbsURL:data.CbsUrl,
+            IsWithdrawAllow: data.IsAllowWithDraw,
+            ShowHideBalance:data.ShowHideBalance,
+            AllowMultiDate: data.MultiDate,
+            ContactPerson:   data.ContactPerson,
+            CreatedUserID:  userId.UserID,})
+      });
+        setPopup(true);
 }
+console.log(cooperative)
   
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
@@ -150,7 +176,7 @@ const handleEdit = (item) =>{
                                                     }).map((item,i) => 
                                                     
                                                     <tr key={i+1}>
-                                                          
+                                                            
                                                                     <td className='tc'>{i + 1}</td>
                                                                     <td className="contentLogo tc"><img src={item.Logo}  alt="" /></td>
                                                                     <td className='tc'>{item.CoOperativeCode}</td>
@@ -160,7 +186,7 @@ const handleEdit = (item) =>{
                                                                     {dateCalculator(item.licenseExpiry.split(/(\s+)/)[0])}
                                                                     <td className='tc'> {item.CreditLimit}</td>
                                                                     <td className='tl'>{item.ContactNum}</td>
-                                                                    <td className='tc'><span className='editspan badge'  onClick={()=>handleEdit(item)}>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               
+                                                                    <td className='tc'><span className='editspan badge'  onClick={()=>handleEdit(item.CoOperativeCode)}>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               
   
                                                         </tr>
                                                    )}                               

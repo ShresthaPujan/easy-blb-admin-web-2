@@ -7,8 +7,7 @@ import { Alert } from '../component/Alert';
 import collectorContext from '../component/Collector/collectorContext';
 import AddCollector from './AddCollector';
 import EditCollector from './EditCollector';
-import Escpdetect from '../component/Escpdetect';
-
+import useEscapse from '../component/hooks/Use-escape';
 
 export default function Collector() {
 
@@ -26,6 +25,8 @@ export default function Collector() {
     getCollector()  
   }, []);
  
+   useEscapse(setPopup);
+        
 
   const handleAddCollector= (e) =>{
     e.preventDefault();
@@ -43,22 +44,7 @@ const handleEdit = (e) =>{
         e.preventDefault();
         setEditPopup(true)
 }
-const escFunction = useCallback((event) => {
-    if (event.keyCode === 27) {
-        setPopup(false);
-       
-    }
-    
-  }, []);
 
-useEffect(() => {
-    document.addEventListener("keydown", escFunction);
-
-    return () => {
-      document.removeEventListener("keydown", escFunction);
-    };
-  }, [escFunction]);
-  
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
                      <section className="content-section contentmain-popup">

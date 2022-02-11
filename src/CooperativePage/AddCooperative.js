@@ -1,6 +1,7 @@
 import React,{useState ,useEffect,useContext , useRef} from 'react';
 import cooperativeContext from '../component/Cooperative/cooperativeContext'
 import Escpdetect from '../component/Escpdetect';
+
 export default function AddCooperative(props) {
 
     const context = useContext(cooperativeContext)
@@ -26,12 +27,9 @@ export default function AddCooperative(props) {
     const handleAddCooperative =(e) =>{
         e.preventDefault();
         setformErrors(validate(cooperativeEdit));
-        if(Escpdetect()){
-            props.setTrigger(false);
-        }
            
     }
-  
+
     
 useEffect(() => {
     if(Object.keys(formErrors).length === 0){
@@ -41,45 +39,68 @@ useEffect(() => {
 },[formErrors]);
 
 useEffect(()=>{
+
     if(isSubmit){
-       
-        addCoperative(
-            cooperativeEdit.address,
-            cooperativeEdit.contactnumber,
-            cooperativeEdit.cooperaticecode,
-            cooperativeEdit.cooperativename,
-            cooperativeEdit.creditlimit,
-            cooperativeEdit.licenseExipry,
-            cooperativeEdit.logo,
-            cooperativeEdit.noOfUser,
-        );
+       var cooperativedata = {
+        logo:cooperativeEdit.logo,
+        cooperaticecode: cooperativeEdit.cooperaticecode,
+        cooperativename: cooperativeEdit.cooperativename,
+        address:cooperativeEdit.address,
+        noOfUser: cooperativeEdit.noOfUser,
+        licenseExipry:   cooperativeEdit.licenseExipry,
+        creditlimit: cooperativeEdit.creditlimit,
+        contactnumber:cooperativeEdit.contactnumber,
+        NickName: cooperativeEdit.NickName,
+        ColorCode: cooperativeEdit.ColorCode,
+        IsOnline: cooperativeEdit.IsOnline,
+        IsPaid:cooperativeEdit.IsPaid,
+        ScopeType: cooperativeEdit.ScopeType,
+        CbsURL:cooperativeEdit.CbsURL,
+        IsWithdrawAllow: cooperativeEdit.IsWithdrawAllow,
+        ShowHideBalance:cooperativeEdit.ShowHideBalance,
+        AllowMultiDate: cooperativeEdit.AllowMultiDate,
+        ContactPerson:   cooperativeEdit.ContactPerson,
+        CreatedUserID:  cooperativeEdit.CreatedUserID,
+       }
+        addCoperative(cooperativedata);
         setIsSubmit(false)
         props.setTrigger(false);
-        setCoperativeEdit({
-            logo:"",
-            cooperaticecode: "",
-            cooperativename:'',
-            address:"",
-            noOfUser:'',
-            licenseExipry: '',
-            creditlimit:'',
-            contactnumber:'',
-        })
+        // setCoperativeEdit({
+        //     logo:"",
+        //     cooperaticecode: "",
+        //     cooperativename:'',
+        //     address:"",
+        //     noOfUser:'',
+        //     licenseExipry: '',
+        //     creditlimit:'',
+        //     contactnumber:'',
+        //     NickName:'',
+        //     ColorCode:'',
+        //     IsOnline:'',
+        //     IsPaid:'',
+        //     ScopeType:'',
+        //     CbsURL:'',
+        //     IsWithdrawAllow:'',
+        //     ShowHideBalance:'',
+        //     AllowMultiDate:'',
+        //     ContactPerson:'',
+        //     CreatedUserID:'',
+        //  })
     }
 },[isSubmit])
 
 const handleReset =(event)=>{
     event.preventDefault();
-    setCoperativeEdit({
-        logo:"",
-        cooperaticecode: "",
-        cooperativename:'',
-        address:"",
-        noOfUser:'',
-        licenseExipry: '',
-        creditlimit:'',
-        contactnumber:'',
-    })
+    // setCoperativeEdit({
+    //     logo:"",
+    //     cooperaticecode: "",
+    //     cooperativename:'',
+    //     address:"",
+    //     noOfUser:'',
+    //     licenseExipry: '',
+    //     creditlimit:'',
+    //     contactnumber:'',
+    // })
     setformErrors({reset:1})
     
    
@@ -108,14 +129,54 @@ const handleReset =(event)=>{
         if(!values.creditlimit){
             errors.creditlimit = "creditlimit  is required";
         }
+        else if(!numv.test(values.creditlimit)){
+            errors.creditlimit = "Please enter number only";
+          }
         if(!values.logo){
             errors.logo = "logo is required";
         }
         if(!values.noOfUser){
             errors.noOfUser = "noOfUser  is required";
         }
+        else if(!numv.test(values.noOfUser)){
+            errors.noOfUser = "Please enter number only";
+          }
+        
         if(!values.licenseExipry){
             errors.licenseExipry = "licenseExipry  is required";
+        }
+        if(!values.NickName){
+            errors.NickName = "NickName  is required";
+        }
+        if(!values.ColorCode){
+            errors.ColorCode = "ColorCode  is required";
+        }
+        if(!values.IsOnline){
+            errors.IsOnline = "IsOnline  is required";
+        }
+        if(!values.IsPaid){
+            errors.IsPaid = "IsPaid  is required";
+        }
+        if(!values.ScopeType){
+            errors.ScopeType = "ScopeType  is required";
+        }
+        if(!values.CbsURL){
+            errors.CbsURL = "CbsURL  is required";
+        }
+        if(!values.IsWithdrawAllow){
+            errors.IsWithdrawAllow = "IsWithdrawAllow  is required";
+        }
+        if(!values.ShowHideBalance){
+            errors.ShowHideBalance = "ShowHideBalance  is required";
+        }
+        if(!values.AllowMultiDate){
+            errors.AllowMultiDate = "AllowMultiDate  is required";
+        }
+        if(!values.ContactPerson){
+            errors.ContactPerson = "ContactPerson  is required";
+        }
+        if(!values.CreatedUserID){
+            errors.CreatedUserID = "CreatedUserID  is required";
         }
 
         return errors;
@@ -134,7 +195,7 @@ const handleReset =(event)=>{
                                         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
                                                     
-                                                        <div >
+                                                    <div >
                                                         <label htmlFor="cooperaticecode" className="form-label">Cooperatice Code</label>    
                                                             <input
                                                                 type="text"
@@ -177,9 +238,9 @@ const handleReset =(event)=>{
                                                       </div>
                                                       
                                                       <div >
-                                                            <label htmlFor="licenseExipry" className="form-label">license Exipry</label>
+                                                            <label htmlFor="licenseExipry" className="form-label">license Exipry </label>
                                                                 <input
-                                                                    type="text"
+                                                                    type="date"
                                                                     className="form-control mb-1"
                                                                     value={cooperativeEdit.licenseExipry} onChange={handleChange}
                                                                     placeholder="license Expiry"
@@ -189,9 +250,97 @@ const handleReset =(event)=>{
                                                                     aria-describedby="addon-wrapping"/>
                                                                     <span className="errormsg">{formErrors.licenseExipry}</span>
                                                         </div>
-  
+                                                        <div >
+                                                            <label htmlFor="NickName" className="form-label">Nick Name</label>
+                                                                <input
+                                                                    type="text"
+                                                                    className="form-control mb-1"
+                                                                    value={cooperativeEdit.NickName} onChange={handleChange}
+                                                                    placeholder="Nick Name"
+                                                                    aria-label="NickName"
+                                                                    id="NickName"
+                                                                    name="NickName"
+                                                                    aria-describedby="addon-wrapping"/>
+                                                                    <span className="errormsg">{formErrors.NickName}</span>
+                                                        </div>
+                                                        <div >
+                                                             <label htmlFor="IsOnline" className="form-label">Is Online</label>
+                                                            <input
+                                                                className   ="form-control"
+                                                                type="text"
+                                                                value={ cooperativeEdit.IsOnline}
+                                                                className="form-control mb-1"
+                                                                onChange={handleChange}
+                                                                placeholder="IsOnline"
+                                                                aria-label="IsOnline"
+                                                                id="IsOnline"
+                                                                name="IsOnline"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.IsOnline}</span>       
+                                                         </div>
+                                                         <div >
+                                                             <label htmlFor="ScopeType" className="form-label">ScopeType</label>
+                                                            <input
+                                                                className   ="form-control"
+                                                                type="text"
+                                                                value={ cooperativeEdit.ScopeType}
+                                                                className="form-control mb-1"
+                                                                onChange={handleChange}
+                                                                placeholder="ScopeType"
+                                                                aria-label="ScopeType"
+                                                                id="ScopeType"
+                                                                name="ScopeType"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.ScopeType}</span>       
+                                                         </div>
+                                                    
+                                                         <div >
+                                                             <label htmlFor="IsWithdrawAllow" className="form-label">Is Withdraw Allow</label>
+                                                            <input
+                                                                className   ="form-control"
+                                                                type="text"
+                                                                value={ cooperativeEdit.IsWithdrawAllow}
+                                                                className="form-control mb-1"
+                                                                onChange={handleChange}
+                                                                placeholder="IsWithdrawAllow"
+                                                                aria-label="IsWithdrawAllow"
+                                                                id="IsWithdrawAllow"
+                                                                name="IsWithdrawAllow"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.IsWithdrawAllow}</span>       
+                                                         </div>
+                                                         <div >
+                                                             <label htmlFor="AllowMultiDate" className="form-label">Allow Multi Date</label>
+                                                            <input
+                                                                className   ="form-control"
+                                                                type="text"
+                                                                value={ cooperativeEdit.AllowMultiDate}
+                                                                className="form-control mb-1"
+                                                                onChange={handleChange}
+                                                                placeholder="AllowMultiDate"
+                                                                aria-label="AllowMultiDate"
+                                                                id="AllowMultiDate"
+                                                                name="AllowMultiDate"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.AllowMultiDate}</span>       
+                                                         </div>
+                                                         <div >
+                                                             <label htmlFor="CreatedUserID" className="form-label">Created UserID</label>
+                                                            <input
+                                                                className   ="form-control"
+                                                                type="text"
+                                                                value={ cooperativeEdit.CreatedUserID}
+                                                                className="form-control mb-1"
+                                                                onChange={handleChange}
+                                                                placeholder="CreatedUserID"
+                                                                aria-label="CreatedUserID"
+                                                                id="CreatedUserID"
+                                                                name="CreatedUserID"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.AllowMultiDate}</span>       
+                                                         </div>
                                             </div>
-                                        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <div className="col-lg-6 col-md-6 col-sm-12 col-12">
 
                                                     <div >
                                                         <label htmlFor="cooperativename" className="form-label">Cooperative Name</label>   
@@ -242,14 +391,92 @@ const handleReset =(event)=>{
                                                         type="text"
                                                         value={ cooperativeEdit.logo}
                                                         className="form-control mb-1"
-                                                    onChange={handleChange}
+                                                        onChange={handleChange}
                                                         placeholder="Logo"
                                                         aria-label="Logo"
                                                         id="Logo"
                                                         name="logo"
                                                         aria-describedby="addon-wrapping"/>
+                                                         <span className="errormsg">{formErrors.logo}</span>       
                                             </div>
-                                            <span className="errormsg">{formErrors.logo}</span>                                                                             
+                                            <div >
+                                                <label htmlFor="ColorCode" className="form-label">Color Code</label>
+                                                    <input
+                                                        className   ="form-control"
+                                                        type="text"
+                                                        value={ cooperativeEdit.ColorCode}
+                                                        className="form-control mb-1"
+                                                        onChange={handleChange}
+                                                        placeholder="ColorCode"
+                                                        aria-label="ColorCode"
+                                                        id="ColorCode"
+                                                        name="ColorCode"
+                                                        aria-describedby="addon-wrapping"/>
+                                                         <span className="errormsg">{formErrors.ColorCode}</span>       
+                                            </div>
+                                                        <div >
+                                                             <label htmlFor="IsPaid" className="form-label">Is Paid</label>
+                                                            <input
+                                                                className   ="form-control"
+                                                                type="text"
+                                                                value={ cooperativeEdit.IsPaid}
+                                                                className="form-control mb-1"
+                                                                onChange={handleChange}
+                                                                placeholder="IsPaid"
+                                                                aria-label="IsPaid"
+                                                                id="IsPaid"
+                                                                name="IsPaid"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.IsPaid}</span>       
+                                                         </div>
+                                                         
+                                                        <div >
+                                                             <label htmlFor="CbsURL" className="form-label">Cbs URL</label>
+                                                            <input
+                                                                className   ="form-control"
+                                                                type="text"
+                                                                value={ cooperativeEdit.CbsURL}
+                                                                className="form-control mb-1"
+                                                                onChange={handleChange}
+                                                                placeholder="CbsURL"
+                                                                aria-label="CbsURL"
+                                                                id="CbsURL"
+                                                                name="CbsURL"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.CbsURL}</span>       
+                                                         </div>
+                                                   
+                                                         <div >
+                                                             <label htmlFor="ShowHideBalance" className="form-label">Show Hide Balance</label>
+                                                            <input
+                                                                className   ="form-control"
+                                                                type="text"
+                                                                value={ cooperativeEdit.ShowHideBalance}
+                                                                className="form-control mb-1"
+                                                                onChange={handleChange}
+                                                                placeholder="ShowHideBalance"
+                                                                aria-label="ShowHideBalance"
+                                                                id="ShowHideBalance"
+                                                                name="ShowHideBalance"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.ShowHideBalance}</span>       
+                                                         </div>
+                                                         <div >
+                                                             <label htmlFor="ContactPerson" className="form-label">Contact Person</label>
+                                                            <input
+                                                                className   ="form-control"
+                                                                type="text"
+                                                                value={ cooperativeEdit.ContactPerson}
+                                                                className="form-control mb-1"
+                                                                onChange={handleChange}
+                                                                placeholder="ContactPerson"
+                                                                aria-label="ContactPerson"
+                                                                id="ContactPerson"
+                                                                name="ContactPerson"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.ContactPerson}</span>       
+                                                         </div>
+                                                                                                                 
                                         </div>
                                     </div>
                                     <div className="container">

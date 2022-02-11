@@ -31,45 +31,80 @@ const CooperativeState =(props) =>{
           
         }
       }
+      const getCoperativeInfo = async(cooperativecode)=> {   
+        try{
+          const response = await fetch(`api2/BLBApi/BLB/GetCoOperativeData?CoOperativeCode=${cooperativecode}`);
+          return response.json();
+        }  
+        catch(err) {
+            throw err;
+          
+        }
+        
+      }
     
-      const addCoperative = async (address,contactnumber,cooperaticecode,cooperativename,creditlimit,logo,noOfUser)=>{
+      const addCoperative = async (cooperativedata)=>{
+        console.log(cooperativedata)
         const formData = {
-              CoOperativeCode: cooperaticecode,
-              UserName: cooperativename,
-              NickName: "mizalsetting",
-              Logo: "wefwefvwefcwe",
-              ColorCode: "#434332",
-              IsOnline: "Y",
-              IsPaid: "Y",
-              LicenceExpiry:"2022-01-31",
-              ScopeType: "dfverver",
-              CreditLimit: 90909.90,
-              AllowedNumOFUser: 4,
-              CbsURL: "vefverveverv",
-              IsWithdrawAllow: "Y",
-              AllowMultiDate: "Y",
-              PAddress: "erverververv",
-              ContactPerson: "Mizal",
-              PhNum: "0984834985",
-              CreatedUserID:"1"
+              CoOperativeCode:cooperativedata.cooperaticecode,
+              UserName: cooperativedata.cooperativename,
+              NickName: cooperativedata.NickName,
+              Logo: cooperativedata.logo,
+              ColorCode: cooperativedata.ColorCode,
+              IsOnline: cooperativedata.IsOnline,
+              IsPaid: cooperativedata.IsPaid,
+              LicenceExpiry:cooperativedata.licenseExipry,
+              ScopeType: cooperativedata.ScopeType,
+              CreditLimit: parseInt(cooperativedata.creditlimit),
+              AllowedNumOFUser: parseInt(cooperativedata.noOfUser),
+              CbsURL:cooperativedata.CbsURL,
+              IsWithdrawAllow: cooperativedata.IsWithdrawAllow,
+              ShowHideBalance:cooperativedata.ShowHideBalance,
+              AllowMultiDate: cooperativedata.AllowMultiDate,
+              PAddress: cooperativedata.address,
+              ContactPerson: cooperativedata.ContactPerson,
+              PhNum: cooperativedata.contactnumber,
+              CreatedUserID:cooperativedata.CreatedUserID
+              
         }
    
-        const response = await fetch ('api2/BLBApi/BLB/CoOperativeSetting',{
-            method:'POST',
-            headers: {'Content-Type': 'application/json'},
-            body:JSON.stringify(formData)
-        });
-                const cooptive = await response.json();
+        console.log(JSON.stringify(formData))
               
               if(edit){
+                console.log("here")
+                const response = await fetch ('api2/BLBApi/BLB/CoOperativeUpdate',{
+                  method:'POST',
+                  headers: {'Content-Type': 'application/json'},
+                  body:JSON.stringify(formData)
+              });
+                  const cooptive = await response.json();
+              
                 if(cooptive.STATUS_CODE === "0")
                   {
                     let newCooprative = JSON.parse(JSON.stringify(cooperative))
                     // Logic to edit in client
                     for (let index = 0; index < newCooprative.length; index++) {
                       const element = newCooprative[index];
-                      if (element.CoOperativeCode === cooperaticecode) {
-                        newCooprative[index].CoOperativeName = cooperativename;             
+                      if (element.CoOperativeCode === cooperativedata.cooperaticecode) {
+                        newCooprative[index].CoOperativeName = cooperativedata.cooperativename;
+                        newCooprative[index].NickName = cooperativedata.NickName;
+                        newCooprative[index].UserName = cooperativedata.UserName;
+                        newCooprative[index].Logo = cooperativedata.Logo;
+                        newCooprative[index].ColorCode = cooperativedata.ColorCode;
+                        newCooprative[index].IsOnline = cooperativedata.IsOnline;             
+                        newCooprative[index].IsPaid = cooperativedata.IsPaid;
+                        newCooprative[index].LicenceExpiry = cooperativedata.LicenceExpiry;
+                        newCooprative[index].ScopeType = cooperativedata.ScopeType;
+                        newCooprative[index].CreditLimit = cooperativedata.CreditLimit;
+                        newCooprative[index].AllowedNumOFUser = cooperativedata.AllowedNumOFUser;
+                        newCooprative[index].CbsURL = cooperativedata.CbsURL;
+                        newCooprative[index].IsWithdrawAllow = cooperativedata.IsWithdrawAllow;
+                        newCooprative[index].AllowMultiDate = cooperativedata.AllowMultiDate;
+                        newCooprative[index].PAddress = cooperativedata.PAddress;
+                        newCooprative[index].ContactPerson = cooperativedata.ContactPerson;
+                        newCooprative[index].PhNum = cooperativedata.PhNum;
+                        newCooprative[index].CreatedUserID = cooperativedata.CreatedUserID;
+                        newCooprative[index].ShowHideBalance = cooperativedata.ShowHideBalance;
                         break; 
                       }
                     }  
@@ -77,6 +112,14 @@ const CooperativeState =(props) =>{
                   }
               }
               else{
+                console.log("add")
+                const response = await fetch ('api2/BLBApi/BLB/CoOperativeAdd',{
+                  method:'POST',
+                  headers: {'Content-Type': 'application/json'},
+                  body:JSON.stringify(formData)
+              });
+                  const cooptive = await response.json();
+                  console.log(cooptive)
                 if(cooptive.STATUS_CODE === "0")
                 {
                   setCoperative(cooperative.concat({
@@ -101,7 +144,7 @@ const CooperativeState =(props) =>{
    const[menutoggle,setMenutoggle]=useState(false);
    
 return (
-    <cooperativeContext.Provider value={{edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
+    <cooperativeContext.Provider value={{getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
       {props.children}
     </cooperativeContext.Provider>
   )
