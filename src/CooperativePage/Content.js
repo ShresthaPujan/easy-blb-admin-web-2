@@ -13,14 +13,15 @@ export default function Content() {
     const [loading, setLoading] = useState(false);
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
-    const {edit, setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,alert,setAlert} = context;
+    const {edit, setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
 
    
     const userId =JSON.parse(localStorage.getItem("userInfo"));
        useEscapse(setPopup);
 
+       
 
-        function dateCalculator(licensedate){
+        function  dateCalculator(licensedate){
             const now = new Date();
             const day = now.getDate();
             const month = now.getMonth() + 1;
@@ -65,24 +66,22 @@ const handleSearch = (e)=>{
 const handleEdit = (item) =>{
         setEdit(true);
      getCoperativeInfo(item).then(data => {
-         console.log(data.LicenceExpiry.split(/(\s+)/)[0].split("/").reverse().join("-"))
          var datedummy = data.LicenceExpiry.split(/(\s+)/)[0].split("/")
-         var time = data.LicenceExpiry.split(/(\s+)/)[2].split(":")
         if(datedummy[0]<10){
             datedummy[0] = `0${datedummy[0]}`
         }
         if(datedummy[1]<10){
             datedummy[1] = `0${datedummy[1]}`
         }
-        var date = datedummy.reverse().join("-")
-         var dateTime = `${date}T${time[0]}:${time[1]}`
-         
+        var date = `${datedummy[2]}-${datedummy[0]}-${datedummy[1]}`
+       console.log(datedummy)
+        
         setCoperativeEdit({  logo:data.Logo,
             cooperaticecode: item,
             cooperativename:data.CoOperativeName,
             address:data.Address,
             noOfUser:data.AllowNumOFUser,
-            licenseExipry:dateTime,
+            licenseExipry:date,
             creditlimit:data.CreditLimit,
             contactnumber:data.PhoneNum,
             NickName: data.NickName,
@@ -97,9 +96,10 @@ const handleEdit = (item) =>{
             ContactPerson:   data.ContactPerson,
             CreatedUserID:  userId.UserID,})
       });
+      console.log(cooperativeEdit)
         setPopup(true);
 }
-console.log(cooperative)
+
   
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
@@ -163,7 +163,7 @@ console.log(cooperative)
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-           
+ 
                                                    {cooperative.filter((item)=>{
                                                         if (searchTerm === ""){
                                                             return item
@@ -183,7 +183,7 @@ console.log(cooperative)
                                                                     <td  className="tl">{item.CoOperativeName}</td>                       
                                                                     <td className='tl'>{item.Address}</td>
                                                                     <td className='tc'> {item.NoOfUser}</td>
-                                                                    {dateCalculator(item.licenseExpiry.split(/(\s+)/)[0])}
+                                                                    {item.licenseExpiry? dateCalculator(item.licenseExpiry.split(/(\s+)/)[0]) : <td></td>}
                                                                     <td className='tc'> {item.CreditLimit}</td>
                                                                     <td className='tl'>{item.ContactNum}</td>
                                                                     <td className='tc'><span className='editspan badge'  onClick={()=>handleEdit(item.CoOperativeCode)}>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               

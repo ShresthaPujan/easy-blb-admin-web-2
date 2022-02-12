@@ -44,7 +44,6 @@ const CooperativeState =(props) =>{
       }
     
       const addCoperative = async (cooperativedata)=>{
-        console.log(cooperativedata)
         const formData = {
               CoOperativeCode:cooperativedata.cooperaticecode,
               UserName: cooperativedata.cooperativename,
@@ -78,7 +77,7 @@ const CooperativeState =(props) =>{
                   body:JSON.stringify(formData)
               });
                   const cooptive = await response.json();
-              
+                    console.log(cooptive)
                 if(cooptive.STATUS_CODE === "0")
                   {
                     let newCooprative = JSON.parse(JSON.stringify(cooperative))
@@ -87,24 +86,14 @@ const CooperativeState =(props) =>{
                       const element = newCooprative[index];
                       if (element.CoOperativeCode === cooperativedata.cooperaticecode) {
                         newCooprative[index].CoOperativeName = cooperativedata.cooperativename;
-                        newCooprative[index].NickName = cooperativedata.NickName;
-                        newCooprative[index].UserName = cooperativedata.UserName;
                         newCooprative[index].Logo = cooperativedata.Logo;
-                        newCooprative[index].ColorCode = cooperativedata.ColorCode;
-                        newCooprative[index].IsOnline = cooperativedata.IsOnline;             
-                        newCooprative[index].IsPaid = cooperativedata.IsPaid;
-                        newCooprative[index].LicenceExpiry = cooperativedata.LicenceExpiry;
-                        newCooprative[index].ScopeType = cooperativedata.ScopeType;
+                        newCooprative[index].licenseExipry = cooperativedata.LicenceExpiry; 
                         newCooprative[index].CreditLimit = cooperativedata.CreditLimit;
-                        newCooprative[index].AllowedNumOFUser = cooperativedata.AllowedNumOFUser;
-                        newCooprative[index].CbsURL = cooperativedata.CbsURL;
-                        newCooprative[index].IsWithdrawAllow = cooperativedata.IsWithdrawAllow;
-                        newCooprative[index].AllowMultiDate = cooperativedata.AllowMultiDate;
+                        newCooprative[index].NoOfUser = cooperativedata.AllowedNumOFUser;
                         newCooprative[index].PAddress = cooperativedata.PAddress;
                         newCooprative[index].ContactPerson = cooperativedata.ContactPerson;
                         newCooprative[index].PhNum = cooperativedata.PhNum;
-                        newCooprative[index].CreatedUserID = cooperativedata.CreatedUserID;
-                        newCooprative[index].ShowHideBalance = cooperativedata.ShowHideBalance;
+                   
                         break; 
                       }
                     }  
@@ -119,7 +108,10 @@ const CooperativeState =(props) =>{
                   body:JSON.stringify(formData)
               });
                   const cooptive = await response.json();
-                  console.log(cooptive)
+                  const Exp  = await cooptive.LicenceExpiry
+                  var licenseExp=  await  Exp.split("T").join(' ');
+                  
+               
                 if(cooptive.STATUS_CODE === "0")
                 {
                   setCoperative(cooperative.concat({
@@ -127,8 +119,8 @@ const CooperativeState =(props) =>{
                     CoOperativeCode:formData.CoOperativeCode,
                     CoOperativeName:cooptive.CoOperativeName,
                     Address:cooptive.Address,
-                    NoOfUser:formData.AllowNumOFUser,
-                    licenseExipry: cooptive.LicenceExpiry,
+                    NoOfUser:cooptive.AllowNumOFUser,
+                    licenseExipry: licenseExp,
                     CreditLimit:cooptive.CreditLimit,
                     ContactNum:cooptive.PhoneNum,
                   }))

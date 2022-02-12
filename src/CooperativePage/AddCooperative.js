@@ -10,7 +10,7 @@ export default function AddCooperative(props) {
 
     // const initalvalue = props.item;
      const ref = useRef(null); 
-    const [formErrors, setformErrors] = useState({});
+    const [formErrors, setformErrors] = useState({val:1});
     const [isSubmit, setIsSubmit] = useState(false);
     const [first, setfirst] = useState({});
 
@@ -18,11 +18,10 @@ export default function AddCooperative(props) {
         const{name , value} = e.target;
         setCoperativeEdit({ ...cooperativeEdit,[name]:value});
     };
-    
     const handlePopupClose = (e) =>{    
         e.preventDefault();
         props.setTrigger(false);
-        setformErrors({})
+        setformErrors({val:1})
     }
     const handleAddCooperative =(e) =>{
         e.preventDefault();
@@ -37,7 +36,7 @@ useEffect(() => {
         
   }
 },[formErrors]);
-
+console.log(isSubmit)
 useEffect(()=>{
 
     if(isSubmit){
@@ -65,27 +64,9 @@ useEffect(()=>{
         addCoperative(cooperativedata);
         setIsSubmit(false)
         props.setTrigger(false);
-        // setCoperativeEdit({
-        //     logo:"",
-        //     cooperaticecode: "",
-        //     cooperativename:'',
-        //     address:"",
-        //     noOfUser:'',
-        //     licenseExipry: '',
-        //     creditlimit:'',
-        //     contactnumber:'',
-        //     NickName:'',
-        //     ColorCode:'',
-        //     IsOnline:'',
-        //     IsPaid:'',
-        //     ScopeType:'',
-        //     CbsURL:'',
-        //     IsWithdrawAllow:'',
-        //     ShowHideBalance:'',
-        //     AllowMultiDate:'',
-        //     ContactPerson:'',
-        //     CreatedUserID:'',
-        //  })
+        setCoperativeEdit({
+        error:1
+         })
     }
 },[isSubmit])
 
