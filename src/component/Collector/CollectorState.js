@@ -30,25 +30,32 @@ const CollectorState =(props) =>{
           
         }
       }
+      const getCollectorInfo = async(collectorId)=> {   
+        try{
+          const response = await fetch(`api2/BLBApi/Collector/GetCollectorInfo?CoOperativeCode=YT47&CollectorID=${collectorId}`);
+          return response.json();
+        }  
+        catch(err) {
+            throw err;
+          
+        }
+        
+      }
 
       const addCollector = async (collectorData) => {
-        console.log("addcollect here")
-        console.log(collectorData)
+
         const response = await fetch ('api2/BLBApi/Collector/AddCollector',{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
           body:JSON.stringify(collectorData)
       });
-          const collector = await response.json();
-          console.log(collector)
-         console.log(collector.lstCollector[)
-       
-        if(collector.STATUS_CODE === "0")
+          const collectordata = await response.json();
+        if(collectordata.STATUS_CODE === "0")
         {
           setCollector(collector.concat({
-            BranchID:collector.lstCollector[0].BranchID, CollectorID:collector.lstCollector[0].CollectorID, fullName:collector.lstCollector[0].fullName,IsActive:collector.lstCollector[0].IsActive,UserName:collector.lstCollector[0].UserName
+            BranchID:collectordata.lstCollector["0"].BranchID, CollectorID:collectordata.lstCollector["0"].CollectorID, fullName:collectordata.lstCollector["0"].fullName,IsActive:collectordata.lstCollector["0"].IsActive,UserName:collectordata.lstCollector["0"].UserName
           }))
-          navigate("/cooperative")
+          navigate("/collector")
           console.log("add collector state")
       }
       }
@@ -75,7 +82,7 @@ const CollectorState =(props) =>{
    const[menutoggle,setMenutoggle]=useState(false);
    
 return (
-    <collectorContext.Provider value={{getCollector,editCollector,collector,collectorEdit,setCollectorEdit,edit,setEdit,addCollector}}>
+    <collectorContext.Provider value={{getCollectorInfo,getCollector,editCollector,collector,collectorEdit,setCollectorEdit,edit,setEdit,addCollector}}>
       {props.children}
     </collectorContext.Provider>
   )

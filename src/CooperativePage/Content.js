@@ -207,12 +207,12 @@ const handleEdit = (item) =>{
         
          {edit ? (
          <AddCooperative trigger ={popup} setTrigger={setPopup} >
-             <h4 >Edit Cooperative</h4>
+             <h5 >Edit Cooperative</h5>
              <hr/>
          </AddCooperative>):
          (
          <AddCooperative trigger ={popup} setTrigger={setPopup} >
-             <h4 >Add Cooperative</h4>
+             <h5>Add Cooperative</h5>
          </AddCooperative>)
          }
         

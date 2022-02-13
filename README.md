@@ -65,3 +65,10 @@
 
 10the feb 2022 
  -on esc click popup close dynamic
+
+ 11th feb 2022 
+ -add cooperative completed
+13th feb 2022 
+ -UI design changed
+ -add collector done
+ 

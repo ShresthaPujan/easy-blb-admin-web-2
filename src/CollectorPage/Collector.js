@@ -17,7 +17,7 @@ export default function Collector() {
     
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(collectorContext)
-    const {getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
+    const {getCollectorInfo,getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
     
 
  
@@ -40,8 +40,10 @@ const handleSearch = (e)=>{
     setSearchTerm(e.target.value);
     
 }
-const handleEdit = (e) =>{
-        e.preventDefault();
+const handleEdit = (item) =>{
+    getCollectorInfo(item).then(data => {
+        console.log(data)
+    })
         setEditPopup(true)
 }
 
@@ -114,7 +116,7 @@ const handleEdit = (e) =>{
                                                                     <td  className="tl">{item.UserName}</td>                       
                                                                     <td className='tl'>{item.fullName}</td>
                                                                     <td className='tl'>{item.IsActive}</td>
-                                                                    <td className='tc'><span className='editspan badge'  onClick={handleEdit}>Edit</span> | <span className='deletespan badge '>Deactivate</span> | <span className='editspan badge'  onClick={handleEdit}>Reset Password</span></td>                                                               
+                                                                    <td className='tc'><span className='editspan badge'   onClick={()=>handleEdit(item.CollectorID)}>Edit</span> | <span className='deletespan badge '>Deactivate</span> | <span className='editspan badge' >Reset Password</span></td>                                                               
   
                                                         </tr>
                                                    )}
