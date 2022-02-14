@@ -12,13 +12,13 @@ export default function Content() {
     const [popup, setPopup] = useState(false);
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
-    const {edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
+    const {first,edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
 
    
     const userId =JSON.parse(localStorage.getItem("userInfo"));
        useEscapse(setPopup);
 
-       
+       console.log(first)
 
         function  dateCalculator(licensedate){
             const now = new Date();
@@ -162,7 +162,7 @@ const handleEdit = (item) =>{
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                           {console.log(cooperative)}
+                                                       
  
                                                    {cooperative.filter((item)=>{
                                                         if (searchTerm === ""){

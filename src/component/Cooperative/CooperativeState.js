@@ -21,7 +21,22 @@ const CooperativeState =(props) =>{
       noOfUser:'',
       licenseExipry: '',
       creditlimit:'',
-      contactnumber:'',
+      UserName: "",
+      NickName: "",
+      ColorCode: "",
+      IsOnline: "",
+      IsPaid: "",
+      LicenceExpiry: "",
+      ScopeType: "",
+      AllowedNumOFUser: "",
+      CbsURL: "",
+      IsWithdrawAllow: "",
+      ShowHideBalance: "",
+      AllowMultiDate: "",
+      PAddress: "",
+      ContactPerson: "",
+      PhNum: "",
+      CreatedUserID: ""
     })
 
    const getCoperative = async()=> {   
@@ -121,6 +136,21 @@ const CooperativeState =(props) =>{
                   msg:"Cooperative added Successfully",
                   type:"alert alert-success"
                 })
+                const cooperativeData ={
+                    Logo:cooptive.Logo,
+                    CoOperativeCode:formData.CoOperativeCode,
+                    CoOperativeName:cooptive.CoOperativeName,
+                    Address:cooptive.Address,
+                    NoOfUser:cooptive.AllowNumOFUser,
+                    licenseExipry: cooptive.LicenceExpiry,
+                    CreditLimit:cooptive.CreditLimit,
+                    ContactNum:cooptive.PhoneNum,
+                     IsOnline: cooptive.IsOnline,
+                    IsPaid: cooptive.IsPaid,
+                    CBSURL: cooptive.CBSURL
+                }
+               
+                setCoperative({...cooperative,cooperativeData})
                 setfirst(cooptive)
                   // setCoperative(cooperative.concat({
                   //   Logo:cooptive.Logo,

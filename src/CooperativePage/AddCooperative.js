@@ -65,10 +65,9 @@ useEffect(()=>{
        }
         addCoperative(cooperativedata);
         setIsSubmit(false)
+        setformErrors({error:1})
         props.setTrigger(false);
-        setCoperativeEdit({
-        error:1
-         })
+        setCoperativeEdit({})
     }
 },[isSubmit])
 const handleReset =(event)=>{
@@ -278,7 +277,7 @@ const handleReset =(event)=>{
                                                                     <div className="col-lg-4">
                                                                     <label htmlFor="" className="form-label">Is Online</label>
                                                                         <select style={{fontSize:"11px"}} value={cooperativeEdit.IsOnline} name="IsOnline" onChange={handleChange}  className="form-select form-select-sm">
-                                                                             <option selected style={{fontSize:"11px"}}>select menu</option>
+                                                                             <option   disabled selected style={{fontSize:"11px"}}>select menu</option>
                                                                             <option value="Y">Yes</option>
                                                                             <option value="N">No</option>
                                                                            
