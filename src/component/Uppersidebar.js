@@ -10,7 +10,7 @@ import logo from './logo3.png'
 
 export default function Uppersidebar() {
     const context = useContext(cooperativeContext)
-    const {alert,setAlert,logoutdata,menutoggle,setMenutoggle} = context;
+    const {alert,setAlert,logoutdata,menutoggle,setMenutoggle,msg,setMsg} = context;
     const [active, setActive] = useState(false);
     const handleLogoClick = (e) =>{
         e.preventDefault();
@@ -44,11 +44,17 @@ export default function Uppersidebar() {
         setMenutoggle(!menutoggle);
     }
     useEffect(()=>{
+   
     if(logoutdata){
         logoutFunction()
     }
     },[logoutdata]);
-
+    
+    useEffect(()=>{
+        setTimeout(() => {
+            setMsg({})
+            },6000);
+    },[msg])
   return <>
        
                         <div className="col-lg-12 col-md-12 col-sm-12 ">
@@ -56,6 +62,9 @@ export default function Uppersidebar() {
                                 <div className="navbar">
                                     <div>
                                         <button className="toggle" onClick={handleMenuChange} ><i className="fas fa-bars"></i></button><span className="mx-3">DashBoard</span>
+                                    </div>
+                                    <div className={msg.type}>
+                                       {msg.msg}
                                     </div>
                                     <div className="navbar__right">
                                      

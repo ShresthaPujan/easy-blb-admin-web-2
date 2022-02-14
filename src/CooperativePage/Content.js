@@ -10,10 +10,9 @@ import useEscapse from '../component/hooks/Use-escape';
 export default function Content() {
 
     const [popup, setPopup] = useState(false);
-    const [loading, setLoading] = useState(false);
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
-    const {edit, setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
+    const {edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
 
    
     const userId =JSON.parse(localStorage.getItem("userInfo"));
@@ -31,7 +30,7 @@ export default function Content() {
         
             const currentdate = `${month}/${day}/${year}`
             const date1 = new Date(currentdate);
-            const date2 = new Date(licensedate);
+            const date2 = new Date(licensedate.split("T")[0]);
             var difference=  date2-date1 ;
             const  days = difference/(1000 * 3600 * 24)
             if (days < 0){
@@ -159,10 +158,11 @@ const handleEdit = (item) =>{
                                                                 <td className='tc'>Exipry Date</td>
                                                                 <td> Credit Limit</td>
                                                                 <td className='tl'>Contact</td>   
-                                                                <td className='tc'> Action</td>
+                                                                <td className='tc' style={{ width: "220px"}}> Action</td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                           {console.log(cooperative)}
  
                                                    {cooperative.filter((item)=>{
                                                         if (searchTerm === ""){
@@ -183,10 +183,10 @@ const handleEdit = (item) =>{
                                                                     <td  className="tl">{item.CoOperativeName}</td>                       
                                                                     <td className='tl'>{item.Address}</td>
                                                                     <td className='tc'> {item.NoOfUser}</td>
-                                                                    {item.licenseExpiry? dateCalculator(item.licenseExpiry.split(/(\s+)/)[0]) : <td></td>}
+                                                                    {dateCalculator(item.licenseExpiry)}
                                                                     <td className='tc'> {item.CreditLimit}</td>
                                                                     <td className='tl'>{item.ContactNum}</td>
-                                                                    <td className='tc'><span className='editspan badge'  onClick={()=>handleEdit(item.CoOperativeCode)}>Edit</span> | <span className='deletespan badge '>Deactivate</span></td>                                                               
+                                                                    <td className='tc'><span className='editspan badge'  onClick={()=>handleEdit(item.CoOperativeCode)}>Edit</span> | <span className='deletespan badge '>Deactivate</span> |<span className='editspan badge'>CbsUrl</span></td>                                                               
   
                                                         </tr>
                                                    )}                               

@@ -154,7 +154,7 @@ const handleReset =(event)=>{
     return (props.triggerc)
         ? (
             <div className="popUP container-fluid  col-lg-12 col-md-12 col-sm-12 col-xs-12">   
-                    <div className="popup-inner container p-4 ">
+                    <div className="popup-inner container-fluid p-4 ">
                          <button className='btn closebtn' ref ={ref} onClick={handlePopupClose}><i className="bi bi-x"></i></button>
                         <form action="">
                                 <div className="col-lg-12 col-md-12 col-sm-12">        
@@ -165,7 +165,7 @@ const handleReset =(event)=>{
                                                             <label htmlFor="CoOperativeCode" className="form-label">CoOperativeCode</label>
                                                                 <input
                                                                     type="text"
-                                                                    className="form-control mb-1"
+                                                                    className="form-control form-control-sm  mb-1"
                                                                     placeholder="CoOperativeCode"
                                                                     aria-label="CoOperativeCode"
                                                                     name="CoOperativeCode"
@@ -173,7 +173,7 @@ const handleReset =(event)=>{
                                                                     value={collectorEdit.CoOperativeCode} onChange={handleChange}
                                                                     aria-describedby="addon-wrapping"/>
                                                             
-                                                            <span className="errormsg">{formErrors.IsActive}</span>
+                                                            <span className="errormsg">{formErrors.CoOperativeCode}</span>
                                                             </div>
 
                                                     
@@ -181,7 +181,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="Fullname" className="form-label">Full Name</label>    
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={collectorEdit.Fullname} onChange={handleChange}
                                                                 name="Fullname"
                                                                 placeholder="FullName"
@@ -194,7 +194,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="IsActive" className="form-label">Is Active</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={collectorEdit.IsActive} onChange={handleChange}
                                                                 placeholder="IsActive"
                                                                 aria-label="IsActive"
@@ -208,7 +208,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="UserName" className="form-label">UserName</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 placeholder="UserName"
                                                                 aria-label="UserName"
                                                                 name="UserName"
@@ -222,7 +222,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="IMEI_NUM" className="form-label">IMEI NUM</label>    
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={collectorEdit.IMEI_NUM} onChange={handleChange}
                                                                 name="IMEI_NUM"
                                                                 placeholder="IMEI_NUM"
@@ -237,7 +237,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="FatherName" className="form-label">FatherName</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={collectorEdit.FatherName} onChange={handleChange}
                                                                 placeholder="FatherName"
                                                                 aria-label="FatherName"
@@ -251,7 +251,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="PAddress" className="form-label">Permanent Address</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 placeholder="Is Active"
                                                                 aria-label="Is Active"
                                                                 name="PAddress"
@@ -266,7 +266,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="createdUserID" className="form-label">created User ID</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 placeholder="createdUserID"
                                                                 aria-label="createdUserID"
                                                                 name="createdUserID"
@@ -284,7 +284,7 @@ const handleReset =(event)=>{
                                                             <label htmlFor="TAddress" className="form-label">Temporary Address</label>
                                                                 <input
                                                                     type="text"
-                                                                    className="form-control mb-1"
+                                                                    className="form-control form-control-sm  mb-1"
                                                                     placeholder="TAddress"
                                                                     aria-label="TAddress"
                                                                     name="TAddress"
@@ -298,7 +298,7 @@ const handleReset =(event)=>{
                                                             <label htmlFor="Email" className="form-label">Email</label>
                                                                 <input
                                                                     type="text"
-                                                                    className="form-control mb-1"
+                                                                    className="form-control form-control-sm  mb-1"
                                                                     placeholder="Email"
                                                                     aria-label="Email"
                                                                     name="Email"
@@ -312,7 +312,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="PhNum" className="form-label">PhNum</label>   
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={ collectorEdit.PhNum} onChange={handleChange}
                                                                 placeholder="PhNum"
                                                                 name="PhNum"
@@ -326,7 +326,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="EmergencyContact" className="form-label">EmergencyContact</label>   
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={ collectorEdit.EmergencyContact} onChange={handleChange}
                                                                 placeholder="EmergencyContact"
                                                                 name="EmergencyContact"
@@ -340,7 +340,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="Guarantee" className="form-label">Guarantee</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={ collectorEdit.Guarantee} onChange={handleChange}
                                                                 placeholder="Guarantee"
                                                                 aria-label="Guarantee"
@@ -353,7 +353,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="BranchID" className="form-label">Branch ID</label>    
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={collectorEdit.BranchID} onChange={handleChange}
                                                                 name="BranchID"
                                                                 placeholder="Branch ID"
@@ -366,7 +366,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="ActiveInActive" className="form-label">ActiveI nActive</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={collectorEdit.ActiveInActive} onChange={handleChange}
                                                                 placeholder="ActiveInActive"
                                                                 aria-label="ActiveInActive"
@@ -380,7 +380,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="NameNepali" className="form-label">Name Nepali</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 placeholder="NameNepali"
                                                                 aria-label="NameNepali"
                                                                 name="NameNepali"

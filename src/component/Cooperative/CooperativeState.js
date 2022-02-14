@@ -6,6 +6,10 @@ import { useNavigate} from 'react-router-dom';
 
 const CooperativeState =(props) =>{
   const [edit, setEdit] = useState(false);
+  const userinfo = JSON.parse(localStorage.getItem('userInfo'))
+  const userid= userinfo.UserID;
+  
+
   let navigate = useNavigate();
     const cooperativeInital = []
     const [cooperative, setCoperative] = useState( cooperativeInital);
@@ -22,7 +26,7 @@ const CooperativeState =(props) =>{
 
    const getCoperative = async()=> {   
         try{
-          const response = await fetch(`api2/BLBApi/BLB/GetCoOperativeList`);
+          const response = await fetch(`api2/BLBApi/BLB/GetCoOperativeList?USerID=${userid}`);
           const jsonData = await response.json();
           setCoperative(jsonData.CopayLst)
                    }
@@ -33,8 +37,10 @@ const CooperativeState =(props) =>{
       }
       const getCoperativeInfo = async(cooperativecode)=> {   
         try{
+          setLoading(true)
           const response = await fetch(`api2/BLBApi/BLB/GetCoOperativeData?CoOperativeCode=${cooperativecode}`);
           return response.json();
+          setLoading(false)
         }  
         catch(err) {
             throw err;
@@ -44,6 +50,7 @@ const CooperativeState =(props) =>{
       }
     
       const addCoperative = async (cooperativedata)=>{
+        console.log(cooperativedata)
         const formData = {
               CoOperativeCode:cooperativedata.cooperaticecode,
               UserName: cooperativedata.cooperativename,
@@ -101,42 +108,53 @@ const CooperativeState =(props) =>{
                   }
               }
               else{
-                console.log("add")
                 const response = await fetch ('api2/BLBApi/BLB/CoOperativeAdd',{
                   method:'POST',
                   headers: {'Content-Type': 'application/json'},
                   body:JSON.stringify(formData)
               });
                   const cooptive = await response.json();
-                  const Exp  = await cooptive.LicenceExpiry
-                  var licenseExp=  await  Exp.split("T").join(' ');
-                  
-               
+                  console.log(cooptive)
                 if(cooptive.STATUS_CODE === "0")
                 {
-                  setCoperative(cooperative.concat({
-                    Logo:cooptive.Logo,
-                    CoOperativeCode:formData.CoOperativeCode,
-                    CoOperativeName:cooptive.CoOperativeName,
-                    Address:cooptive.Address,
-                    NoOfUser:cooptive.AllowNumOFUser,
-                    licenseExipry: licenseExp,
-                    CreditLimit:cooptive.CreditLimit,
-                    ContactNum:cooptive.PhoneNum,
-                  }))
-                  navigate("/cooperative")
+                setMsg({
+                  msg:"Cooperative added Successfully",
+                  type:"alert alert-success"
+                })
+                setfirst(cooptive)
+                  // setCoperative(cooperative.concat({
+                  //   Logo:cooptive.Logo,
+                  //   CoOperativeCode:formData.CoOperativeCode,
+                  //   CoOperativeName:cooptive.CoOperativeName,
+                  //   Address:cooptive.Address,
+                  //   NoOfUser:cooptive.AllowNumOFUser,
+                  //   licenseExipry: cooptive.LicenceExpiry,
+                  //   CreditLimit:cooptive.CreditLimit,
+                  //   ContactNum:cooptive.PhoneNum,
+                  // }))
+                  // navigate("/cooperative")
+                }
+                else{
+                  setMsg({
+                    msg:"Something Went Wrong",
+                    type:"alert alert-danger"
+
+                  })
                 }
               }
            
                 // setCoperative(cooperative.concat(cooptive))
      }
-    
+    const [first, setfirst] = useState({})
    const [alert, setAlert] = useState({fade:'fade-default'});
+   const [msg, setMsg] = useState({})
    const [logoutdata, setLogout] = useState(false);
    const[menutoggle,setMenutoggle]=useState(false);
+   const [loading, setLoading] = useState(false);
+ 
    
 return (
-    <cooperativeContext.Provider value={{getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
+    <cooperativeContext.Provider value={{first,loading,msg,setMsg,getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
       {props.children}
     </cooperativeContext.Provider>
   )

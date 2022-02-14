@@ -127,7 +127,7 @@ const handleReset =(event)=>{
     return (props.etrigger)
         ? (
             <div className="popUP container-fluid  col-lg-12 col-md-12 col-sm-12 col-xs-12">   
-                    <div className="popup-inner container p-4 ">
+                    <div className="popup-inner container-fluid p-4 ">
                          <button className='btn closebtn' ref ={ref} onClick={handlePopupClose}><i className="bi bi-x"></i></button>
                         <form action="">
                                 <div className="col-lg-12 col-md-12 col-sm-12">        
@@ -138,7 +138,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="CoOperativeCode" className="form-label">Cooperative Code</label>    
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={collectorEdit.CoOperativeCode} onChange={handleChange}
                                                                 name="CoOperativeCode"
                                                                 placeholder="CoOperativeCode"
@@ -154,7 +154,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="BranchID" className="form-label">Branch ID</label>    
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={collectorEdit.BranchID} onChange={handleChange}
                                                                 name="BranchID"
                                                                 placeholder="Branch ID"
@@ -169,7 +169,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="CollectorID" className="form-label">Collector ID</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={collectorEdit.CollectorID} onChange={handleChange}
                                                                 placeholder="Collector ID"
                                                                 aria-label="Collector  ID"
@@ -183,7 +183,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="IsActive" className="form-label">Is Active</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 placeholder="Is Active"
                                                                 aria-label="Is Active"
                                                                 name="IsActive"
@@ -197,7 +197,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="Email" className="form-label">Email</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={ collectorEdit.Email} onChange={handleChange}
                                                                 placeholder="Email"
                                                                 aria-label="Email"
@@ -210,7 +210,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="Guarantee" className="form-label">Guarantee</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={ collectorEdit.Guarantee} onChange={handleChange}
                                                                 placeholder="Guarantee"
                                                                 aria-label="Guarantee"
@@ -227,7 +227,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="Fullname" className="form-label">Fullname</label>   
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={ collectorEdit.Fullname} onChange={handleChange}
                                                                 placeholder="Fullname"
                                                                 name="Fullname"
@@ -240,7 +240,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="Username" className="form-label">Username</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={ collectorEdit.Username} onChange={handleChange}
                                                                 placeholder="Username"
                                                                 aria-label="Username"
@@ -253,7 +253,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="Address" className="form-label">Address</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={ collectorEdit.Address} onChange={handleChange}
                                                                 placeholder="Address"
                                                                 aria-label="Address"
@@ -266,7 +266,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="PhNum" className="form-label">PhNum</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={ collectorEdit.PhNum} onChange={handleChange}
                                                                 placeholder="PhNum"
                                                                 aria-label="PhNum"
@@ -279,7 +279,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="FatherName" className="form-label">FatherName</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={ collectorEdit.FatherName} onChange={handleChange}
                                                                 placeholder="FatherName"
                                                                 aria-label="FatherName"
@@ -293,7 +293,7 @@ const handleReset =(event)=>{
                                                         <label htmlFor="EmergencyContact" className="form-label">EmergencyContact</label>
                                                             <input
                                                                 type="text"
-                                                                className="form-control mb-1"
+                                                                className="form-control form-control-sm  mb-1"
                                                                 value={ collectorEdit.EmergencyContact} onChange={handleChange}
                                                                 placeholder="EmergencyContact"
                                                                 aria-label="EmergencyContact"

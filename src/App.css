@@ -104,6 +104,7 @@
   box-shadow: 5px 10px 8px #888888;
   z-index: 15;
   height:100%;
+  
   overflow: auto;
   }
 .popUP::-webkit-scrollbar {
@@ -119,6 +120,7 @@
   max-width: 500px;
   position: absolute;
   right:0;
+  min-height: 100%;
 }
 .popup-inner.container-fluid  form{
  padding:20px;

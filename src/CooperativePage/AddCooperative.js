@@ -6,7 +6,8 @@ export default function AddCooperative(props) {
 
     const context = useContext(cooperativeContext)
     const {setCoperativeEdit,cooperativeEdit,addCoperative,edit, setEdit} = context;
-      
+    const userinfo = JSON.parse(localStorage.getItem('userInfo'))
+    const userid= userinfo.UserID;
  
     // const initalvalue = props.item;
      const ref = useRef(null); 
@@ -37,7 +38,7 @@ useEffect(() => {
         
   }
 },[formErrors]);
-console.log(isSubmit)
+
 useEffect(()=>{
 
     if(isSubmit){
@@ -60,7 +61,7 @@ useEffect(()=>{
         ShowHideBalance:cooperativeEdit.ShowHideBalance,
         AllowMultiDate: cooperativeEdit.AllowMultiDate,
         ContactPerson:   cooperativeEdit.ContactPerson,
-        CreatedUserID:  cooperativeEdit.CreatedUserID,
+        CreatedUserID: userid ,
        }
         addCoperative(cooperativedata);
         setIsSubmit(false)
@@ -70,7 +71,6 @@ useEffect(()=>{
          })
     }
 },[isSubmit])
-    console.log(cooperativeEdit)
 const handleReset =(event)=>{
     event.preventDefault();
     // setCoperativeEdit({
@@ -156,9 +156,6 @@ const handleReset =(event)=>{
         }
         if(!values.ContactPerson){
             errors.ContactPerson = "required";
-        }
-        if(!values.CreatedUserID){
-            errors.CreatedUserID = "required";
         }
 
         return errors;
@@ -364,24 +361,6 @@ const handleReset =(event)=>{
 
                                                                 </div>
                                                 <div className="row">                                                      
-                                                       
-                                                         <div className="col-lg-4">
-                                                             <label htmlFor="CreatedUserID" className="form-label">Created UserID</label>
-                                                            <input
-                                                                type="text"
-                                                                value={ cooperativeEdit.CreatedUserID}
-                                                                className="form-control form-control-sm mb-1"
-                                                                onChange={handleChange}
-                                                                placeholder="CreatedUserID"
-                                                                aria-label="CreatedUserID"
-                                                                id="CreatedUserID"
-                                                                name="CreatedUserID"
-                                                                aria-describedby="addon-wrapping"/>
-                                                                <span className="errormsg">{formErrors.AllowMultiDate}</span>       
-                                                         </div>
-                                            {/* </div>
-                                        <div className="col-lg-6 col-md-6 col-sm-12 col-12"> */}
-
                                                     
                                                         <div className="col-lg-4">  
                                                         <label htmlFor="Address" className="form-label">Address</label>
@@ -410,22 +389,23 @@ const handleReset =(event)=>{
                                                                 aria-describedby="addon-wrapping"/>
                                                                  <span className="errormsg">{formErrors.creditlimit}</span>
                                                         </div>
+                                                        <div className="col-lg-4">
+                                                            <label htmlFor="Logo" className="form-label">Logo</label>
+                                                                <input
+                                                                    type="text"
+                                                                    value={ cooperativeEdit.logo}
+                                                                    className="form-control form-control-sm mb-1"
+                                                                    onChange={handleChange}
+                                                                    placeholder="Logo"
+                                                                    aria-label="Logo"
+                                                                    id="Logo"
+                                                                    name="logo"
+                                                                    aria-describedby="addon-wrapping"/>
+                                                                    <span className="errormsg">{formErrors.logo}</span>       
+                                                         </div>
                                                         </div> 
                                            <div className="row">
-                                            <div className="col-lg-4">
-                                                <label htmlFor="Logo" className="form-label">Logo</label>
-                                                    <input
-                                                        type="text"
-                                                        value={ cooperativeEdit.logo}
-                                                        className="form-control form-control-sm mb-1"
-                                                        onChange={handleChange}
-                                                        placeholder="Logo"
-                                                        aria-label="Logo"
-                                                        id="Logo"
-                                                        name="logo"
-                                                        aria-describedby="addon-wrapping"/>
-                                                         <span className="errormsg">{formErrors.logo}</span>       
-                                            </div>
+                                        
                                             <div className="col-lg-4" >
                                                 <label htmlFor="ColorCode" className="form-label">Color Code</label>
                                                     <input

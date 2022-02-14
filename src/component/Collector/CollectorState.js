@@ -20,10 +20,11 @@ const CollectorState =(props) =>{
 
    const getCollector = async()=> {   
         try{
+          setLoading(true)
           const response = await fetch(`api2/BLBApi/Collector/CollectorLst?CoOperativeCode=YT47`);
           const jsonData = await response.json();
+          setLoading(false)
           setCollector(jsonData.lstCollector)
-
                    }
         catch(err) {
             throw err;
@@ -80,9 +81,9 @@ const CollectorState =(props) =>{
    const [alert, setAlert] = useState(false);
    const [logoutdata, setLogout] = useState(false);
    const[menutoggle,setMenutoggle]=useState(false);
-   
+   const [loading, setLoading] = useState(false);
 return (
-    <collectorContext.Provider value={{getCollectorInfo,getCollector,editCollector,collector,collectorEdit,setCollectorEdit,edit,setEdit,addCollector}}>
+    <collectorContext.Provider value={{loading,getCollectorInfo,getCollector,editCollector,collector,collectorEdit,setCollectorEdit,edit,setEdit,addCollector}}>
       {props.children}
     </collectorContext.Provider>
   )

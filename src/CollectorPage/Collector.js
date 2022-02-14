@@ -13,11 +13,11 @@ export default function Collector() {
 
     const [popup, setPopup] = useState(false);
     const [editpopup, setEditPopup] = useState(false);
-    const [loading, setLoading] = useState(false);
+    
     
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(collectorContext)
-    const {getCollectorInfo,getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
+    const {loading,getCollectorInfo,getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
     
 
  
@@ -89,7 +89,7 @@ const handleEdit = (item) =>{
                                                 { <div className="row">
                                                     <div className="ramram">
                                                     <div className="col-lg-12 ">
-                                                    {loading && (<Spinner/>)}
+                                                   
                                                     <div className="outer-wrapper" style={{maxWidth:"100%"}}>
                                                     <div className="table-wrapper">
                                                     <table className="table table-striped">
@@ -105,6 +105,7 @@ const handleEdit = (item) =>{
                                                                 <td className='tc' style={{ width: "297px"}}> Action</td>
                                                             </tr>
                                                         </thead>
+                                                      
                                                         <tbody>
            
                                                    { collector.map((item,i) => 
@@ -125,6 +126,7 @@ const handleEdit = (item) =>{
                                                         </table>
                                                        </div>
                                                        </div>
+                                                       {loading && (<Spinner/>)}   
                                                     </div>
                                                     </div>
                                                 </div> }
