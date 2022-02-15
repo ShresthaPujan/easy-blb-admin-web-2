@@ -3,7 +3,7 @@ import collectorContext from '../component/Collector/collectorContext';
 export default function AddCollector(props) {
 
     const context = useContext(collectorContext)
-    const {addCollector,collectorEdit,setCollectorEdit,edit,setEdit} = context;
+    const {userid,addCollector,collectorEdit,setCollectorEdit,edit,setEdit} = context;
         
  
     // const initalvalue = props.item;
@@ -47,19 +47,19 @@ useEffect(()=>{
             CoOperativeCode: collectorEdit.CoOperativeCode ,
             Fullname: collectorEdit.Fullname,
             IsActive:  collectorEdit.IsActive,
-            BranchID:  collectorEdit.BranchID,
-            FatherName:collectorEdit.FatherName,
             UserName:collectorEdit.UserName,  
             IMEI_NUM:collectorEdit.IMEI_NUM, 
+            FatherName:collectorEdit.FatherName,
             TAddress:collectorEdit.TAddress,
             PAddress:collectorEdit.PAddress, 
             Email: collectorEdit.Email, 
             PhNum:collectorEdit.PhNum, 
             EmergencyContact:collectorEdit.EmergencyContact, 
             Guarantee:collectorEdit.Guarantee, 
+            BranchID:  collectorEdit.BranchID, 
             ActiveInActive:collectorEdit.ActiveInActive, 
-            NameNepali:collectorEdit.NameNepali, 
-            createdUserID:collectorEdit.createdUserID,
+            NameNepali:collectorEdit.NameNepali,  
+            createdUserID:userid,
         }
      
         addCollector(collectorData );
@@ -140,9 +140,6 @@ const handleReset =(event)=>{
         }
         if(!values.ActiveInActive){
             errors.ActiveInActive = "ActiveInActive is required";
-        }
-        if(!values.createdUserID){
-            errors.createdUserID = "createdUserID is required";
         }
         if(!values.NameNepali){
             errors.NameNepali = "NameNepali is required";
@@ -261,22 +258,22 @@ const handleReset =(event)=>{
                                                         
                                                         <span className="errormsg">{formErrors.PAddress}</span>
                                                         </div>
-                                                   
                                                         <div >  
-                                                        <label htmlFor="createdUserID" className="form-label">created User ID</label>
+                                                        <label htmlFor="NameNepali" className="form-label">Name Nepali</label>
                                                             <input
                                                                 type="text"
                                                                 className="form-control form-control-sm  mb-1"
-                                                                placeholder="createdUserID"
-                                                                aria-label="createdUserID"
-                                                                name="createdUserID"
-                                                                id="createdUserID" 
-                                                                value={collectorEdit.createdUserID} onChange={handleChange}
+                                                                placeholder="NameNepali"
+                                                                aria-label="NameNepali"
+                                                                name="NameNepali"
+                                                                id="NameNepali" 
+                                                                value={collectorEdit.NameNepali} onChange={handleChange}
                                                                 aria-describedby="addon-wrapping"/>
                                                         
-                                                        <span className="errormsg">{formErrors.createdUserID}</span>
+                                                        <span className="errormsg">{formErrors.NameNepali}</span>
                                                         </div>
-  
+                                                   
+              
                                             </div>
                                         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                       
@@ -376,20 +373,7 @@ const handleReset =(event)=>{
                                                                 <span className="errormsg">{formErrors.ActiveInActive}</span>
                                                         </div>
                                                  
-                                                        <div >  
-                                                        <label htmlFor="NameNepali" className="form-label">Name Nepali</label>
-                                                            <input
-                                                                type="text"
-                                                                className="form-control form-control-sm  mb-1"
-                                                                placeholder="NameNepali"
-                                                                aria-label="NameNepali"
-                                                                name="NameNepali"
-                                                                id="NameNepali" 
-                                                                value={collectorEdit.NameNepali} onChange={handleChange}
-                                                                aria-describedby="addon-wrapping"/>
-                                                        
-                                                        <span className="errormsg">{formErrors.NameNepali}</span>
-                                                        </div>
+                                                     
                                                                         
                                         </div>
                                     </div>

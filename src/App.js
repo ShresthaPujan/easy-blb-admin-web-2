@@ -24,10 +24,8 @@ function App() {
   //const user = useSelector(selectUser);
   const auth = localStorage.getItem("userInfo");
   const authCtx= useContext(AuthContext);
-
-   
-  const lazyProfile = React.lazy(()=> import('./component/Profile'));
-  const lazyContent = React.lazy(()=> import('./CooperativePage/Content'));
+  
+  
   return (
         <>
          
@@ -42,7 +40,7 @@ function App() {
                        <CollectorState>
                           <Layout>
                             <Routes>
-                              <Route path="/" element={ <Suspense fallback={<div>aaaa.</div>}> <Dashboard /> </Suspense>} />
+                              <Route path="/" element={  <Dashboard /> }/>
                               <Route path="/cooperative" element={<Content/>} />
                               <Route path="/collector" element={<Collector/>} />
                               <Route path="/profile" element={<Profile/>} />

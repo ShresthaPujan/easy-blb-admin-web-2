@@ -1,11 +1,11 @@
 import React,{useState ,useEffect,useContext , useRef} from 'react';
 import cooperativeContext from '../component/Cooperative/cooperativeContext'
-import Escpdetect from '../component/Escpdetect';
+
 
 export default function AddCooperative(props) {
 
     const context = useContext(cooperativeContext)
-    const {setCoperativeEdit,cooperativeEdit,addCoperative,edit, setEdit} = context;
+    const {cooperativeEditInitial,setCoperativeEdit,cooperativeEdit,addCoperative,edit, setEdit} = context;
     const userinfo = JSON.parse(localStorage.getItem('userInfo'))
     const userid= userinfo.UserID;
  
@@ -40,7 +40,6 @@ useEffect(() => {
 },[formErrors]);
 
 useEffect(()=>{
-
     if(isSubmit){
        var cooperativedata = {
         logo:cooperativeEdit.logo,
@@ -72,19 +71,8 @@ useEffect(()=>{
 },[isSubmit])
 const handleReset =(event)=>{
     event.preventDefault();
-    // setCoperativeEdit({
-    //     logo:"",
-    //     cooperaticecode: "",
-    //     cooperativename:'',
-    //     address:"",
-    //     noOfUser:'',
-    //     licenseExipry: '',
-    //     creditlimit:'',
-    //     contactnumber:'',
-    // })
-    setformErrors({reset:1})
-    
-   
+    setCoperativeEdit(cooperativeEditInitial)
+    setformErrors({reset:1})  
 }
 
     const  validate = (values) => {

@@ -12,13 +12,12 @@ export default function Content() {
     const [popup, setPopup] = useState(false);
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
-    const {first,edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
+    const {deactivateCooperative,first,edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
 
    
     const userId =JSON.parse(localStorage.getItem("userInfo"));
        useEscapse(setPopup);
 
-       console.log(first)
 
         function  dateCalculator(licensedate){
             const now = new Date();
@@ -30,7 +29,7 @@ export default function Content() {
         
             const currentdate = `${month}/${day}/${year}`
             const date1 = new Date(currentdate);
-            const date2 = new Date(licensedate.split("T")[0]);
+            const date2 = new Date(licensedate);
             var difference=  date2-date1 ;
             const  days = difference/(1000 * 3600 * 24)
             if (days < 0){
@@ -62,6 +61,21 @@ const handleSearch = (e)=>{
     setSearchTerm(e.target.value);
     
 }
+const handleDeacivate = (coopcode,ispaid) => {
+    deactivateCooperative(coopcode,ispaid)
+    console.log(ispaid)
+  
+}
+const checkIspaid =(isPaid)=>{
+    if(isPaid === "Y"){
+        return "Deactivate"
+    }
+    else{
+        return "Activate"
+    }
+}
+   
+
 const handleEdit = (item) =>{
         setEdit(true);
      getCoperativeInfo(item).then(data => {
@@ -95,7 +109,6 @@ const handleEdit = (item) =>{
             ContactPerson:   data.ContactPerson,
             CreatedUserID:  userId.UserID,})
       });
-      console.log(cooperativeEdit)
         setPopup(true);
 }
 
@@ -157,6 +170,7 @@ const handleEdit = (item) =>{
                                                                 <td className='tc'> No of User</td>
                                                                 <td className='tc'>Exipry Date</td>
                                                                 <td> Credit Limit</td>
+                                                                <td className='tc'> Is Paid</td>
                                                                 <td className='tl'>Contact</td>   
                                                                 <td className='tc' style={{ width: "220px"}}> Action</td>
                                                             </tr>
@@ -183,10 +197,14 @@ const handleEdit = (item) =>{
                                                                     <td  className="tl">{item.CoOperativeName}</td>                       
                                                                     <td className='tl'>{item.Address}</td>
                                                                     <td className='tc'> {item.NoOfUser}</td>
-                                                                    {dateCalculator(item.licenseExpiry)}
+                                                                    {item.licenseExpiry?dateCalculator(item.licenseExpiry.split("T")[0]):<td></td>}
                                                                     <td className='tc'> {item.CreditLimit}</td>
+                                                                    <td className='tc'> {item.IsPaid}</td>
                                                                     <td className='tl'>{item.ContactNum}</td>
-                                                                    <td className='tc'><span className='editspan badge'  onClick={()=>handleEdit(item.CoOperativeCode)}>Edit</span> | <span className='deletespan badge '>Deactivate</span> |<span className='editspan badge'>CbsUrl</span></td>                                                               
+                                                                    <td className='tc'>
+                                                                        <span className='editspan badge'  onClick={()=>handleEdit(item.CoOperativeCode)}>Edit</span>
+                                                                     | <span><button className='deletespan badge' style={{border:"none"}} onClick={()=>handleDeacivate(item.CoOperativeCode,item.IsPaid)}>{checkIspaid(item.IsPaid)}</button></span> |
+                                                                     <span  className='editspan badge'>CbsUrl</span></td>                                                               
   
                                                         </tr>
                                                    )}                               

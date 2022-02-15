@@ -12,8 +12,7 @@ const CooperativeState =(props) =>{
 
   let navigate = useNavigate();
     const cooperativeInital = []
-    const [cooperative, setCoperative] = useState( cooperativeInital);
-    const [cooperativeEdit,setCoperativeEdit]= useState({
+    const cooperativeEditInitial = {
       logo:"",
       cooperaticecode: "",
       cooperativename:'',
@@ -37,12 +36,16 @@ const CooperativeState =(props) =>{
       ContactPerson: "",
       PhNum: "",
       CreatedUserID: ""
-    })
+    }
+    const [cooperative, setCoperative] = useState( cooperativeInital);
+    const [cooperativeEdit,setCoperativeEdit]= useState(cooperativeEditInitial)
 
    const getCoperative = async()=> {   
         try{
+          setLoading(true)
           const response = await fetch(`api2/BLBApi/BLB/GetCoOperativeList?USerID=${userid}`);
           const jsonData = await response.json();
+          setLoading(false)
           setCoperative(jsonData.CopayLst)
                    }
         catch(err) {
@@ -54,14 +57,49 @@ const CooperativeState =(props) =>{
         try{
           setLoading(true)
           const response = await fetch(`api2/BLBApi/BLB/GetCoOperativeData?CoOperativeCode=${cooperativecode}`);
-          return response.json();
           setLoading(false)
+          return response.json();
+         
         }  
         catch(err) {
             throw err;
           
         }
         
+      }
+      const deactivateCooperative = async(coopcode,ispaid) =>{
+      
+         const formData = {
+          CoOperativeCode: coopcode,
+          Status: "",
+          UpdatedUserID: userid
+         }
+         if(ispaid === "N"){
+           formData.Status = "Y"
+         }else{
+          formData.Status = "N"
+         }
+  
+        const response = await fetch ('/BLBApi/BLB/StatusUpdates',{
+          method:'POST',
+          headers: {'Content-Type': 'application/json'},
+          body:JSON.stringify(formData)
+        });
+        const deactivatecooptive = await response.json();
+        console.log(deactivatecooptive)
+        if(deactivatecooptive.STATUS_CODE === "0")
+          {
+            let newCooprative = JSON.parse(JSON.stringify(cooperative))
+            // Logic to edit in client
+            for (let index = 0; index < newCooprative.length; index++) {
+              const element = newCooprative[index];
+              if (element.CoOperativeCode === coopcode) {
+                newCooprative[index].IsPaid = formData.Status;
+                break; 
+              }
+            }  
+            setCoperative(newCooprative);
+          }
       }
     
       const addCoperative = async (cooperativedata)=>{
@@ -89,7 +127,7 @@ const CooperativeState =(props) =>{
               
         }
    
-        console.log(JSON.stringify(formData))
+        
               
               if(edit){
                 console.log("here")
@@ -115,7 +153,6 @@ const CooperativeState =(props) =>{
                         newCooprative[index].PAddress = cooperativedata.PAddress;
                         newCooprative[index].ContactPerson = cooperativedata.ContactPerson;
                         newCooprative[index].PhNum = cooperativedata.PhNum;
-                   
                         break; 
                       }
                     }  
@@ -142,7 +179,7 @@ const CooperativeState =(props) =>{
                     CoOperativeName:cooptive.CoOperativeName,
                     Address:cooptive.Address,
                     NoOfUser:cooptive.AllowNumOFUser,
-                    licenseExipry: cooptive.LicenceExpiry,
+                    licenseExpiry: cooptive.LicenceExpiry,
                     CreditLimit:cooptive.CreditLimit,
                     ContactNum:cooptive.PhoneNum,
                      IsOnline: cooptive.IsOnline,
@@ -150,7 +187,7 @@ const CooperativeState =(props) =>{
                     CBSURL: cooptive.CBSURL
                 }
                
-                setCoperative({...cooperative,cooperativeData})
+                setCoperative(cooperative.concat(cooperativeData))
                 setfirst(cooptive)
                   // setCoperative(cooperative.concat({
                   //   Logo:cooptive.Logo,
@@ -184,7 +221,7 @@ const CooperativeState =(props) =>{
  
    
 return (
-    <cooperativeContext.Provider value={{first,loading,msg,setMsg,getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
+    <cooperativeContext.Provider value={{deactivateCooperative,cooperativeEditInitial,first,loading,msg,setMsg,getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
       {props.children}
     </cooperativeContext.Provider>
   )

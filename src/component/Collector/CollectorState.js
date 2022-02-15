@@ -7,6 +7,8 @@ import { useNavigate} from 'react-router-dom';
 const CollectorState =(props) =>{
   const [edit, setEdit] = useState(false);
   let navigate = useNavigate();
+  const userinfo = JSON.parse(localStorage.getItem('userInfo'))
+    const userid= userinfo.UserID;
     const collectorInital = []
     const [collector, setCollector] = useState( collectorInital);
     const [collectorEdit,setCollectorEdit]= useState({
@@ -83,7 +85,7 @@ const CollectorState =(props) =>{
    const[menutoggle,setMenutoggle]=useState(false);
    const [loading, setLoading] = useState(false);
 return (
-    <collectorContext.Provider value={{loading,getCollectorInfo,getCollector,editCollector,collector,collectorEdit,setCollectorEdit,edit,setEdit,addCollector}}>
+    <collectorContext.Provider value={{userid,loading,getCollectorInfo,getCollector,editCollector,collector,collectorEdit,setCollectorEdit,edit,setEdit,addCollector}}>
       {props.children}
     </collectorContext.Provider>
   )
