@@ -63,7 +63,6 @@ const handleSearch = (e)=>{
 }
 const handleDeacivate = (coopcode,ispaid) => {
     deactivateCooperative(coopcode,ispaid)
-    console.log(ispaid)
   
 }
 const checkIspaid =(isPaid)=>{
@@ -87,7 +86,7 @@ const handleEdit = (item) =>{
             datedummy[1] = `0${datedummy[1]}`
         }
         var date = `${datedummy[2]}-${datedummy[0]}-${datedummy[1]}`
-       console.log(datedummy)
+
         
         setCoperativeEdit({  logo:data.Logo,
             cooperaticecode: item,

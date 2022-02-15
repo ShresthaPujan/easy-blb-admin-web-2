@@ -123,7 +123,7 @@
   min-height: 100%;
 }
 .popup-inner.container-fluid  form{
- padding:20px;
+ padding:30px;
 }
 .popup-inner-alert {
   background: #fff;
@@ -204,7 +204,7 @@ footer {
 
   }
   .popup-inner.container form{
-    padding: 20px;
+    padding: 30px;
   }
   .popup-inner-alert {
     max-width:  725px; 

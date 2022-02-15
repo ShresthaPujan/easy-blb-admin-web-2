@@ -44,6 +44,9 @@ ul li a{
     list-style: none;
    
 }
+.errorBorder{
+    border:2px solid red;
+}
 .menu nav ul li a{
     padding:10px;
     display: block;

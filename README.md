@@ -71,4 +71,13 @@
 13th feb 2022 
  -UI design changed
  -add collector done
- 
+
+14th feb 2022 
+ -add collector completed
+
+ 15th feb 2022 
+ -add cooperative UI Changed
+ -deactivate button added
+ -deactivate function done
+ -colorpicked added
+  
