@@ -74,6 +74,7 @@
 
 14th feb 2022 
  -add collector completed
+ -select filed added
 
  15th feb 2022 
  -add cooperative UI Changed
