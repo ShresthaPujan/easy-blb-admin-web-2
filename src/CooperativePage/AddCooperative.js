@@ -19,11 +19,18 @@ export default function AddCooperative(props) {
   const [formErrors, setformErrors] = useState({ val: 1 });
   const [isSubmit, setIsSubmit] = useState(false);
   const [first, setfirst] = useState({});
+  const [check, setCheck] = useState(false)
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const target = e.target;
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    setCheck(e.target.checked)
+  
     setCoperativeEdit({ ...cooperativeEdit, [name]: value });
+
   };
+  console.log(cooperativeEdit)
   const handlePopupClose = (e) => {
     e.preventDefault();
     props.setTrigger(false);
@@ -42,6 +49,12 @@ export default function AddCooperative(props) {
 
   useEffect(() => {
     if (isSubmit) {
+     let isPaid;
+      if(cooperativeEdit.IsPaid === true){
+        isPaid = "Y"
+      }else{
+        isPaid = "N"
+      }
       var cooperativedata = {
         logo: cooperativeEdit.logo,
         cooperaticecode: cooperativeEdit.cooperaticecode,
@@ -54,7 +67,7 @@ export default function AddCooperative(props) {
         NickName: cooperativeEdit.NickName,
         ColorCode: cooperativeEdit.ColorCode,
         IsOnline: cooperativeEdit.IsOnline,
-        IsPaid: cooperativeEdit.IsPaid,
+        IsPaid: isPaid,
         ScopeType: cooperativeEdit.ScopeType,
         CbsURL: cooperativeEdit.CbsURL,
         IsWithdrawAllow: cooperativeEdit.IsWithdrawAllow,
@@ -121,9 +134,6 @@ export default function AddCooperative(props) {
     if (!values.IsOnline) {
       errors.IsOnline = "required";
     }
-    if (!values.IsPaid) {
-      errors.IsPaid = "required";
-    }
     if (!values.ScopeType) {
       errors.ScopeType = "required";
     }
@@ -145,16 +155,16 @@ export default function AddCooperative(props) {
 
     return errors;
   };
- 
+
   const concernedElement = document.querySelector(".popup-inner");
 
-  document.addEventListener("mousedown", (event) => {
-    if (concernedElement.contains(event.target)) {
-      console.log("Clicked Inside");
-    } else {
-      console.log(" Outside / Elsewhere");
-    }
-  });
+  // document.addEventListener("mousedown", (event) => {
+  //   if (concernedElement.contains(event.target)) {
+  //     console.log("Clicked Inside");
+  //   } else {
+  //     console.log(" Outside / Elsewhere");
+  //   }
+  // });
 
   return props.trigger ? (
     <div className="popUP container-fluid   col-lg-12 col-md-12 col-sm-12 col-xs-12" >
@@ -398,7 +408,7 @@ export default function AddCooperative(props) {
                       <option value="Y">Online</option>
                       <option value="N">Offline</option>
                     </select>
-                    <span className="errormsg">{formErrors.IsOnline}</span>
+                   
                   </div>
                   <div className="col-lg-6">
                     <label htmlFor="noOfUser" className="form-label">
@@ -466,7 +476,8 @@ export default function AddCooperative(props) {
                     </label>
                     <input
                       type="color"
-                      value={cooperativeEdit.ColorCode}
+                      
+                      value={cooperativeEdit.ColorCode ? cooperativeEdit.ColorCode : "#000000"}
                       className={`form-control form-control-sm mb-1  ${
                         formErrors.ColorCode ? "errorBorder" : ""
                       }`}
@@ -503,24 +514,19 @@ export default function AddCooperative(props) {
               </div>
 
               <div className="col-lg-12">
-                <label htmlFor="IsPaid" className="form-label">
-                  Status
-                </label>
-                <select
-                  style={{ fontSize: "11px" }}
-                  value={cooperativeEdit.IsPaid}
+        
+                <div  >
+                <label>
+               
+                <input
                   name="IsPaid"
-                  onChange={handleChange}
-                  className={`form-control form-control-sm mb-1  ${
-                    formErrors.IsPaid ? "errorBorder" : ""
-                  }`}
-                >
-                  <option value="" selected style={{ fontSize: "11px" }}>
-                    select Status
-                  </option>
-                  <option value="Y">Paid</option>
-                  <option value="N">Unpaid</option>
-                </select>
+                  type="checkbox"
+             
+                  checked={check}
+                  onChange={handleChange} />
+              </label>
+                <span> Allow permission to use App</span>
+  </div>
               </div>
             </div>
             <div className="container">

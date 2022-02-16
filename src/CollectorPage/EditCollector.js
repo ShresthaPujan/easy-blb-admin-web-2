@@ -32,7 +32,7 @@ export default function EditCollector(props) {
            
     }
   
-
+    
 useEffect(() => {
     if(Object.keys(formErrors).length === 0){
         setIsSubmitcollector(true);    
@@ -41,35 +41,36 @@ useEffect(() => {
 },[formErrors]);
 
 useEffect(()=>{
-    
+    console.log(isSubmitcollector)
     if(isSubmitcollector){
-        
-        editCollector(
-            collectorEdit.CollectorID,
-            collectorEdit.Fullname,
-            collectorEdit.IsActive,
-            collectorEdit.Username );
-            console.log("test");
-            setIsSubmitcollector(false)
-            props.setEtrigger(false)
-            // setCollectorEdit({
-            //     BranchID:"", 
-            //     CollectorID:"", 
-            //     Fullname:"",
-            //     IsActive:"",
-            //     Username:""
-            // })
-        }
+        editCollector(collectorEdit)
+        setIsSubmitcollector(false)
+        setformErrors({ error: 1 });
+        props.setEtrigger(false)
+        setCollectorEdit({})
+       }
 },[isSubmitcollector])
 
 const handleReset =(event)=>{
     event.preventDefault();
     setCollectorEdit({
-        BranchID:"", 
-        CollectorID:"", 
-        Fullname:"",
-        IsActive:"",
-        Username:""
+            CoOperativeCode: "",
+            FullName: "",
+            branchID: "",
+            UserName: "",
+            CollectorID: "",
+            TAddress: "",
+            IsActive: "",
+            PhNum: "",
+            Email: "",
+            FatherName: "",
+            Guarantee: "",
+            EmergencyContact: "",
+            IMEI_NUM: "",
+            activateInactivate: "",
+            NameNepali: "",
+            createdUserID: "",
+            
     })
     setformErrors({reset:1})
     
@@ -80,18 +81,16 @@ const handleReset =(event)=>{
         const errors ={}
         const numv = /^[0-9]+$/i;
        
-        if(!values.BranchID){
-         errors.BranchID = "Branch ID is required";
-        }
+        
     
         if(!values.CollectorID){
             errors.CollectorID = "Collector ID  is required";
         }
-        if(!values.Username){
-            errors.Username = "Username  is required";
+        if(!values.UserName){
+            errors.UserName = "UserName  is required";
         }
-        if(!values.Fullname){
-            errors.Fullname = "Fullname  is required";
+        if(!values.FullName){
+            errors.FullName = "FullName  is required";
         }
         if(!values.CoOperativeCode){
             errors.CoOperativeCode = "CoOperativeCode is required";
@@ -144,10 +143,8 @@ const handleReset =(event)=>{
                                                                 placeholder="CoOperativeCode"
                                                                 aria-label="CoOperativeCode"
                                                                 id="CoOperativeCode"
-                                                              
-                         
                                                                 aria-describedby="addon-wrapping"/>
-                                                                  <span className="errormsg">{formErrors.BranchID}</span>
+                                                                <span className="errormsg">{formErrors.BranchID}</span>
                                                         </div>
                                                     
                                                         <div >
@@ -155,8 +152,8 @@ const handleReset =(event)=>{
                                                             <input
                                                                 type="text"
                                                                 className="form-control form-control-sm  mb-1"
-                                                                value={collectorEdit.BranchID} onChange={handleChange}
-                                                                name="BranchID"
+                                                                value={collectorEdit.branchID} onChange={handleChange}
+                                                                name="branchID"
                                                                 placeholder="Branch ID"
                                                                 aria-label="Branch ID"
                                                                 id="BranchID"
@@ -219,35 +216,62 @@ const handleReset =(event)=>{
                                                                 aria-describedby="addon-wrapping"/>
                                                                 <span className="errormsg">{formErrors.Guarantee}</span>
                                                       </div>
+                                                      <div >
+                                                        <label htmlFor="IMEI_NUM" className="form-label">IMEI_NUM</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control form-control-sm  mb-1"
+                                                                value={ collectorEdit.IMEI_NUM} onChange={handleChange}
+                                                                placeholder="IMEI_NUM"
+                                                                aria-label="IMEI_NUM"
+                                                                name="IMEI_NUM"
+                                                                id="IMEI_NUM"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.IMEI_NUM}</span>
+                                                      </div>
+                                                     
+                                                      <div >
+                                                        <label htmlFor="NameNepali" className="form-label">Name</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control form-control-sm  mb-1"
+                                                                value={ collectorEdit.NameNepali} onChange={handleChange}
+                                                                placeholder="NameNepali"
+                                                                aria-label="NameNepali"
+                                                                name="NameNepali"
+                                                                id="NameNepali"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.NameNepali}</span>
+                                                      </div>
   
                                             </div>
                                         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
                                                     <div >
-                                                        <label htmlFor="Fullname" className="form-label">Fullname</label>   
+                                                        <label htmlFor="FullName" className="form-label">Fullname</label>   
                                                             <input
                                                                 type="text"
                                                                 className="form-control form-control-sm  mb-1"
-                                                                value={ collectorEdit.Fullname} onChange={handleChange}
+                                                                value={ collectorEdit.FullName} onChange={handleChange}
                                                                 placeholder="Fullname"
-                                                                name="Fullname"
-                                                                id="Fullname"
+                                                                name="FullName"
+                                                                id="FullName"
                                                                 aria-label="Fullname"
                                                                 aria-describedby="addon-wrapping"/>
-                                                                <span className="errormsg">{formErrors.Fullname}</span>
+                                                                <span className="errormsg">{formErrors.FullName}</span>
                                                         </div>
                                                         <div >
                                                         <label htmlFor="Username" className="form-label">Username</label>
                                                             <input
                                                                 type="text"
                                                                 className="form-control form-control-sm  mb-1"
-                                                                value={ collectorEdit.Username} onChange={handleChange}
+                                                                value={ collectorEdit.UserName} onChange={handleChange}
                                                                 placeholder="Username"
                                                                 aria-label="Username"
-                                                                name="Username"
+                                                                name="UserName "
                                                                 id="Username"
                                                                 aria-describedby="addon-wrapping"/>
-                                                                <span className="errormsg">{formErrors.Username}</span>
+                                                                <span className="errormsg">{formErrors.UserName}</span>
                                                       </div>
                                                       <div >
                                                         <label htmlFor="Address" className="form-label">Address</label>
@@ -301,6 +325,19 @@ const handleReset =(event)=>{
                                                                 id="EmergencyContact"
                                                                 aria-describedby="addon-wrapping"/>
                                                                 <span className="errormsg">{formErrors.EmergencyContact}</span>
+                                                      </div>
+                                                      <div >
+                                                        <label htmlFor="ActiveInActive" className="form-label">Active</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control form-control-sm  mb-1"
+                                                                value={ collectorEdit.activateInactivate} onChange={handleChange}
+                                                                placeholder="ActiveInActive"
+                                                                aria-label="ActiveInActive"
+                                                                name="ActiveInActive"
+                                                                id="ActiveInActive"
+                                                                aria-describedby="addon-wrapping"/>
+                                                                <span className="errormsg">{formErrors.ActiveInActive}</span>
                                                       </div>
                                                       
                                                                         

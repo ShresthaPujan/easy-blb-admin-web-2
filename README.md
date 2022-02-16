@@ -81,4 +81,8 @@
  -deactivate button added
  -deactivate function done
  -colorpicked added
-  
+
+16th feb 2022
+-checkbox added
+-edit collector 
+-add collector added

@@ -17,6 +17,8 @@ export default function Collector() {
     
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(collectorContext)
+    const contextCooperative = useContext(cooperativeContext)
+    const {cooperative}=contextCooperative;
     const {loading,getCollectorInfo,getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
     
 
@@ -41,11 +43,35 @@ const handleSearch = (e)=>{
     
 }
 const handleEdit = (item) =>{
+    console.log("handleedit")
     getCollectorInfo(item).then(data => {
-        console.log(data)
+       const collData = {
+        CoOperativeCode: "YT47",
+        FullName: data.FullName,
+        branchID: data.branchID,
+        UserName:  data.UserName,
+        CollectorID: data.CollectorID,
+        TAddress:  data.collTempAddress,
+        PAddress:data.collPermAddress,
+        PhNum:  data.collPhone,
+        Email:  data.collMail,
+        FatherName: data.collFather,
+        Guarantee:  data.collGuaranteel,
+        EmergencyContact: data.collEmergencyContact,
+        activateInactivate: data.activateInactivate,
+        NameNepali: data.nameNepali,
+
+          }
+        setCollectorEdit(collData)
+        
     })
         setEditPopup(true)
 }
+
+// const coopCodeGet =(e) =>{
+//    const coopCode = document.querySelector('#coopCode').value;
+//    getCollector(coopCode)  
+// }
 
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
@@ -67,10 +93,17 @@ const handleEdit = (item) =>{
                                                 </div>
                                                 <div className="row">
                                                     <div className="col-lg-6 col-md-4 col-sm-3 p-2 Search">
-                                                        <input type="text" placeholder="Search" onChange={handleSearch}  />
+                                                        <input type="text" placeholder="Search"  onChange={handleSearch}  />
                                                         <i className="fas fa-search"></i>
                                                     </div>
-                                                    <div className="col-lg-6 col-md-6  col-sm-6 p-2 text-end">
+                                                    <div className="col-lg-4 p-2">
+                                                        <select name="coopCode"  id="coopCode">
+                                                        {cooperative.map((item,i) => 
+                                                            <option key={i+1} value={item.CoOperativeCode}>{item.CoOperativeCode}</option>
+                                                         )}
+                                                        </select>
+                                                    </div>
+                                                    <div className="col-lg-2 col-md-2 col-sm-3 p-2 text-end">
                                                             <div className="row">
                                                                 <div className=" offset-lg-6 offset-md-6  offset-sm-0 col-lg-6  col-md-6 col-sm-12">
                                                                     <div className="row">
@@ -108,7 +141,7 @@ const handleEdit = (item) =>{
                                                       
                                                         <tbody>
            
-                                                   { collector.map((item,i) => 
+                                                   {collector? collector.map((item,i) => 
                                                       
                                                     <tr key={i+1}>
                                                                     <td className='tc'>{i + 1}</td>
@@ -120,7 +153,7 @@ const handleEdit = (item) =>{
                                                                     <td className='tc'><span className='editspan badge'   onClick={()=>handleEdit(item.CollectorID)}>Edit</span> | <span className='deletespan badge '>Deactivate</span> | <span className='editspan badge' >Reset Password</span></td>                                                               
   
                                                         </tr>
-                                                   )}
+                                                   ): <td></td>}
                                                         </tbody>
                                                         
                                                         </table>

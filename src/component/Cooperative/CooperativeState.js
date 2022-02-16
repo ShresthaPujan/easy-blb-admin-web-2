@@ -24,7 +24,7 @@ const CooperativeState =(props) =>{
       NickName: "",
       ColorCode: "",
       IsOnline: "",
-      IsPaid: "",
+      IsPaid: "N",
       LicenceExpiry: "",
       ScopeType: "",
       AllowedNumOFUser: "",

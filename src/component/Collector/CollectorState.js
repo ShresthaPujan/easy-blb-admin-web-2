@@ -12,11 +12,22 @@ const CollectorState =(props) =>{
     const collectorInital = []
     const [collector, setCollector] = useState( collectorInital);
     const [collectorEdit,setCollectorEdit]= useState({
-      BranchID:"", 
-      CollectorID:"", 
-      Fullname:"",
-      IsActive:"",
-      Username:""
+      CoOperativeCode: "",
+      FullName: "",
+      branchID: "",
+      UserName: "",
+      CollectorID: "",
+      TAddress: "",
+      IsActive: "",
+      PhNum: "",
+      Email: "",
+      FatherName: "",
+      Guarantee: "",
+      EmergencyContact: "",
+      IMEI_NUM: "",
+      activateInactivate: "",
+      NameNepali: "",
+      createdUserID: "",
     })
     const [first, setfirst] = useState({})
 
@@ -63,22 +74,30 @@ const CollectorState =(props) =>{
       }
       }
 
-      const editCollector = (BranchID, CollectorID, Fullname,IsActive,UserName) =>{
-
-          console.log(UserName)
-        let newCollector = JSON.parse(JSON.stringify(collector))
+      const editCollector = async (collectorEdits) =>{
+        const response = await fetch ('api2/BLBApi/Collector/UpdateCollector',{
+          method:'POST',
+          headers: {'Content-Type': 'application/json'},
+          body:JSON.stringify(collectorEdits)
+      });
+          const collectorD = await response.json();
+         
+        if(collectorD.STATUS_CODE === "0")
+          {
+            let newCollector = JSON.parse(JSON.stringify(collector))
         // Logic to edit in client
         for (let index = 0; index < newCollector.length; index++) {
           const element = newCollector[index];
-          if (element.UserName === UserName) {
+          if (element.UserName === collectorEdits.UserName) {
             console.log("match")
-            newCollector[index].IsActive = IsActive;
+            newCollector[index].fullName =collectorEdits.FullName
+            newCollector[index].IsActive = collectorEdits.activateInactivate;
             break; 
           }
     }  
     setCollector(newCollector);
       }
-
+    }
     
    const [alert, setAlert] = useState(false);
    const [logoutdata, setLogout] = useState(false);
