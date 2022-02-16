@@ -98,13 +98,48 @@ const CollectorState =(props) =>{
     setCollector(newCollector);
       }
     }
-    
+    const deactivateCollector = async(collId,IsActive) =>{
+      
+      const formData = {
+       CoOperativeCode: "YT47",
+       Status: "",
+       CollectorID: collId,
+       UpdatedUserID: userid
+      }
+      if(IsActive === "N"){
+        formData.Status = "Y"
+      }else{
+       formData.Status = "N"
+      }
+      
+      const response = await fetch ('/BLBApi/Collector/StatusUpdates',{
+        method:'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:JSON.stringify(formData)
+      });
+      const deactivatecoll = await response.json();
+        console.log(deactivatecoll)
+      if(deactivatecoll.STATUS_CODE === "0")
+        {
+          let newColl= JSON.parse(JSON.stringify(collector))
+          // Logic to edit in client
+          for (let index = 0; index < newColl.length; index++) {
+            const element = newColl[index];
+            if (element.CollectorID === collId) {
+              newColl[index].IsActive = formData.Status;
+              break; 
+            }
+          }  
+          editCollector(newColl);
+        }
+    }
+  
    const [alert, setAlert] = useState(false);
    const [logoutdata, setLogout] = useState(false);
    const[menutoggle,setMenutoggle]=useState(false);
    const [loading, setLoading] = useState(false);
 return (
-    <collectorContext.Provider value={{userid,loading,getCollectorInfo,getCollector,editCollector,collector,collectorEdit,setCollectorEdit,edit,setEdit,addCollector}}>
+    <collectorContext.Provider value={{deactivateCollector,userid,loading,getCollectorInfo,getCollector,editCollector,collector,collectorEdit,setCollectorEdit,edit,setEdit,addCollector}}>
       {props.children}
     </collectorContext.Provider>
   )
