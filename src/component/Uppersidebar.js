@@ -3,7 +3,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { logout} from '../features/Userslice';
 import AuthContext from './auth-context';
-import Swal from 'sweetalert2'
 import cooperativeContext from './Cooperative/cooperativeContext';
 import logo from './logo3.png'
 

@@ -146,11 +146,19 @@ export default function AddCooperative(props) {
     return errors;
   };
  
+  const concernedElement = document.querySelector(".popup-inner");
 
+  document.addEventListener("mousedown", (event) => {
+    if (concernedElement.contains(event.target)) {
+      console.log("Clicked Inside");
+    } else {
+      console.log(" Outside / Elsewhere");
+    }
+  });
 
   return props.trigger ? (
-    <div className="popUP container-fluid   col-lg-12 col-md-12 col-sm-12 col-xs-12"   >
-      <div className="popup-inner container-fluid  " style={{padding:"30px"}}>
+    <div className="popUP container-fluid   col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+      <div className="popup-inner container-fluid  " style={{padding:"30px"}}  >
         <button className="btn closebtn" onClick={handlePopupClose}  >
           <i className="bi bi-x"></i>
         </button>
@@ -538,6 +546,7 @@ export default function AddCooperative(props) {
         </form>
       </div>
     </div>
+
   ) : (
     ""
   );
