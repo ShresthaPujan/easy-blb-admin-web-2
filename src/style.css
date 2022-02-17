@@ -233,7 +233,10 @@ i.fas.fa-search {
     padding-bottom: 20px;
     
 }
-
+.deactivate{
+    width: 100%;
+    max-width: 83px;
+}
 
 table {  
     min-width: max-content;

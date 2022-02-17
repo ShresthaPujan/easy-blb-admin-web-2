@@ -19,7 +19,7 @@ export default function Collector() {
     const context = useContext(collectorContext)
     const contextCooperative = useContext(cooperativeContext)
     const {cooperative}=contextCooperative;
-    const {deactivateCollector,loading,getCollectorInfo,getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
+    const {resetpassword,deactivateCollector,loading,getCollectorInfo,getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
     
 
  
@@ -73,16 +73,19 @@ const handleEdit = (item) =>{
 //    getCollector(coopCode)  
 // }
 const handleDeacivate = (collId,IsActive) =>{
-    console.log("taa")
+
     deactivateCollector(collId,IsActive)
 }
 const checkIspaid =(isPaid)=>{
-    if(isPaid === "Y"){
+    if(isPaid === "Active"){
         return "Deactivate"
     }
     else{
         return "Activate"
     }
+}
+const handleResetPassword = (username)=>{
+    resetpassword(username)
 }
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
@@ -161,7 +164,7 @@ const checkIspaid =(isPaid)=>{
                                                                     <td  className="tl">{item.UserName}</td>                       
                                                                     <td className='tl'>{item.fullName}</td>
                                                                     <td className='tl'>{item.IsActive}</td>
-                                                                    <td className='tc'><span className='editspan badge'   onClick={()=>handleEdit(item.CollectorID)}>Edit</span> | <span className='deletespan badge' onClick={()=>handleDeacivate(item.CollectorID,item.IsActive)}>{checkIspaid(item.IsActive)}</span> | <span className='editspan badge' >Reset Password</span></td>                                                               
+                                                                    <td className='tc'><span className='editspan badge'   onClick={()=>handleEdit(item.CollectorID)}>Edit</span> | <span className='deletespan badge deactivate' onClick={()=>handleDeacivate(item.CollectorID,item.IsActive)}>{checkIspaid(item.IsActive)}</span> | <span className='editspan badge' onClick={handleResetPassword(item.UserName)}>Reset Password</span></td>                                                               
   
                                                         </tr>
                                                    ): <td></td>}

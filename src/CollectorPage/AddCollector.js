@@ -123,6 +123,7 @@ const handleReset =(event)=>{
         else if(!numv.test(values.PhNum)){
             errors.PhNum = "Please enter number only";
           }
+      
         if(!values.Email){
             errors.Email = "Email is required";
         } else if (!regex.test(values.Email)) 

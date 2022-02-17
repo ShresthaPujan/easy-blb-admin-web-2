@@ -40,7 +40,7 @@ function App() {
                        <CollectorState>
                           <Layout>
                             <Routes>
-                              <Route path="/" element={  <Dashboard /> }/>
+                              <Route path="/" element={  <Content /> }/>
                               <Route path="/cooperative" element={<Content/>} />
                               <Route path="/collector" element={<Collector/>} />
                               <Route path="/profile" element={<Profile/>} />

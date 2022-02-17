@@ -51,9 +51,9 @@ export default function AddCooperative(props) {
     if (isSubmit) {
      let isPaid;
       if(cooperativeEdit.IsPaid === true){
-        isPaid = "Y"
+        isPaid = "A"
       }else{
-        isPaid = "N"
+        isPaid = "I"
       }
       var cooperativedata = {
         logo: cooperativeEdit.logo,
@@ -108,6 +108,9 @@ export default function AddCooperative(props) {
     } else if (!numv.test(values.contactnumber)) {
       errors.contactnumber = "Please enter number only";
     }
+    else if(values.contactnumber<10){
+      errors.contactnumber ="10 number only";
+    }
     if (!values.creditlimit) {
       errors.creditlimit = " required";
     } else if (!numv.test(values.creditlimit)) {
@@ -121,7 +124,7 @@ export default function AddCooperative(props) {
     } else if (!numv.test(values.noOfUser)) {
       errors.noOfUser = "Please enter number only";
     }
-
+  
     if (!values.licenseExipry) {
       errors.licenseExipry = "required";
     }
@@ -155,7 +158,7 @@ export default function AddCooperative(props) {
 
     return errors;
   };
-
+  console.log(cooperativeEdit)
   const concernedElement = document.querySelector(".popup-inner");
 
   // document.addEventListener("mousedown", (event) => {
