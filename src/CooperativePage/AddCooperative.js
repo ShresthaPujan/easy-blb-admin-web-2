@@ -30,7 +30,7 @@ export default function AddCooperative(props) {
     setCoperativeEdit({ ...cooperativeEdit, [name]: value });
 
   };
-  console.log(cooperativeEdit)
+
   const handlePopupClose = (e) => {
     e.preventDefault();
     props.setTrigger(false);
@@ -158,7 +158,7 @@ export default function AddCooperative(props) {
 
     return errors;
   };
-  console.log(cooperativeEdit)
+
   const concernedElement = document.querySelector(".popup-inner");
 
   // document.addEventListener("mousedown", (event) => {

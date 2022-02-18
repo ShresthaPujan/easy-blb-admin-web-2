@@ -109,12 +109,14 @@ const CollectorState =(props) =>{
        CollectorID: collId,
        UpdatedUserID: userid
       }
+      console.log(IsActive)
       if(IsActive === "Active"){
         formData.Status = "I"
       }else{
        formData.Status = "A"
       }
       setLoading(true)
+      console.log(formData)
       const response = await fetch ('/BLBApi/Collector/StatusUpdates',{
         method:'POST',
         headers: {'Content-Type': 'application/json'},
@@ -132,9 +134,9 @@ const CollectorState =(props) =>{
             const element = newCollact[index];
             if (element.CollectorID === collId) {
               
-                if(formData.Status = "A"){
+                if(formData.Status === "A"){
                    stats = "Active"
-                }else if(formData.Status = "I"){
+                }else if(formData.Status === "I"){
                   stats = "Inactive"
                 }
                 console.log(stats)

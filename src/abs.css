@@ -3,3 +3,7 @@ nav li a.active{
     background: #F8F8FB;
     border-radius: 10px; 
 }
+
+nav li.active{
+    border-left:2px solid #004AAD;
+}

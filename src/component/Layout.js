@@ -34,7 +34,7 @@ export default function Layout(props) {
               {menutoggle ? <Sidebarsmall/> :  <Sidebarone />}
                 </div>
                
-                <div  className={menutoggle ? "col-lg-11 col-md-11  col-sm-11 col-11  d-flex flex-column min-vh-100" : "col-lg-10 col-md-11 col-sm-11 col-11 d-flex flex-column min-vh-100"} id="upper-nav">
+                <div className={menutoggle ? "col-lg-11 col-md-11  col-sm-11 col-11  d-flex flex-column min-vh-100 togglewidthsmall" : "col-lg-10 col-md-11 col-sm-11 col-11 d-flex flex-column min-vh-100 togglewidthlarge"} id="upper-nav">
                       <Uppersidebar/>
                           {props.children}
                       <div  className="mt-auto">

@@ -5,7 +5,9 @@
     padding: 0;
   
 }
-
+body{
+    background: #F0F2F5;
+}
 .hide{
     display: none;
     transition: all 3s ease-in-out;
@@ -23,12 +25,19 @@ ul li a{
 }
 #side-nav{
     background: white;
-    border-right: 5px solid #F8F8FB;
     z-index: 2;
     height: 100vh;
     position:fixed;
     top:0;
     width: 250px;
+    box-shadow:0px 10px 10px #888888;
+  
+}
+
+.main-content {
+    background: white;
+    box-shadow:5px 10px 18px #888888;
+    margin: 30px;
 }
 
 #upper-nav{
@@ -38,7 +47,7 @@ ul li a{
     right: 0;
     top: 0;
     z-index: 2;
-    
+    width: 100%;
 }
 .menu nav ul{
     list-style: none;
@@ -58,8 +67,11 @@ ul li a{
 
 .menu nav ul li a:hover{
     color:#004AAD;
-    background: #F8F8FB;
+    background: #FFF;
     border-radius: 10px;
+}
+.menu nav ul li:hover{
+    border-left: 2px solid #004AAD;
 }
 .tc{
     text-align: center;
@@ -87,24 +99,28 @@ ul li a{
     content: "";
 }
 .wrapper{
-    margin:15px 12px 12px 12px;
+    box-shadow: 5px 10px 18px #888888;
 
 }
 .navbar{
     display: flex;
-   flex-direction: row;
+    flex-direction: row;
     justify-content: space-between;
     background:#fff;    
-    
+    padding: 20px 25px;
 }
 #halfside-nav{
-    border-right: 5px solid #F8F8FB;
+    /* border-right: 5px solid #F8F8FB; */
+    width: 100%;
     margin: 0;
     padding: 0;
     position:fixed;
     height: 100vh;
     top:0;
     z-index: 2;
+    background: white;
+    max-width: 90px;
+    box-shadow: 5px 10px 18px #888888;
 }
 #halfside-nav  img{
 width: 70px;
@@ -172,8 +188,24 @@ border:0 !important;
     padding:5px;
    text-align: right;
    border-bottom: 0;
-   border-top:5px solid #F8F8FB;
-   border-bottom:  5px solid #F8F8FB;
+   /* border-top:5px solid #F8F8FB;
+   border-bottom:  5px solid #F8F8FB; */
+   background: white;
+   box-shadow: 5px 10px 18px #888888;
+   margin: 30px;
+
+}
+.togglewidthsmall{
+    max-width: calc(100% - 106px);
+}
+.togglewidthlarge{
+    max-width: calc(100% - 260px);
+}
+.ramram{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 .content{
     padding:20px  15px;
@@ -205,7 +237,7 @@ border:0 !important;
 i.fas.fa-search {
     position: absolute;
     top: 32%;
-    left: 33%;
+    left: 35%;
 }
 .col-lg-6.col-md-6.col-sm-6.p-2.Search input[type="text"] {
     background: #F8F8FB;
@@ -221,6 +253,7 @@ i.fas.fa-search {
 .outer-wrapper {
     max-width: fit-content; 
     max-height: fit-content;  
+    margin: 0 auto;
     
 }
 .table-wrapper {
@@ -376,6 +409,17 @@ table td {
  padding:0;
 }
 }
+
+@media only screen and (max-width : 1120px){
+    #upper-nav{
+        max-width: calc(100% - 90px);
+    }
+}
+@media only screen and (max-width: 1000px){
+#upper-nav {
+    max-width: calc(100% - 100px);
+}
+}
 @media only screen and (max-width : 800px){
     #halfside-nav  img{
         width: 50px;
@@ -417,12 +461,26 @@ table td {
     position: relative;
     z-index: 10;
 }
-@media only screen and (max-width : 1200px){
-    .menu nav ul li a{
-       font-size: 13px;
+@media only screen and (max-width : 1434px){
+    .togglewidthlarge {
+        max-width: calc(100% - 252px);
+    }
+}
+@media only screen and (max-width : 1390px){
+    .togglewidthlarge {
+        max-width: calc(100% - 240px);
     }
 }
 
+@media only screen and (max-width : 1220px){
+    .menu nav ul li a{
+       font-size: 13px;
+    }
+    .togglewidthlarge {
+        max-width: calc(100% - 225px);
+    }
+    
+}
 @media only screen and(max-width:1060px){
     .menu nav ul li{
             text-align: center;

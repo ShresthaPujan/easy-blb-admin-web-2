@@ -7,6 +7,7 @@ import { Alert } from '../component/Alert';
 import useEscapse from '../component/hooks/Use-escape';
 
 
+
 export default function Content() {
 
     const [popup, setPopup] = useState(false);
@@ -110,12 +111,15 @@ const handleEdit = (item) =>{
       });
         setPopup(true);
 }
-
+const openInNewTab = (url) => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
   
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
                      <section className="content-section contentmain-popup">
-                                                <div className="col-lg-12 sub_menu p-3">
+                                                <div className="sub_menu p-3">
                                                         Company |DashBoard
                                                 </div>
                      </section>
@@ -203,7 +207,7 @@ const handleEdit = (item) =>{
                                                                     <td className='tc'>
                                                                         <span className='editspan badge'  onClick={()=>handleEdit(item.CoOperativeCode)}>Edit</span>
                                                                      | <span><button className='deletespan badge' style={{border:"none"}} onClick={()=>handleDeacivate(item.CoOperativeCode,item.IsPaid)}>{checkIspaid(item.IsPaid)}</button></span> |
-                                                                     <span  className='editspan badge'>CbsUrl</span></td>                                                               
+                                                                     <span onClick={() => openInNewTab(item.CBSURL)} className='editspan badge'>CBS Url</span></td>                                                               
   
                                                         </tr>
                                                    )}                               

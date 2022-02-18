@@ -90,7 +90,7 @@ const handleResetPassword = (username)=>{
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
                      <section className="content-section contentmain-popup">
-                                                <div className="col-lg-12 sub_menu p-3">
+                                         <div className="sub_menu p-3">
                                                         Company |DashBoard
                                                 </div>
                      </section>
