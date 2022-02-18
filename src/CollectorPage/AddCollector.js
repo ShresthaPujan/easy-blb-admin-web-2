@@ -27,6 +27,7 @@ export default function AddCollector(props) {
 
     const handleAddCollector =(e) =>{
         e.preventDefault();
+        console.log("clicked");
         setformErrors(validate(collectorEdit));
         console.log("clicked");
            
@@ -61,13 +62,13 @@ useEffect(()=>{
             NameNepali:collectorEdit.NameNepali,  
             createdUserID:userid,
         }
-     
-        addCollector(collectorData );
+        console.log(collectorData)
+            addCollector(collectorData );
             setIsSubmitcollector(false)
             props.setTriggerc(false)
-            setCollectorEdit({
-                error:1
-            })
+            // setCollectorEdit({
+            //     error:1
+            // })
         }
 },[isSubmitcollector])
 

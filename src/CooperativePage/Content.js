@@ -119,9 +119,7 @@ const openInNewTab = (url) => {
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
                      <section className="content-section contentmain-popup">
-                                                <div className="sub_menu p-3">
-                                                        Company |DashBoard
-                                                </div>
+                                             
                      </section>
                            <section className="content-section main-content">
                                 <div className="content">

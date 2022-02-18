@@ -48,12 +48,20 @@ export default function Uppersidebar() {
         logoutFunction()
     }
     },[logoutdata]);
+    const message = (msg) =>{
+        return msg
+    }
     
     useEffect(()=>{
-        setTimeout(() => {
-            setMsg({})
-            },6000);
+        const timer = setTimeout(() => {
+           setMsg({})
+          }, 3000);
+
+          return () => clearTimeout(timer);
     },[msg])
+
+  
+    
   return <>
        
                         <div className="col-lg-12 col-md-12 col-sm-12 ">
@@ -63,7 +71,7 @@ export default function Uppersidebar() {
                                         <button className="toggle" onClick={handleMenuChange} ><i className="fas fa-bars"></i></button><span className="mx-3">DashBoard</span>
                                     </div>
                                     <div className={msg.type}>
-                                       {msg.msg}
+                                       {message(msg.msg)}
                                     </div>
                                     <div className="navbar__right">
                                      

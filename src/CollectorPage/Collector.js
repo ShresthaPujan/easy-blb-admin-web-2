@@ -90,9 +90,7 @@ const handleResetPassword = (username)=>{
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
                      <section className="content-section contentmain-popup">
-                                         <div className="sub_menu p-3">
-                                                        Company |DashBoard
-                                                </div>
+                                       
                      </section>
                            <section className="content-section main-content">
                                 <div className="content">
@@ -111,11 +109,11 @@ const handleResetPassword = (username)=>{
                                                         <i className="fas fa-search"></i>
                                                     </div>
                                                     <div className="col-lg-4 p-2">
-                                                        <select name="coopCode"  id="coopCode">
+                                                        {/* <select name="coopCode"  id="coopCode">
                                                         {cooperative.map((item,i) => 
                                                             <option key={i+1} value={item.CoOperativeCode}>{item.CoOperativeCode}</option>
                                                          )}
-                                                        </select>
+                                                        </select> */}
                                                     </div>
                                                     <div className="col-lg-2 col-md-2 col-sm-3 p-2 text-end">
                                                             <div className="row">

@@ -67,13 +67,33 @@ const CollectorState =(props) =>{
           body:JSON.stringify(collectorData)
       });
           const collectordata = await response.json();
+          console.log(collectordata)
         if(collectordata.STATUS_CODE === "0")
         {
           setCollector(collector.concat({
             BranchID:collectordata.lstCollector["0"].BranchID, CollectorID:collectordata.lstCollector["0"].CollectorID, fullName:collectordata.lstCollector["0"].fullName,IsActive:collectordata.lstCollector["0"].IsActive,UserName:collectordata.lstCollector["0"].UserName
           }))
           navigate("/collector")
-          console.log("add collector state")
+          setMsg({
+            msg:"Successfully Added",
+            type:"alert alert-success"
+  
+          })
+      } else if(collectordata.STATUS_CODE=== '005')
+      {
+        setMsg({
+          msg:"UserName Alredy Exists. Please choose another Name.",
+          type:"alert alert-danger"
+
+        })
+      }
+      else if(collectordata.STATUS_CODE=== '004')
+      {
+        setMsg({
+          msg:"UserName Alredy Exists. Please choose another Name.",
+          type:"alert alert-danger"
+
+        })
       }
       }
 
@@ -87,6 +107,7 @@ const CollectorState =(props) =>{
          
         if(collectorD.STATUS_CODE === "0")
           {
+
             let newCollector = JSON.parse(JSON.stringify(collector))
         // Logic to edit in client
         for (let index = 0; index < newCollector.length; index++) {
@@ -97,6 +118,10 @@ const CollectorState =(props) =>{
             newCollector[index].IsActive = collectorEdits.activateInactivate;
             break; 
           }
+          setMsg({
+            msg:"Edited Successfully",
+            type:"alert alert-Success"
+          })
     }  
     setCollector(newCollector);
       }
