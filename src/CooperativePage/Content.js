@@ -115,7 +115,7 @@ const openInNewTab = (url) => {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
   }
-  
+  console.log(cooperative)
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
                      <section className="content-section contentmain-popup">
@@ -133,7 +133,7 @@ const openInNewTab = (url) => {
                                                     </div>
                                                 </div>
                                                 <div className="row">
-                                                    <div className="col-lg-6 col-md-4 col-sm-3 p-2 Search">
+                                                    <div className="col-lg-2 col-md-4 col-sm-3 p-2 Search">
                                                         <input type="text" placeholder="Search" onChange={handleSearch}  />
                                                         <i className="fas fa-search"></i>
                                                     </div>

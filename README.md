@@ -86,3 +86,9 @@
 -checkbox added
 -edit collector 
 -add collector added
+
+20th feb 2022 
+-search with select 
+-reset password 
+-reset password conform 
+-deactivate

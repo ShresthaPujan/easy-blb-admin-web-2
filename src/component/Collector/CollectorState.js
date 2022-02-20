@@ -9,7 +9,7 @@ const CollectorState =(props) =>{
   const [edit, setEdit] = useState(false);
   let navigate = useNavigate();
   const contextCoop = useContext(cooperativeContext);
-  const {msg,setMsg} = contextCoop;
+  const {msg,setMsg,setresetPassword} = contextCoop;
     const userinfo = JSON.parse(localStorage.getItem('userInfo'))
     const userid= userinfo.UserID;
     const collectorInital = []
@@ -34,13 +34,19 @@ const CollectorState =(props) =>{
     })
     const [first, setfirst] = useState({})
 
-   const getCollector = async()=> {   
+   const getCollector = async(coopid="YT47")=> {   
         try{
           setLoading(true)
-          const response = await fetch(`api2/BLBApi/Collector/CollectorLst?CoOperativeCode=YT47`);
+          const response = await fetch(`api2/BLBApi/Collector/CollectorLst?CoOperativeCode=${coopid}`);
           const jsonData = await response.json();
-          setLoading(false)
-          setCollector(jsonData.lstCollector)
+          if (jsonData.STATUS_CODE === "0"){
+            setLoading(false)
+            setCollector(jsonData.lstCollector)
+          }else{
+            setLoading(false)
+            setCollector({})
+          }
+        
                    }
         catch(err) {
             throw err;
@@ -66,8 +72,7 @@ const CollectorState =(props) =>{
           headers: {'Content-Type': 'application/json'},
           body:JSON.stringify(collectorData)
       });
-          const collectordata = await response.json();
-          console.log(collectordata)
+          const collectordata = await response.json();          
         if(collectordata.STATUS_CODE === "0")
         {
           setCollector(collector.concat({
@@ -112,8 +117,7 @@ const CollectorState =(props) =>{
         // Logic to edit in client
         for (let index = 0; index < newCollector.length; index++) {
           const element = newCollector[index];
-          if (element.UserName === collectorEdits.UserName) {
-            console.log("match")
+          if (element.UserName === collectorEdits.UserName) {            
             newCollector[index].fullName =collectorEdits.FullName
             newCollector[index].IsActive = collectorEdits.activateInactivate;
             break; 
@@ -133,23 +137,20 @@ const CollectorState =(props) =>{
        Status: "",
        CollectorID: collId,
        UpdatedUserID: userid
-      }
-      console.log(IsActive)
+      }  
       if(IsActive === "Active"){
         formData.Status = "I"
       }else{
        formData.Status = "A"
       }
-      setLoading(true)
-      console.log(formData)
-      const response = await fetch ('/BLBApi/Collector/StatusUpdates',{
+      setLoading(true)     
+      const response = await fetch ('api2/BLBApi/Collector/StatusUpdates',{
         method:'POST',
         headers: {'Content-Type': 'application/json'},
         body:JSON.stringify(formData)
       });
       setLoading(false)
-      const deactivatecoll = await response.json();
-        console.log(deactivatecoll)
+      const deactivatecoll = await response.json();     
       if(deactivatecoll.STATUS_CODE === "0")
         {
           let newCollact= JSON.parse(JSON.stringify(collector))
@@ -163,30 +164,42 @@ const CollectorState =(props) =>{
                    stats = "Active"
                 }else if(formData.Status === "I"){
                   stats = "Inactive"
-                }
-                console.log(stats)
+                }      
                 newCollact[index].IsActive = stats;
               break; 
             }
-          }  
-          console.log(newCollact)
+          }          
           setCollector(newCollact);
         }
     }
+    
     const resetpassword = async (username) =>{
         const formData ={
             CoOperativeCode: "YT47",
             UserName: username,
             Pwd: "YT47"
         }
-        // const response = await fetch ('/BLBApi/BLB/CollectorPwdReset',{
-        //   method:'POST',
-        //   headers: {'Content-Type': 'application/json'},
-        //   body:JSON.stringify(formData)
-        // });
-        // const resetPasswordData = await response.json();
-       
-
+        const response = await fetch ('api2/BLBApi/BLB/CollectorPwdReset',{
+          method:'POST',
+          headers: {'Content-Type': 'application/json'},
+          body:JSON.stringify(formData)
+        });
+        const resetPassData = await response.json();
+         if(resetPassData.STATUS_CODE === "0"){
+          setMsg({
+            msg:"Password Reset Successfully",
+            type:"alert alert-success"
+  
+          })
+          setresetPassword(false)
+         }
+         else{
+          setMsg({
+            msg:"Something went wrong. Please try again",
+            type:"alert alert-danger"
+  
+          })
+         }
     }
   
    const [alert, setAlert] = useState(false);

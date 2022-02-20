@@ -79,31 +79,33 @@ const CooperativeState =(props) =>{
          }else{
           formData.Status = "N"
          }
-  
-        const response = await fetch ('/BLBApi/BLB/StatusUpdates',{
+         console.log(formData)
+        const response = await fetch ('api2/BLBApi/BLB/StatusUpdates',{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
           body:JSON.stringify(formData)
         });
+
         const deactivatecooptive = await response.json();
-        console.log(deactivatecooptive)
-        if(deactivatecooptive.STATUS_CODE === "0")
-          {
-            let newCooprative = JSON.parse(JSON.stringify(cooperative))
-            // Logic to edit in client
-            for (let index = 0; index < newCooprative.length; index++) {
-              const element = newCooprative[index];
-              if (element.CoOperativeCode === coopcode) {
-                newCooprative[index].IsPaid = formData.Status;
-                break; 
+            console.log(deactivatecooptive)
+            if(deactivatecooptive.STATUS_CODE === "0")
+              {
+                let newCooprative = JSON.parse(JSON.stringify(cooperative))
+                // Logic to edit in client
+                for (let index = 0; index < newCooprative.length; index++) {
+                  const element = newCooprative[index];
+                  if (element.CoOperativeCode === coopcode) {
+                    newCooprative[index].IsPaid = formData.Status;
+                    break; 
+                  }
+                }  
+                setCoperative(newCooprative);
               }
-            }  
-            setCoperative(newCooprative);
           }
-      }
     
       const addCoperative = async (cooperativedata)=>{
         console.log(cooperativedata)
+
         const formData = {
               CoOperativeCode:cooperativedata.cooperaticecode,
               UserName: cooperativedata.cooperativename,
@@ -126,9 +128,7 @@ const CooperativeState =(props) =>{
               CreatedUserID:cooperativedata.CreatedUserID
               
         }
-   
-        
-              
+
               if(edit){
                 console.log("here")
                 const response = await fetch ('api2/BLBApi/BLB/CoOperativeUpdate',{
@@ -153,6 +153,7 @@ const CooperativeState =(props) =>{
                         newCooprative[index].PAddress = cooperativedata.PAddress;
                         newCooprative[index].ContactPerson = cooperativedata.ContactPerson;
                         newCooprative[index].PhNum = cooperativedata.PhNum;
+                        newCooprative[index].IsPaid = cooperativedata.IsPaid;
                         break; 
                       }
                     }  
@@ -213,15 +214,16 @@ const CooperativeState =(props) =>{
                 // setCoperative(cooperative.concat(cooptive))
      }
     const [first, setfirst] = useState({})
-   const [alert, setAlert] = useState({fade:'fade-default'});
+   const [alert, setAlert] = useState({fade:'fade-default',msg:'',type:''});
    const [msg, setMsg] = useState({})
    const [logoutdata, setLogout] = useState(false);
    const[menutoggle,setMenutoggle]=useState(false);
    const [loading, setLoading] = useState(false);
+   const [resetPassword, setresetPassword] = useState(false)
  
    
 return (
-    <cooperativeContext.Provider value={{msg,setMsg,deactivateCooperative,cooperativeEditInitial,first,loading,msg,setMsg,getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
+    <cooperativeContext.Provider value={{resetPassword,setresetPassword,msg,setMsg,deactivateCooperative,cooperativeEditInitial,first,loading,msg,setMsg,getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
       {props.children}
     </cooperativeContext.Provider>
   )

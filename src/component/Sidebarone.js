@@ -27,7 +27,9 @@ export default function Sidebarone() {
     function logOut(e){
         e.preventDefault();
         setAlert({
-            fade:'fade-in'
+            fade:'fade-in',
+            msg:"Do you want to logout ?",
+            type:"logout"
         })
     }
     function logoutFunction(){
@@ -35,7 +37,9 @@ export default function Sidebarone() {
         localStorage.clear();
         dispatch(logout())  
         setAlert({
-            fade:'fade-default'
+            fade:'fade-default',
+            msg:'',
+            type:''
         })
         navigate("/login")
         

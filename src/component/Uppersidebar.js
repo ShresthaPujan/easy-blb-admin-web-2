@@ -26,7 +26,9 @@ export default function Uppersidebar() {
         e.preventDefault();
         setActive(!active);
         setAlert({
-            fade:'fade-in'
+            fade:'fade-in',
+            msg:"Do you want to Reset Password ?",
+            type:"logout"
         })
     }
     function logoutFunction(){

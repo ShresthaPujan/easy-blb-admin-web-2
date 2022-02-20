@@ -51,9 +51,9 @@ export default function AddCooperative(props) {
     if (isSubmit) {
      let isPaid;
       if(cooperativeEdit.IsPaid === true){
-        isPaid = "A"
+        isPaid = "Y"
       }else{
-        isPaid = "I"
+        isPaid = "N"
       }
       var cooperativedata = {
         logo: cooperativeEdit.logo,
@@ -76,6 +76,7 @@ export default function AddCooperative(props) {
         ContactPerson: cooperativeEdit.ContactPerson,
         CreatedUserID: userid,
       };
+    
       addCoperative(cooperativedata);
       setIsSubmit(false);
       setformErrors({ error: 1 });

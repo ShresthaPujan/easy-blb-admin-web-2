@@ -1,4 +1,4 @@
-import React, { useEffect , useCallback, useState ,useContext} from 'react'
+import React, { useEffect , useCallback,Component , useState ,useContext} from 'react'
 import cooperativeContext from '../component/Cooperative/cooperativeContext'
 import '../style.css';
 import AddCooperative from './AddCollector';
@@ -8,6 +8,7 @@ import collectorContext from '../component/Collector/collectorContext';
 import AddCollector from './AddCollector';
 import EditCollector from './EditCollector';
 import useEscapse from '../component/hooks/Use-escape';
+import Select from 'react-select'
 
 export default function Collector() {
 
@@ -18,7 +19,7 @@ export default function Collector() {
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(collectorContext)
     const contextCooperative = useContext(cooperativeContext)
-    const {cooperative}=contextCooperative;
+    const {resetPassword,cooperative,setAlert,alert}=contextCooperative;
     const {resetpassword,deactivateCollector,loading,getCollectorInfo,getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
     
 
@@ -43,7 +44,6 @@ const handleSearch = (e)=>{
     
 }
 const handleEdit = (item) =>{
-    console.log("handleedit")
     getCollectorInfo(item).then(data => {
        const collData = {
         CoOperativeCode: "YT47",
@@ -68,10 +68,25 @@ const handleEdit = (item) =>{
         setEditPopup(true)
 }
 
-// const coopCodeGet =(e) =>{
-//    const coopCode = document.querySelector('#coopCode').value;
-//    getCollector(coopCode)  
-// }
+const coopCodeGet =(value) =>{ 
+    getCollector(value.value)
+    cooperativeInfo(value.value)
+}
+const [infoCoop, setinfoCoop] = useState({})
+
+const cooperativeInfo = (value="YT47") =>{
+    let newCoopCOde= JSON.parse(JSON.stringify(cooperative))
+    var infoArray = []
+    for (var index = 0; index < newCoopCOde.length; index++){
+        if(newCoopCOde[index].CoOperativeCode === value){
+            setinfoCoop({
+                CoOperativeName:newCoopCOde[index].CoOperativeName,
+                licenseExpiry :newCoopCOde[index].licenseExpiry,
+                 Address :newCoopCOde[index].Address
+            })
+        }
+}   
+}
 const handleDeacivate = (collId,IsActive) =>{
 
     deactivateCollector(collId,IsActive)
@@ -84,9 +99,44 @@ const checkIspaid =(isPaid)=>{
         return "Activate"
     }
 }
+const [username, setUsername] = useState()
 const handleResetPassword = (username)=>{
-    resetpassword(username)
+    setAlert({
+        fade:'fade-in',
+        msg:"Do you want to Reset Password ?",
+        type:"reset"
+    })
+    setUsername(username)
 }
+useEffect(() => {
+    if(resetPassword){
+    resetpassword(username)
+    setUsername()
+    setAlert({fade:'fade-default',msg:'',type:''})
+    }
+}, [resetPassword])
+
+
+const [ncooperativecode, setCoperativeCode] = useState([])
+useEffect(() => {
+    let newCoopCOde= JSON.parse(JSON.stringify(cooperative))
+    var options =[];
+    for (var index = 0; index < newCoopCOde.length; index++){
+      var ojj ={
+        value:newCoopCOde[index].CoOperativeCode,
+        label:newCoopCOde[index].CoOperativeCode
+      }  
+      options.push(ojj)
+    
+    }
+    cooperativeInfo()
+    setCoperativeCode(options)
+
+    coopCodeGet("YT47")
+
+}, [])
+
+
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12">
                      <section className="content-section contentmain-popup">
@@ -104,16 +154,28 @@ const handleResetPassword = (username)=>{
                                                     </div>
                                                 </div>
                                                 <div className="row">
-                                                    <div className="col-lg-6 col-md-4 col-sm-3 p-2 Search">
-                                                        <input type="text" placeholder="Search"  onChange={handleSearch}  />
+                                                    <div className="col-lg-2 col-md-4 col-sm-3 p-2 Search">
+                                                        <input type="text" placeholder="Search"   onChange={handleSearch}  />
                                                         <i className="fas fa-search"></i>
+                                                       
                                                     </div>
-                                                    <div className="col-lg-4 p-2">
-                                                        {/* <select name="coopCode"  id="coopCode">
-                                                        {cooperative.map((item,i) => 
-                                                            <option key={i+1} value={item.CoOperativeCode}>{item.CoOperativeCode}</option>
-                                                         )}
-                                                        </select> */}
+                                                    <div className="col-lg-2 p-2">
+                                                    <Select className="selectT" options={ncooperativecode} onChange={coopCodeGet}
+                                                    defaultValue={{ label: "YT47", value: 0 }} />   
+                                                   
+                                                    </div>
+                                                    
+                                                    <div className="col-lg-2 p-2 .text-dark">
+                                                        <input type="text" disabled   className="form-control" value={infoCoop.CoOperativeName} name="" id="" />
+                                    
+                                                    </div>
+                
+                                                    <div className="col-lg-2 p-2 .text-dark">
+                                                        <input type="text" disabled   className="form-control" value={infoCoop.licenseExpiry?.split("T")[0]} name="" id="" />
+                                    
+                                                    </div>
+                                                    <div className="col-lg-2 p-2 .text-dark">
+                                                    <input type="text" className="form-control" disabled value={infoCoop.Address} id="" />
                                                     </div>
                                                     <div className="col-lg-2 col-md-2 col-sm-3 p-2 text-end">
                                                             <div className="row">
@@ -153,7 +215,7 @@ const handleResetPassword = (username)=>{
                                                       
                                                         <tbody>
            
-                                                   {collector? collector.map((item,i) => 
+                                                   {collector.length > 0 ? collector.map((item,i) => 
                                                       
                                                     <tr key={i+1}>
                                                                     <td className='tc'>{i + 1}</td>
@@ -162,10 +224,11 @@ const handleResetPassword = (username)=>{
                                                                     <td  className="tl">{item.UserName}</td>                       
                                                                     <td className='tl'>{item.fullName}</td>
                                                                     <td className='tl'>{item.IsActive}</td>
-                                                                    <td className='tc'><span className='editspan badge'   onClick={()=>handleEdit(item.CollectorID)}>Edit</span> | <span className='deletespan badge deactivate' onClick={()=>handleDeacivate(item.CollectorID,item.IsActive)}>{checkIspaid(item.IsActive)}</span> | <span className='editspan badge' onClick={handleResetPassword(item.UserName)}>Reset Password</span></td>                                                               
+                                                                    <td className='tc'><span className='editspan badge'   onClick={()=>handleEdit(item.CollectorID)}>Edit</span> | <span className='deletespan badge deactivate' onClick={()=>handleDeacivate(item.CollectorID,item.IsActive)}>{checkIspaid(item.IsActive)}</span> | <span className='editspan badge'  onClick={()=>handleResetPassword(item.UserName)}>Reset Password</span></td>                                                               
   
                                                         </tr>
-                                                   ): <td></td>}
+                                                   ):(<tr>
+                                                    <td>No Data Found</td></tr>)}
                                                         </tbody>
                                                         
                                                         </table>
