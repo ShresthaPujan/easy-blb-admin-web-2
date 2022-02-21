@@ -129,6 +129,12 @@ const CollectorState =(props) =>{
     }  
     setCollector(newCollector);
       }
+      else{
+        setMsg({
+          msg:"Something went Wrong",
+          type:"alert alert-danger"
+        })
+      }
     }
     const deactivateCollector = async(collId,IsActive) =>{
       
@@ -170,6 +176,15 @@ const CollectorState =(props) =>{
             }
           }          
           setCollector(newCollact);
+          setMsg({
+            msg:"Collector Deactivate Successfully",
+            type:"alert alert-success"
+          })
+        }else{
+          setMsg({
+            msg:"Something went Wrong",
+            type:"alert alert-danger"
+          })
         }
     }
     

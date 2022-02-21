@@ -159,23 +159,23 @@ useEffect(() => {
                                                         <i className="fas fa-search"></i>
                                                        
                                                     </div>
-                                                    <div className="col-lg-2 p-2">
+                                                    <div className="col-lg-2 p-2 ">
                                                     <Select className="selectT" options={ncooperativecode} onChange={coopCodeGet}
                                                     defaultValue={{ label: "YT47", value: 0 }} />   
                                                    
                                                     </div>
                                                     
-                                                    <div className="col-lg-2 p-2 .text-dark">
-                                                        <input type="text" disabled   className="form-control" value={infoCoop.CoOperativeName} name="" id="" />
+                                                    <div className="col-lg-2 p-2 .text-dark Search" >
+                                                        <input type="text" disabled  style={{background:"white"}} className="form-control" value={infoCoop.CoOperativeName} name="" id="" />
                                     
                                                     </div>
                 
-                                                    <div className="col-lg-2 p-2 .text-dark">
-                                                        <input type="text" disabled   className="form-control" value={infoCoop.licenseExpiry?.split("T")[0]} name="" id="" />
+                                                    <div className="col-lg-2 p-2 .text-dark Search">
+                                                        <input type="text" disabled   style={{background:"white"}} className="form-control" value={infoCoop.licenseExpiry?.split("T")[0]} name="" id="" />
                                     
                                                     </div>
-                                                    <div className="col-lg-2 p-2 .text-dark">
-                                                    <input type="text" className="form-control" disabled value={infoCoop.Address} id="" />
+                                                    <div className="col-lg-2 p-2 .text-dark Search">
+                                                    <input type="text" className="form-control"  style={{background:"white"}} disabled value={infoCoop.Address} id="" />
                                                     </div>
                                                     <div className="col-lg-2 col-md-2 col-sm-3 p-2 text-end">
                                                             <div className="row">
@@ -204,10 +204,9 @@ useEffect(() => {
                                                         <thead>
                                                             <tr className='tableHead'>
                                                                 <td>S.N.</td>
-                                                                <td className='tc'>Branch ID</td>
-                                                                <td >Collector ID</td>
+                                                              
                                                                 <td className="tl">Username</td>
-                                                                <td className='tl'>Fullname</td>
+                                                                <td className='tl' style={{ width: "150px"}}>Fullname</td>
                                                                 <td className='tc'> Is Active</td>
                                                                 <td className='tc' style={{ width: "297px"}}> Action</td>
                                                             </tr>
@@ -215,20 +214,26 @@ useEffect(() => {
                                                       
                                                         <tbody>
            
-                                                   {collector.length > 0 ? collector.map((item,i) => 
+                                                   {collector.length > 0 ? collector.filter((item)=>{
+                                                        if (searchTerm === ""){
+                                                            return item
+                                                        } else if(item.UserName.toLowerCase().includes(searchTerm.toLowerCase())||
+                                                                     item.fullName.toLowerCase().includes(searchTerm.toLowerCase())){
+                                                            return item
+                                                        }
+                                                    }).map((item,i) => 
                                                       
                                                     <tr key={i+1}>
                                                                     <td className='tc'>{i + 1}</td>
-                                                                    <td className="tc">{item.BranchID} </td>
-                                                                    <td className='tc'>{item.CollectorID}</td>
+                                                            
                                                                     <td  className="tl">{item.UserName}</td>                       
                                                                     <td className='tl'>{item.fullName}</td>
-                                                                    <td className='tl'>{item.IsActive}</td>
+                                                                    <td className='tc'>{item.IsActive}</td>
                                                                     <td className='tc'><span className='editspan badge'   onClick={()=>handleEdit(item.CollectorID)}>Edit</span> | <span className='deletespan badge deactivate' onClick={()=>handleDeacivate(item.CollectorID,item.IsActive)}>{checkIspaid(item.IsActive)}</span> | <span className='editspan badge'  onClick={()=>handleResetPassword(item.UserName)}>Reset Password</span></td>                                                               
   
                                                         </tr>
-                                                   ):(<tr>
-                                                    <td>No Data Found</td></tr>)}
+                                                   ):(
+                                                       <tr className='tc'><td></td><td></td><td></td><td>No Data Found</td><td></td></tr>)}
                                                         </tbody>
                                                         
                                                         </table>

@@ -45,7 +45,6 @@ export default function Layout(props) {
           </div>
         
       </div>
-     {console.log(alert)}
 
      <div className={`${alert.fade} col-lg-12 col-md-12 col-sm-12`}>
         <Alert trigger={alert}/>

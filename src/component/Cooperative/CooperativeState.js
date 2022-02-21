@@ -79,7 +79,7 @@ const CooperativeState =(props) =>{
          }else{
           formData.Status = "N"
          }
-         console.log(formData)
+        
         const response = await fetch ('api2/BLBApi/BLB/StatusUpdates',{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
@@ -87,7 +87,7 @@ const CooperativeState =(props) =>{
         });
 
         const deactivatecooptive = await response.json();
-            console.log(deactivatecooptive)
+           
             if(deactivatecooptive.STATUS_CODE === "0")
               {
                 let newCooprative = JSON.parse(JSON.stringify(cooperative))
@@ -100,6 +100,16 @@ const CooperativeState =(props) =>{
                   }
                 }  
                 setCoperative(newCooprative);
+                setMsg({
+                  msg:"Cooperative added Successfully",
+                  type:"alert alert-success"
+                })
+              }
+              else{
+                setMsg({
+                  msg:"Something Went Wrong",
+                  type:"alert alert-danger"
+                })
               }
           }
     
@@ -158,6 +168,16 @@ const CooperativeState =(props) =>{
                       }
                     }  
                     setCoperative(newCooprative);
+                    setMsg({
+                      msg:"Cooperative added Successfully",
+                      type:"alert alert-success"
+                    })
+                  }
+                  else{
+                    setMsg({
+                      msg:"Something Went Wrong",
+                      type:"alert alert-danger"
+                    })
                   }
               }
               else{
