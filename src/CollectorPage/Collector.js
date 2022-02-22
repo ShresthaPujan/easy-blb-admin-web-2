@@ -147,10 +147,10 @@ useEffect(() => {
                                         <div className=" col-lg-12 col-sm-12">
                                                 <div className="row first_content">
                                                     <div className="col-lg-6 p-2">
-                                                        <h5>Company List</h5>
+                                                        <h5>Collector List</h5>
                                                     </div>
                                                     <div className="col-lg-6 p-2 text-end">
-                                                            <button className="btn btn-primary"   onClick={handleAddCollector}> Add Collector +</button>
+                                                            <button className="btn btn-cmpy"   onClick={handleAddCollector}> Add Collector +</button>
                                                     </div>
                                                 </div>
                                                 <div className="row">

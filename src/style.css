@@ -220,19 +220,19 @@ border:0 !important;
   
     outline: none;
     padding: 4px;
-    border-color: 3px solid gray;
+    border-color: 1px solid gray;
    
 }
 .Search input[type=text]{
     padding:5px;
     border-radius: 10px;
-    border: 3px solid #E6E6E6;
+    border: 1px solid #E6E6E6;
     position: relative;
     width: 100%;
 }
 .Search input[type=text]:focus{
     outline:none;
-    border:3px solid #2684FF;
+    border:1px solid #2684FF;
 }
 
 i.fas.fa-search {
@@ -287,7 +287,13 @@ table thead tr td{
     font-weight: normal;
     font-size: 14px;
 } 
-
+.btn-cmpy{
+    background: #349;
+    color: white;
+}
+.btn-cmpy:hover{
+    color: white;
+}
 table th, table td { 
     padding: 15px;
     padding-top: 10px;
@@ -415,7 +421,7 @@ select:focus{
 }
 .collectorDrop:focus{
     outline:none;
-    border:3px solid #004AAD !important;
+    border:1px solid #004AAD !important;
 }
 .css-b62m3t-container{
     border:none;
@@ -428,7 +434,7 @@ select:focus{
 .css-1s2u09g-control {
     border:none !important;
     border-radius:10px !important;
-    border: 3px solid #E6E6E6 !important;
+    border: 1px solid #E6E6E6 !important;
 }
 .css-1pahdxg-control{
     border:0 !important;
@@ -440,7 +446,7 @@ select:focus{
 .css-1pahdxg-control{
     outline: none !important;
     box-shadow: none !important;
-    border:3px solid #2684FF !important;
+    border:1px solid #2684FF !important;
     border-radius: 10px !important;
     
 }

@@ -126,10 +126,10 @@ const openInNewTab = (url) => {
                                         <div className=" col-lg-12 col-sm-12">
                                                 <div className="row first_content">
                                                     <div className="col-lg-6 p-2">
-                                                        <h5>Company List</h5>
+                                                        <h5>Cooperative List</h5>
                                                     </div>
                                                     <div className="col-lg-6 p-2 text-end">
-                                                            <button className="btn btn-primary"   onClick={handleAddCooperative}> Add Cooperative +</button>
+                                                            <button className="btn btn-cmpy"   onClick={handleAddCooperative}> Add Cooperative +</button>
                                                     </div>
                                                 </div>
                                                 <div className="row">
