@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { logout} from '../features/Userslice';
 import AuthContext from './auth-context';
 import cooperativeContext from './Cooperative/cooperativeContext';
-import logo from './logo3.png'
+import logo from './logo.png'
 
 
 export default function Sidebarone() {
@@ -31,6 +31,7 @@ export default function Sidebarone() {
             msg:"Do you want to logout ?",
             type:"logout"
         })
+        console.log(navigate)
     }
     function logoutFunction(){
         authCtx.logout();
@@ -59,16 +60,16 @@ export default function Sidebarone() {
   <>  
                
                     <div className="menu " >
-                        <div className="img text-center">
-                            <img src={logo} alt=""/>
-                        <p>kalimati <br/> 981234055</p>  
+                        <div className="img text-center ">
+                            <img src={logo} alt="" className='imgMain'/>
+                      <span className='logoHeading'>Easy Software</span>
                         </div>
-                        <nav >
+                        <nav className='MainNavbar'>
                             <ul >
-                                <li ><NavLink activeclassname={classes.active} to="/" ><i className="bi bi-folder-fill mx-3"></i>DashBoard</NavLink></li>
-                                <li ><NavLink activeclassname={classes.active} className="arrow "  to="/profile"><i className="bi bi-people mx-3"></i>Profile</NavLink> </li>
-                                <li><NavLink activeclassname={classes.active} className="arrow "  to="/cooperative"><i className="bi bi-people mx-3"></i>Cooperative</NavLink> </li>
-                                <li><NavLink activeclassname={classes.active} className="arrow "  to="/collector"><i className="bi bi-people mx-3"></i>Collector</NavLink> </li>
+                                <li ><NavLink activeclassname={classes.active} to="/" ><i className="bi bi-folder-fill mx-3 icon"></i>DashBoard</NavLink></li>
+                                <li ><NavLink activeclassname={classes.active} className="arrow "  to="/profile"><i className="bi bi-people mx-3 icon"></i>Profile</NavLink> </li>
+                                <li><NavLink activeclassname={classes.active} className="arrow "  to="/cooperative"><i className="bi bi-people mx-3 icon"></i>Cooperative</NavLink> </li>
+                                <li><NavLink activeclassname={classes.active} className="arrow "  to="/collector"><i className="bi bi-people mx-3 icon"></i>Collector</NavLink> </li>
                                 <li  onClick={logOut} ><Link  to=""><i className="bi bi-people mx-3" ></i>Logout</Link> </li>
                             </ul>
                         </nav>

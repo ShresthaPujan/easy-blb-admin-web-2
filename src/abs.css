@@ -1,7 +1,13 @@
 nav li a.active{
-    color:#004AAD;
-    background: #F8F8FB;
+    color:#232224;
+    background: #eef3f7;
     border-radius: 10px; 
+    text-decoration: underline;
+}
+
+nav ul li a.active .icon{
+    color:#3498db;
+   
 }
 
 nav li.active{

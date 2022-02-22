@@ -19,13 +19,13 @@ export default function AddCooperative(props) {
   const [formErrors, setformErrors] = useState({ val: 1 });
   const [isSubmit, setIsSubmit] = useState(false);
   const [first, setfirst] = useState({});
-  const [check, setCheck] = useState(false)
+
 
   const handleChange = (e) => {
     const target = e.target;
     const name = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    setCheck(e.target.checked)
+    props.setCheckTrigger(e.target.checked)
   
     setCoperativeEdit({ ...cooperativeEdit, [name]: value });
 
@@ -35,6 +35,7 @@ export default function AddCooperative(props) {
     e.preventDefault();
     props.setTrigger(false);
     setformErrors({ val: 1 });
+    setCoperativeEdit({})
   };
   const handleAddCooperative = (e) => {
     e.preventDefault();
@@ -109,7 +110,7 @@ export default function AddCooperative(props) {
     } else if (!numv.test(values.contactnumber)) {
       errors.contactnumber = "Please enter number only";
     }
-    else if(values.contactnumber<10){
+    else if(!values.contactnumber<11){
       errors.contactnumber ="10 number only";
     }
     if (!values.creditlimit) {
@@ -282,7 +283,7 @@ export default function AddCooperative(props) {
                       Contact Number
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       className={`form-control form-control-sm mb-1  ${
                         formErrors.contactnumber ? "errorBorder" : ""
                       }`}
@@ -378,7 +379,7 @@ export default function AddCooperative(props) {
                       Credit Limit
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       className={`form-control form-control-sm mb-1  ${
                         formErrors.creditlimit ? "errorBorder" : ""
                       }`}
@@ -412,6 +413,7 @@ export default function AddCooperative(props) {
                       <option value="Y">Online</option>
                       <option value="N">Offline</option>
                     </select>
+                    <i class="fas fa-angle-down  position-absolute "></i>
                    
                   </div>
                   <div className="col-lg-6">
@@ -434,23 +436,29 @@ export default function AddCooperative(props) {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-lg-6">
-                    <label htmlFor="ShowHideBalance" className="form-label">
+                  <div className="col-lg-6 position-relative">
+                    <label htmlFor="ShowHideBalance " className="form-label">
                       Balance
                     </label>
-                    <input
-                      type="text"
+                  
+                     <select
+                      style={{ fontSize: "11px" }}
                       value={cooperativeEdit.ShowHideBalance}
-                      className={`form-control form-control-sm mb-1  ${
+                      name="ShowHideBalance"
+                      onChange={handleChange}
+                      className={`form-control form-control-sm mb-1   ${
                         formErrors.ShowHideBalance ? "errorBorder" : ""
                       }`}
-                      onChange={handleChange}
-                      placeholder="ShowHideBalance"
-                      aria-label="ShowHideBalance"
-                      id="ShowHideBalance"
-                      name="ShowHideBalance"
-                      aria-describedby="addon-wrapping"
-                    />
+                    >
+                        
+                      <option value="" selected style={{ fontSize: "11px" }}>
+                        select Balance 
+                      </option>
+                      <option value="Y">Show</option>
+                      <option value="N">Hide</option>
+                      
+                    </select>
+                    <i class="fas fa-angle-down  position-absolute "></i>
                   </div>
                   <div className="col-lg-6">
                     <label htmlFor="AllowMultiDate" className="form-label">
@@ -471,6 +479,7 @@ export default function AddCooperative(props) {
                       <option value="Y">Multi Date</option>
                       <option value="N">Single Date</option>
                     </select>
+                    <i class="fas fa-angle-down  position-absolute "></i>
                   </div>
                 </div>
                 <div className="row">
@@ -512,7 +521,9 @@ export default function AddCooperative(props) {
                       </option>
                       <option value="Y">Yes</option>
                       <option value="N">No</option>
-                    </select>{" "}
+                    </select>
+                    <i class="fas fa-angle-down  position-absolute "></i>
+                    {" "}
                   </div>
                 </div>
               </div>
@@ -525,8 +536,8 @@ export default function AddCooperative(props) {
                 <input
                   name="IsPaid"
                   type="checkbox"
-             
-                  checked={check}
+                  value={cooperativeEdit.IsPaid}
+                  checked={props.check}
                   onChange={handleChange} />
               </label>
                 <span> Allow permission to use App</span>

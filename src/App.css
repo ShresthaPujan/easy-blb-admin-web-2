@@ -158,7 +158,7 @@ footer {
   padding:10px;
   margin: 20px 0 0 0;
   background: #fff;
-  box-shadow: 0 0 13px 0 rgb(82 63 105 / 10%);
+  border-top: 1px solid #e1e2e3;
  
   z-index: -9999;
 }
@@ -222,6 +222,11 @@ i.fa.fa-download.fa-rotate-270 {
 {
   i.fa.fa-download.fa-rotate-270 {
     margin-left: 62px;
+  }
+}
+@media screen and (max-width: 1400px) and (min-width: 600px) {
+  #upper-nav{
+      padding: 0;
   }
 }
 @media only screen and (max-width: 1350px)

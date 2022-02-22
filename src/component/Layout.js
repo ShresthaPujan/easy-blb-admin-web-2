@@ -30,8 +30,10 @@ export default function Layout(props) {
         <div className="container-fluid main-wrapper " >
           <div className="row">
           
-              <div className={menutoggle ?"col-lg-1 col-md-1 col-sm-1 col-1 ":"col-lg-2 col-md-1 col-sm-1 col-1"} id= {menutoggle ? "halfside-nav" :"side-nav"}> 
-              {menutoggle ? <Sidebarsmall/> :  <Sidebarone />}
+              <div className={menutoggle ?"col-lg-1 col-md-1 col-sm-1 col-1 ":"col-lg-2 col-md-1 col-sm-1 col-1"} id="side-nav"> 
+              {/* id= {menutoggle ? "halfside-nav" :"side-nav"} */}
+              {/* {menutoggle ? <Sidebarsmall/> :  <Sidebarone />} */}
+              <Sidebarone />
                 </div>
                
                 <div className={menutoggle ? "col-lg-11 col-md-11  col-sm-11 col-11  d-flex flex-column min-vh-100 togglewidthsmall" : "col-lg-10 col-md-11 col-sm-11 col-11 d-flex flex-column min-vh-100 togglewidthlarge"} id="upper-nav">

@@ -14,7 +14,7 @@ export default function Content() {
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
     const {deactivateCooperative,first,edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
-
+    const [check, setCheck] = useState(false)
    
     const userId =JSON.parse(localStorage.getItem("userInfo"));
        useEscapse(setPopup);
@@ -87,7 +87,14 @@ const handleEdit = (item) =>{
             datedummy[1] = `0${datedummy[1]}`
         }
         var date = `${datedummy[2]}-${datedummy[0]}-${datedummy[1]}`
+        let setpaid ;
 
+        if(data.IsPaid === "Y"){
+            setCheck(true)
+        }
+        else{
+            setCheck(false)
+        }
         
         setCoperativeEdit({  logo:data.Logo,
             cooperaticecode: item,
@@ -100,7 +107,7 @@ const handleEdit = (item) =>{
             NickName: data.NickName,
             ColorCode: data.ColorCode,
             IsOnline: data.IsOnline,
-            IsPaid:data.IsPaid,
+            IsPaid:setpaid,
             ScopeType: data.ScopeType,
             CbsURL:data.CbsUrl,
             IsWithdrawAllow: data.IsAllowWithDraw,
@@ -115,50 +122,39 @@ const openInNewTab = (url) => {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
   }
-  console.log(cooperative)
   return <>
-   <div className="col-lg-12 col-md-12 col-sm-12">
-                     <section className="content-section contentmain-popup">
-                                             
-                     </section>
+                 <div className="col-lg-12 col-md-12 col-sm-12 contentMainSection">
+                            <div>
+                                                    
+                                                        <div className="fontHeader">Cooperative List</div>
+                                                       
+                                                
+                                                    <hr style={{color:"#f1f2f3"}}/>
+                                                </div>
                            <section className="content-section main-content">
                                 <div className="content">
                                         <div className=" col-lg-12 col-sm-12">
-                                                <div className="row first_content">
-                                                    <div className="col-lg-6 p-2">
-                                                        <h5>Cooperative List</h5>
-                                                    </div>
-                                                    <div className="col-lg-6 p-2 text-end">
-                                                            <button className="btn btn-cmpy"   onClick={handleAddCooperative}> Add Cooperative +</button>
-                                                    </div>
-                                                </div>
+                                              
                                                 <div className="row">
-                                                    <div className="col-lg-2 col-md-4 col-sm-3 p-2 Search">
+                                                    <div className="col-lg-2 col-md-4 col-sm-3 p-2 px-3 Search">
                                                         <input type="text" placeholder="Search" onChange={handleSearch}  />
                                                         <i className="fas fa-search"></i>
                                                     </div>
-                                                    <div className="col-lg-6 col-md-6  col-sm-6 p-2 text-end">
-                                                            <div className="row">
-                                                                <div className=" offset-lg-6 offset-md-6  offset-sm-0 col-lg-6  col-md-6 col-sm-12">
-                                                                    <div className="row">
-                                                                            <div className="col-lg-6 col-md-6  col-sm-6   ">
-                                                                             
-                                                                            </div>
-                                                                            <div className="col-lg-6 col-md-6 col-sm-6">
-                                            
-                                                                            </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                    <div className="col-lg-4">
+
                                                     </div>
+                                                    <div className="col-lg-6 col-md-6 col-sm-6 text-end p-2 px-3">                                 
+                                                                       <button className="btn btn-cmpy btn-sm"   onClick={handleAddCooperative}> Add Cooperative +</button>
+                                                         </div>
+                                                   
                                                 </div>
                                                 </div>
                                                 { <div className="row">
                                                     <div className="ramram">
                                                     <div className="col-lg-12 ">
-                                                    {loading && (<Spinner/>)}
+                                                   
                                                     <div className="outer-wrapper">
-                                                    <div className="table-wrapper">
+                                                    <div className="table-wrapper"  style={{overflowX:"auto"}}>
                                                     <table className="table table-striped">
                                                     
                                                         <thead>
@@ -216,6 +212,7 @@ const openInNewTab = (url) => {
                                                         </div>
                                                     </div>
                                                     </div>
+                                                    {loading && (<Spinner/>)}
                                                 </div> }
                                             
                                         
@@ -225,12 +222,12 @@ const openInNewTab = (url) => {
          
         
          {edit ? (
-         <AddCooperative trigger ={popup} setTrigger={setPopup} >
+         <AddCooperative trigger ={popup} setTrigger={setPopup} setCheckTrigger={setCheck} check={check}>
              <h5 >Edit Cooperative</h5>
              <hr/>
          </AddCooperative>):
          (
-         <AddCooperative trigger ={popup} setTrigger={setPopup} >
+         <AddCooperative trigger ={popup} setTrigger={setPopup} setCheckTrigger={setCheck} check={check}>
              <h5>Add Cooperative</h5>
          </AddCooperative>)
          }

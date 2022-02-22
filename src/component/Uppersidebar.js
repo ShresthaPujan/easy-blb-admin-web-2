@@ -66,7 +66,7 @@ export default function Uppersidebar() {
     
   return <>
        
-                        <div className="col-lg-12 col-md-12 col-sm-12 ">
+                        <div className="col-lg-12 col-md-12 col-sm-12 UpperNav">
                             <div className="wrapper">
                                 <div className="navbar">
                                     <div>
@@ -77,7 +77,7 @@ export default function Uppersidebar() {
                                     </div>
                                     <div className="navbar__right">
                                      
-                                        <div  className="mx-2" style={{fontSize:"14px"}}>EasySoftware pvt.Ltd</div>
+                                        <div  className="mx-2" style={{fontSize:"14px"}}>EasySoftware pvt.Ltd </div>
                                         <div className="mx-2" onClick={handleLogoClick}><img  src={'../img/logo3.png'} alt=""/></div>
                                        {active &&( <div className="dropLogomenu">
                                             <ul>
