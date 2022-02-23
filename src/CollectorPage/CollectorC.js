@@ -10,7 +10,7 @@ import EditCollector from './EditCollector';
 import useEscapse from '../component/hooks/Use-escape';
 import Select from 'react-select'
 
-export default function Collector() {
+export default function CollectorC() {
 
     const [popup, setPopup] = useState(false);
     const [editpopup, setEditPopup] = useState(false);
@@ -29,6 +29,7 @@ export default function Collector() {
   }, []);
  
    useEscapse(setPopup);
+        
 
   const handleAddCollector= (e) =>{
     e.preventDefault();
@@ -135,55 +136,31 @@ useEffect(() => {
 
 }, [])
 
-        
-   
+
   return <>
-   <div className="col-lg-12 col-md-12 col-sm-12 contentMainSection">
-   <div>
-                                  <div className="fontHeader">Collector List</div>              
-                                                    <hr style={{color:"#f1f2f3"}}/>
-                                                </div>
-                           <section className="content-section main-content">
-                                <div className="content">
-                                        <div className=" col-lg-12 col-sm-12">
-                                        
-                                                <div className="row">
-                                                    <div className="col-lg-2 col-md-4 col-sm-3 p-2 Search">
+   <div className="col-lg-12 col-md-12 col-sm-12 p-3 pt-0">
+       <div className="row popUptab">
+                                         <div className="col-lg-3 col-md-4 col-sm-3 Search searchPopup">
                                                         <input type="text" placeholder="Search"   onChange={handleSearch}  />
                                                         <i className="fas fa-search"></i>
                                                        
                                                     </div>
-                                                    <div className="col-lg-2 p-2 Search">
-                                                    <Select  className="selectT" options={ncooperativecode} onChange={coopCodeGet}
-                                                    defaultValue={{ label: "YT47", value: 0 }} />   
-                                                   
-                                                    </div>
-                                                    
-                                                    <div className="col-lg-2 p-2 .text-dark Search" >
-                                                        <input type="text" disabled  style={{background:"white"}} value={infoCoop.CoOperativeName} name="" id="" />
-                                    
-                                                    </div>
-                
-                                                    <div className="col-lg-2 p-2 text-dark Search">
-                                                        <input type="text" disabled   style={{background:"white"}}  value={infoCoop.licenseExpiry?.split("T")[0]} name="" id="" />
-                                    
-                                                    </div>
-                                                    <div className="col-lg-2 p-2 .text-dark Search">
-                                                    <input type="text"  style={{background:"white"}} disabled value={infoCoop.Address} id="" />
-                                                    </div>
-                                                    <div className="col-lg-2 col-md-2 col-sm-3 p-2 text-end">
-                                                    <div className="col-lg-2">
+                                                    <div className="col-lg-3"></div>
+
+            <div className="col-lg-6 text-end">
                                                             <button className="btn btn-sm btn-cmpy"   onClick={handleAddCollector}> Add Collector +</button>
                                                     </div>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                { <div className="row">
-                                                    <div className="ramram">
+       </div>
+                           <section className="content-section main-content">
+                                <div className="content">
+
+                                                { <div className="row ">                                 
+                                                
                                                     <div className="col-lg-12 ">
+                                                       
                                                    
-                                                    <div className="outer-wrapper" style={{maxWidth:"100%"}}>
-                                                    <div className="table-wrapper">
+                                                    <div className="outer-wrapper" style={{maxWidth:"100%"}} style={{maxHeight:"200px"}}>
+                                                    <div className="table-wrapper insidePopUptable">
                                                     <table className="table table-striped">
                                                     
                                                         <thead>
@@ -226,7 +203,7 @@ useEffect(() => {
                                                        </div>
                                                        {loading && (<Spinner/>)}   
                                                     </div>
-                                                    </div>
+                                                   
                                                 </div> }
                                             
                                         

@@ -102,7 +102,7 @@
   background-color: rgba(0, 0, 0, 0.6);
   border: 1px solid black;
   box-shadow: 0 0 13px 0 rgb(82 63 105 / 10%);
-  z-index: 15;
+  z-index: 39;
   height:100%;
   
   overflow: auto;
@@ -224,11 +224,7 @@ i.fa.fa-download.fa-rotate-270 {
     margin-left: 62px;
   }
 }
-@media screen and (max-width: 1400px) and (min-width: 600px) {
-  #upper-nav{
-      padding: 0;
-  }
-}
+
 @media only screen and (max-width: 1350px)
 {
   .popUP{

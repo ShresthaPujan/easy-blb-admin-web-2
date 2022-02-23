@@ -5,6 +5,7 @@ import AddCooperative from './AddCooperative';
 import Spinner from '../component/Spinner/Spinner'
 import { Alert } from '../component/Alert';
 import useEscapse from '../component/hooks/Use-escape';
+import AddNewpopup from './AddNewpopup';
 
 
 
@@ -125,10 +126,7 @@ const openInNewTab = (url) => {
   return <>
                  <div className="col-lg-12 col-md-12 col-sm-12 contentMainSection">
                             <div>
-                                                    
-                                                        <div className="fontHeader">Cooperative List</div>
-                                                       
-                                                
+                                  <div className="fontHeader">Cooperative List</div>              
                                                     <hr style={{color:"#f1f2f3"}}/>
                                                 </div>
                            <section className="content-section main-content">
@@ -227,11 +225,11 @@ const openInNewTab = (url) => {
              <hr/>
          </AddCooperative>):
          (
-         <AddCooperative trigger ={popup} setTrigger={setPopup} setCheckTrigger={setCheck} check={check}>
+         <AddCooperative trigger ={false} setTrigger={setPopup} setCheckTrigger={setCheck} check={check}>
              <h5>Add Cooperative</h5>
          </AddCooperative>)
          }
-        
+        <AddNewpopup trigger={popup} setTrigger={setPopup} />
 
   </>;
 }

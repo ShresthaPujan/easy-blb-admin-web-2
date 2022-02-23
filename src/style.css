@@ -7,6 +7,10 @@
 }
 :root {
     --MainColor: #3498db;
+    --MainTextColor:#656565;
+    --textBlack: #232224;
+    --Maingray : #f5f8fa;
+    --ActiveColor:#eef3f7;
   }
 .fontHeader{
     font-size: 23px;
@@ -295,18 +299,16 @@ i.fas.fa-search {
 
 
 .outer-wrapper {
-    /* max-width: fit-content;  */
-    /* max-height: fit-content;   */
+    max-width: fit-content;  
+     max-height: fit-content;  
     margin: 0 auto;
     
 }
 .table-wrapper {
   
-    /* overflow-y: scroll;
-    overflow-x: scroll; */
-    /* height: fit-content; */
-      
-    
+    overflow-y: scroll;
+    overflow-x: scroll; 
+    height: fit-content;
     margin: 10px 10px;
     padding-bottom: 20px;
     
@@ -518,6 +520,89 @@ i.fas.fa-angle-down.position-absolute {
     right: 11%;
     top: 57%;
 }
+.popUpHeader{
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    overflow: auto;
+}
+.popUpHeader .fontHeader{
+    color: White;
+}
+.insidePopup{
+    width: 55%;  
+    background: white;
+    height: 500px;
+    border-radius: 3px;
+    overflow: scroll;
+}
+
+.insidePopup::-webkit-scrollbar {
+    display: none;
+}
+.insidePopUptable{
+    max-height: 300px;
+    margin: 0;
+}
+.pt-0{
+    padding-top: 0 !important;
+}
+.searchPopup input[type=text] {
+    padding: 6px;
+   }
+.popUptab{
+    padding-bottom: 6px;
+}
+.insidePopup nav{
+ background-color: var(--Maingray);
+}
+.popUpHeaderText{
+    font-size: 18px;
+    padding-left: 5px;
+}
+.insidePopup nav ul li{
+    display: inline-block;
+    padding: 15px 20px;
+    font-weight: 700;
+}
+.insidePopup nav ul li:hover {
+    color:var(--textBlack);
+    cursor: pointer;
+    border-bottom: 2px solid var(--MainColor);
+  }
+.insidePopup nav ul li.active {
+    color:var(--MainColor);
+    background: var(--ActiveColor);
+    border-bottom: 2px solid var(--MainColor);
+  }
+.popUpHeader{
+    padding:10px;
+    background: var(--MainColor);
+    color: White;
+  }
+  .icon{
+      padding-right: 5px;
+  }
+
+  .collector-table{
+        max-width: 400px;
+        max-height: 400px;
+       
+  }
+  .outlets{
+      position: relative;
+    overflow: scroll;
+  }
+  .testtable{
+      position: absolute;
+      z-index: 55;
+  }
+  .mySelect__value-container{
+    height: 35px;
+   }
 @media (min-width: 992px){
 .col-lg-12 {
  padding:0;
