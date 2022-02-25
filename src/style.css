@@ -24,7 +24,9 @@
 .flexy{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
+    padding:10px !important;
 }
 .img{
     background: var(--MainColor);
@@ -50,6 +52,18 @@ body{
 }
 .displayPopup{
     display: none ;
+}
+.popUp-alert-header{
+    display: flex;
+    background-color: var(--MainColor);
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 15px;
+    color: var(--textBlack);
+    font-weight: 400;
+    color: white;
+    padding: 0 10px !important;
+    align-items: center;
 }
 ul{
     list-style:none;
@@ -269,19 +283,30 @@ padding:0;
     align-content: center;
 }
 .logoutbtn{
-  padding: 20px;
-  background-color: red;
-  font-size: 15px;
-  
-  border-radius: 0 !important;
+  padding: 10px;
+  background-color: var(--MainColor);
+  font-size: 13px;
+  border-radius: 3px !important;
   color: white;
+  font-weight: 400;
+  cursor: pointer;
 }
 .cancelbtn{
-    padding:20px;
-    background-color: var(--MainColor);
+    padding:10px;
+    background-color: var(--Maingray);
+    font-size: 13px;
+    color: var(--textBlack);
+    border-radius: 3px !important;
+    cursor: pointer;
+  font-weight: 400;
+ 
+}
+.alertText{
     font-size: 15px;
-    color: white;
-    border-radius: 0 !important;
+    color: var(--textBlack);
+    margin: 0;
+    padding: 20px;
+    border-bottom: 1px solid var(--Maingray);
 }
 .first_content{
     
@@ -308,11 +333,20 @@ padding:0;
     outline:none;
     border:1px solid #2684FF;
 }
+.test{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.testsearch{
+    width: 168px;
+}
 
 i.fas.fa-search {
     position: absolute;
-    top: 32%;
     right: 10%;
+    padding: 9px 9px;
 }
 .col-lg-6.col-md-6.col-sm-6.p-2.Search input[type="text"] {
     background: #F8F8FB;
@@ -336,9 +370,12 @@ i.fas.fa-search {
     overflow-y: scroll;
     overflow-x: scroll; 
     /* height: fit-content; */
-    margin: 10px 10px;
+    margin: 10px 0px;
     padding-bottom: 20px;
     
+}
+.testwidth{
+    width:16.66%;
 }
 .deactivate{
     width: 100%;
@@ -374,6 +411,10 @@ table tbody tr td{
 .btn-cmpy{
     background: var(--MainColor);
     color: white;
+
+}
+.btn-cmpy2{
+    width: 100% !important;
 }
 .btn-cmpy:hover{
     color: white;
@@ -603,13 +644,33 @@ i.fas.fa-angle-down.position-absolute {
     background: white;
     border-radius: 3px;
     max-width: 740px;
-    overflow: scroll;
-    height: 500px;
+    overflow: hidden;
+    /* overflow: scroll; */
+    /* height: 500px; */
 }
-.ip500{
-    max-width: 540px;
+.outlet{
     height: 400px;
-    top: 261px;
+    overflow: auto;
+}
+.basicALertfooter{
+    border-top: 2px solid var(--Maingray);
+    position: absolute;
+    bottom: -10px;
+    right: 5px;
+    text-align: right;
+    width: 100%;
+    background: #ffffff;
+}
+.alertfooter{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+@media only screen and (max-width: 992px) {
+    .basicALertfooter{
+        position: static;
+        text-align: right !important;
+    }
 }
 
 
@@ -787,7 +848,7 @@ z-index: 0;
 .fade-in{
     opacity: 1;
     z-index: 999;
-    transition: all 0.9s ease;
+    transition: all 0.1s ease;
 }
 
 .fade-out{

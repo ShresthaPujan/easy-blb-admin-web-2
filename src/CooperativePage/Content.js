@@ -11,10 +11,9 @@ import AddNewpopup from './AddNewpopup';
 
 export default function Content() {
 
-    const [popup, setPopup] = useState(false);
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
-    const {deactivateCooperative,first,edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
+    const {popup,setPopup,deactivateCooperative,first,edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
     const [check, setCheck] = useState(false)
    
     const userId =JSON.parse(localStorage.getItem("userInfo"));

@@ -240,10 +240,11 @@ const CooperativeState =(props) =>{
    const[menutoggle,setMenutoggle]=useState(false);
    const [loading, setLoading] = useState(false);
    const [resetPassword, setresetPassword] = useState(false)
+   const [popup, setPopup] = useState(false);
  
    
 return (
-    <cooperativeContext.Provider value={{resetPassword,setresetPassword,msg,setMsg,deactivateCooperative,cooperativeEditInitial,first,loading,msg,setMsg,getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
+    <cooperativeContext.Provider value={{popup,setPopup,resetPassword,setresetPassword,msg,setMsg,deactivateCooperative,cooperativeEditInitial,first,loading,msg,setMsg,getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
       {props.children}
     </cooperativeContext.Provider>
   )

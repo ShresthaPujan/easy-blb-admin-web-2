@@ -21,7 +21,7 @@ import Collector from './CollectorPage/Collector';
 import CollectorState from './component/Collector/CollectorState';
 import Escpdetect from './component/Escpdetect';
 import AddNewpopup from './CooperativePage/AddNewpopup';
-import Form from './CooperativePage/Form';
+
 function App() {
   //const user = useSelector(selectUser);
   const auth = localStorage.getItem("userInfo");
@@ -50,11 +50,6 @@ function App() {
                               <Route path="/test" element={<Test/>} />
                             </Routes>      
                         </Layout>
-                        <AddNewpopup>
-                            <Route>
-                            <Route path="/form" element={  <Form /> }/>
-                            </Route>
-                        </AddNewpopup>
                     </CollectorState>
                   </CooperativeState>
                  )}

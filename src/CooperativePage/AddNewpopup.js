@@ -1,14 +1,18 @@
-import React , { useState }from 'react'
+import React , { useState,useContext }from 'react'
 import { NavLink,Link, useNavigate } from "react-router-dom";
 import {Routes, Route } from "react-router-dom";
 import CollectorC from '../CollectorPage/CollectorC';
-import Contact from './Contact';
-import Form from './Form';
-import SecondForm from './SecondForm';
+import Basicform from './Basicform';
 import UsewindowDimension from '../component/hooks/UsewindowDimension';
+import Contactform from './Contactform';
+import License from './License';
+import cooperativeContext from '../component/Cooperative/cooperativeContext';
 
 export default function AddNewpopup(props) {
     const { height} = UsewindowDimension();
+    const {closepopup} =props.setTriggernew;
+    const context = useContext(cooperativeContext)
+    const {popup,setPopup}=context;
     const [activeTab, setActiveTab] = useState({
         tab1:true,
         tab2:false,
@@ -20,7 +24,8 @@ export default function AddNewpopup(props) {
         setActiveTab({
             tab1:true,
         tab2:false,
-        tab3:false
+        tab3:false,
+        tab4:false
         });
       };
       const handleTab2 = () => {
@@ -28,7 +33,8 @@ export default function AddNewpopup(props) {
         setActiveTab({
             tab1:false,
             tab2:true,
-            tab3:false
+            tab3:false,
+            tab4:false
         });
       };
       const handleTab3 = () => {
@@ -37,7 +43,7 @@ export default function AddNewpopup(props) {
             tab1:false,
             tab2:false,
             tab3:true,
-            tab2:false
+            tab4:false
         });
       };
       const handleTab4 = () => {
@@ -49,7 +55,9 @@ export default function AddNewpopup(props) {
             tab4:true
         });
       };
-      const closePopup =() =>{
+      const closePopup =(e) =>{
+          e.preventDefault();
+            console.log("here")
           props.setTriggernew(false)
       }
   return props.trigger ? (
@@ -71,9 +79,9 @@ export default function AddNewpopup(props) {
                 </ul>
             </nav>
             <div className="outlet">
-                {activeTab.tab1 &&(<Form />)}
-                {activeTab.tab2 &&(<SecondForm/>)}
-                {activeTab.tab3 &&(<Contact/>)}
+                {activeTab.tab1 &&(<Basicform active={activeTab} setActive={setActiveTab} />)}
+                {activeTab.tab2 &&(<Contactform active={activeTab} setActive={setActiveTab}/>)}
+                {activeTab.tab3 &&(<License/>)}
                 {activeTab.tab4 &&(<CollectorC/>)}
 
 

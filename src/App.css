@@ -138,17 +138,15 @@
 }
 .alertclosebtn{
   border-radius: 0 !important;
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 34px;
-  color: black;
+  font-size: 30px;
+  color: #fff;
   font-weight: 100;
   padding: 0;
-  z-index: 1;
   padding-bottom: 0 !important;
+  border: 0;
 
 }
+
 
 .popUP-alert{
   position: fixed;

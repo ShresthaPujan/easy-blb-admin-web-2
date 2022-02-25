@@ -23,15 +23,15 @@ export const Alert = (props) => {
   const alertType=()=>{
       if(alert.type === "logout"){
         return (<div className='col-lg-12 flexy'>
-        <div onClick={logoutConform} className="logoutbtn badge col-lg-6">Logout</div>
-        <div onClick={handleClose} className="cancelbtn badge col-lg-6">Cancel</div>
+        <div onClick={logoutConform} className="logoutbtn badge ">Logout</div>
+        <div onClick={handleClose} className="cancelbtn badge mx-2">Cancel</div>
       </div> )
       }
       else if(alert.type === "reset")
       {
         return (<div className='col-lg-12 flexy'>
-            <div onClick={ConformReset} className="logoutbtn badge col-lg-6">Reset Password</div>
-            <div onClick={handleClose} className="cancelbtn badge col-lg-6">Cancel</div>
+            <div onClick={ConformReset} className="logoutbtn badge ">Reset Password</div>
+            <div onClick={handleClose} className="cancelbtn badge ">Cancel</div>
             </div>)
       }
       }
@@ -40,9 +40,14 @@ export const Alert = (props) => {
 
   return<div className="popUP container-fluid  col-lg-12 col-md-12 col-sm-12 col-xs-12">   
             <div className="popup-inner-alert container col-lg-12 col-md-12 col-sm-12 col-xs-12  ">
-                <button className='btn alertclosebtn' onClick={handleClose} ><i className="bi bi-x"></i></button>
-                <div className='text-center col-lg-12 col-md-12 col-sm-12 col-xs-12 '>
-                <p className='fontHeader p-5 m-0'> {alert.msg}</p>
+              <div className="popUp-alert-header ">
+                <div className="">Easy Software</div>
+                <div><button className='btn alertclosebtn' onClick={handleClose} ><i className="bi bi-x"></i></button></div>
+                </div>
+                <div className=' col-lg-12 col-md-12 col-sm-12 col-xs-12 '>
+                <p className='alertText'> {alert.msg}</p>
+                
+                
                 {alertType()}
                 </div>
              </div>
