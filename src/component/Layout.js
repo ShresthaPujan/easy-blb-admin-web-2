@@ -15,7 +15,7 @@ export default function Layout(props) {
  
   useEffect(() => {
     
-    if(width < 1120){
+    if(width < 1100){
       setMenutoggle(true)
     }
     else{
@@ -30,13 +30,13 @@ export default function Layout(props) {
         <div className="container-fluid main-wrapper " >
           <div className="row">
           
-              <div className={menutoggle ?"col-lg-1 col-md-1 col-sm-1 col-1 ":"col-lg-2 col-md-1 col-sm-1 col-1"} id="side-nav"> 
+              <div className={menutoggle ?"hide ":"col-lg-2"} id="side-nav"> 
               {/* id= {menutoggle ? "halfside-nav" :"side-nav"} */}
               {/* {menutoggle ? <Sidebarsmall/> :  <Sidebarone />} */}
               <Sidebarone />
                 </div>
                
-                <div className={menutoggle ? "col-lg-11 col-md-11  col-sm-11 col-11  d-flex flex-column min-vh-100 togglewidthsmall" : "col-lg-10 col-md-11 col-sm-11 col-11 d-flex flex-column min-vh-100 togglewidthlarge"} id="upper-nav">
+                <div className={menutoggle ? "col-lg-12 col-md-12  col-sm-12 col-12  d-flex flex-column min-vh-100 togglewidthsmall" : "col-lg-10 col-md-10 col-sm-10 col-10 d-flex flex-column min-vh-100 togglewidthlarge"} id="upper-nav">
                       <Uppersidebar/>
                           {props.children}
                       <div  className="mt-auto">

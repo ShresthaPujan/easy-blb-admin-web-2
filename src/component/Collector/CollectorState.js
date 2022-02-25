@@ -31,6 +31,7 @@ const CollectorState =(props) =>{
       activateInactivate: "",
       NameNepali: "",
       createdUserID: "",
+      IsAllowSignature:""
     })
     const [first, setfirst] = useState({})
 

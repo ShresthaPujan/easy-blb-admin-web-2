@@ -44,6 +44,7 @@ const handleSearch = (e)=>{
 }
 const handleEdit = (item) =>{
     getCollectorInfo(item).then(data => {
+        console.log(data)
        const collData = {
         CoOperativeCode: "YT47",
         FullName: data.FullName,
@@ -59,6 +60,7 @@ const handleEdit = (item) =>{
         EmergencyContact: data.collEmergencyContact,
         activateInactivate: data.activateInactivate,
         NameNepali: data.nameNepali,
+        IsAllowSignature:data.IsAllowSignature,
 
           }
         setCollectorEdit(collData)
@@ -154,7 +156,7 @@ useEffect(() => {
                                                        
                                                     </div>
                                                     <div className="col-lg-2 p-2 Search">
-                                                    <Select  className="selectT" options={ncooperativecode} onChange={coopCodeGet}
+                                                    <Select  className="selectT"     options={ncooperativecode} onChange={coopCodeGet}
                                                     defaultValue={{ label: "YT47", value: 0 }} />   
                                                    
                                                     </div>

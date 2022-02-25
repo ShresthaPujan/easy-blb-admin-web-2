@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import cooperativeContext from "../component/Cooperative/cooperativeContext";
+import $ from "jquery";
 
 export default function AddCooperative(props) {
   const context = useContext(cooperativeContext);
@@ -33,6 +34,7 @@ export default function AddCooperative(props) {
 
   const handlePopupClose = (e) => {
     e.preventDefault();
+    $('.displayPopup').fadeOut();
     props.setTrigger(false);
     setformErrors({ val: 1 });
     setCoperativeEdit({})
@@ -110,9 +112,9 @@ export default function AddCooperative(props) {
     } else if (!numv.test(values.contactnumber)) {
       errors.contactnumber = "Please enter number only";
     }
-    else if(!values.contactnumber<11){
-      errors.contactnumber ="10 number only";
-    }
+    // else if(!values.contactnumber<=10){
+    //   errors.contactnumber ="10 number only";
+    // }
     if (!values.creditlimit) {
       errors.creditlimit = " required";
     } else if (!numv.test(values.creditlimit)) {
@@ -170,9 +172,16 @@ export default function AddCooperative(props) {
   //     console.log(" Outside / Elsewhere");
   //   }
   // });
+ useEffect(() => {
+if(props.trigger){
+  $('.displayPopup').fadeIn();
+}
+ }, [props.trigger])
+ 
 
-  return props.trigger ? (
-    <div className="popUP container-fluid   col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+  return(
+
+    <div className="popUP displayPopup container-fluid   col-lg-12 col-md-12 col-sm-12 col-xs-12" >
       <div className="popup-inner container-fluid  " style={{padding:"30px"}}  >
         <button className="btn closebtn" onClick={handlePopupClose}  >
           <i className="bi bi-x"></i>
@@ -567,8 +576,6 @@ export default function AddCooperative(props) {
         </form>
       </div>
     </div>
-
-  ) : (
-    ""
-  );
+)
+ 
 }

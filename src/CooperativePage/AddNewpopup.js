@@ -5,8 +5,10 @@ import CollectorC from '../CollectorPage/CollectorC';
 import Contact from './Contact';
 import Form from './Form';
 import SecondForm from './SecondForm';
+import UsewindowDimension from '../component/hooks/UsewindowDimension';
 
 export default function AddNewpopup(props) {
+    const { height} = UsewindowDimension();
     const [activeTab, setActiveTab] = useState({
         tab1:true,
         tab2:false,
@@ -48,13 +50,13 @@ export default function AddNewpopup(props) {
         });
       };
       const closePopup =() =>{
-          props.setTrigger(false)
+          props.setTriggernew(false)
       }
   return props.trigger ? (
       
     <div className="popUP container-fluid   col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center align-items-center" style={{overflow:"scroll"}}>
       
-        <div className="insidePopup">
+        <div className={height < 500?"insidePopup ip500":"insidePopup"}>
             <div className="popUpHeader ">
                  <div className='popUpHeaderText '>Cooperative Information</div> 
                 <div style={{cursor:"pointer"}}><i className="bi bi-x "  onClick={closePopup} style={{fontSize:"25px"}}></i></div>

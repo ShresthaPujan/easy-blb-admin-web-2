@@ -159,8 +159,8 @@ useEffect(() => {
                                                     <div className="col-lg-12 ">
                                                        
                                                    
-                                                    <div className="outer-wrapper" style={{maxWidth:"100%"}} style={{maxHeight:"200px"}}>
-                                                    <div className="table-wrapper insidePopUptable">
+                                                    <div className="outer-wrapper" style={{height: "300px",overflow: "scroll"}}>
+                                                    <div className="table-wrapper insidePopUptable" style={{overflowX:"auto",overflowY:"hidden"}}>
                                                     <table className="table table-striped">
                                                     
                                                         <thead>

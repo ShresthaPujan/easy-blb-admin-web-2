@@ -52,9 +52,12 @@ export default function Content() {
   }, []);
 
   const handleAddCooperative= (e) =>{
+      console.log("here")
+      console.log(popup)
     e.preventDefault();
     setEdit(false);
     setPopup(true);
+    console.log(popup)
 
 }
 
@@ -229,7 +232,7 @@ const openInNewTab = (url) => {
              <h5>Add Cooperative</h5>
          </AddCooperative>)
          }
-        <AddNewpopup trigger={popup} setTrigger={setPopup} />
+        <AddNewpopup  trigger ={popup} setTriggernew={setPopup} />
 
   </>;
 }

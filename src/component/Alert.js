@@ -22,27 +22,27 @@ export const Alert = (props) => {
 
   const alertType=()=>{
       if(alert.type === "logout"){
-        return (<div className='p-3'>
-        <button className="btn btn-primary mx-2" onClick={logoutConform}>Logout</button>
-        <button className="btn btn-danger" onClick={handleClose}>Cancel</button>
+        return (<div className='col-lg-12 flexy'>
+        <div onClick={logoutConform} className="logoutbtn badge col-lg-6">Logout</div>
+        <div onClick={handleClose} className="cancelbtn badge col-lg-6">Cancel</div>
       </div> )
       }
       else if(alert.type === "reset")
       {
-        return (<div className='p-3'>
-        <button className="btn btn-primary mx-2" onClick={ConformReset}>Reset Password</button>
-        <button className="btn btn-danger" onClick={handleClose}>Cancel</button>
-      </div>)
+        return (<div className='col-lg-12 flexy'>
+            <div onClick={ConformReset} className="logoutbtn badge col-lg-6">Reset Password</div>
+            <div onClick={handleClose} className="cancelbtn badge col-lg-6">Cancel</div>
+            </div>)
       }
       }
   
 
 
   return<div className="popUP container-fluid  col-lg-12 col-md-12 col-sm-12 col-xs-12">   
-            <div className="popup-inner-alert container col-lg-12 col-md-12 col-sm-12 col-xs-12  p-4 ">
-                <button className='btn closebtn' onClick={handleClose} ><i className="bi bi-x"></i></button>
-                <div className='text-center col-lg-12 col-md-12 col-sm-12 col-xs-12  p-4'>
-                {alert.msg}
+            <div className="popup-inner-alert container col-lg-12 col-md-12 col-sm-12 col-xs-12  ">
+                <button className='btn alertclosebtn' onClick={handleClose} ><i className="bi bi-x"></i></button>
+                <div className='text-center col-lg-12 col-md-12 col-sm-12 col-xs-12 '>
+                <p className='fontHeader p-5 m-0'> {alert.msg}</p>
                 {alertType()}
                 </div>
              </div>

@@ -70,6 +70,7 @@ const handleReset =(event)=>{
             activateInactivate: "",
             NameNepali: "",
             createdUserID: "",
+            IsAllowSignature:""
             
     })
     setformErrors({reset:1})
@@ -117,7 +118,9 @@ const handleReset =(event)=>{
         if(!values.EmergencyContact){
             errors.EmergencyContact = "Emergency Contact is required";
         }
-
+        if(!values.IsAllowSignature){
+            errors.IsAllowSignature = "Is AllowSignature is required";
+        }
 
         return errors;
     }
@@ -339,6 +342,27 @@ const handleReset =(event)=>{
                                                                 aria-describedby="addon-wrapping"/>
                                                                 <span className="errormsg">{formErrors.ActiveInActive}</span>
                                                       </div>
+                                                      <div className='position-relative'>
+                                                        <label htmlFor="IsAllowSignature" className="form-label">
+                                                                Allow Signature
+                                                                </label>
+                                                                <select
+                                                                style={{ fontSize: "11px" }}
+                                                                value={collectorEdit.IsAllowSignature}
+                                                                name="IsAllowSignature"
+                                                                onChange={handleChange}
+                                                                className={`form-control form-control-sm mb-1  ${
+                                                                    formErrors.IsAllowSignature ? "errorBorder" : ""
+                                                                }`}
+                                                                >
+                                                                <option value="" selected style={{ fontSize: "11px" }}>
+                                                                    select Signature
+                                                                </option>
+                                                                <option value="Y">Yes</option>
+                                                                <option value="N">No</option>
+                                                                </select>
+                                                                <i class="fas fa-angle-down  position-absolute "></i>
+                                                </div>
                                                       
                                                                         
                                         </div>

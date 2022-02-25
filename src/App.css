@@ -128,11 +128,26 @@
 }
 .popup-inner-alert {
   background: #fff;
-  top: 35%;
-  width: 100%;
-  max-width: 900px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
   position: absolute;
-  left:25%;
+  padding-bottom: 0!important;
+  border-radius: 3px;
+}
+.alertclosebtn{
+  border-radius: 0 !important;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 34px;
+  color: black;
+  font-weight: 100;
+  padding: 0;
+  z-index: 1;
+  padding-bottom: 0 !important;
+
 }
 
 .popUP-alert{
