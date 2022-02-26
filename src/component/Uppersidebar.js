@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { logout} from '../features/Userslice';
 import AuthContext from './auth-context';
 import cooperativeContext from './Cooperative/cooperativeContext';
-import logo from './logo3.png'
+import logo from './logo.png'
 
 
 export default function Uppersidebar() {
@@ -77,8 +77,8 @@ export default function Uppersidebar() {
                                     </div>
                                     <div className="navbar__right">
                                      
-                                        <div  className="mx-2" style={{fontSize:"14px"}}>EasySoftware pvt.Ltd </div>
-                                        <div className="mx-2" onClick={handleLogoClick}><img  src={'../img/logo3.png'} alt=""/></div>
+                                        <div  className="mx-2" style={{fontSize:"14px",marginTop:"10px"}}>EasySoftware pvt.Ltd </div>
+                                        <div className="mx-2" onClick={handleLogoClick}><img  src={logo} alt=""/></div>
                                        {active &&( <div className="dropLogomenu">
                                             <ul>
                                                 <li style={{marginTop:"5px"}}><a href="" onClick={logOut}><span><i className="bi bi-people mx-3" ></i>Logout</span></a></li>

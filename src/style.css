@@ -113,7 +113,6 @@ ul li a{
     right: 0;
     top: 0;
     z-index: 2;
-    width: 100%;
 }
 .menu nav ul{
     list-style: none;
@@ -181,7 +180,7 @@ ul li a{
     flex-direction: row;
     justify-content: space-between;
     background: var(--MainColor);    
-    padding: 20px 25px;
+    padding: 9px 25px;
     color:white;
     height: 65px;
 }
@@ -225,8 +224,9 @@ margin-top: 25px;
    position: relative;
 }
 .navbar__right img{
-    width: 58px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
+    border-radius: 15px;
     object-fit: contain;
 }
 .dropLogomenu{
@@ -270,8 +270,7 @@ border:0 !important;
     max-width: 100%;
 }
 .togglewidthlarge{
-    width: 100%;
-    min-width: calc(100% - 250px);
+    width: calc(100% - 250px);
 }
 .col-lg-12.col-md-12.col-sm-12.UpperNav {
 padding:0;
