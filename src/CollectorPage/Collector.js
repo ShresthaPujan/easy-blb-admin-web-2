@@ -188,7 +188,7 @@ useEffect(() => {
                                                 { <div className="row">
                                                     <div className="ramram">
                                                     <div className="col-lg-12 ">
-                                                   
+                                                    {loading ? (<Spinner/>) :(  
                                                     <div className="outer-wrapper" style={{maxWidth:"100%"}}>
                                                     <div className="table-wrapper" style={{margin:"3px",height:"300px"}}>
                                                     <table className="table table-striped">
@@ -231,7 +231,7 @@ useEffect(() => {
                                                         </table>
                                                        </div>
                                                        </div>
-                                                       {loading && (<Spinner/>)}   
+                                                      )} 
                                                     </div>
                                                     </div>
                                                 </div> }

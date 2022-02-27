@@ -150,7 +150,7 @@ const openInNewTab = (url) => {
                                                 { <div className="row">
                                                     <div className="">
                                                     <div className="col-lg-12 p-1">
-                                                   
+                                                    {loading ? <Spinner/> :(
                                                     <div className="outer-wrapper">
                                                     <div className="table-wrapper"  style={{overflowX:"auto"}}>
                                                     <table className="table table-striped">
@@ -206,9 +206,10 @@ const openInNewTab = (url) => {
                                                         </table>
                                                         </div>
                                                         </div>
+                                                        )}
                                                     </div>
                                                     </div>
-                                                    {loading && (<Spinner/>)}
+                                                    
                                                 </div> }
                                             
                                         
