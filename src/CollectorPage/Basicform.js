@@ -90,7 +90,7 @@ export default function Basicform(props) {
 
        
       
-        <div className="col-lg-6 pl-0">
+        <div className="col-lg-6 ">
               <div className="col-lg-12  mb-3">
                 <label htmlFor="UserName" className="form-label">
                 Username

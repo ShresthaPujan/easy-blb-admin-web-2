@@ -140,9 +140,10 @@ export default function CollectorC() {
 
   return (
     <>
+   
       <div className="col-lg-12 col-md-12 col-sm-12 p-3 pt-0">
         <div className="row popUptab">
-          <div className="col-lg-3 col-md-4 col-sm-3 Search searchPopup">
+          <div className="col-lg-3 col-md-4 col-sm-3  ml-3 Search searchPopup">
             <input type="text" placeholder="Search" onChange={handleSearch} />
             <i className="fas fa-search"></i>
           </div>
@@ -162,12 +163,15 @@ export default function CollectorC() {
                       height: "100%",
                       maxHeight: "300px",
                       overflow: "auto",
+                      margin:"0 !important",
+                      
                     }}
                   >
                     <div
                       className="table-wrapper insidePopUptable"
                       style={{ overflowX: "auto", overflowY: "hidden" }}
                     >
+                        {loading ? <Spinner/> :(
                       <table className="table table-striped">
                         <thead>
                           <tr className="tableHead">
@@ -184,7 +188,7 @@ export default function CollectorC() {
                             </td>
                           </tr>
                         </thead>
-
+                      
                         <tbody>
                           {collector.length > 0 ? (
                             collector
@@ -243,10 +247,12 @@ export default function CollectorC() {
                             </tr>
                           )}
                         </tbody>
+                       
                       </table>
+                       )}
                     </div>
                   </div>
-                  {loading && <Spinner />}
+                 
                 </div>
               </div>
             }

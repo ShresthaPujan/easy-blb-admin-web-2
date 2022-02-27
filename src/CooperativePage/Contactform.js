@@ -17,9 +17,10 @@ export default function Contactform(props) {
     setPopup(false);
   }
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row">
-      <div className="col-lg-6  mb-3">
+        <div className="col-lg-6">
+      <div className="col-lg-12  mb-3">
                 <label htmlFor="Address" className="form-label">
                  Address
                 </label>
@@ -34,7 +35,7 @@ export default function Contactform(props) {
                   aria-describedby="addon-wrapping"
                 />            
           </div>
-          <div className="col-lg-6 pl-0 mb-3">
+          <div className="col-lg-12  mb-3">
                 <label htmlFor="Contact Person" className="form-label">
                  Contact Person
                 </label>
@@ -49,7 +50,9 @@ export default function Contactform(props) {
                   aria-describedby="addon-wrapping"
                 />            
           </div>
-          <div className="col-lg-6  mb-3">
+          </div>
+          <div className="col-lg-6">
+          <div className="col-lg-12  mb-3">
                 <label htmlFor="Contact Number" className="form-label">
                  Contact Number
                 </label>
@@ -64,8 +67,9 @@ export default function Contactform(props) {
                   aria-describedby="addon-wrapping"
                 />            
           </div>
+          </div>
       </div>
-      <div className="p-2  basicALertfooter  mb-2"> 
+      <div className="p-2 py-3 basicALertfooter  mb-2"> 
       <button className='btn btn-sm btn-cmpy'>Submit</button>
       <button onClick={ContactfomrNext} className='btn btn-sm btn-cmpy ml-2 ' style={{background:"red"}}>Next</button>
       <button className='btn btn-sm btn-cmpy ml-2' onClick={closePopup}>Cancel</button>

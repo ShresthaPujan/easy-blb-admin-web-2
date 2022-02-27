@@ -90,7 +90,7 @@ export default function Basicform(props) {
 
        
       
-        <div className="col-lg-6 pl-0">
+        <div className="col-lg-6 ">
               <div className="col-lg-12  mb-3">
                 <label htmlFor="cooperativeName" className="form-label">
                   Cooperative Name
@@ -143,7 +143,7 @@ export default function Basicform(props) {
 
     
         </div>
-        <div className="p-2  col-lg-12 basicALertfooter  mb-2"> 
+        <div className="p-2 py-3  col-lg-12 basicALertfooter  mb-2"> 
       <button className='btn btn-sm btn-cmpy'>Submit</button>
       <button onClick={BasicformNext} className='btn btn-sm btn-cmpy ml-2' style={{background:"red"}}>Next</button>
       <button className='btn btn-sm btn-cmpy ml-2' onClick={closePopup}>Cancel</button>
