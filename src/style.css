@@ -364,9 +364,15 @@ i.fas.fa-search {
     margin: 0 auto;
     
 }
+.form-control:focus {
+    box-shadow: none !important;
+    border: 1px solid var(--MainColor) !important;
+    outline: none;
+    
+}
 .table-wrapper {
   
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: scroll; 
     /* height: fit-content; */
     margin: 10px 0px;

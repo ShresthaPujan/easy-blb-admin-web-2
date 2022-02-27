@@ -147,19 +147,17 @@ useEffect(() => {
                                                     </div>
                                                     <div className="col-lg-3"></div>
 
-            <div className="col-lg-6 text-end">
-                                                            <button className="btn btn-sm btn-cmpy"   onClick={handleAddCollector}> Add Collector +</button>
-                                                    </div>
+ 
        </div>
-                           <section className="content-section main-content">
+                           <section className="content-section main-content" style={{border:"0"}}>
                                 <div className="content">
 
                                                 { <div className="row ">                                 
                                                 
-                                                    <div className="col-lg-12 ">
+                                                    <div className="col-lg-12 p-0">
                                                        
                                                    
-                                                    <div className="outer-wrapper" style={{height: "100%", maxHeight:"300px",overflow: "scroll"}}>
+                                                    <div className="outer-wrapper" style={{height: "100%", maxHeight:"300px",overflow: "auto"}}>
                                                     <div className="table-wrapper insidePopUptable" style={{overflowX:"auto",overflowY:"hidden"}}>
                                                     <table className="table table-striped">
                                                     
@@ -170,7 +168,7 @@ useEffect(() => {
                                                                 <td className="tl">Username</td>
                                                                 <td className='tl' style={{ width: "150px"}}>Fullname</td>
                                                                 <td className='tc'> Is Active</td>
-                                                                <td className='tc' style={{ width: "297px"}}> Action</td>
+                                                                <td className='tc' style={{ width: "250px"}}> Action</td>
                                                             </tr>
                                                         </thead>
                                                       
@@ -191,7 +189,7 @@ useEffect(() => {
                                                                     <td  className="tl">{item.UserName}</td>                       
                                                                     <td className='tl'>{item.fullName}</td>
                                                                     <td className='tc'>{item.IsActive}</td>
-                                                                    <td className='tc'><span className='editspan badge'   onClick={()=>handleEdit(item.CollectorID)}>Edit</span> | <span className='deletespan badge deactivate' onClick={()=>handleDeacivate(item.CollectorID,item.IsActive)}>{checkIspaid(item.IsActive)}</span> | <span className='editspan badge'  onClick={()=>handleResetPassword(item.UserName)}>Reset Password</span></td>                                                               
+                                                                    <td className='tc'><span className='deletespan badge deactivate' onClick={()=>handleDeacivate(item.CollectorID,item.IsActive)}>{checkIspaid(item.IsActive)}</span> | <span className='editspan badge'  onClick={()=>handleResetPassword(item.UserName)}>Reset Password</span></td>                                                               
   
                                                         </tr>
                                                    ):(

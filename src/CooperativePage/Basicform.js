@@ -15,7 +15,6 @@ export default function Basicform(props) {
   }
   const closePopup = (e)=>{
     e.preventDefault();
-    console.log("yeta")
     setPopup(false);
   }
   return (
@@ -26,14 +25,14 @@ export default function Basicform(props) {
             <div className="col-lg-12 mb-3">
           
                         <label htmlFor="cooperaticecode" className="form-label">
-                          Coop.Code
+                        Cooperative Code
                         </label>
                         <input
                           type="text"
                           className="form-control form-control-sm mb-1"  
                           value=""
                           name="cooperaticecode"
-                          placeholder="Coop.Code"
+                          placeholder="Cooperative Code"
                           aria-label="Co Operative Code"
                           id="cooperaticecode"
                           aria-describedby="addon-wrapping"
@@ -72,7 +71,7 @@ export default function Basicform(props) {
             aria-describedby="addon-wrapping"
           />      
     </div>
-    <div className="col-lg-12  mb-3">
+    <div className="col-lg-12 mb-3">
                 <label htmlFor="color" className="form-label">
                   Scope Type
                 </label>
@@ -91,7 +90,7 @@ export default function Basicform(props) {
 
        
       
-        <div className="col-lg-6">
+        <div className="col-lg-6 pl-0">
               <div className="col-lg-12  mb-3">
                 <label htmlFor="cooperativeName" className="form-label">
                   Cooperative Name

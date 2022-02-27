@@ -1,6 +1,13 @@
-import React from "react";
-
+import React ,{useContext} from 'react'
+import cooperativeContext from '../component/Cooperative/cooperativeContext';
 export default function License() {
+  const context = useContext(cooperativeContext)
+  const {popup,setPopup}=context;
+
+  const closePopup = (e)=>{
+    e.preventDefault();
+    setPopup(false);
+  }
   return (
     <div className="container">
       <div className="row">
@@ -19,7 +26,7 @@ export default function License() {
             aria-describedby="addon-wrapping"
           />
         </div>
-        <div className="col-lg-6  mb-2">
+        <div className="col-lg-6 pl-0 mb-2">
           <label htmlFor="" className="form-label">
             Medium
           </label>
@@ -51,7 +58,7 @@ export default function License() {
             aria-describedby="addon-wrapping"
           />
         </div>
-        <div className="col-lg-6  mb-2position-relative">
+        <div className="col-lg-6 pl-0 mb-2position-relative">
           <label htmlFor="ShowHideBalance " className="form-label">
             Balance
           </label>
@@ -85,7 +92,7 @@ export default function License() {
                     </select>
                     <i class="fas fa-angle-down  position-absolute "></i>
                   </div>
-                  <div className="col-lg-6  mb-2">
+                  <div className="col-lg-6  pl-0 mb-2">
                     <label htmlFor="IsWithdrawAllow" className="form-label">
                       Withdraw
                     </label>
@@ -128,9 +135,9 @@ export default function License() {
         <span> Allow permission to use App</span>
 </div>
       </div>
-      <div className="p-2 basicALertfooter"> 
+      <div className="p-2 basicALertfooter mb-2"> 
       <button className='btn btn-sm btn-cmpy'>Submit</button>
-      <button className='btn btn-sm btn-cmpy ml-2'>Cancel</button>
+      <button className='btn btn-sm btn-cmpy ml-2' onClick={closePopup}>Cancel</button>
     </div>
     </div>
   );

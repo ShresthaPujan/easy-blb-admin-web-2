@@ -136,22 +136,20 @@ const openInNewTab = (url) => {
                                         <div className=" col-lg-12 col-sm-12">
                                               
                                                 <div className="row">
-                                                    <div className="col-lg-2 col-md-4 col-sm-3 p-2 px-3 Search">
+                                                    <div className="col-lg-2 col-md-6 col-sm-6 p-2 px-3 Search">
                                                         <input type="text" placeholder="Search" onChange={handleSearch}  />
                                                         <i className="fas fa-search"></i>
                                                     </div>
-                                                    <div className="col-lg-4">
-
-                                                    </div>
-                                                    <div className="col-lg-6 col-md-6 col-sm-6 text-end p-2 px-3">                                 
+                                                   
+                                                    <div className="col-lg-6 offset-lg-4 offset-md-0 offset-sm-0 col-md-6 col-sm-6 text-end p-2 px-3">                                 
                                                                        <button className="btn btn-cmpy btn-sm"   onClick={handleAddCooperative}> Add Cooperative +</button>
                                                          </div>
                                                    
                                                 </div>
                                                 </div>
                                                 { <div className="row">
-                                                    <div className="ramram">
-                                                    <div className="col-lg-12 ">
+                                                    <div className="">
+                                                    <div className="col-lg-12 p-1">
                                                    
                                                     <div className="outer-wrapper">
                                                     <div className="table-wrapper"  style={{overflowX:"auto"}}>
@@ -166,8 +164,7 @@ const openInNewTab = (url) => {
                                                                 <td className='tl'>Address</td>
                                                                 <td className='tc'> No of User</td>
                                                                 <td className='tc'>Exipry Date</td>
-                                                                <td> Credit Limit</td>
-                                                                <td className='tc'> Is Paid</td>
+                                                                <td> Credit Limit</td>                                                             
                                                                 <td className='tl'>Contact</td>   
                                                                 <td className='tc' style={{ width: "220px"}}> Action</td>
                                                             </tr>
@@ -195,8 +192,7 @@ const openInNewTab = (url) => {
                                                                     <td className='tl'>{item.Address}</td>
                                                                     <td className='tc'> {item.NoOfUser}</td>
                                                                     {item.licenseExpiry?dateCalculator(item.licenseExpiry.split("T")[0]):<td></td>}
-                                                                    <td className='tc'> {item.CreditLimit}</td>
-                                                                    <td className='tc'> {item.IsPaid}</td>
+                                                                    <td className='tc'> {item.CreditLimit}</td>                                                                   
                                                                     <td className='tl'>{item.ContactNum}</td>
                                                                     <td className='tc'>
                                                                         <span className='editspan badge'  onClick={()=>handleEdit(item.CoOperativeCode)}>Edit</span>

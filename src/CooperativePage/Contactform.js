@@ -1,6 +1,8 @@
-import React from 'react'
-
+import React ,{useContext} from 'react'
+import cooperativeContext from '../component/Cooperative/cooperativeContext';
 export default function Contactform(props) {
+  const context = useContext(cooperativeContext)
+  const {popup,setPopup}=context;
   const ContactfomrNext =(e) =>{
     e.preventDefault();
     props.setActive({
@@ -9,6 +11,10 @@ export default function Contactform(props) {
       tab3:true,
       tab4:false
     })
+  }
+  const closePopup = (e)=>{
+    e.preventDefault();
+    setPopup(false);
   }
   return (
     <div className="container">
@@ -28,7 +34,7 @@ export default function Contactform(props) {
                   aria-describedby="addon-wrapping"
                 />            
           </div>
-          <div className="col-lg-6  mb-3">
+          <div className="col-lg-6 pl-0 mb-3">
                 <label htmlFor="Contact Person" className="form-label">
                  Contact Person
                 </label>
@@ -62,7 +68,7 @@ export default function Contactform(props) {
       <div className="p-2  basicALertfooter  mb-2"> 
       <button className='btn btn-sm btn-cmpy'>Submit</button>
       <button onClick={ContactfomrNext} className='btn btn-sm btn-cmpy ml-2 ' style={{background:"red"}}>Next</button>
-      <button className='btn btn-sm btn-cmpy ml-2'>Cancel</button>
+      <button className='btn btn-sm btn-cmpy ml-2' onClick={closePopup}>Cancel</button>
     </div>
     </div>
   )

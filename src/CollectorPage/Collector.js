@@ -150,34 +150,34 @@ useEffect(() => {
                                         <div className=" col-lg-12 col-sm-12">
                                             <div className="container-fluid ">
                                                 <div className="row">
-                                                    <div className="col-lg-2 col-md-4 col-sm-3 p-0 py-2 Search">
+                                                    <div className="col-lg-2 col-md-4 col-sm-4 p-0 py-2 Search">
                                                         <input type="text" placeholder="Search"   onChange={handleSearch}  />
                                                         <i className="fas fa-search"></i>                                
                                                     </div>
-                                                    <div className="col-lg-2 p-2 Search">
+                                                    <div className="col-lg-2 col-md-4 col-sm-4 p-2 Search">
                                                     <Select  className="selectT"     options={ncooperativecode} onChange={coopCodeGet}
                                                     defaultValue={{ label: "YT47", value: 0 }} />                                                     
                                                     </div>     
-                                                    <div className="col-lg-2"></div>                                           
-                                                    <div className="col-lg-6 col-md-6 col-sm-6 text-end p-0 py-2 ">
+                                                                                         
+                                                    <div className="col-lg-6 offset-lg-2 offset-md-0  offset-sm-0 col-md-4 col-sm-4 text-end p-0 py-2 ">
                                                          <button className="btn btn-sm btn-cmpy"   onClick={handleAddCollector}> Add Collector +</button>
                                                      </div>
                                                     </div>
                                                 </div>
                                                 <div className="container-fluid pb-2 ">
                                                     <div className="row">
-                                                    <div className=" testsearch text-dark Search p-0 py-2" >
+                                                    <div className=" col-lg-4  col-md-4  col-sm-4 testsearch text-dark Search p-0 py-2" >
                                                         <div className="py-2 p-0">Cooperative Name</div>
                                                         <div><input type="text" disabled  value={infoCoop.CoOperativeName} name="" id="" /></div>
                                     
                                                     </div>
                 
-                                                    <div className="p-2 testsearch text-dark Search p-0" >
+                                                    <div className="col-lg-4  col-md-4  col-sm-4 p-2 testsearch text-dark Search p-0" >
                                                         <div className="py-2">License Expiry</div>
                                                         <div><input type="text" disabled     value={infoCoop.licenseExpiry?.split("T")[0]} name="" id="" /></div>
                                     
                                                     </div>
-                                                    <div className="p-2  col-lg-2 text-dark Search ">
+                                                    <div className=" col-lg-4  col-md-4  col-sm-4 p-2  col-lg-2 text-dark Search ">
                                                     <div className="py-2">Address</div>
                                                     <div><input type="text"  disabled value={infoCoop.Address} id="" /></div>
                                                     </div>
