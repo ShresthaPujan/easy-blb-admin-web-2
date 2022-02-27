@@ -99,7 +99,9 @@ ul li a{
 .table-striped tbody tr:nth-of-type(odd) {
         background-color: #fafbfc !important;
 }
-
+.menu {
+    width: 250px;
+}
 .imgMain{
     border-radius: 3px;
 }

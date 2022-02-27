@@ -9,6 +9,7 @@ import AddCollector from './AddCollector';
 import EditCollector from './EditCollector';
 import useEscapse from '../component/hooks/Use-escape';
 import Select from 'react-select'
+import AddNewpopup from './AddNewpopup';
 
 export default function Collector() {
 
@@ -242,12 +243,15 @@ useEffect(() => {
          
         
    
-         <AddCollector triggerc ={popup} setTriggerc={setPopup} >
+         <AddCollector triggerc ={false} setTriggerc={setPopup} >
              <h4 >Add Collector</h4>
          </AddCollector>
         <EditCollector etrigger ={editpopup} setEtrigger={setEditPopup}>
         <h4 >Edit Collector</h4>
      </EditCollector>        
+    <AddNewpopup trigger ={popup} setTriggernew={setPopup}/>
+
+  
 
   </>;
 }
