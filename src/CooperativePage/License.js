@@ -50,12 +50,13 @@ export default function License() {
               No of User
             </label>
             <input
-              type="text"
+              type="number"
+              value=""
               className="form-control form-control-sm mb-1"
               placeholder="No Of User"
               aria-label="No Of User"
-              name="noOfUser"
-              id="noOfUser"
+              name="noofUser"
+              id="noofUser"
               aria-describedby="addon-wrapping"
             />
           </div>

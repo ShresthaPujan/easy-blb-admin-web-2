@@ -14,7 +14,7 @@ import collectorContext from "../component/Collector/collectorContext";
 import AddCollector from "./AddCollector";
 import EditCollector from "./EditCollector";
 import useEscapse from "../component/hooks/Use-escape";
-import Select from "react-select";
+import Select, { NonceProvider } from "react-select";
 
 export default function CollectorC() {
   const [popup, setPopup] = useState(false);
@@ -141,19 +141,19 @@ export default function CollectorC() {
   return (
     <>
    
-      <div className="col-lg-12 col-md-12 col-sm-12 p-3 pt-0">
+      <div className="col-lg-12 col-md-12 col-sm-12 pb-0 pl-3 pr-3 pt-0" style={{borderBottom:"1px solid #f5f8fa"}}>
         <div className="row popUptab">
-          <div className="col-lg-3 col-md-4 col-sm-3  ml-3 Search searchPopup">
+          <div className="col-lg-3 col-md-4 col-sm-3  Search searchPopup">
             <input type="text" placeholder="Search" onChange={handleSearch} />
             <i className="fas fa-search"></i>
           </div>
           <div className="col-lg-3"></div>
         </div>
         <section
-          className="content-section main-content"
-          style={{ border: "0" }}
+          className="content-section main-content p-3"
+          style={{ border: "0"  }}
         >
-          <div className="content">
+         
             {
               <div className="row ">
                 <div className="col-lg-12 p-0">
@@ -161,10 +161,10 @@ export default function CollectorC() {
                     className="outer-wrapper"
                     style={{
                       height: "100%",
-                      maxHeight: "300px",
+                      maxHeight: "290px",
                       overflow: "auto",
                       margin:"0 !important",
-                      
+                      maxWidth:"100%"
                     }}
                   >
                     <div
@@ -256,7 +256,7 @@ export default function CollectorC() {
                 </div>
               </div>
             }
-          </div>
+         
         </section>
       </div>
 

@@ -17,7 +17,7 @@ export default function AddNewpopup(props) {
         tab1:true,
         tab2:false,
         tab3:false,
-        tab4:false
+  
     });
     const handleTab1 = () => {
         // update the state to tab1
@@ -25,7 +25,7 @@ export default function AddNewpopup(props) {
             tab1:true,
         tab2:false,
         tab3:false,
-        tab4:false
+     
         });
       };
       const handleTab2 = () => {
@@ -34,7 +34,7 @@ export default function AddNewpopup(props) {
             tab1:false,
             tab2:true,
             tab3:false,
-            tab4:false
+     
         });
       };
       const handleTab3 = () => {
@@ -42,22 +42,18 @@ export default function AddNewpopup(props) {
         setActiveTab({
             tab1:false,
             tab2:false,
-            tab3:true,
-            tab4:false
+            tab3:true
+    
         });
       };
-      const handleTab4 = () => {
-        // update the state to tab2
-        setActiveTab({
-            tab1:false,
-            tab2:false,
-            tab3:false,
-            tab4:true
-        });
-      };
+
       const closePopup =(e) =>{
           e.preventDefault();
-            console.log("here")
+          setActiveTab({
+            tab1:true,
+            tab2:false,
+            tab3:false,
+          })
           props.setTriggernew(false)
       }
   return props.trigger ? (
@@ -75,14 +71,14 @@ export default function AddNewpopup(props) {
                     <li className={activeTab.tab1 === true ? "active" : ""}  onClick={handleTab1}><i class="fas fa-home icon"></i>Basic </li>
                     <li  className={activeTab.tab2 === true ? "active" : ""}  onClick={handleTab2}><i class="fas fa-phone icon"></i>Contact </li>
                     <li className={activeTab.tab3 === true ? "active" : ""}  onClick={handleTab3}><i class="fas fa-key icon"></i>License </li>
-                    <li className={activeTab.tab4 === true ? "active" : ""}  onClick={handleTab4}><i class="fas fa-users icon"></i>Collector </li>
+
                 </ul>
             </nav>
             <div className="outlet">
                 {activeTab.tab1 &&(<Basicform active={activeTab} setActive={setActiveTab} />)}
                 {activeTab.tab2 &&(<Contactform active={activeTab} setActive={setActiveTab}/>)}
                 {activeTab.tab3 &&(<License/>)}
-                {activeTab.tab4 &&(<CollectorC/>)}
+               
 
 
               </div>

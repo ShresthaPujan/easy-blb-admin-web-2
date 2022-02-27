@@ -158,7 +158,7 @@ export default function Basicform(props) {
 
     
         </div>
-        <div className="p-2  col-lg-12 basicALertfooter  mb-2"> 
+        <div className="p-2 py-3 col-lg-12 basicALertfooter  mb-2"> 
       <button className='btn btn-sm btn-cmpy'>Submit</button>
       <button onClick={BasicformNext} className='btn btn-sm btn-cmpy ml-2' style={{background:"red"}}>Next</button>
       <button className='btn btn-sm btn-cmpy ml-2' onClick={closePopup}>Cancel</button>

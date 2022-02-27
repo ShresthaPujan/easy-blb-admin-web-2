@@ -135,7 +135,7 @@ export default function License() {
         <span> Allow permission to use App</span>
 </div>
       </div>
-      <div className="p-2 basicALertfooter mb-2"> 
+      <div className="p-2 py-3 basicALertfooter mb-2"> 
       <button className='btn btn-sm btn-cmpy'>Submit</button>
       <button className='btn btn-sm btn-cmpy ml-2' onClick={closePopup}>Cancel</button>
     </div>

@@ -186,7 +186,7 @@ const openInNewTab = (url) => {
                                                     <tr key={i+1}>
                                                             
                                                                     <td className='tc'>{i + 1}</td>
-                                                                    <td className="contentLogo tc"><img src={item.Logo}  alt="" /></td>
+                                                                    <td className="contentLogo tc"><div className="coopImg text-center"><img src={item.Logo}  alt="" /></div></td>
                                                                     <td className='tc'>{item.CoOperativeCode}</td>
                                                                     <td  className="tl">{item.CoOperativeName}</td>                       
                                                                     <td className='tl'>{item.Address}</td>

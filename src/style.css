@@ -28,6 +28,14 @@
     align-items: center;
     padding:10px !important;
 }
+.coopImg {
+    width: 50px;
+    height: 45px;
+    border: 1px solid var(--Maingray);
+    border-radius: 50%;
+    background-color: gray;
+    margin: 0 auto;
+}
 .img{
     background: var(--MainColor);
     justify-content: center;
