@@ -13,8 +13,8 @@ export default function Content() {
 
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
-    const {popup,setPopup,deactivateCooperative,first,edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
-    const [check, setCheck] = useState(false)
+    const { check, setCheck, setContactFormvalue,setBasicFormvalue,setlicenseformValue,popup,setPopup,deactivateCooperative,first,edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
+   
    
     const userId =JSON.parse(localStorage.getItem("userInfo"));
        useEscapse(setPopup);
@@ -80,6 +80,7 @@ const checkIspaid =(isPaid)=>{
    
 
 const handleEdit = (item) =>{
+   const coopcode = item;
         setEdit(true);
      getCoperativeInfo(item).then(data => {
          var datedummy = data.LicenceExpiry.split(/(\s+)/)[0].split("/")
@@ -98,26 +99,31 @@ const handleEdit = (item) =>{
         else{
             setCheck(false)
         }
-        
-        setCoperativeEdit({  logo:data.Logo,
-            cooperaticecode: item,
-            cooperativename:data.CoOperativeName,
+        console.log(data)
+        setContactFormvalue({
+            ContactPerson:  data.ContactPerson,
             address:data.Address,
-            noOfUser:data.AllowNumOFUser,
-            licenseExipry:date,
-            creditlimit:data.CreditLimit,
             contactnumber:data.PhoneNum,
+        })
+        setBasicFormvalue({
+            cooperaticecode:coopcode,
+            cooperativename:data.CoOperativeName,
+            logo:data.Logo,
             NickName: data.NickName,
             ColorCode: data.ColorCode,
-            IsOnline: data.IsOnline,
-            IsPaid:setpaid,
             ScopeType: data.ScopeType,
             CbsURL:data.CbsUrl,
-            IsWithdrawAllow: data.IsAllowWithDraw,
+        })
+        setlicenseformValue({
+            creditlimit:data.CreditLimit,
+            IsOnline: data.IsOnline,
+            noOfUser:data.AllowNumOFUser,
             ShowHideBalance:data.ShowHideBalance,
             AllowMultiDate: data.MultiDate,
-            ContactPerson:   data.ContactPerson,
-            CreatedUserID:  userId.UserID,})
+            IsWithdrawAllow: data.IsAllowWithDraw,
+            licenseExipry:date,
+            IsPaid:data.IsPaid,
+        })
       });
         setPopup(true);
 }
@@ -219,7 +225,7 @@ const openInNewTab = (url) => {
          
         
          {edit ? (
-         <AddCooperative trigger ={popup} setTrigger={setPopup} setCheckTrigger={setCheck} check={check}>
+         <AddCooperative trigger ={false} setTrigger={setPopup} setCheckTrigger={setCheck} check={check}>
              <h5 >Edit Cooperative</h5>
              <hr/>
          </AddCooperative>):

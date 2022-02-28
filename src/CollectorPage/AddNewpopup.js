@@ -7,12 +7,13 @@ import UsewindowDimension from '../component/hooks/UsewindowDimension';
 import Contactform from './Contactform';
 import License from './License';
 import cooperativeContext from '../component/Cooperative/cooperativeContext';
+import Spinner from '../component/Spinner/Spinner';
 
 export default function AddNewpopup(props) {
     const { height} = UsewindowDimension();
     const {closepopup} =props.setTriggernew;
     const context = useContext(cooperativeContext)
-    const {popup,setPopup}=context;
+    const {loading,popup,setPopup}=context;
     const [activeTab, setActiveTab] = useState({
         tab1:true,
         tab2:false,
@@ -65,7 +66,7 @@ export default function AddNewpopup(props) {
                  <div className='popUpHeaderText '>Collector Information</div> 
                 <div style={{cursor:"pointer"}}><i className="bi bi-x "  onClick={closePopup} style={{fontSize:"25px"}}></i></div>
             </div>
-            
+           
             <nav >
                 <ul>    
                     <li className={activeTab.tab1 === true ? "active" : ""}  onClick={handleTab1}><i class="fas fa-home icon"></i>Basic </li>
@@ -74,6 +75,7 @@ export default function AddNewpopup(props) {
 
                 </ul>
             </nav>
+            {loading ? <Spinner/ >:(
             <div className="outlet">
                 {activeTab.tab1 &&(<Basicform active={activeTab} setActive={setActiveTab} />)}
                 {activeTab.tab2 &&(<Contactform active={activeTab} setActive={setActiveTab}/>)}
@@ -82,6 +84,7 @@ export default function AddNewpopup(props) {
 
 
               </div>
+              )}
         </div>
        
         </div> 

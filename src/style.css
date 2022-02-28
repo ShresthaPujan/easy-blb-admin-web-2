@@ -28,6 +28,17 @@
     align-items: center;
     padding:10px !important;
 }
+.formposition{
+    position: relative;
+}
+.errorpositon{
+    position: absolute;
+    top:100%;
+}
+.disabled{
+    background: #FAFBFC;
+}
+
 .coopImg {
     width: 50px;
     height: 45px;

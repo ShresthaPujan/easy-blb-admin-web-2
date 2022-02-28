@@ -1,8 +1,112 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
+import { useState } from "react";
 import cooperativeContext from "../component/Cooperative/cooperativeContext";
-export default function License() {
+export default function License(props) {
   const context = useContext(cooperativeContext);
-  const { popup, setPopup } = context;
+  const {basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue,setContactFormvalue,setBasicFormvalue,addCoperative,userid,licenseformValue,contactformValue,BasicformValue, setlicenseformValue, check, setCheck,popup, setPopup,setCoperativeEdit,
+    cooperativeEdit} = context;
+    const [formErrors, setformErrors] = useState({ });
+    const [isSubmit, setIsSubmit] = useState(false);
+
+ const handleChange = (e) => {
+  const target = e.target;
+  const name = target.name;
+  const value = target.type === 'checkbox' ? target.checked : target.value;
+  setCheck(e.target.checked)
+  setlicenseformValue({ ...licenseformValue, [name]: value });
+};
+const onSubmitForm = (e)=>{
+  console.log("here")
+  e.preventDefault();
+  setformErrors(validate(licenseformValue));
+  setIsSubmit(true);
+
+}
+console.log(licenseformValue)
+
+useEffect(() => {
+  if (Object.keys(formErrors).length === 0  && isSubmit) {
+    let isPaid;
+      if(licenseformValue.IsPaid === true){
+        isPaid = "Y"
+      }else{
+        isPaid = "N"
+      }
+      var cooperativedata = {
+        logo: BasicformValue.logo,
+        cooperaticecode: BasicformValue.cooperaticecode,
+        cooperativename: BasicformValue.cooperativename,
+        address: contactformValue.address,
+        noOfUser: licenseformValue.noOfUser,
+        licenseExipry: licenseformValue.licenseExipry,
+        creditlimit: licenseformValue.creditlimit,
+        contactnumber: contactformValue.contactnumber,
+        NickName: BasicformValue.NickName,
+        ColorCode: BasicformValue.ColorCode,
+        IsOnline: licenseformValue.IsOnline,
+        IsPaid: isPaid,
+        ScopeType: BasicformValue.ScopeType,
+        CbsURL: BasicformValue.CbsURL,
+        IsWithdrawAllow: licenseformValue.IsWithdrawAllow,
+        ShowHideBalance: licenseformValue.ShowHideBalance,
+        AllowMultiDate: licenseformValue.AllowMultiDate,
+        ContactPerson: contactformValue.ContactPerson,
+        CreatedUserID: userid,
+      };
+      addCoperative(cooperativedata);
+      setIsSubmit(false);
+      setformErrors({  });
+      setContactFormvalue(contactFormInitailValue);
+      setBasicFormvalue(basicformInitialValue);
+      setlicenseformValue(licenseformValueInitialValue);
+  
+    props.setActive({
+      tab1:true,
+      tab2:false,
+      tab3:false,
+      tab4:false
+    })
+    setPopup(false);
+    setlicenseformValue({})
+
+  }
+}, [formErrors]);
+const validate = (values) => {
+  const errors = {};
+  const numv = /^[0-9]+$/i;
+
+  if (!values.creditlimit) {
+    errors.creditlimit = " required";
+  } else if (!numv.test(values.creditlimit)) {
+    errors.creditlimit = "Please enter number only";
+  }
+ 
+  if (!values.noOfUser) {
+    errors.noOfUser = "required";
+  } else if (!numv.test(values.noOfUser)) {
+    errors.noOfUser = "Please enter number only";
+  }
+
+  if (!values.licenseExipry) {
+    errors.licenseExipry = "required";
+  }
+
+  if (!values.IsOnline) {
+    errors.IsOnline = "required";
+  }  
+
+  if (!values.IsWithdrawAllow) {
+    errors.IsWithdrawAllow = "required";
+  }
+  if (!values.ShowHideBalance) {
+    errors.ShowHideBalance = "required";
+  }
+  if (!values.AllowMultiDate) {
+    errors.AllowMultiDate = "required";
+  }
+
+  return errors;
+};
 
   const closePopup = (e) => {
     e.preventDefault();
@@ -12,61 +116,70 @@ export default function License() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-lg-6">
-          <div className="col-lg-12  mb-2">
-            <label htmlFor="CreditLimit" className="form-label">
-              Credit Limit
-            </label>
-            <input
-              type="number"
-              className="form-control form-control-sm mb-1"
-              value=""
-              name=""
-              placeholder="Credit Limit"
-              aria-label="CreditLimit"
-              id="CreditLimit"
-              aria-describedby="addon-wrapping"
-            />
+          <div className="col-lg-12 formposition  mb-3">
+          <label htmlFor="cooperaticecode" className="form-label">
+                       Credit Limit
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control form-control-sm mb-1"  
+                          value={licenseformValue.creditlimit}
+                          onChange={handleChange}
+                          name="creditlimit"
+                          placeholder="creditlimit"
+                          aria-label="creditlimit"
+                          id="creditlimit"
+                          aria-describedby="addon-wrapping"
+                        />
+             <p className="errormsg errorpositon">{formErrors.creditlimit}</p>
           </div>
-          <div className="col-lg-12 mb-2">
-            <label htmlFor="" className="form-label">
+          <div className="col-lg-12 formposition mb-3">
+            <label htmlFor="IsOnline" className="form-label">
               Medium
             </label>
             <select
               style={{ fontSize: "11px" }}
+              value={licenseformValue.IsOnline}
               name="IsOnline"
+              onChange={handleChange}
               className="form-control form-control-sm mb-1"
             >
               <option value="" selected style={{ fontSize: "11px" }}>
-                select Medium
+                select Option
               </option>
               <option value="Y">Online</option>
               <option value="N">Offline</option>
             </select>
             <i class="fas fa-angle-down  position-absolute "></i>
+            <p className="errormsg errorpositon">{formErrors.IsOnline}</p>
           </div>
         
-          <div className="col-lg-12  mb-2">
+          <div className="col-lg-12  formposition mb-3">
             <label htmlFor="noOfUser" className="form-label">
               No of User
             </label>
             <input
               type="number"
-              value=""
+              value={licenseformValue.noOfUser}
+              onChange={handleChange}
               className="form-control form-control-sm mb-1"
               placeholder="No Of User"
               aria-label="No Of User"
-              name="noofUser"
+              name="noOfUser"
               id="noofUser"
               aria-describedby="addon-wrapping"
             />
+             <p className="errormsg errorpositon">{formErrors.noOfUser}</p>
           </div>
-          <div className="col-lg-12 mb-2position-relative">
+          <div className="col-lg-12 formposition mb-3 position-relative">
             <label htmlFor="ShowHideBalance " className="form-label">
               Balance
             </label>
             <select
               style={{ fontSize: "11px" }}
+              value={licenseformValue.ShowHideBalance}
               name="ShowHideBalance"
+              onChange={handleChange}
               className="form-control form-control-sm mb-1"
             >
               <option value="" selected style={{ fontSize: "11px" }}>
@@ -76,50 +189,59 @@ export default function License() {
               <option value="N">Hide</option>
             </select>
             <i class="fas fa-angle-down  position-absolute "></i>
+            <p className="errormsg errorpositon">{formErrors.ShowHideBalance}</p>
           </div>
           </div>
         <div className="col-lg-6">
          
-          <div className="col-lg-12  mb-2">
+          <div className="col-lg-12 formposition mb-3">
             <label htmlFor="AllowMultiDate" className="form-label">
               Date Type
             </label>
             <select
               style={{ fontSize: "11px" }}
+              value={licenseformValue.AllowMultiDate}
               name="AllowMultiDate"
+              onChange={handleChange}
               className="form-control form-control-sm mb-1"
             >
               <option value="" selected style={{ fontSize: "11px" }}>
-                select Date
+                select Option
               </option>
               <option value="Y">Multi Date</option>
               <option value="N">Single Date</option>
             </select>
             <i class="fas fa-angle-down  position-absolute "></i>
+            <p className="errormsg errorpositon">{formErrors.AllowMultiDate}</p>
           </div>
-          <div className="col-lg-12  mb-2">
+          <div className="col-lg-12 formposition  mb-3">
             <label htmlFor="IsWithdrawAllow" className="form-label">
               Withdraw
             </label>
             <select
               style={{ fontSize: "11px" }}
+              value={licenseformValue.IsWithdrawAllow}
               name="IsWithdrawAllow"
+              onChange={handleChange}
               className="form-control form-control-sm mb-1"
             >
               <option value="" selected style={{ fontSize: "11px" }}>
-                select Withdraw
+                select Option
               </option>
               <option value="Y">Yes</option>
               <option value="N">No</option>
             </select>
             <i class="fas fa-angle-down  position-absolute "></i>{" "}
+            <p className="errormsg errorpositon">{formErrors.IsWithdrawAllow}</p>
           </div>
-          <div className="col-lg-12  mb-2">
+          <div className="col-lg-12 formposition mb-3">
             <label htmlFor="licenseExipry" className="form-label">
               Exipry Date{" "}
             </label>
             <input
               type="date"
+              value={licenseformValue.licenseExipry}
+              onChange={handleChange}
               className="form-control form-control-sm mb-1"
               placeholder="license Expiry"
               aria-label="license Expiry"
@@ -127,19 +249,23 @@ export default function License() {
               name="licenseExipry"
               aria-describedby="addon-wrapping"
             />
+               <p className="errormsg errorpositon">{formErrors.licenseExipry}</p>
           </div>
         </div>
       </div>
-      <div className="col-lg-12 py-2  mb-2">
+      <div className="col-lg-12 formposition py-2  mb-3">
         <div>
           <label>
-            <input name="IsPaid" type="checkbox" />
+            <input name="IsPaid" type="checkbox"
+                  value={licenseformValue.IsPaid}
+                  checked={check}
+                  onChange={handleChange} />
           </label>
           <span> Allow permission to use App</span>
         </div>
       </div>
-      <div className="p-2 py-3 basicALertfooter mb-2">
-        <button className="btn btn-sm btn-cmpy">Submit</button>
+      <div className="p-2 py-3 basicALertfooter mb-3">
+        <button className="btn btn-sm btn-cmpy" onClick={onSubmitForm}>Submit</button>
         <button className="btn btn-sm btn-cmpy ml-2" onClick={closePopup}>
           Cancel
         </button>

@@ -93,3 +93,9 @@
 -reset password conform 
 -deactivate
 
+28the feb
+bg removed
+change accordingly done
+easy smart collect renamed
+on edit data popup
+add cooperative 

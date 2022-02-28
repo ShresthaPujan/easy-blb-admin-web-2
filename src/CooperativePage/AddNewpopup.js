@@ -7,32 +7,32 @@ import UsewindowDimension from '../component/hooks/UsewindowDimension';
 import Contactform from './Contactform';
 import License from './License';
 import cooperativeContext from '../component/Cooperative/cooperativeContext';
+import Spinner from '../component/Spinner/Spinner';
 
 export default function AddNewpopup(props) {
     const { height} = UsewindowDimension();
     const {closepopup} =props.setTriggernew;
     const context = useContext(cooperativeContext)
-    const {popup,setPopup}=context;
+    const {loading,basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue
+      ,setContactFormvalue,setBasicFormvalue,setlicenseformValue,popup,setPopup}=context;
     const [activeTab, setActiveTab] = useState({
         tab1:true,
         tab2:false,
-        tab3:false,
-        tab4:false
+        tab3:false
     });
     const handleTab1 = () => {
         // update the state to tab1
         setActiveTab({
             tab1:true,
         tab2:false,
-        tab3:false,
-        tab4:false
+        tab3:false
         });
       };
       const handleTab2 = () => {
         // update the state to tab2
         setActiveTab({
-            tab1:false,
-            tab2:true,
+            tab1:true,
+            tab2:false,
             tab3:false,
             tab4:false
         });
@@ -40,9 +40,9 @@ export default function AddNewpopup(props) {
       const handleTab3 = () => {
         // update the state to tab2
         setActiveTab({
-            tab1:false,
+            tab1:true,
             tab2:false,
-            tab3:true,
+            tab3:false,
             tab4:false
         });
       };
@@ -57,7 +57,9 @@ export default function AddNewpopup(props) {
       };
       const closePopup =(e) =>{
           e.preventDefault();
-            console.log("here")
+          setContactFormvalue(contactFormInitailValue);
+          setBasicFormvalue(basicformInitialValue);
+          setlicenseformValue(licenseformValueInitialValue);
           props.setTriggernew(false)
       }
   return props.trigger ? (
@@ -73,19 +75,19 @@ export default function AddNewpopup(props) {
             <nav >
                 <ul>    
                     <li className={activeTab.tab1 === true ? "active" : ""}  onClick={handleTab1}><i class="fas fa-home icon"></i>Basic </li>
-                    <li  className={activeTab.tab2 === true ? "active" : ""}  onClick={handleTab2}><i class="fas fa-phone icon"></i>Contact </li>
-                    <li className={activeTab.tab3 === true ? "active" : ""}  onClick={handleTab3}><i class="fas fa-key icon"></i>License </li>
+                    <li  className={activeTab.tab2 === true ? "active" : "disabled"}  onClick={handleTab2}><i class="fas fa-phone icon"></i>Contact </li>
+                    <li className={activeTab.tab3 === true ? "active" : "disabled"}  onClick={handleTab3}><i class="fas fa-key icon"></i>License </li>
                     <li className={activeTab.tab4 === true ? "active" : ""}  onClick={handleTab4}><i class="fas fa-users icon"></i>Collector </li>
                 </ul>
             </nav>
+              {loading ? <Spinner/> :(       
             <div className="outlet">
                 {activeTab.tab1 &&(<Basicform active={activeTab} setActive={setActiveTab} />)}
                 {activeTab.tab2 &&(<Contactform active={activeTab} setActive={setActiveTab}/>)}
-                {activeTab.tab3 &&(<License/>)}
+                {activeTab.tab3 &&(<License active={activeTab} setActive={setActiveTab}/>)}
                 {activeTab.tab4 &&(<CollectorC/>)}
-
-
               </div>
+              )}    
         </div>
        
         </div> 
