@@ -70,7 +70,7 @@ export default function Sidebarone() {
                                 <li ><NavLink activeclassname={classes.active} className="arrow "  to="/profile"><i className="bi bi-people mx-3 icon"></i>Profile</NavLink> </li>
                                 <li><NavLink activeclassname={classes.active} className="arrow "  to="/cooperative"><i className="bi bi-people mx-3 icon"></i>Cooperative</NavLink> </li>
                                 <li><NavLink activeclassname={classes.active} className="arrow "  to="/collector"><i className="bi bi-people mx-3 icon"></i>Collector</NavLink> </li>
-                                <li  onClick={logOut} ><Link  to=""><i className="bi bi-people mx-3" ></i>Logout</Link> </li>
+                                <li  onClick={logOut} ><a><i className="bi bi-people mx-3" ></i>Logout</a> </li>
                             </ul>
                         </nav>
                     </div>
