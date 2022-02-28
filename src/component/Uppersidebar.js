@@ -11,10 +11,10 @@ export default function Uppersidebar() {
     const context = useContext(cooperativeContext)
     const {alert,setAlert,logoutdata,menutoggle,setMenutoggle,msg,setMsg} = context;
     const [active, setActive] = useState(false);
+
     const handleLogoClick = (e) =>{
         e.preventDefault();
-        setActive(!active);
-        
+        setActive(!active);   
     }
    
     let navigate = useNavigate();
