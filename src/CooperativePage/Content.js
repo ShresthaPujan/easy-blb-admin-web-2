@@ -6,6 +6,8 @@ import Spinner from '../component/Spinner/Spinner'
 import { Alert } from '../component/Alert';
 import useEscapse from '../component/hooks/Use-escape';
 import AddNewpopup from './AddNewpopup';
+import { typeImplementation } from '@testing-library/user-event/dist/type/typeImplementation';
+import Contenttable from './Contenttable';
 
 
 
@@ -14,7 +16,7 @@ export default function Content() {
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
     const { check, setCheck, setContactFormvalue,setBasicFormvalue,setlicenseformValue,popup,setPopup,deactivateCooperative,first,edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
-   
+    const [searchresult, setSearchresult] = useState([]);
    
     const userId =JSON.parse(localStorage.getItem("userInfo"));
        useEscapse(setPopup);
@@ -63,6 +65,15 @@ export default function Content() {
 const handleSearch = (e)=>{
     e.preventDefault();
     setSearchTerm(e.target.value);
+    if(searchTerm !== ""){
+        const searchresultdata = cooperative.filter((item)=>{
+            return Object.values(item).join(" ").toLowerCase().includes(searchTerm.toLowerCase());
+
+        })
+        setSearchresult(searchresultdata)
+    }else{
+        setSearchresult(cooperative);
+    }
     
 }
 const handleDeacivate = (coopcode,ispaid) => {
@@ -77,11 +88,12 @@ const checkIspaid =(isPaid)=>{
         return "Activate"
     }
 }
-   
+ 
 
 const handleEdit = (item) =>{
    const coopcode = item;
         setEdit(true);
+        
      getCoperativeInfo(item).then(data => {
          var datedummy = data.LicenceExpiry.split(/(\s+)/)[0].split("/")
         if(datedummy[0]<10){
@@ -157,61 +169,7 @@ const openInNewTab = (url) => {
                                                     <div className="">
                                                     <div className="col-lg-12 p-1">
                                                     {loading ? <Spinner/> :(
-                                                    <div className="outer-wrapper">
-                                                    <div className="table-wrapper"  style={{overflowX:"auto"}}>
-                                                    <table className="table table-striped">
-                                                    
-                                                        <thead>
-                                                            <tr className='tableHead'>
-                                                                <td>S.N.</td>
-                                                                <td className='tc'>Logo</td>
-                                                                <td >Co Operative Code</td>
-                                                                <td className="tl">Co Operative Name</td>
-                                                                <td className='tl'>Address</td>
-                                                                <td className='tc'> No of User</td>
-                                                                <td className='tc'>Exipry Date</td>
-                                                                <td> Credit Limit</td>                                                             
-                                                                <td className='tl'>Contact</td>   
-                                                                <td className='tc' style={{ width: "220px"}}> Action</td>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                       
- 
-                                                   {cooperative.filter((item)=>{
-                                                        if (searchTerm === ""){
-                                                            return item
-                                                        } else if(item.CoOperativeName.toLowerCase().includes(searchTerm.toLowerCase())||
-                                                                     item.CoOperativeCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                                                     item.Address.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                                                     item.ContactNum.toLowerCase().includes(searchTerm.toLowerCase()) ){
-                                                            return item
-                                                        }
-                                                    }).map((item,i) => 
-                                                    
-                                                    <tr key={i+1}>
-                                                            
-                                                                    <td className='tc'>{i + 1}</td>
-                                                                    <td className="contentLogo tc"><div className="coopImg text-center"><img src={item.Logo}  alt="" /></div></td>
-                                                                    <td className='tc'>{item.CoOperativeCode}</td>
-                                                                    <td  className="tl">{item.CoOperativeName}</td>                       
-                                                                    <td className='tl'>{item.Address}</td>
-                                                                    <td className='tc'> {item.NoOfUser}</td>
-                                                                    {item.licenseExpiry?dateCalculator(item.licenseExpiry.split("T")[0]):<td></td>}
-                                                                    <td className='tc'> {item.CreditLimit}</td>                                                                   
-                                                                    <td className='tl'>{item.ContactNum}</td>
-                                                                    <td className='tc'>
-                                                                        <span className='editspan badge'  onClick={()=>handleEdit(item.CoOperativeCode)}>Edit</span>
-                                                                     | <span><button className='deletespan badge' style={{border:"none"}} onClick={()=>handleDeacivate(item.CoOperativeCode,item.IsPaid)}>{checkIspaid(item.IsPaid)}</button></span> |
-                                                                     <span onClick={() => openInNewTab(item.CBSURL)} className='editspan badge'>CBS Url</span></td>                                                               
-  
-                                                        </tr>
-                                                   )}                               
-                                                        </tbody>
-                                                        
-                                                        </table>
-                                                        </div>
-                                                        </div>
+                                                   <Contenttable data={(searchTerm.length < 1 ? cooperative : searchresult)}/>
                                                         )}
                                                     </div>
                                                     </div>
