@@ -101,7 +101,7 @@ const CooperativeState =(props) =>{
                 }  
                 setCoperative(newCooprative);
                 setMsg({
-                  msg:"Cooperative added Successfully",
+                  msg:"Cooperative  Deactivated",
                   type:"alert alert-success"
                 })
               }

@@ -70,7 +70,7 @@ export default function Uppersidebar() {
                             <div className="wrapper">
                                 <div className="navbar">
                                     <div>
-                                        <button className="toggle" onClick={handleMenuChange} ><i className="fas fa-bars"></i></button><span className="mx-3">DashBoard</span>
+                                        <button className="toggle" onClick={handleMenuChange} ><i className="fas fa-bars"></i></button><span className="mx-3"></span>
                                     </div>
                                     <div className={msg.type}>
                                        {message(msg.msg)}

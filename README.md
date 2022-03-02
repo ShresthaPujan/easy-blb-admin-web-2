@@ -101,3 +101,10 @@ on edit data popup
 add cooperative 
 Search no data found added
 logout fixed
+
+
+2nd march 
+-no data center
+-messeage accordingly provided
+-coollect deactive activated msg fixed
+-reset password working

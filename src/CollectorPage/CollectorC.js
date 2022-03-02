@@ -105,6 +105,7 @@ export default function CollectorC() {
     }
   };
   const [username, setUsername] = useState();
+  
   const handleResetPassword = (username) => {
     setAlert({
       fade: "fade-in",

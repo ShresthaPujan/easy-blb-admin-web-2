@@ -35,6 +35,8 @@ const CollectorState =(props) =>{
     })
     const [first, setfirst] = useState({})
 
+    // /////////////// GET COLLECT ALL
+
    const getCollector = async(coopid="YT47")=> {   
         try{
           setLoading(true)
@@ -54,6 +56,8 @@ const CollectorState =(props) =>{
           
         }
       }
+
+      //////// GET COLLECTOR INFO
       const getCollectorInfo = async(collectorId)=> {   
         try{
           const response = await fetch(`api2/BLBApi/Collector/GetCollectorInfo?CoOperativeCode=YT47&CollectorID=${collectorId}`);
@@ -65,7 +69,7 @@ const CollectorState =(props) =>{
         }
         
       }
-
+        ///// ADD COLLECTOR
       const addCollector = async (collectorData) => {
 
         const response = await fetch ('api2/BLBApi/Collector/AddCollector',{
@@ -102,7 +106,8 @@ const CollectorState =(props) =>{
         })
       }
       }
-
+      
+      //// EDIT COLLECTOR
       const editCollector = async (collectorEdits) =>{
         const response = await fetch ('api2/BLBApi/Collector/UpdateCollector',{
           method:'POST',
@@ -137,6 +142,8 @@ const CollectorState =(props) =>{
         })
       }
     }
+
+    //////DEACTIVATE COLLECTOR
     const deactivateCollector = async(collId,IsActive) =>{
       
       const formData = {
@@ -150,6 +157,7 @@ const CollectorState =(props) =>{
       }else{
        formData.Status = "A"
       }
+ 
       setLoading(true)     
       const response = await fetch ('api2/BLBApi/Collector/StatusUpdates',{
         method:'POST',
@@ -162,6 +170,7 @@ const CollectorState =(props) =>{
         {
           let newCollact= JSON.parse(JSON.stringify(collector))
           var stats;
+          var collectorStatus;
           // Logic to edit in client
           for (let index = 0; index < newCollact.length; index++) {
             const element = newCollact[index];
@@ -169,8 +178,10 @@ const CollectorState =(props) =>{
               
                 if(formData.Status === "A"){
                    stats = "Active"
+                   collectorStatus = "Activated"
                 }else if(formData.Status === "I"){
                   stats = "Inactive"
+                  collectorStatus = "Deactivated"
                 }      
                 newCollact[index].IsActive = stats;
               break; 
@@ -178,7 +189,7 @@ const CollectorState =(props) =>{
           }          
           setCollector(newCollact);
           setMsg({
-            msg:"Collector Deactivate Successfully",
+            msg:`Collector ${collectorStatus} Successfully`,
             type:"alert alert-success"
           })
         }else{
@@ -188,13 +199,17 @@ const CollectorState =(props) =>{
           })
         }
     }
+
+    /// RESET PASSWORD
     
     const resetpassword = async (username) =>{
+      console.log(username)
         const formData ={
             CoOperativeCode: "YT47",
             UserName: username,
             Pwd: "YT47"
         }
+        console.log(formData)
         const response = await fetch ('api2/BLBApi/BLB/CollectorPwdReset',{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
@@ -202,6 +217,7 @@ const CollectorState =(props) =>{
         });
         const resetPassData = await response.json();
          if(resetPassData.STATUS_CODE === "0"){
+          console.log(response)
           setMsg({
             msg:"Password Reset Successfully",
             type:"alert alert-success"
@@ -210,11 +226,14 @@ const CollectorState =(props) =>{
           setresetPassword(false)
          }
          else{
+        
+          
           setMsg({
             msg:"Something went wrong. Please try again",
             type:"alert alert-danger"
   
           })
+          setresetPassword(false)
          }
     }
   

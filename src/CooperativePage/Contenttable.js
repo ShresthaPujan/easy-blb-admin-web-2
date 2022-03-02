@@ -156,6 +156,6 @@ export default function Contenttable(props) {
   )
     }
     else{
-        return "No Data Found"
+        return <div className='text-center'>No Data Found</div>
     }
 }
