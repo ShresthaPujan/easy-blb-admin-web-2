@@ -313,6 +313,6 @@ i.fa.fa-download.fa-rotate-270 {
 .contentLogo img{
   max-width: 50px;
   max-height: 50px;
-  border-radius: 34px;
+  border-radius: 50%;
 
 }
