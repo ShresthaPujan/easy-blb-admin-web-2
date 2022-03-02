@@ -53,10 +53,9 @@ export default function Content() {
   }, []);
 
   const handleAddCooperative= (e) =>{
-      console.log("here")
-      console.log(popup)
     e.preventDefault();
     setEdit(false);
+    setSearchTerm("");
     setPopup(true);
     console.log(popup)
 
@@ -76,10 +75,7 @@ const handleSearch = (e)=>{
     }
     
 }
-const handleDeacivate = (coopcode,ispaid) => {
-    deactivateCooperative(coopcode,ispaid)
-  
-}
+
 const checkIspaid =(isPaid)=>{
     if(isPaid === "Y"){
         return "Deactivate"
@@ -155,7 +151,7 @@ const openInNewTab = (url) => {
                                               
                                                 <div className="row">
                                                     <div className="col-lg-2 col-md-6 col-sm-6 p-2 px-3 Search">
-                                                        <input type="text" placeholder="Search" onChange={handleSearch}  />
+                                                        <input type="text" placeholder="Search" onChange={handleSearch}  value={searchTerm}/>
                                                         <i className="fas fa-search"></i>
                                                     </div>
                                                    

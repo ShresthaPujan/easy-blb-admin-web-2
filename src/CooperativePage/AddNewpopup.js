@@ -8,6 +8,7 @@ import Contactform from './Contactform';
 import License from './License';
 import cooperativeContext from '../component/Cooperative/cooperativeContext';
 import Spinner from '../component/Spinner/Spinner';
+import OutsideAlerter from '../component/hooks/OutsideAlerter';
 
 export default function AddNewpopup(props) {
     const { height} = UsewindowDimension();
@@ -65,7 +66,7 @@ export default function AddNewpopup(props) {
   return props.trigger ? (
       
     <div className="popUP container-fluid   col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center align-items-center" style={{overflow:"scroll"}}>
-      
+        <OutsideAlerter>
         <div className={height < 500?"insidePopup ip500":"insidePopup"}>
             <div className="popUpHeader ">
                  <div className='popUpHeaderText '>Cooperative Information</div> 
@@ -89,7 +90,7 @@ export default function AddNewpopup(props) {
               </div>
               )}    
         </div>
-       
+        </OutsideAlerter>
         </div> 
      
   ): ("");

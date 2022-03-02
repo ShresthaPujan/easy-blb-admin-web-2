@@ -55,7 +55,13 @@
     position: sticky;
     top: 0;
 }
-
+.alertMsg{
+    position: fixed;
+    z-index: 40;
+    top:0;
+    left: 50%;
+    transform: translateX(-50%);
+}
 body{
     background: #FFFFFF;
     font-size: 13px;

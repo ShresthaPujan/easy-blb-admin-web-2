@@ -5,16 +5,16 @@ import { logout} from '../features/Userslice';
 import AuthContext from './auth-context';
 import cooperativeContext from './Cooperative/cooperativeContext';
 import logo from './logo.png'
-
+import OutsideAlerter from './hooks/OutsideAlerter';
 
 export default function Uppersidebar() {
     const context = useContext(cooperativeContext)
-    const {alert,setAlert,logoutdata,menutoggle,setMenutoggle,msg,setMsg} = context;
-    const [active, setActive] = useState(false);
+    const {logoutDropdownactive, setlogoutDropdownactive,setAlert,logoutdata,menutoggle,setMenutoggle} = context;
+  
 
     const handleLogoClick = (e) =>{
         e.preventDefault();
-        setActive(!active);   
+        setlogoutDropdownactive(!logoutDropdownactive);   
     }
    
     let navigate = useNavigate();
@@ -24,7 +24,7 @@ export default function Uppersidebar() {
 
     function logOut(e){
         e.preventDefault();
-        setActive(!active);
+        setlogoutDropdownactive(!logoutDropdownactive);
         setAlert({
             fade:'fade-in',
             msg:"Do you want to Reset Password ?",
@@ -50,19 +50,7 @@ export default function Uppersidebar() {
         logoutFunction()
     }
     },[logoutdata]);
-    const message = (msg) =>{
-        return msg
-    }
-    
-    useEffect(()=>{
-        const timer = setTimeout(() => {
-           setMsg({})
-          }, 3000);
-
-          return () => clearTimeout(timer);
-    },[msg])
-
-  
+ 
     
   return <>
        
@@ -72,18 +60,19 @@ export default function Uppersidebar() {
                                     <div>
                                         <button className="toggle" onClick={handleMenuChange} ><i className="fas fa-bars"></i></button><span className="mx-3"></span>
                                     </div>
-                                    <div className={msg.type}>
-                                       {message(msg.msg)}
-                                    </div>
+                                   
                                     <div className="navbar__right">
                                      
                                         <div  className="mx-2" style={{fontSize:"14px",marginTop:"10px"}}>EasySoftware pvt.Ltd </div>
                                         <div className="mx-2" onClick={handleLogoClick}><img  src={logo} alt=""/></div>
-                                       {active &&( <div className="dropLogomenu">
+                                       {logoutDropdownactive &&( 
+                                        <OutsideAlerter>
+                                           <div className="dropLogomenu">
                                             <ul>
                                                 <li style={{marginTop:"5px"}}><a href="" onClick={logOut}><span><i className="bi bi-people mx-3" ></i>Logout</span></a></li>
                                             </ul>
-                                         </div>  )}
+                                         </div>
+                                         </OutsideAlerter> )}
                                     </div>
                                 </div>
                                 </div>

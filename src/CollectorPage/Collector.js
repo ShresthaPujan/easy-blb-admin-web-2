@@ -90,7 +90,6 @@ const cooperativeInfo = (value="YT47") =>{
 }   
 }
 const handleDeacivate = (collId,IsActive) =>{
-
     deactivateCollector(collId,IsActive)
 }
 const checkIspaid =(isPaid)=>{
@@ -221,7 +220,9 @@ useEffect(() => {
                                                                     <td  className="tl">{item.UserName}</td>                       
                                                                     <td className='tl'>{item.fullName}</td>
                                                                     <td className='tc'>{item.IsActive}</td>
-                                                                    <td className='tc'><span className='editspan badge'   onClick={()=>handleEdit(item.CollectorID)}>Edit</span> | <span className='deletespan badge deactivate' onClick={()=>handleDeacivate(item.CollectorID,item.IsActive)}>{checkIspaid(item.IsActive)}</span> | <span className='editspan badge'  onClick={()=>handleResetPassword(item.UserName)}>Reset Password</span></td>                                                               
+                                                                    <td className='tc'><span className='editspan badge'   onClick={()=>handleEdit(item.CollectorID)}>Edit</span> 
+                                                                    | <span className='deletespan badge deactivate' onClick={()=>handleDeacivate(item.CollectorID,item.IsActive)}>{checkIspaid(item.IsActive)}</span> |
+                                                                     <span className='editspan badge'  onClick={()=>handleResetPassword(item.UserName)}>Reset Password</span></td>                                                               
   
                                                         </tr>
                                                    ):(

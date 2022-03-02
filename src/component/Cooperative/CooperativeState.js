@@ -68,7 +68,7 @@ const CooperativeState =(props) =>{
         
       }
       const deactivateCooperative = async(coopcode,ispaid) =>{
-      
+        var coopertaiveStatus;
          const formData = {
           CoOperativeCode: coopcode,
           Status: "",
@@ -76,8 +76,10 @@ const CooperativeState =(props) =>{
          }
          if(ispaid === "N"){
            formData.Status = "Y"
+           coopertaiveStatus = "Activated"
          }else{
           formData.Status = "N"
+          coopertaiveStatus = "Deactivated"
          }
         
         const response = await fetch ('api2/BLBApi/BLB/StatusUpdates',{
@@ -101,7 +103,7 @@ const CooperativeState =(props) =>{
                 }  
                 setCoperative(newCooprative);
                 setMsg({
-                  msg:"Cooperative  Deactivated",
+                  msg:`Cooperative  ${coopertaiveStatus} Successfully`,
                   type:"alert alert-success"
                 })
               }
@@ -265,10 +267,11 @@ const CooperativeState =(props) =>{
    const [loading, setLoading] = useState(false);
    const [resetPassword, setresetPassword] = useState(false)
    const [popup, setPopup] = useState(false);
+   const [logoutDropdownactive, setlogoutDropdownactive] = useState(false);
  
    
 return (
-    <cooperativeContext.Provider value={{check, setCheck,basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue,userid,licenseformValue, setlicenseformValue,check, setCheck,contactformValue,setContactFormvalue,BasicformValue,setBasicFormvalue,popup,setPopup,resetPassword,setresetPassword,msg,setMsg,deactivateCooperative,cooperativeEditInitial,first,loading,msg,setMsg,getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
+    <cooperativeContext.Provider value={{logoutDropdownactive, setlogoutDropdownactive,check, setCheck,basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue,userid,licenseformValue, setlicenseformValue,check, setCheck,contactformValue,setContactFormvalue,BasicformValue,setBasicFormvalue,popup,setPopup,resetPassword,setresetPassword,msg,setMsg,deactivateCooperative,cooperativeEditInitial,first,loading,msg,setMsg,getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
       {props.children}
     </cooperativeContext.Provider>
   )

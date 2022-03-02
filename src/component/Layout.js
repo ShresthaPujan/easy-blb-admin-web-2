@@ -9,10 +9,12 @@ import useWindowDimensions from './hooks/UsewindowDimension.js';
 
 export default function Layout(props) {
   const context = useContext(cooperativeContext)
-  const {alert,setAlert,menutoggle,setMenutoggle } = context;
+  const {alert,setAlert,menutoggle,setMenutoggle,msg,setMsg } = context;
 
   const { height, width } = useWindowDimensions();
- 
+  const message = (msg) =>{
+    return msg
+}
   useEffect(() => {
     
     if(width < 1100){
@@ -24,6 +26,13 @@ export default function Layout(props) {
 
   }, [width]);
   
+   useEffect(()=>{
+        const timer = setTimeout(() => {
+           setMsg({})
+          }, 3000);
+
+          return () => clearTimeout(timer);
+    },[msg])
 
   return <Fragment>
   
@@ -45,6 +54,9 @@ export default function Layout(props) {
                 </div>
                 
           </div>
+                    <div className={`${msg.type} alertMsg `} >
+                                       {message(msg.msg)} 
+                                    </div>
         
       </div>
 

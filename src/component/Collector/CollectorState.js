@@ -157,14 +157,13 @@ const CollectorState =(props) =>{
       }else{
        formData.Status = "A"
       }
- 
-      setLoading(true)     
+    
       const response = await fetch ('api2/BLBApi/Collector/StatusUpdates',{
         method:'POST',
         headers: {'Content-Type': 'application/json'},
         body:JSON.stringify(formData)
       });
-      setLoading(false)
+  
       const deactivatecoll = await response.json();     
       if(deactivatecoll.STATUS_CODE === "0")
         {
