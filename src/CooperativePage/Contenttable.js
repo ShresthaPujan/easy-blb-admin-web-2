@@ -74,9 +74,9 @@ export default function Contenttable(props) {
              }
              console.log(data)
              setContactFormvalue({
-                 ContactPerson:  data.ContactPerson,
-                 address:data.Address,
-                 contactnumber:data.PhoneNum,
+                ContactPerson:  data.ContactPerson,
+                address:data.Address,
+                contactnumber:data.PhoneNum,
              })
              setBasicFormvalue({
                  cooperaticecode:coopcode,
@@ -88,9 +88,9 @@ export default function Contenttable(props) {
                  CbsURL:data.CbsUrl,
              })
              setlicenseformValue({
-                 creditlimit:data.CreditLimit,
+                creditlimit:data.CreditLimit,
                  IsOnline: data.IsOnline,
-                 noOfUser:data.AllowNumOFUser,
+                 noofUser:data.AllowNumOFUser,
                  ShowHideBalance:data.ShowHideBalance,
                  AllowMultiDate: data.MultiDate,
                  IsWithdrawAllow: data.IsAllowWithDraw,

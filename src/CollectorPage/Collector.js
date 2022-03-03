@@ -13,7 +13,7 @@ import AddNewpopup from './AddNewpopup';
 
 export default function Collector() {
 
-    const [popup, setPopup] = useState(false);
+   
     const [editpopup, setEditPopup] = useState(false);
     
     
@@ -21,17 +21,18 @@ export default function Collector() {
     const context = useContext(collectorContext)
     const contextCooperative = useContext(cooperativeContext)
     const {resetPassword,cooperative,setAlert,alert}=contextCooperative;
-    const {resetpassword,deactivateCollector,loading,getCollectorInfo,getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
-    
+    const {edit,popup, setPopup,cooperativeCode, setCooperativeCode,resetpassword,deactivateCollector,loading,getCollectorInfo,getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
+   
 
  
   useEffect(() => { 
     getCollector()  
+    
   }, []);
  
    useEscapse(setPopup);
 
-  const handleAddCollector= (e) =>{
+  const handleAddCollector= (e,cooperativeCode) =>{
     e.preventDefault();
     setEdit(false);
     setPopup(true);
@@ -44,6 +45,8 @@ const handleSearch = (e)=>{
     
 }
 const handleEdit = (item) =>{
+    setPopup(true);
+    setEdit(true);
     getCollectorInfo(item).then(data => {
         console.log(data)
        const collData = {
@@ -64,15 +67,17 @@ const handleEdit = (item) =>{
         IsAllowSignature:data.IsAllowSignature,
 
           }
+          console.log(collData)
         setCollectorEdit(collData)
-        
     })
-        setEditPopup(true)
+        setEditPopup(true);
 }
-
 const coopCodeGet =(value) =>{ 
     getCollector(value.value)
     cooperativeInfo(value.value)
+    setCooperativeCode(value)
+    console.log(value)
+
 }
 const [infoCoop, setinfoCoop] = useState({})
 
@@ -156,11 +161,11 @@ useEffect(() => {
                                                     </div>
                                                     <div className="col-lg-2 col-md-4 col-sm-4 p-2 Search">
                                                     <Select  className="selectT"     options={ncooperativecode} onChange={coopCodeGet}
-                                                    defaultValue={{ label: "YT47", value: 0 }} />                                                     
+                                                    defaultValue={{ label: "YT47", value: "YT47" }} />                                                     
                                                     </div>     
                                                                                          
                                                     <div className="col-lg-6 offset-lg-2 offset-md-0  offset-sm-0 col-md-4 col-sm-4 text-end p-0 py-2 ">
-                                                         <button className="btn btn-sm btn-cmpy"   onClick={handleAddCollector}> Add Collector +</button>
+                                                         <button className="btn btn-sm btn-cmpy"   onClick={(e)=>handleAddCollector(e,cooperativeCode)}> Add Collector +</button>
                                                      </div>
                                                     </div>
                                                 </div>
@@ -247,7 +252,7 @@ useEffect(() => {
          <AddCollector triggerc ={false} setTriggerc={setPopup} >
              <h4 >Add Collector</h4>
          </AddCollector>
-        <EditCollector etrigger ={editpopup} setEtrigger={setEditPopup}>
+        <EditCollector etrigger ={false} setEtrigger={setEditPopup}>
         <h4 >Edit Collector</h4>
      </EditCollector>        
     <AddNewpopup trigger ={popup} setTriggernew={setPopup}/>

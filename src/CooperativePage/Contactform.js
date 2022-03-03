@@ -14,7 +14,7 @@ export default function Contactform(props) {
   const value = target.value;
   setContactFormvalue({ ...contactformValue, [name]: value });
 };
-
+  
   const BasicformNext = (e)=>{
     console.log("here")
     e.preventDefault();
@@ -23,6 +23,7 @@ export default function Contactform(props) {
 
   }
   useEffect(() => {
+    console.log(contactformValue)
     if (Object.keys(formErrors).length === 0  && isSubmit) {
       setCoperativeEdit({...cooperativeEdit,
         ContactPerson:  contactformValue.ContactPerson,
@@ -51,6 +52,13 @@ export default function Contactform(props) {
     setBasicFormvalue(basicformInitialValue);
     setlicenseformValue(licenseformValueInitialValue);
       
+  }
+  const Previous = () =>{
+    props.setActive({
+      tab1:true,
+      tab2:false,
+      tab3:false
+    })
   }
   const validate = (values) => {
     const errors = {};
@@ -131,6 +139,7 @@ export default function Contactform(props) {
           </div>
       </div>
       <div className="p-2 basicALertfooter  mb-2"> 
+      <button onClick={Previous} className='btn btn-sm btn-cmpy ml-2 '>Prev</button>
       <button onClick={BasicformNext} className='btn btn-sm btn-cmpy ml-2 ' style={{background:"red"}}>Next</button>
       <button className='btn btn-sm btn-cmpy ml-2' onClick={closePopup}>Cancel</button>
     </div>

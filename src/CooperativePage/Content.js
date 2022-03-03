@@ -76,69 +76,9 @@ const handleSearch = (e)=>{
     
 }
 
-const checkIspaid =(isPaid)=>{
-    if(isPaid === "Y"){
-        return "Deactivate"
-    }
-    else{
-        return "Activate"
-    }
-}
+
  
 
-const handleEdit = (item) =>{
-   const coopcode = item;
-        setEdit(true);
-        
-     getCoperativeInfo(item).then(data => {
-         var datedummy = data.LicenceExpiry.split(/(\s+)/)[0].split("/")
-        if(datedummy[0]<10){
-            datedummy[0] = `0${datedummy[0]}`
-        }
-        if(datedummy[1]<10){
-            datedummy[1] = `0${datedummy[1]}`
-        }
-        var date = `${datedummy[2]}-${datedummy[0]}-${datedummy[1]}`
-        let setpaid ;
-
-        if(data.IsPaid === "Y"){
-            setCheck(true)
-        }
-        else{
-            setCheck(false)
-        }
-        console.log(data)
-        setContactFormvalue({
-            ContactPerson:  data.ContactPerson,
-            address:data.Address,
-            contactnumber:data.PhoneNum,
-        })
-        setBasicFormvalue({
-            cooperaticecode:coopcode,
-            cooperativename:data.CoOperativeName,
-            logo:data.Logo,
-            NickName: data.NickName,
-            ColorCode: data.ColorCode,
-            ScopeType: data.ScopeType,
-            CbsURL:data.CbsUrl,
-        })
-        setlicenseformValue({
-            creditlimit:data.CreditLimit,
-            IsOnline: data.IsOnline,
-            noOfUser:data.AllowNumOFUser,
-            ShowHideBalance:data.ShowHideBalance,
-            AllowMultiDate: data.MultiDate,
-            IsWithdrawAllow: data.IsAllowWithDraw,
-            licenseExipry:date,
-            IsPaid:data.IsPaid,
-        })
-      });
-        setPopup(true);
-}
-const openInNewTab = (url) => {
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
-    if (newWindow) newWindow.opener = null
-  }
   return <>
                  <div className="col-lg-12 col-md-12 col-sm-12 contentMainSection">
                             <div>

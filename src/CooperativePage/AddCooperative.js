@@ -416,13 +416,13 @@ if(props.trigger){
                         formErrors.IsOnline ? "errorBorder" : ""
                       }`}
                     >
-                      <option value="" selected style={{ fontSize: "11px" }}>
+                      <option value=""  style={{ fontSize: "11px" }}>
                         select Medium
                       </option>
                       <option value="Y">Online</option>
                       <option value="N">Offline</option>
                     </select>
-                    <i class="fas fa-angle-down  position-absolute "></i>
+                    <i className="fas fa-angle-down  position-absolute "></i>
                    
                   </div>
                   <div className="col-lg-6">
@@ -460,14 +460,14 @@ if(props.trigger){
                       }`}
                     >
                         
-                      <option value="" selected style={{ fontSize: "11px" }}>
+                      <option value=""  style={{ fontSize: "11px" }}>
                         select Balance 
                       </option>
                       <option value="Y">Show</option>
                       <option value="N">Hide</option>
                       
                     </select>
-                    <i class="fas fa-angle-down  position-absolute "></i>
+                    <i className="fas fa-angle-down  position-absolute "></i>
                   </div>
                   <div className="col-lg-6">
                     <label htmlFor="AllowMultiDate" className="form-label">
@@ -482,13 +482,13 @@ if(props.trigger){
                         formErrors.AllowMultiDate ? "errorBorder" : ""
                       }`}
                     >
-                      <option value="" selected style={{ fontSize: "11px" }}>
+                      <option value=""  style={{ fontSize: "11px" }}>
                         select Date
                       </option>
                       <option value="Y">Multi Date</option>
                       <option value="N">Single Date</option>
                     </select>
-                    <i class="fas fa-angle-down  position-absolute "></i>
+                    <i className="fas fa-angle-down  position-absolute "></i>
                   </div>
                 </div>
                 <div className="row">
@@ -525,13 +525,13 @@ if(props.trigger){
                         formErrors.IsWithdrawAllow ? "errorBorder" : ""
                       }`}
                     >
-                      <option value="" selected style={{ fontSize: "11px" }}>
+                      <option value=""  style={{ fontSize: "11px" }}>
                         select Withdraw
                       </option>
                       <option value="Y">Yes</option>
                       <option value="N">No</option>
                     </select>
-                    <i class="fas fa-angle-down  position-absolute "></i>
+                    <i className="fas fa-angle-down  position-absolute "></i>
                     {" "}
                   </div>
                 </div>

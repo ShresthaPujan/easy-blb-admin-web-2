@@ -3,7 +3,7 @@ import { useState } from "react";
 import cooperativeContext from "../component/Cooperative/cooperativeContext";
 export default function License(props) {
   const context = useContext(cooperativeContext);
-  const {basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue,setContactFormvalue,setBasicFormvalue,addCoperative,userid,licenseformValue,contactformValue,BasicformValue, setlicenseformValue, check, setCheck,popup, setPopup,setCoperativeEdit,
+  const {edit,basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue,setContactFormvalue,setBasicFormvalue,addCoperative,userid,licenseformValue,contactformValue,BasicformValue, setlicenseformValue, check, setCheck,popup, setPopup,setCoperativeEdit,
     cooperativeEdit} = context;
     const [formErrors, setformErrors] = useState({ });
     const [isSubmit, setIsSubmit] = useState(false);
@@ -22,9 +22,22 @@ const onSubmitForm = (e)=>{
   setIsSubmit(true);
 
 }
-console.log(licenseformValue)
+const Previous = () =>{
+  props.setActive({
+    tab1:false,
+    tab2:true,
+    tab3:false
+  })
+}
 
 useEffect(() => {
+//  if(edit){
+//   var yy =licenseformValue.licenseExipry?.split("T")[0]
+//   var MM =licenseformValue.licenseExipry?.split("T")[2].split("-")[1]
+//   var dd =licenseformValue.licenseExipry?.split("T")[2].split("-")[2]
+//   var date =`${yy}-${MM}-${dd}`
+//   setlicenseformValue({...licenseformValue,licenseExipry:date})
+//  }
   if (Object.keys(formErrors).length === 0  && isSubmit) {
     let isPaid;
       if(licenseformValue.IsPaid === true){
@@ -264,8 +277,10 @@ const validate = (values) => {
           <span> Allow permission to use App</span>
         </div>
       </div>
+   
       <div className="p-2 py-3 basicALertfooter mb-3">
-        <button className="btn btn-sm btn-cmpy" onClick={onSubmitForm}>Submit</button>
+      <button className="btn btn-sm btn-cmpy" onClick={   Previous}>   Prev</button>
+        <button className="btn btn-sm btn-cmpy ml-2" onClick={onSubmitForm} style={{background:"red"}}>Submit</button>
         <button className="btn btn-sm btn-cmpy ml-2" onClick={closePopup}>
           Cancel
         </button>

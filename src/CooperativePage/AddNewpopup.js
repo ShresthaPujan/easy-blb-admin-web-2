@@ -29,24 +29,7 @@ export default function AddNewpopup(props) {
         tab3:false
         });
       };
-      const handleTab2 = () => {
-        // update the state to tab2
-        setActiveTab({
-            tab1:true,
-            tab2:false,
-            tab3:false,
-            tab4:false
-        });
-      };
-      const handleTab3 = () => {
-        // update the state to tab2
-        setActiveTab({
-            tab1:true,
-            tab2:false,
-            tab3:false,
-            tab4:false
-        });
-      };
+     
       const handleTab4 = () => {
         // update the state to tab2
         setActiveTab({
@@ -76,8 +59,8 @@ export default function AddNewpopup(props) {
             <nav >
                 <ul>    
                     <li className={activeTab.tab1 === true ? "active" : ""}  onClick={handleTab1}><i class="fas fa-home icon"></i>Basic </li>
-                    <li  className={activeTab.tab2 === true ? "active" : "disabled"}  onClick={handleTab2}><i class="fas fa-phone icon"></i>Contact </li>
-                    <li className={activeTab.tab3 === true ? "active" : "disabled"}  onClick={handleTab3}><i class="fas fa-key icon"></i>License </li>
+                    <li  className={activeTab.tab2 === true ? "active" : "disabled"} ><i class="fas fa-phone icon"></i>Contact </li>
+                    <li className={activeTab.tab3 === true ? "active" : "disabled"} ><i class="fas fa-key icon"></i>License </li>
                     <li className={activeTab.tab4 === true ? "active" : ""}  onClick={handleTab4}><i class="fas fa-users icon"></i>Collector </li>
                 </ul>
             </nav>
