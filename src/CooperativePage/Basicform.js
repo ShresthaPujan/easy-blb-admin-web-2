@@ -86,7 +86,7 @@ export default function Basicform(props) {
   <div className="container-fluid basicform">
     <div className="row">
         <div className="col-lg-6">
-            <div className="col-lg-12 formposition mb-3">
+            <div className="col-lg-12 formposition mb-4">
         
                         <label htmlFor="cooperaticecode" className="form-label">
                         Cooperative Code
@@ -104,7 +104,7 @@ export default function Basicform(props) {
                         />
                         <p className="errormsg errorpositon">{formErrors.cooperaticecode}</p>
                   </div>
-                  <div className="col-lg-12 formposition mb-3">
+                  <div className="col-lg-12 formposition mb-4">
           
           <label htmlFor="cooperativelogo" className="form-label">
             Cooperative logo
@@ -122,7 +122,7 @@ export default function Basicform(props) {
           />
         <p className="errormsg errorpositon">{formErrors.logo}</p>
     </div>
-    <div className="col-lg-12 formposition  mb-3">
+    <div className="col-lg-12 formposition mb-4">
           <label htmlFor="Alias" className="form-label">
             Alias
           </label>
@@ -139,7 +139,7 @@ export default function Basicform(props) {
           />   
            <p className="errormsg errorpositon">{formErrors.NickName}</p>   
     </div>
-    <div className="col-lg-12 formposition mb-3">
+    <div className="col-lg-12 formposition mb-4">
                 <label htmlFor="color" className="form-label">
                   Color Code
                 </label>
@@ -161,7 +161,7 @@ export default function Basicform(props) {
        
       
         <div className="col-lg-6 ">
-              <div className="col-lg-12 formposition mb-3">
+              <div className="col-lg-12 formposition mb-4">
                 <label htmlFor="cooperativeName" className="form-label">
                   Cooperative Name
                 </label>
@@ -178,7 +178,7 @@ export default function Basicform(props) {
                 />       
                      <p className="errormsg errorpositon">{formErrors.cooperativename}</p>         
           </div>
-          <div className="col-lg-12 formposition  mb-3">
+          <div className="col-lg-12 formposition mb-4">
                 <label htmlFor="CBSurl" className="form-label">
                   CBS URL
                 </label>
@@ -195,7 +195,7 @@ export default function Basicform(props) {
                 />
                 <p className="errormsg errorpositon">{formErrors.CbsURL}</p>               
           </div>
-          <div className="col-lg-12 formposition mb-3">
+          <div className="col-lg-12 formposition mb-4">
                 <label htmlFor="Scopetype" className="form-label">
                   Scope Type
                 </label>
@@ -219,7 +219,7 @@ export default function Basicform(props) {
 
     
         </div>
-        <div className="p-2 py-3  col-lg-12 basicALertfooter  mb-3"> 
+        <div className="p-2 py-3  col-lg-12 basicALertfooter mb-4"> 
      
       <button onClick={BasicformNext} className='btn btn-sm btn-cmpy ml-2' style={{background:"red"}}>Next</button>
       <button className='btn btn-sm btn-cmpy ml-2' onClick={closePopup}>Cancel</button>

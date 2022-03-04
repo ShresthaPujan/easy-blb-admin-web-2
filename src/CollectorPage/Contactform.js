@@ -78,7 +78,7 @@ export default function Contactform(props) {
       <div className="container-fluid basicform" ref={myref}>
         <div className="row">
           <div className="col-lg-6">
-            <div className="col-lg-12 formposition  mb-3">
+            <div className="col-lg-12 formposition  mb-4">
               <label htmlFor="TAddress" className="form-label">
                 Temporary Address
               </label>
@@ -95,7 +95,7 @@ export default function Contactform(props) {
               />
               <p className="errormsg errorpositon">{formErrors.TAddress}</p>
             </div>
-            <div className="col-lg-12  mb-3">
+            <div className="col-lg-12  mb-4">
               <label htmlFor="PAddress" className="form-label">
                 Permanent Address
               </label>
@@ -115,7 +115,7 @@ export default function Contactform(props) {
           </div>
 
           <div className="col-lg-6 ">
-            <div className="col-lg-12  mb-3">
+            <div className="col-lg-12  mb-4">
               <label htmlFor="UserName" className="form-label">
                 Phone Number
               </label>
@@ -132,7 +132,7 @@ export default function Contactform(props) {
               />
               <p className="errormsg errorpositon">{formErrors.PhNum}</p>
             </div>
-            <div className="col-lg-12  mb-3">
+            <div className="col-lg-12  mb-4">
               <label htmlFor="Email" className="form-label">
                 Email
               </label>
@@ -150,7 +150,7 @@ export default function Contactform(props) {
               <p className="errormsg errorpositon">{formErrors.Email}</p>
             </div>
 
-            <div className="col-lg-12  mb-3">
+            <div className="col-lg-12  mb-4">
               <label htmlFor="EmergencyContact" className="form-label">
                 Emergency Contact
               </label>

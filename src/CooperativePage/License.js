@@ -129,7 +129,7 @@ const validate = (values) => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-lg-6">
-          <div className="col-lg-12 formposition  mb-3">
+          <div className="col-lg-12 formposition  mb-4">
           <label htmlFor="cooperaticecode" className="form-label">
                        Credit Limit
                         </label>
@@ -146,7 +146,7 @@ const validate = (values) => {
                         />
              <p className="errormsg errorpositon">{formErrors.creditlimit}</p>
           </div>
-          <div className="col-lg-12 formposition mb-3">
+          <div className="col-lg-12 formposition mb-4">
             <label htmlFor="IsOnline" className="form-label">
               Medium
             </label>
@@ -167,7 +167,7 @@ const validate = (values) => {
             <p className="errormsg errorpositon">{formErrors.IsOnline}</p>
           </div>
         
-          <div className="col-lg-12  formposition mb-3">
+          <div className="col-lg-12  formposition mb-4">
             <label htmlFor="noOfUser" className="form-label">
               No of User
             </label>
@@ -184,7 +184,7 @@ const validate = (values) => {
             />
              <p className="errormsg errorpositon">{formErrors.noOfUser}</p>
           </div>
-          <div className="col-lg-12 formposition mb-3 position-relative">
+          <div className="col-lg-12 formposition mb-4 position-relative">
             <label htmlFor="ShowHideBalance " className="form-label">
               Balance
             </label>
@@ -207,7 +207,7 @@ const validate = (values) => {
           </div>
         <div className="col-lg-6">
          
-          <div className="col-lg-12 formposition mb-3">
+          <div className="col-lg-12 formposition mb-4">
             <label htmlFor="AllowMultiDate" className="form-label">
               Date Type
             </label>
@@ -227,7 +227,7 @@ const validate = (values) => {
             <i class="fas fa-angle-down  position-absolute "></i>
             <p className="errormsg errorpositon">{formErrors.AllowMultiDate}</p>
           </div>
-          <div className="col-lg-12 formposition  mb-3">
+          <div className="col-lg-12 formposition  mb-4">
             <label htmlFor="IsWithdrawAllow" className="form-label">
               Withdraw
             </label>
@@ -247,7 +247,7 @@ const validate = (values) => {
             <i class="fas fa-angle-down  position-absolute "></i>{" "}
             <p className="errormsg errorpositon">{formErrors.IsWithdrawAllow}</p>
           </div>
-          <div className="col-lg-12 formposition mb-3">
+          <div className="col-lg-12 formposition mb-4">
             <label htmlFor="licenseExipry" className="form-label">
               Exipry Date{" "}
             </label>
@@ -266,7 +266,7 @@ const validate = (values) => {
           </div>
         </div>
       </div>
-      <div className="col-lg-12 formposition py-2  mb-3">
+      <div className="col-lg-12 formposition py-2  mb-4">
         <div>
           <label>
             <input name="IsPaid" type="checkbox"
@@ -278,7 +278,7 @@ const validate = (values) => {
         </div>
       </div>
    
-      <div className="p-2 py-3 basicALertfooter mb-3">
+      <div className="p-2 py-3 basicALertfooter mb-4">
       <button className="btn btn-sm btn-cmpy" onClick={   Previous}>   Prev</button>
         <button className="btn btn-sm btn-cmpy ml-2" onClick={onSubmitForm} style={{background:"red"}}>Submit</button>
         <button className="btn btn-sm btn-cmpy ml-2" onClick={closePopup}>

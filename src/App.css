@@ -103,8 +103,6 @@
   box-shadow: 0 0 13px 0 rgb(82 63 105 / 10%);
   z-index: 39;
   height:100%;
-  
-  overflow: auto;
   }
 .popUP::-webkit-scrollbar {
     display: none;
@@ -257,8 +255,7 @@ i.fa.fa-download.fa-rotate-270 {
     left:0;
   }
   .popup-inner-alert {
-    max-width: 525px; 
-    left: 11%;
+  padding:0;
   }
 
 }
@@ -270,8 +267,7 @@ i.fa.fa-download.fa-rotate-270 {
     left: 14%;
   }
   .popup-inner-alert {
-    max-width: 525px; 
-    left: 5%;
+    padding:0
   }
 
 

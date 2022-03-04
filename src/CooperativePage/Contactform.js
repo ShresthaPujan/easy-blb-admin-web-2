@@ -83,7 +83,7 @@ export default function Contactform(props) {
     <div className="container">
       <div className="row">
         <div className="col-lg-6">
-      <div className="col-lg-12 formposition  mb-3">
+      <div className="col-lg-12 formposition  mb-4">
                 <label htmlFor="Address" className="form-label">
                  Address
                 </label>
@@ -100,7 +100,7 @@ export default function Contactform(props) {
                 />            
                  <p className="errormsg errorpositon">{formErrors.address}</p>
           </div>
-          <div className="col-lg-12  formposition mb-3">
+          <div className="col-lg-12  formposition mb-4">
                 <label htmlFor="Contact Person" className="form-label">
                  Contact Person
                 </label>
@@ -119,7 +119,7 @@ export default function Contactform(props) {
           </div>
           </div>
           <div className="col-lg-6">
-          <div className="col-lg-12 formposition mb-3">
+          <div className="col-lg-12 formposition mb-4">
                 <label htmlFor="Contact Number" className="form-label">
                  Contact Number
                 </label>

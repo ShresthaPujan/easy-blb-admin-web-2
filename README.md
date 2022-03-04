@@ -108,3 +108,10 @@ logout fixed
 -messeage accordingly provided
 -coollect deactive activated msg fixed
 -reset password working
+
+3rd March
+-add cooperative
+-add collector
+-edit cooperative
+-edit collector
+-

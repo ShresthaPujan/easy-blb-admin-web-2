@@ -8,6 +8,7 @@ export default function Basicform(props) {
     addCollector,
     collectorEdit,
     setCollectorEdit,
+    collectorInitianValue,
     edit,
     setEdit,
   } = context;
@@ -35,13 +36,13 @@ export default function Basicform(props) {
         tab1: false,
         tab2: true,
         tab3: false,
-      
       });
     }
   }, [formErrors]);
   const closePopup = (e) => {
     e.preventDefault();
     setPopup(false);
+    setCollectorEdit(collectorInitianValue)
   };
 
   const validate = (values) => {
@@ -74,7 +75,7 @@ export default function Basicform(props) {
       <div className="container-fluid basicform">
         <div className="row">
           <div className="col-lg-6">
-            <div className="col-lg-12 formposition  mb-3">
+            <div className="col-lg-12   mb-3">
               <label htmlFor="Fullname" className="form-label">
                 Full Name
               </label>
@@ -89,9 +90,9 @@ export default function Basicform(props) {
                 id="Fullname"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">{formErrors.FullName}</p>
+              <p className="errormsg ">{formErrors.FullName}</p>
             </div>
-            <div className="col-lg-12  mb-3">
+            <div className="col-lg-12  mb-4">
               <label htmlFor="NameNepali" className="form-label">
                 Name Nepali
               </label>
@@ -108,7 +109,7 @@ export default function Basicform(props) {
               />
               <p className="errormsg errorpositon">{formErrors.NameNepali}</p>
             </div>
-            <div className="col-lg-12  mb-3">
+            <div className="col-lg-12  mb-4">
               <label htmlFor="FatherName" className="form-label">
                 Father Name
               </label>
@@ -128,13 +129,13 @@ export default function Basicform(props) {
           </div>
 
           <div className="col-lg-6 ">
-            <div className="col-lg-12  mb-3">
+            <div className="col-lg-12  mb-4">
               <label htmlFor="UserName" className="form-label">
                 Username
               </label>
               <input
                 type="text"
-                className="form-control form-control-sm mb-1"
+                className="form-control form-control-sm "
                 value={collectorEdit.UserName}
                 onChange={handleChange}
                 name="UserName"
@@ -145,7 +146,7 @@ export default function Basicform(props) {
               />
               <p className="errormsg errorpositon">{formErrors.UserName}</p>
             </div>
-            <div className="col-lg-12  mb-3">
+            <div className="col-lg-12  mb-4">
               <label htmlFor="BranchID" className="form-label">
                 Branch ID
               </label>

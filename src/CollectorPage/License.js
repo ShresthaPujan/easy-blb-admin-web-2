@@ -116,7 +116,7 @@ export default function License(props) {
     <div className="container-fluid basicform"  ref={myref}>
       <div className="row">
         <div className="col-lg-6">
-        <div className="col-lg-12 formposition mb-3">
+        <div className="col-lg-12 formposition mb-4">
               <label htmlFor="CreditLimit" className="form-label">
                 IMEI Number
               </label>
@@ -133,7 +133,7 @@ export default function License(props) {
               />
               <p className="errormsg errorpositon">{formErrors.IMEI_NUM}</p>
             </div>
-            <div className="col-lg-12 formposition  mb-3">
+            <div className="col-lg-12 formposition  mb-4">
               <label htmlFor="Guarantee" className="form-label">
                 Guarantee
               </label>
@@ -154,7 +154,7 @@ export default function License(props) {
         </div>
 
         <div className="col-lg-6 ">
-        <div className="col-lg-12 formposition mb-3">
+        <div className="col-lg-12 formposition mb-4">
               <label htmlFor="ActiveInActive" className="form-label">
                 ActiveInActive
               </label>
@@ -176,7 +176,7 @@ export default function License(props) {
               </p>
               <i class="fas fa-angle-down  position-absolute "></i>
             </div>
-            <div className="col-lg-12  mb-3 formposition position-relative">
+            <div className="col-lg-12  mb-4 formposition position-relative">
               <label htmlFor="IsActive " className="form-label">
                 IsActive
               </label>
@@ -196,7 +196,7 @@ export default function License(props) {
               <p className="errormsg errorpositon">{formErrors.IsActive}</p>
               <i class="fas fa-angle-down  position-absolute "></i>
             </div>
-            <div className="col-lg-12  mb-3 formposition position-relative">
+            <div className="col-lg-12  mb-4 formposition position-relative">
               <label htmlFor="IsAllowSignature " className="form-label">
                 IsAllowSignature
               </label>
@@ -222,7 +222,7 @@ export default function License(props) {
         </div>
       </div>
     </div>
-    <div className="p-2 py-3 col-lg-12 basicALertfooter mb-3">
+    <div className="p-2 py-3 col-lg-12 basicALertfooter mb-4">
         <button className="btn btn-sm btn-cmpy ml-2" onClick={PreviousPage}>
           Prev
         </button>
