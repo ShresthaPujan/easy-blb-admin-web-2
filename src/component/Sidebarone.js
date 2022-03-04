@@ -60,16 +60,17 @@ export default function Sidebarone() {
   <>  
                
                     <div className="menu " >
-                        <div className="img text-center ">
+                        <div className="img ">
                             <img src={logo} alt="" className='imgMain'/>
                       <span className='logoHeading'>Easy Software</span>
                         </div>
                         <nav className='MainNavbar'>
                             <ul >
-                                <li ><NavLink activeclassname={classes.active} to="/" ><i className="bi bi-folder-fill mx-3 icon"></i>DashBoard</NavLink></li>
-                                <li ><NavLink activeclassname={classes.active} className="arrow "  to="/profile"><i className="bi bi-people mx-3 icon"></i>Profile</NavLink> </li>
+                                {/* <li ><NavLink activeclassname={classes.active} to="/" ><i className="bi bi-folder-fill mx-3 icon"></i>DashBoard</NavLink></li>
+                                <li ><NavLink activeclassname={classes.active} className="arrow "  to="/profile"><i className="bi bi-people mx-3 icon"></i>Profile</NavLink> </li> */}
                                 <li><NavLink activeclassname={classes.active} className="arrow "  to="/cooperative"><i className="bi bi-people mx-3 icon"></i>Cooperative</NavLink> </li>
                                 <li><NavLink activeclassname={classes.active} className="arrow "  to="/collector"><i className="bi bi-people mx-3 icon"></i>Collector</NavLink> </li>
+                                <li><NavLink activeclassname={classes.active} className="arrow "  to="/notification"><i className="bi bi-people mx-3 icon"></i>Nofication</NavLink> </li>
                                 <li  onClick={logOut} ><a><i className="bi bi-people mx-3" ></i>Logout</a> </li>
                             </ul>
                         </nav>

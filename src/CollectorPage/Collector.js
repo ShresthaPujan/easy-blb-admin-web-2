@@ -84,7 +84,6 @@ const coopCodeGet =(value) =>{
     getCollector(value.value)
     cooperativeInfo(value.value)
     setCooperativeCode(value)
-    console.log(value)
 
 }
 const [infoCoop, setinfoCoop] = useState({})

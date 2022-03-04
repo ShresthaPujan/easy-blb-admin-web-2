@@ -20,6 +20,7 @@ import CooperativeState from './component/Cooperative/CooperativeState';
 import Collector from './CollectorPage/Collector';
 import CollectorState from './component/Collector/CollectorState';
 import Escpdetect from './component/Escpdetect';
+import Notification from './component/Notification';
 import AddNewpopup from './CooperativePage/AddNewpopup';
 
 function App() {
@@ -42,9 +43,10 @@ function App() {
                        <CollectorState>
                           <Layout>
                             <Routes>
-                              <Route path="/" element={  <Content /> }/>
+                              <Route path="/" element={  <Dashboard /> }/>
                               <Route path="/cooperative" element={<Content/>} />
                               <Route path="/collector" element={<Collector/>} />
+                              <Route path="/notification" element={<Notification/>} />
                               <Route path="/profile" element={<Profile/>} />
                               <Route path="/esc" element={<Escpdetect/>} />
                               <Route path="/test" element={<Test/>} />

@@ -105,33 +105,34 @@ export default function Login() {
         <>
                <div className="container login-container">
                         <div className="row">
-                            <div className="col-md-6 login-form-1">
+                            <div className="col-lg-6 col-md-6 col-sm-6 login-form-1 ">
+                                <div className="text-center">
                                 <img src={process.env.PUBLIC_URL + '/img/logo.png'}/>
-                                <h5>Log in</h5>
+                                <h5 >Log in</h5>
+                               
                                 <p>Enter your valid credentials below</p>
+                                </div>
                                 <form>
                                 <p className="errormsg"> {formErrors.errorv}</p>
                         
                                     <div className="form-group">
-                                        <label htmlFor="exampleInputEmail1">Username</label>
-                                        <p className="errormsg">{formErrors.username}</p>
-                                        <input type="text" className="form-control" name="username" value={ formValues.username} onChange={handleChange} placeholder="Enter your username" />
+                                    <p className="errormsg">{formErrors.username}</p>
+                                        <label htmlFor="exampleInputEmail1">Username</label>                                     
+                                        <input type="text" className="form-control form-control-sm" name="username" value={ formValues.username} onChange={handleChange} placeholder="Enter your username" />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="exampleInputPassword1">Password</label>
-                                        <p className="errormsg">{formErrors.password}</p>
-                                        <input type="password" className="form-control" name="password" value={formValues.password} onChange={handleChange}  placeholder="Enter your password"/>
+                                    <p className="errormsg">{formErrors.password}</p>
+                                        <label htmlFor="exampleInputPassword1">Password</label>                                        
+                                        <input type="password" className="form-control form-control-sm" name="password" value={formValues.password} onChange={handleChange}  placeholder="Enter your password"/>
                                     </div>
-                                    <div className="form-group">
-                                    <span className="fa-flip-vertical" style={{display: "inline-block"}}>
-                                         <i className="fa fa-download fa-rotate-270"></i>
-                                    </span>
-                                <button type="submit" onClick={handleSubmit} className="btnSubmit">{ isSubmit ? <span  style={{marginLeft: "15%"}} >Loading ...</span>  :  <span style={{marginLeft: "15%"}}>Login</span>}</button>
+                                    <div className="form-group ">
+                                   
+                                <button type="submit" onClick={handleSubmit} className="btnSubmit">{ isSubmit ? <span   >Loading ...</span>  :  <span >Login</span>}</button>
                           
                                     </div>
                                     </form>
                             </div>
-                            <div className="col-md-6 login-form-2 text-center">
+                            <div className="col-lg-6 col-md- 6 col-sm-6 login-form-2 text-center">
                             <h3>Welcome to the easy software</h3>
                                 <h6>Banking Software</h6>
                                 <OwlCarousel items={1} margin={8} autoplay ={true} >  

@@ -66,13 +66,13 @@ export default function Uppersidebar() {
                                         <div  className="mx-2" style={{fontSize:"14px",marginTop:"10px"}}>EasySoftware pvt.Ltd </div>
                                         <div className="mx-2" onClick={handleLogoClick}><img  src={logo} alt=""/></div>
                                        {logoutDropdownactive &&( 
-                                        <OutsideAlerter>
+                                  
                                            <div className="dropLogomenu">
                                             <ul>
-                                                <li style={{marginTop:"5px"}}><a href="" onClick={logOut}><span><i className="bi bi-people mx-3" ></i>Logout</span></a></li>
+                                                <li><a href="" onClick={logOut}><span ><i class="fas fa-power-off mr-2"></i>Logout</span></a></li>
                                             </ul>
                                          </div>
-                                         </OutsideAlerter> )}
+                                         )}
                                     </div>
                                 </div>
                                 </div>

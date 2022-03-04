@@ -120,4 +120,12 @@ logout fixed
   -Animation Added on popup
   -Scroll Removed
   -Search Working
+  -bug fix
+  -logout UI changed
+  ##Login Form
+        -Responsive
+        -bug fix
+  ##Notification
+      -Select box with choice added
+      
   

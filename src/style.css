@@ -54,6 +54,12 @@
     height: 65px;
     position: sticky;
     top: 0;
+    text-align: center;
+}
+@media only screen and (max-width : 1000px){
+    .img{
+    text-align: left;
+    }
 }
 .alertMsg{
     position: fixed;
@@ -211,6 +217,7 @@ ul li a{
     padding: 9px 25px;
     color:white;
     height: 65px;
+    position: relative;
 }
 #halfside-nav{
     /* border-right: 5px solid #F8F8FB; */
@@ -249,7 +256,7 @@ margin-top: 25px;
 .navbar__right{   
     display: flex;
    flex-direction: row;
-   position: relative;
+   
 }
 .navbar__right img{
     width: 45px;
@@ -260,18 +267,32 @@ margin-top: 25px;
 .dropLogomenu{
     background: white;
     position: absolute;
-    top: 124%;
-    right: -15px;
+    top: 60px;
+    right: 0;
     z-index: 2;
-    padding:11px 30px 2px 30px;
-    box-shadow: 0 0 13px 0 rgb(82 63 105 / 10%);
+    margin-top: 5px;
+    border: 1px solid #cccccc;
+    box-shadow: 0 0px 1px rgb(0 0 0 / 18%);
+    background-clip: padding-box;
   }
-.dropLogomenu:hover{
-    color:#004AAD;
+.dropLogomenu ul{
+    padding:10px 40px;
+    display: inline-block;
+    margin: 0;
+}
+.dropLogomenu ul li{
+   display: block;
+}
 
-  }
+.dropLogomenu ul li a:hover{
+  color:var(--textBlack);
+   
+}
+
 .dropLogomenu a{
     text-decoration: none;
+    display: block;
+
 }
 .logoImg{
         width: 58px;
@@ -772,6 +793,24 @@ i.fas.fa-angle-down.position-absolute {
   .mySelect__value-container{
     height: 35px;
    }
+.panel{
+    border: 1px solid #e1e2e3;
+    box-shadow: 0 0 0 #000;
+    height: 200px;
+    padding:15px;
+}
+.panelIcon{
+    color: #b1b2b2;
+    font-size: 29px;
+}
+.progressbar{
+    width: 100%;
+}
+.notificationpositondrop{
+    position: absolute;
+    top: 10px;
+    right: 25px;
+}
 @media (min-width: 992px){
 .col-lg-12 {
  padding:0;

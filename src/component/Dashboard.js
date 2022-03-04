@@ -1,23 +1,30 @@
-import React from 'react';
-import Footer from './Footer';
-import '../style.css';
-import  { useEffect , useState ,useContext} from 'react'
-import cooperativeContext from './Cooperative/cooperativeContext';
-import Sidebarone from './Sidebarone';
-import Uppersidebar from './Uppersidebar';
-// import { useContext } from 'react';
-// import { useLocation ,Navigate} from 'react-router-dom';
-// import AuthContext from './auth-context';
+import React from 'react'
 
 export default function Dashboard() {
-
-  const context = useContext(cooperativeContext)
-  const {getCoperative,cooperative,setCoperativeEdit,alert,setAlert} = context;
-  console.log(cooperative)
-  return  <>
-    <div className="container-fluid">
-    This is dashboard
-     </div>
-    </>
-  ;
+  return (
+    <div className="col-lg-12 col-md-12 col-sm-12 contentMainSection">    <div>
+    <div className="fontHeader">Dashboard</div>              
+                      <hr style={{color:"#f1f2f3"}}/>
+                  </div>
+                  <section className="content-section main-content">
+                                <div className="content">
+                                  <div className="row">
+                                    <div className="col-lg-4">
+                                      <div className="panel">
+                                        <div className="text-right panelIcon"><i className="fas fa-users te"></i></div>
+                                          <div className="total"><h3>25</h3></div>
+                                          <p>Total Cooperative</p>
+      
+                                        </div>
+                                      </div>
+                                      <div className="col-lg-4">
+                                      </div>
+                                      <div className="col-lg-4">
+                                      </div>
+                                   </div>
+                                  </div>
+                                  </section>
+                  
+                  </div>
+  )
 }
