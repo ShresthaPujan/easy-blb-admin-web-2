@@ -1,12 +1,16 @@
 import React, { useRef, useEffect,useContext } from "react";
 import PropTypes from "prop-types";
 import cooperativeContext from "../Cooperative/cooperativeContext";
+import collectorContext from "../Collector/collectorContext";
+import $ from "jquery";
 /**
  * Hook that alerts clicks outside of the passed ref
  */
 function useOutsideAlerter(ref) {
     const context = useContext(cooperativeContext);
     const {setPopup, setlogoutDropdownactive} = context;
+    const contextCcollector = useContext(collectorContext)
+    
   useEffect(() => {
     /**
      * Alert if clicked on outside of element
@@ -15,6 +19,9 @@ function useOutsideAlerter(ref) {
       if (ref.current && !ref.current.contains(event.target)) {
         setlogoutDropdownactive(false);
         setPopup(false);
+        contextCcollector.setPopup(false);
+        $('.displayPopup').fadeOut();
+        $('.displayPopupCollector').fadeOut();
       }
     }
     // Bind the event listener

@@ -1,4 +1,4 @@
-import React , { useState,useContext }from 'react'
+import React , { useState,useContext,useEffect }from 'react'
 import { NavLink,Link, useNavigate } from "react-router-dom";
 import {Routes, Route } from "react-router-dom";
 import CollectorC from '../CollectorPage/CollectorC';
@@ -9,6 +9,7 @@ import License from './License';
 import cooperativeContext from '../component/Cooperative/cooperativeContext';
 import Spinner from '../component/Spinner/Spinner';
 import OutsideAlerter from '../component/hooks/OutsideAlerter';
+import $ from "jquery";
 
 export default function AddNewpopup(props) {
     const { height} = UsewindowDimension();
@@ -45,10 +46,17 @@ export default function AddNewpopup(props) {
           setBasicFormvalue(basicformInitialValue);
           setlicenseformValue(licenseformValueInitialValue);
           props.setTriggernew(false)
+          $('.displayPopup').fadeOut(100);
       }
-  return props.trigger ? (
+
+   useEffect(() => {
+if(props.trigger){
+  $('.displayPopup').fadeIn(100);
+}
+ }, [props.trigger])
+  return (
       
-    <div className="popUP container-fluid   col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center align-items-center" style={{overflow:"scroll"}}>
+    <div className="popUP displayPopup container-fluid   col-lg-12 col-md-12 col-sm-12 col-xs-12 " style={{overflow:"scroll"}}>
         <OutsideAlerter>
         <div className={height < 500?"insidePopup ip500":"insidePopup"}>
             <div className="popUpHeader ">
@@ -75,6 +83,6 @@ export default function AddNewpopup(props) {
         </div>
         </OutsideAlerter>
         </div> 
-     
-  ): ("");
+  )
+
 }

@@ -110,8 +110,14 @@ logout fixed
 -reset password working
 
 3rd March
--add cooperative
--add collector
--edit cooperative
--edit collector
+   -add cooperative
+   -add collector
+    -edit cooperative
+    -edit collector
 -
+
+4th march
+  -Animation Added on popup
+  -Scroll Removed
+  -Search Working
+  

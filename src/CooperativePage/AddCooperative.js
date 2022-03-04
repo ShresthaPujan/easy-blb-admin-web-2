@@ -172,11 +172,11 @@ export default function AddCooperative(props) {
   //     console.log(" Outside / Elsewhere");
   //   }
   // });
- useEffect(() => {
-if(props.trigger){
-  $('.displayPopup').fadeIn();
-}
- }, [props.trigger])
+//  useEffect(() => {
+// if(props.trigger){
+//   $('.displayPopup').sli();
+// }
+//  }, [props.trigger])
  
 
   return(

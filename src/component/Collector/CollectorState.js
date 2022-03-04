@@ -235,7 +235,7 @@ const CollectorState = (props) => {
   const [cooperativeCode, setCooperativeCode] = useState("YT47");
   return (
     <collectorContext.Provider
-      value={{
+      value={{setCollector,
         collectorInitianValue,
         popup, setPopup,
         cooperativeCode,

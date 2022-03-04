@@ -9,8 +9,6 @@ import AddNewpopup from './AddNewpopup';
 import { typeImplementation } from '@testing-library/user-event/dist/type/typeImplementation';
 import Contenttable from './Contenttable';
 
-
-
 export default function Content() {
 
     const [searchTerm,setSearchTerm] = useState("");
@@ -58,6 +56,7 @@ export default function Content() {
     setSearchTerm("");
     setPopup(true);
     console.log(popup)
+
 
 }
 
@@ -118,16 +117,6 @@ const handleSearch = (e)=>{
          </div>
          
         
-         {edit ? (
-         <AddCooperative trigger ={false} setTrigger={setPopup} setCheckTrigger={setCheck} check={check}>
-             <h5 >Edit Cooperative</h5>
-             <hr/>
-         </AddCooperative>):
-         (
-         <AddCooperative trigger ={false} setTrigger={setPopup} setCheckTrigger={setCheck} check={check}>
-             <h5>Add Cooperative</h5>
-         </AddCooperative>)
-         }
         <AddNewpopup  trigger ={popup} setTriggernew={setPopup} />
 
   </>;

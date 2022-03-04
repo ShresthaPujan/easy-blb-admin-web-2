@@ -54,8 +54,7 @@ export default function CollectorC() {
         setSearchresult(searchresultdata)
     }else{
         setSearchresult(collector);
-    }
-    
+    }  
 }
  
   return (

@@ -1,6 +1,7 @@
 import React, { useContext,useEffect } from "react";
 import { useState } from "react";
 import cooperativeContext from "../component/Cooperative/cooperativeContext";
+import $ from "jquery";
 export default function License(props) {
   const context = useContext(cooperativeContext);
   const {edit,basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue,setContactFormvalue,setBasicFormvalue,addCoperative,userid,licenseformValue,contactformValue,BasicformValue, setlicenseformValue, check, setCheck,popup, setPopup,setCoperativeEdit,
@@ -123,6 +124,7 @@ const validate = (values) => {
 
   const closePopup = (e) => {
     e.preventDefault();
+    $('.displayPopup').fadeOut(100);
     setPopup(false);
   };
   return (

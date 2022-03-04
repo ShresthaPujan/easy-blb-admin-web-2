@@ -1,5 +1,6 @@
 import React ,{useContext ,useState , useEffect} from 'react'
 import cooperativeContext from '../component/Cooperative/cooperativeContext';
+import $ from "jquery";
 export default function Contactform(props) {
   const context = useContext(cooperativeContext)
   const {basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue
@@ -42,6 +43,7 @@ export default function Contactform(props) {
   const closePopup = (e)=>{
     e.preventDefault();
     setPopup(false);
+    $('.displayPopup').fadeOut(100);
     props.setActive({
       tab1:true,
       tab2:false,

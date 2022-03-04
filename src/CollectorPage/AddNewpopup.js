@@ -1,4 +1,4 @@
-import React , { useState,useContext }from 'react'
+import React , { useState,useContext,useEffect }from 'react'
 import { NavLink,Link, useNavigate } from "react-router-dom";
 import {Routes, Route } from "react-router-dom";
 import CollectorC from '../CollectorPage/CollectorC';
@@ -9,6 +9,7 @@ import License from './License';
 import cooperativeContext from '../component/Cooperative/cooperativeContext';
 import Spinner from '../component/Spinner/Spinner';
 import OutsideAlerter from '../component/hooks/OutsideAlerter';
+import $ from "jquery";
 export default function AddNewpopup(props) {
     const { height} = UsewindowDimension();
     const {closepopup} =props.setTriggernew;
@@ -31,11 +32,17 @@ export default function AddNewpopup(props) {
             tab2:false,
             tab3:false,
           })
+          $('.displayPopupCollector').fadeOut();
           props.setTriggernew(false)
       }
-  return props.trigger ? (
+      useEffect(() => {
+        if(props.trigger){
+          $('.displayPopupCollector').fadeIn(100);
+        }
+         }, [props.trigger])
+  return (
       
-    <div className="popUP container-fluid   col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center align-items-center" style={{overflow:"scroll"}}>
+    <div className="popUP container-fluid  displayPopupCollector col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
           <OutsideAlerter>
                 <div className={height < 500?"insidePopup ip500":"insidePopup"}>
                     <div className="popUpHeader ">
@@ -52,6 +59,7 @@ export default function AddNewpopup(props) {
                         </ul>
                     </nav>
                     {loading ? <Spinner/ >:(
+                        
                     <div className="outlet">
                         {activeTab.tab1 &&(<Basicform active={activeTab} setActive={setActiveTab} />)}
                         {activeTab.tab2 &&(<Contactform active={activeTab} setActive={setActiveTab}/>)}
@@ -65,5 +73,5 @@ export default function AddNewpopup(props) {
         </OutsideAlerter>
         </div> 
      
-  ): ("");
+  )
 }

@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect ,useRef} from "react";
 import cooperativeContext from "../component/Cooperative/cooperativeContext";
 import collectorContext from "../component/Collector/collectorContext";
+import $ from "jquery";
 export default function License(props) {
  
   const context = useContext(collectorContext);
@@ -64,7 +65,6 @@ export default function License(props) {
         IsAllowSignature: collectorEdit.IsAllowSignature,
         CollectorID:collectorEdit.CollectorID
       };
-      console.log(collectorData);
       if(edit){
         editCollector(collectorData)
       }else{
@@ -109,14 +109,16 @@ export default function License(props) {
 
   const closePopup = (e) => {
     e.preventDefault();
+    $('.displayPopupCollector').fadeOut();
     setPopup(false);
+    setCollectorEdit(collectorInitianValue)
   };
   return (
     <>
     <div className="container-fluid basicform"  ref={myref}>
       <div className="row">
         <div className="col-lg-6">
-        <div className="col-lg-12 formposition mb-4">
+        <div className="col-lg-12  mb-3">
               <label htmlFor="CreditLimit" className="form-label">
                 IMEI Number
               </label>
@@ -131,9 +133,9 @@ export default function License(props) {
                 id="IMEI_NUM"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">{formErrors.IMEI_NUM}</p>
+              <p className="errormsg ">{formErrors.IMEI_NUM}</p>
             </div>
-            <div className="col-lg-12 formposition  mb-4">
+            <div className="col-lg-12   mb-3">
               <label htmlFor="Guarantee" className="form-label">
                 Guarantee
               </label>
@@ -148,13 +150,13 @@ export default function License(props) {
                 id="Guarantee"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">{formErrors.Guarantee}</p>
+              <p className="errormsg ">{formErrors.Guarantee}</p>
             </div>
               
         </div>
 
         <div className="col-lg-6 ">
-        <div className="col-lg-12 formposition mb-4">
+        <div className="col-lg-12  mb-3">
               <label htmlFor="ActiveInActive" className="form-label">
                 ActiveInActive
               </label>
@@ -171,12 +173,12 @@ export default function License(props) {
                 <option value="Y">Yes</option>
                 <option value="N">No</option>
               </select>
-              <p className="errormsg errorpositon">
+              <p className="errormsg ">
                 {formErrors.ActiveInActive}
               </p>
               <i class="fas fa-angle-down  position-absolute "></i>
             </div>
-            <div className="col-lg-12  mb-4 formposition position-relative">
+            <div className="col-lg-12  mb-3  position-relative">
               <label htmlFor="IsActive " className="form-label">
                 IsActive
               </label>
@@ -193,10 +195,10 @@ export default function License(props) {
                 <option value="Y">Yes</option>
                 <option value="N">No</option>
               </select>
-              <p className="errormsg errorpositon">{formErrors.IsActive}</p>
+              <p className="errormsg ">{formErrors.IsActive}</p>
               <i class="fas fa-angle-down  position-absolute "></i>
             </div>
-            <div className="col-lg-12  mb-4 formposition position-relative">
+            <div className="col-lg-12  mb-3 formposition position-relative">
               <label htmlFor="IsAllowSignature " className="form-label">
                 IsAllowSignature
               </label>
@@ -213,7 +215,7 @@ export default function License(props) {
                 <option value="Y">Show</option>
                 <option value="N">Hide</option>
               </select>
-              <p className="errormsg errorpositon">
+              <p className="errormsg ">
                 {formErrors.IsAllowSignature}
               </p>
               <i class="fas fa-angle-down  position-absolute "></i>
@@ -222,7 +224,7 @@ export default function License(props) {
         </div>
       </div>
     </div>
-    <div className="p-2 py-3 col-lg-12 basicALertfooter mb-4">
+    <div className="p-2 py-3 col-lg-12 basicALertfooter mb-3">
         <button className="btn btn-sm btn-cmpy ml-2" onClick={PreviousPage}>
           Prev
         </button>

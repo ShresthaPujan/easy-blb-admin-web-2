@@ -1,10 +1,9 @@
 import React, { useContext, useState, useEffect,useRef } from "react";
-import cooperativeContext from "../component/Cooperative/cooperativeContext";
 import collectorContext from "../component/Collector/collectorContext";
+import $ from "jquery";
 export default function Contactform(props) {
-  const { popup, setPopup } = useContext(cooperativeContext);
   const context = useContext(collectorContext);
-  const { collectorEdit, setCollectorEdit } = context;
+  const { popup, setPopup,collectorEdit, setCollectorEdit,collectorInitianValue } = context;
   const [formErrors, setformErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -72,13 +71,15 @@ export default function Contactform(props) {
   const closePopup = (e) => {
     e.preventDefault();
     setPopup(false);
+    $('.displayPopupCollector').fadeOut();
+    setCollectorEdit(collectorInitianValue);
   };
   return (
     <>
       <div className="container-fluid basicform" ref={myref}>
         <div className="row">
           <div className="col-lg-6">
-            <div className="col-lg-12 formposition  mb-4">
+            <div className="col-lg-12   mb-3">
               <label htmlFor="TAddress" className="form-label">
                 Temporary Address
               </label>
@@ -93,9 +94,9 @@ export default function Contactform(props) {
                 id="TAddress"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">{formErrors.TAddress}</p>
+              <p className="errormsg ">{formErrors.TAddress}</p>
             </div>
-            <div className="col-lg-12  mb-4">
+            <div className="col-lg-12  mb-3">
               <label htmlFor="PAddress" className="form-label">
                 Permanent Address
               </label>
@@ -110,12 +111,12 @@ export default function Contactform(props) {
                 id="PAddress"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">{formErrors.PAddress}</p>
+              <p className="errormsg ">{formErrors.PAddress}</p>
             </div>
           </div>
 
           <div className="col-lg-6 ">
-            <div className="col-lg-12  mb-4">
+            <div className="col-lg-12  mb-3">
               <label htmlFor="UserName" className="form-label">
                 Phone Number
               </label>
@@ -130,9 +131,9 @@ export default function Contactform(props) {
                 id="PhNum"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">{formErrors.PhNum}</p>
+              <p className="errormsg ">{formErrors.PhNum}</p>
             </div>
-            <div className="col-lg-12  mb-4">
+            <div className="col-lg-12  mb-3">
               <label htmlFor="Email" className="form-label">
                 Email
               </label>
@@ -147,10 +148,10 @@ export default function Contactform(props) {
                 id="Email"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">{formErrors.Email}</p>
+              <p className="errormsg ">{formErrors.Email}</p>
             </div>
 
-            <div className="col-lg-12  mb-4">
+            <div className="col-lg-12  mb-3">
               <label htmlFor="EmergencyContact" className="form-label">
                 Emergency Contact
               </label>
@@ -165,7 +166,7 @@ export default function Contactform(props) {
                 id="EmergencyContact"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">
+              <p className="errormsg ">
                 {formErrors.EmergencyContact}
               </p>
             </div>

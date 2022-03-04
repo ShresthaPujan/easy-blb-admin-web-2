@@ -13,15 +13,13 @@ import AddNewpopup from './AddNewpopup';
 
 export default function Collector() {
 
-   
-    const [editpopup, setEditPopup] = useState(false);
-    
-    
+    const [editpopup, setEditPopup] = useState(false);  
     const [searchTerm,setSearchTerm] = useState("");
+    const [searchresult, setSearchresult] = useState([]);
     const context = useContext(collectorContext)
     const contextCooperative = useContext(cooperativeContext)
     const {resetPassword,cooperative,setAlert,alert}=contextCooperative;
-    const {edit,popup, setPopup,cooperativeCode, setCooperativeCode,resetpassword,deactivateCollector,loading,getCollectorInfo,getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
+    const {setCollector,edit,popup, setPopup,cooperativeCode, setCooperativeCode,resetpassword,deactivateCollector,loading,getCollectorInfo,getCollector,collector,collectorEdit,setCollectorEdit,setEdit} = context;
    
 
  
@@ -42,6 +40,16 @@ export default function Collector() {
 const handleSearch = (e)=>{
     e.preventDefault();
     setSearchTerm(e.target.value);
+    if(searchTerm !== ""){
+        const searchresultdata = collector.filter((item)=>{
+            return Object.values(item).join(" ").toLowerCase().includes(searchTerm.toLowerCase());
+
+        })
+        setSearchresult(searchresultdata)
+    }else{
+        setSearchresult(collector);
+    }  
+
     
 }
 const handleEdit = (item) =>{
@@ -141,6 +149,17 @@ useEffect(() => {
     coopCodeGet("YT47")
 
 }, [])
+const [first, setfirst] = useState("")
+useEffect(() => {
+    
+   if(searchTerm.length < 1)
+   {
+    setCollector(collector)
+   }else{
+    setCollector(searchresult)
+   }
+
+}, [searchTerm])
 
         
    
@@ -210,14 +229,7 @@ useEffect(() => {
                                                       
                                                         <tbody>
            
-                                                   {collector.length > 0 ? collector.filter((item)=>{
-                                                        if (searchTerm === ""){
-                                                            return item
-                                                        } else if(item.UserName.toLowerCase().includes(searchTerm.toLowerCase())||
-                                                                     item.fullName.toLowerCase().includes(searchTerm.toLowerCase())){
-                                                            return item
-                                                        }
-                                                    }).map((item,i) => 
+                                                   {collector.length > 0 ? collector.map((item,i) => 
                                                       
                                                     <tr key={i+1}>
                                                                     <td className='tc'>{i + 1}</td>
@@ -249,12 +261,12 @@ useEffect(() => {
          
         
    
-         <AddCollector triggerc ={false} setTriggerc={setPopup} >
+         {/* <AddCollector triggerc ={false} setTriggerc={setPopup} >
              <h4 >Add Collector</h4>
          </AddCollector>
         <EditCollector etrigger ={false} setEtrigger={setEditPopup}>
         <h4 >Edit Collector</h4>
-     </EditCollector>        
+     </EditCollector>         */}
     <AddNewpopup trigger ={popup} setTriggernew={setPopup}/>
 
   

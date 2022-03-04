@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import collectorContext from "../component/Collector/collectorContext";
-import cooperativeContext from "../component/Cooperative/cooperativeContext";
+import $ from "jquery";
 export default function Basicform(props) {
   const context = useContext(collectorContext);
   const {
@@ -13,7 +13,7 @@ export default function Basicform(props) {
     setEdit,
   } = context;
 
-  const { popup, setPopup } = useContext(cooperativeContext);
+  const { popup, setPopup } = useContext(collectorContext);
   const [formErrors, setformErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -42,6 +42,7 @@ export default function Basicform(props) {
   const closePopup = (e) => {
     e.preventDefault();
     setPopup(false);
+    $('.displayPopupCollector').fadeOut(100);
     setCollectorEdit(collectorInitianValue)
   };
 
@@ -92,7 +93,7 @@ export default function Basicform(props) {
               />
               <p className="errormsg ">{formErrors.FullName}</p>
             </div>
-            <div className="col-lg-12  mb-4">
+            <div className="col-lg-12  mb-3">
               <label htmlFor="NameNepali" className="form-label">
                 Name Nepali
               </label>
@@ -107,9 +108,9 @@ export default function Basicform(props) {
                 id="NameNepali"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">{formErrors.NameNepali}</p>
+              <p className="errormsg ">{formErrors.NameNepali}</p>
             </div>
-            <div className="col-lg-12  mb-4">
+            <div className="col-lg-12  mb-3">
               <label htmlFor="FatherName" className="form-label">
                 Father Name
               </label>
@@ -124,12 +125,12 @@ export default function Basicform(props) {
                 id="FatherName"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">{formErrors.FatherName}</p>
+              <p className="errormsg ">{formErrors.FatherName}</p>
             </div>
           </div>
 
           <div className="col-lg-6 ">
-            <div className="col-lg-12  mb-4">
+            <div className="col-lg-12  mb-3">
               <label htmlFor="UserName" className="form-label">
                 Username
               </label>
@@ -144,9 +145,9 @@ export default function Basicform(props) {
                 id="UserName"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">{formErrors.UserName}</p>
+              <p className="errormsg ">{formErrors.UserName}</p>
             </div>
-            <div className="col-lg-12  mb-4">
+            <div className="col-lg-12  mb-3">
               <label htmlFor="BranchID" className="form-label">
                 Branch ID
               </label>
@@ -161,7 +162,7 @@ export default function Basicform(props) {
                 id="BranchID"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg errorpositon">{formErrors.BranchID}</p>
+              <p className="errormsg ">{formErrors.BranchID}</p>
             </div>
           </div>
         </div>
