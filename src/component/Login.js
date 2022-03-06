@@ -28,6 +28,7 @@ export default function Login() {
     const user = useSelector(selectUser);
     
     const handleChange =(e)=>{
+        e.preventDefault();
         const{name , value} = e.target;
         setFormValues({ ...formValues,[name]:value});
     };
@@ -99,6 +100,11 @@ export default function Login() {
            }
         return errors;
     }
+
+    const openInNewTab = (url) => {
+        const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+        if (newWindow) newWindow.opener = null
+      }
     
     return authCtx.isLoggedIn ? <Navigate to="/" replace state={{from :location}}/> :(
    
@@ -106,24 +112,25 @@ export default function Login() {
                <div className="container login-container">
                         <div className="row">
                             <div className="col-lg-6 col-md-6 col-sm-6 login-form-1 ">
-                                <div className="text-center">
-                                <img src={process.env.PUBLIC_URL + '/img/logo.png'}/>
+                                <div className='text-center'>
+                               
                                 <h5 >Log in</h5>
                                
                                 <p>Enter your valid credentials below</p>
                                 </div>
                                 <form>
+                              
                                 <p className="errormsg"> {formErrors.errorv}</p>
-                        
                                     <div className="form-group">
-                                    <p className="errormsg">{formErrors.username}</p>
                                         <label htmlFor="exampleInputEmail1">Username</label>                                     
                                         <input type="text" className="form-control form-control-sm" name="username" value={ formValues.username} onChange={handleChange} placeholder="Enter your username" />
+                                        <p className="errormsg">{formErrors.username}</p>
                                     </div>
                                     <div className="form-group">
-                                    <p className="errormsg">{formErrors.password}</p>
+                                   
                                         <label htmlFor="exampleInputPassword1">Password</label>                                        
                                         <input type="password" className="form-control form-control-sm" name="password" value={formValues.password} onChange={handleChange}  placeholder="Enter your password"/>
+                                        <p className="errormsg">{formErrors.password}</p>
                                     </div>
                                     <div className="form-group ">
                                    
@@ -131,7 +138,10 @@ export default function Login() {
                           
                                     </div>
                                     </form>
-                            </div>
+                                    <div class="text-center">
+                                        <p>By <a style={{cursor:"pointer"}} onClick={() => openInNewTab("https://easysoftware.com.np/")} ><span style={{color:"red"}}>Easy</span> <span style={{color:"#3498db"}}>Software</span></a></p>
+                                        </div>
+                                     </div>
                             <div className="col-lg-6 col-md- 6 col-sm-6 login-form-2 text-center">
                             <h3>Welcome to the easy software</h3>
                                 <h6>Banking Software</h6>

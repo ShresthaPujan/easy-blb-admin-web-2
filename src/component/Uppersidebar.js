@@ -24,10 +24,11 @@ export default function Uppersidebar() {
 
     function logOut(e){
         e.preventDefault();
+        console.log("clicked")
         setlogoutDropdownactive(!logoutDropdownactive);
         setAlert({
             fade:'fade-in',
-            msg:"Do you want to Reset Password ?",
+            msg:"Do you want to Logout ?",
             type:"logout"
         })
     }
@@ -60,20 +61,26 @@ export default function Uppersidebar() {
                                     <div>
                                         <button className="toggle" onClick={handleMenuChange} ><i className="fas fa-bars"></i></button><span className="mx-3"></span>
                                     </div>
-                                   
+                                 
                                     <div className="navbar__right">
                                      
                                         <div  className="mx-2" style={{fontSize:"14px",marginTop:"10px"}}>EasySoftware pvt.Ltd </div>
                                         <div className="mx-2" onClick={handleLogoClick}><img  src={logo} alt=""/></div>
                                        {logoutDropdownactive &&( 
-                                  
-                                           <div className="dropLogomenu">
+                                       <OutsideAlerter>
+                                           <div className="dropLogomenu" >
+                                             
                                             <ul>
+                                          
                                                 <li><a href="" onClick={logOut}><span ><i class="fas fa-power-off mr-2"></i>Logout</span></a></li>
+                                            
                                             </ul>
+                                           
                                          </div>
+                                         </OutsideAlerter>
                                          )}
                                     </div>
+                                     
                                 </div>
                                 </div>
                             </div>     

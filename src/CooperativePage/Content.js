@@ -13,7 +13,7 @@ export default function Content() {
 
     const [searchTerm,setSearchTerm] = useState("");
     const context = useContext(cooperativeContext)
-    const { check, setCheck, setContactFormvalue,setBasicFormvalue,setlicenseformValue,popup,setPopup,deactivateCooperative,first,edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit,setAlert} = context;
+    const { check, setCheck, setContactFormvalue,setBasicFormvalue,setlicenseformValue,popup,setPopup,deactivateCooperative,first,edit, loading,setEdit,getCoperative,cooperative,getCoperativeInfo,setCoperativeEdit,cooperativeEdit} = context;
     const [searchresult, setSearchresult] = useState([]);
    
     const userId =JSON.parse(localStorage.getItem("userInfo"));

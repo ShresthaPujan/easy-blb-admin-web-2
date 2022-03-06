@@ -16,7 +16,9 @@ function useOutsideAlerter(ref) {
      * Alert if clicked on outside of element
      */
     function handleClickOutside(event) {
+      console.log("IN")
       if (ref.current && !ref.current.contains(event.target)) {
+        console.log("out")
         setlogoutDropdownactive(false);
         setPopup(false);
         contextCcollector.setPopup(false);

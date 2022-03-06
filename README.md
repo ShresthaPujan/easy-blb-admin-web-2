@@ -128,4 +128,11 @@ logout fixed
   ##Notification
       -Select box with choice added
       
+6th march
+ #notification
+      -collector notification fetch done
+ # Login 
+    - UI bug fixed
+# Escpace
+  - On escape popup closed
   

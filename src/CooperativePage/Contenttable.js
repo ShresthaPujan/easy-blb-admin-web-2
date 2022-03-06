@@ -108,7 +108,7 @@ export default function Contenttable(props) {
     if(props.data.length > 0 ) {
   return (
     <div className="outer-wrapper">
-    <div className="table-wrapper"  style={{overflowX:"auto"}}>
+    <div className="table-wrapper"  style={{overflowX:"scroll",overflowY:"scroll",margin:"3px",height:"300px"}}>
     <table className="table table-striped">
     
         <thead>

@@ -17,6 +17,7 @@ import Layout from './component/Layout';
 import Test from './component/Test';
 import Profile from './component/Profile';
 import CooperativeState from './component/Cooperative/CooperativeState';
+import NotificationState from './component/Notification/Notificationstate';
 import Collector from './CollectorPage/Collector';
 import CollectorState from './component/Collector/CollectorState';
 import Escpdetect from './component/Escpdetect';
@@ -41,9 +42,10 @@ function App() {
                   {authCtx.isLoggedIn && ( 
                     <CooperativeState>
                        <CollectorState>
+                        <NotificationState>
                           <Layout>
                             <Routes>
-                              <Route path="/" element={  <Dashboard /> }/>
+                              <Route path="/" element={  <Content /> }/>
                               <Route path="/cooperative" element={<Content/>} />
                               <Route path="/collector" element={<Collector/>} />
                               <Route path="/notification" element={<Notification/>} />
@@ -52,6 +54,7 @@ function App() {
                               <Route path="/test" element={<Test/>} />
                             </Routes>      
                         </Layout>
+                        </NotificationState>
                     </CollectorState>
                   </CooperativeState>
                  )}

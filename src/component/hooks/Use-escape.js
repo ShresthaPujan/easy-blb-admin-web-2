@@ -1,10 +1,11 @@
 import { useEffect ,useState, useCallback} from "react";
-
+import $ from "jquery";
 const useEscapse = (setPopup) =>{
 
     const escFunction = useCallback((event) => {
         if (event.keyCode === 27) {
-            setPopup(false)
+          $('.displayPopup').fadeOut();
+          $('.displayPopupCollector').fadeOut();
          }
         
     }, []);

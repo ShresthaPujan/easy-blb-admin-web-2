@@ -16,17 +16,20 @@ body{
   --ActiveColor:#eef3f7;
 }
 .login-container{
-  margin-top: 5%;
   width: 100%;
   max-width: 900px;
   border: 1px solid #e1e2e3;
   border-radius: 0.2rem;
   box-shadow: 0 0 0 #000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.login-form-1{
+padding-top: 70px;
 }
 
-.login-form-1{
- 
-}
 .login-form-1 img {
   height: auto;
   width: 20%;

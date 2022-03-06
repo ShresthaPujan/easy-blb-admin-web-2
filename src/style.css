@@ -138,7 +138,7 @@ ul li a{
     border-radius: 3px;
 }
 .contentMainSection{
-    padding:40px !important;
+    padding:25px 30px 30px 30px !important;
 }
 #upper-nav{
     background: #FFFFFF;
@@ -269,7 +269,7 @@ margin-top: 25px;
     position: absolute;
     top: 60px;
     right: 0;
-    z-index: 2;
+    z-index: 45;
     margin-top: 5px;
     border: 1px solid #cccccc;
     box-shadow: 0 0px 1px rgb(0 0 0 / 18%);
@@ -537,7 +537,7 @@ table td {
     right: 0;
     z-index: 3;
     width: 160px;    
-    background: white;
+    background: #fafbfc;
 }
 .table-wrapper td:last-child{
     position: sticky;
@@ -576,14 +576,12 @@ table td {
     background: red;
     padding:5px;
     cursor: pointer;
-    font-size: 13px;
-    
+    font-size: 13px; 
 }
 
 .box{
     width: 400px;
     height: 400px;
-
 }
 .alert{
     z-index: 20;
@@ -601,8 +599,7 @@ select:focus{
     border:1px solid #004AAD !important;
 }
 .css-b62m3t-container{
-    border:none;
-    
+    border:none; 
 }
 .css-1s2u09g-control {
   
@@ -617,8 +614,6 @@ select:focus{
     border:0 !important;
     border-width: 1px !important;
     padding: 0 !important;
-    
-   
 }
 .css-1pahdxg-control{
     outline: none !important;
