@@ -14,6 +14,7 @@ const NotificationState =(props) =>{
             body:JSON.stringify(formData)
           });
           const notification = await response.json();
+          console.log(notification)
           if(notification.STATUS_CODE === "0"){
             setnotificationList(notification.lstNoti)
           } 

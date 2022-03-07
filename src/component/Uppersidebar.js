@@ -1,4 +1,4 @@
-import React ,{useState,useContext,useEffect}from 'react';
+import React ,{useState,useContext,useEffect,useRef}from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { logout} from '../features/Userslice';
@@ -21,16 +21,20 @@ export default function Uppersidebar() {
     const dispatch = useDispatch();
     const authCtx= useContext(AuthContext);
     const auth = localStorage.getItem("userInfo");
+    const myref = useRef(null);
 
     function logOut(e){
         e.preventDefault();
-        console.log("clicked")
         setlogoutDropdownactive(!logoutDropdownactive);
         setAlert({
             fade:'fade-in',
             msg:"Do you want to Logout ?",
             type:"logout"
         })
+        if (myref.current && !myref.current.contains(e.target)) {
+                console.log("asd")
+        }
+        
     }
     function logoutFunction(){
         authCtx.logout();
@@ -51,7 +55,11 @@ export default function Uppersidebar() {
         logoutFunction()
     }
     },[logoutdata]);
- 
+
+    
+    
+
+
     
   return <>
        
@@ -67,8 +75,8 @@ export default function Uppersidebar() {
                                         <div  className="mx-2" style={{fontSize:"14px",marginTop:"10px"}}>EasySoftware pvt.Ltd </div>
                                         <div className="mx-2" onClick={handleLogoClick}><img  src={logo} alt=""/></div>
                                        {logoutDropdownactive &&( 
-                                       <OutsideAlerter>
-                                           <div className="dropLogomenu" >
+                                   
+                                           <div className="dropLogomenu"  ref={myref}>
                                              
                                             <ul>
                                           
@@ -77,7 +85,7 @@ export default function Uppersidebar() {
                                             </ul>
                                            
                                          </div>
-                                         </OutsideAlerter>
+                                 
                                          )}
                                     </div>
                                      

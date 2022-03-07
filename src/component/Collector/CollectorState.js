@@ -56,6 +56,18 @@ const CollectorState = (props) => {
       throw err;
     }
   };
+  const getCollectorData = async (coopid) => {
+    try {
+      setLoading(true);
+      const response = await fetch(
+        `api2/BLBApi/Collector/CollectorLst?CoOperativeCode=${coopid}`
+      );
+      return response.json();
+      setLoading(false)
+    } catch (err) {
+      throw err;
+    }
+  };
 
   //////// GET COLLECTOR INFO
   const getCollectorInfo = async (collectorId) => {
@@ -251,6 +263,7 @@ const CollectorState = (props) => {
         collectorEdit,
         setCollectorEdit,
         edit,
+        getCollectorData,
         setEdit,
         addCollector,
       }}
