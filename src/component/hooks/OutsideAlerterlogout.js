@@ -7,7 +7,7 @@ import $ from "jquery";
 /**
  * Hook that alerts clicks outside of the passed ref
  */
-function useOutsideAlerter(ref) {
+function useOutsideAlerterlogout(ref) {
     const context = useContext(cooperativeContext);
     const {setPopup, setlogoutDropdownactive} = context;
     const contextCcollector = useContext(collectorContext)
@@ -20,11 +20,7 @@ function useOutsideAlerter(ref) {
     function handleClickOutside(event) {
      
       if (ref.current && !ref.current.contains(event.target)) {
-        setPopup(false);
-        setnotificationPopup(false);
-        contextCcollector.setPopup(false);
-        $('.displayPopup').fadeOut();
-        $('.displayPopupCollector').fadeOut();
+        setlogoutDropdownactive(false)
       }
     }
     // Bind the event listener
@@ -39,15 +35,15 @@ function useOutsideAlerter(ref) {
 /**
  * Component that alerts if you click outside of it
  */
-function OutsideAlerter(props) {
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+function OutsideAlerterlogout(props) {
+  const myref = useRef(null);
+  useOutsideAlerterlogout(myref);
 
-  return <div ref={wrapperRef}>{props.children}</div>;
+  return <div ref={myref}>{props.children}</div>;
 }
 
-OutsideAlerter.propTypes = {
+OutsideAlerterlogout.propTypes = {
   children: PropTypes.element.isRequired
 };
 
-export default OutsideAlerter;
+export default OutsideAlerterlogout;

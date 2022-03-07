@@ -249,7 +249,7 @@ const validate = (values) => {
             <i class="fas fa-angle-down  position-absolute "></i>{" "}
             <p className="errormsg errorpositon">{formErrors.IsWithdrawAllow}</p>
           </div>
-          <div className="col-lg-12 formposition mb-4">
+          <div className="col-lg-12 formposition mb-1">
             <label htmlFor="licenseExipry" className="form-label">
               Exipry Date{" "}
             </label>
@@ -268,7 +268,7 @@ const validate = (values) => {
           </div>
         </div>
       </div>
-      <div className="col-lg-12 formposition py-2  mb-4">
+      <div className="col-lg-12 formposition  mb-4">
         <div>
           <label>
             <input name="IsPaid" type="checkbox"

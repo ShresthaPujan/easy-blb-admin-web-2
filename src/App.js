@@ -20,7 +20,7 @@ import CooperativeState from './component/Cooperative/CooperativeState';
 import NotificationState from './component/Notification/Notificationstate';
 import Collector from './CollectorPage/Collector';
 import CollectorState from './component/Collector/CollectorState';
-import Notification from './component/Notification';
+import Notification from './component/NotificationPage/Notification';
 import AddNewpopup from './CooperativePage/AddNewpopup';
 
 function App() {

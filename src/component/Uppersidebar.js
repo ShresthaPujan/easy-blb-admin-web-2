@@ -5,7 +5,7 @@ import { logout} from '../features/Userslice';
 import AuthContext from './auth-context';
 import cooperativeContext from './Cooperative/cooperativeContext';
 import logo from './logo.png'
-import OutsideAlerter from './hooks/OutsideAlerter';
+import OutsideAlerterlogout from './hooks/OutsideAlerterlogout';
 
 export default function Uppersidebar() {
     const context = useContext(cooperativeContext)
@@ -15,13 +15,14 @@ export default function Uppersidebar() {
     const handleLogoClick = (e) =>{
         e.preventDefault();
         setlogoutDropdownactive(!logoutDropdownactive);   
+        
     }
    
     let navigate = useNavigate();
     const dispatch = useDispatch();
     const authCtx= useContext(AuthContext);
     const auth = localStorage.getItem("userInfo");
-    const myref = useRef(null);
+   
 
     function logOut(e){
         e.preventDefault();
@@ -31,9 +32,6 @@ export default function Uppersidebar() {
             msg:"Do you want to Logout ?",
             type:"logout"
         })
-        if (myref.current && !myref.current.contains(e.target)) {
-                console.log("asd")
-        }
         
     }
     function logoutFunction(){
@@ -55,12 +53,10 @@ export default function Uppersidebar() {
         logoutFunction()
     }
     },[logoutdata]);
-
-    
     
 
 
-    
+
   return <>
        
                         <div className="col-lg-12 col-md-12 col-sm-12 UpperNav">
@@ -74,10 +70,11 @@ export default function Uppersidebar() {
                                      
                                         <div  className="mx-2" style={{fontSize:"14px",marginTop:"10px"}}>EasySoftware pvt.Ltd </div>
                                         <div className="mx-2" onClick={handleLogoClick}><img  src={logo} alt=""/></div>
+                                      
                                        {logoutDropdownactive &&( 
-                                   
-                                           <div className="dropLogomenu"  ref={myref}>
-                                             
+                                   <OutsideAlerterlogout>
+                                           <div className="dropLogomenu" >
+                                         
                                             <ul>
                                           
                                                 <li><a href="" onClick={logOut}><span ><i class="fas fa-power-off mr-2"></i>Logout</span></a></li>
@@ -85,8 +82,8 @@ export default function Uppersidebar() {
                                             </ul>
                                            
                                          </div>
-                                 
-                                         )}
+                                         </OutsideAlerterlogout>   
+                                         )} 
                                     </div>
                                      
                                 </div>

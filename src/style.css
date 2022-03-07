@@ -277,6 +277,7 @@ margin-top: 25px;
   }
 .dropLogomenu ul{
     padding:10px 40px;
+
     display: inline-block;
     margin: 0;
 }
@@ -698,7 +699,7 @@ i.fas.fa-angle-down.position-absolute {
     /* height: 500px; */
 }
 .outlet{
-    height: 400px;
+    height: 440px;
     overflow: auto;
 }
 .basicALertfooter{
@@ -715,6 +716,45 @@ i.fas.fa-angle-down.position-absolute {
     bottom: 0;
     right: 0;
 }
+ /* <-------------- Date picker Css  -------------> */
+ ._2xcMq {
+    box-shadow: none !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+    border: 1px solid #e1e2e3 !important;
+
+}
+._1ImcB {
+    background-color: var(--MainColor) !important;
+}
+._249_g {
+    padding:5px !important
+}
+._FsLy_ {
+    border-radius: 0% !important;
+}
+._3fmCl {
+    border-width: 0 1px 1px 0 !important;
+    color: var(--MainTextColor);
+}
+._bBYU7 {
+border: none !important;
+}
+._2aNF9 {
+    font-size: 13px !important;
+    outline: none !important;
+   border: 1px solid #e1e2e3  !important;
+  
+}
+
+input._1oYOS.form-control.form-control-sm.mb-1 {
+    background: white !important;
+}
+._2aNF9:focus-visible{
+    outline: none !important;
+    border: 1px solid black !important;
+}
+ /* <-------------- Date picker Css  End -------------> */
 @media only screen and (max-width: 992px) {
     .basicALertfooter{
         position: static;
