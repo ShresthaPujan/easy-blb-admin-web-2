@@ -20,6 +20,7 @@ const onSubmitForm = (e)=>{
   console.log("here")
   e.preventDefault();
   setformErrors(validate(licenseformValue));
+  $('.displayPopup').fadeOut(100);
   setIsSubmit(true);
 
 }
@@ -90,33 +91,33 @@ const validate = (values) => {
   const numv = /^[0-9]+$/i;
 
   if (!values.creditlimit) {
-    errors.creditlimit = " required";
+    errors.creditlimit = "Required";
   } else if (!numv.test(values.creditlimit)) {
     errors.creditlimit = "Please enter number only";
   }
  
   if (!values.noOfUser) {
-    errors.noOfUser = "required";
+    errors.noOfUser = "Required";
   } else if (!numv.test(values.noOfUser)) {
     errors.noOfUser = "Please enter number only";
   }
 
   if (!values.licenseExipry) {
-    errors.licenseExipry = "required";
+    errors.licenseExipry = "Required";
   }
 
   if (!values.IsOnline) {
-    errors.IsOnline = "required";
+    errors.IsOnline = "Required";
   }  
 
   if (!values.IsWithdrawAllow) {
-    errors.IsWithdrawAllow = "required";
+    errors.IsWithdrawAllow = "Required";
   }
   if (!values.ShowHideBalance) {
-    errors.ShowHideBalance = "required";
+    errors.ShowHideBalance = "Required";
   }
   if (!values.AllowMultiDate) {
-    errors.AllowMultiDate = "required";
+    errors.AllowMultiDate = "Required";
   }
 
   return errors;
@@ -136,7 +137,7 @@ const validate = (values) => {
                        Credit Limit
                         </label>
                         <input
-                          type="text"
+                          type="number"
                           className="form-control form-control-sm mb-1"  
                           value={licenseformValue.creditlimit}
                           onChange={handleChange}

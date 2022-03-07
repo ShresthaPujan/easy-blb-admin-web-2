@@ -108,7 +108,7 @@ export default function Contenttable(props) {
     if(props.data.length > 0 ) {
   return (
     <div className="outer-wrapper">
-    <div className="table-wrapper"  style={{overflowX:"scroll",overflowY:"scroll",margin:"3px",height:"300px"}}>
+    <div className="table-wrapper"  style={{overflowX:"scroll",overflowY:"scroll",margin:"3px",height:"400px"}}>
     <table className="table table-striped">
     
         <thead>
@@ -156,31 +156,6 @@ export default function Contenttable(props) {
   )
     }
     else{
-        return  ( <div className="outer-wrapper">
-        <div className="table-wrapper"  style={{overflowX:"auto"}}>
-        <table className="table table-striped">
-        
-            <thead>
-                <tr className='tableHead'>
-                    <td>S.N.</td>
-                    <td className='tc'>Logo</td>
-                    <td >Co Operative Code</td>
-                    <td className="tl">Co Operative Name</td>
-                    <td className='tl'>Address</td>
-                    <td className='tc'> No of User</td>
-                    <td className='tc'>Exipry Date</td>
-                    <td> Credit Limit</td>                                                             
-                    <td className='tl'>Contact</td>   
-                    <td className='tc' style={{ width: "220px"}}> Action</td>
-                </tr>
-            </thead>
-            <tbody>
-           
-        <tr className='tc'><td></td><td></td><td></td><td>No Data Found</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-        </tbody>
-        
-        </table>
-        </div>
-        </div>)
+        return(  <div className='text-center'>No Data Found</div>)
     }
 }

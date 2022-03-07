@@ -213,7 +213,7 @@ useEffect(() => {
                                                     <div className="col-lg-12 ">
                                                     {loading ? (<Spinner/>) :(  
                                                     <div className="outer-wrapper" style={{maxWidth:"100%"}}>
-                                                    <div className="table-wrapper" style={{margin:"3px",height:"200px"}}>
+                                                    <div className="table-wrapper" style={{margin:"3px",height:"400px"}}>
                                                     <table className="table table-striped">
                                                     
                                                         <thead>

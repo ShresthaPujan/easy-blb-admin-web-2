@@ -30,6 +30,7 @@ export default function License(props) {
     e.preventDefault();
     console.log("here");
     setformErrors(validate(collectorEdit));
+    $('.displayPopup').fadeOut(100);
     setIsSubmit(true);
   };
   const PreviousPage = () => {

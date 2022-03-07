@@ -110,6 +110,9 @@ ul{
 ul li a{
     color:#727399;
 }
+.MainNavbar ul li a{
+    cursor: pointer;
+}
 #side-nav{
     background: #f5f8fa;
     padding: 0;
@@ -406,10 +409,18 @@ i.fas.fa-search {
     background: #F8F8FB;
     color:#004AAD;
 }
-
-
+button.owl-dot {
+    height: 10px !important;
+    font-size: 13px !important;
+    background:#D6D6D6 !important;
+    color:  black !important;
+    margin: 5px !important;
+    width: 10px;
+    border-radius: 50%;
+}
+button.owl-dot.active {background: white !important;}
 .outer-wrapper {
-    max-width: fit-content;  
+    /* max-width: fit-content;   */
      /* max-height: fit-content;   */
     margin: 0 auto;
     

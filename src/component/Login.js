@@ -89,14 +89,14 @@ export default function Login() {
     const  validate = (values) => {
         const errors ={}
         if(!values.username){
-         errors.username = "username is required";
+         errors.username = "Username is required";
         } 
         if(!values.password){
             errors.password = "Password  is required";
            } else if (values.password.length < 4){
-               errors.password = "password must ve more than 4 Characters"
+               errors.password = "Password must ve more than 4 Characters"
            }else if (values.password.length >10){
-               errors.password = "password cannot exceed more than 10 charecters"
+               errors.password = "Password cannot exceed more than 10 charecters"
            }
         return errors;
     }
@@ -145,7 +145,7 @@ export default function Login() {
                             <div className="col-lg-6 col-md- 6 col-sm-6 login-form-2 text-center">
                             <h3>Welcome to the easy software</h3>
                                 <h6>Banking Software</h6>
-                                <OwlCarousel items={1} margin={8} autoplay ={true} >  
+                                <OwlCarousel items={1} margin={20} autoplay ={true} >  
                                 <div className="item"><img src={bankingimage} /> </div>
                                 <div className="item"><img src={bankingimage} /></div>
                                 <div className="item"><img src={bankingimage} /></div>

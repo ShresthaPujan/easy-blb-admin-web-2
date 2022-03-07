@@ -142,4 +142,7 @@ logout fixed
       -notification post done
       -logout error solved
       -nepali calender added
-      
+      #Sidmenu
+       -pointer added 
+      -owl carousel dots added
+      -other bug fix
