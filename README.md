@@ -146,3 +146,6 @@ logout fixed
        -pointer added 
       -owl carousel dots added
       -other bug fix
+      
+8th March
+  # bug fixes
