@@ -32,6 +32,7 @@ const{ addNotification,collectorpnotificationcode,coopid,setcoopid,notificationP
     setNotiIsSubmit(true);
   };
   useEffect(() => {
+    
     if (Object.keys(notiFormError).length === 0 && notiIsSubmit) {
       addNotification(addcollectornotification)
      $('.displayPopupCollector').fadeOut(100);
