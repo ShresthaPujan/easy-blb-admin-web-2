@@ -146,3 +146,8 @@ logout fixed
        -pointer added 
       -owl carousel dots added
       -other bug fix
+
+
+  9th March
+    #UI changed
+    #Search bar added

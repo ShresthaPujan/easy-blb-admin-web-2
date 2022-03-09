@@ -56,16 +56,42 @@ export default function Uppersidebar() {
     }
     },[logoutdata]);
     
+const [searchpop, setsearchPop] = useState(false)
+
  const searchPopup = (e) =>{
      e.preventDefault();
-    $(".displaySearchbar").fadeIn(100);
+     setsearchPop(!searchpop) 
  }
  const closeSearchPopup = (e) =>{
     e.preventDefault();
-    $(".displaySearchbar").fadeOut(100);
+    setsearchPop(false)
  }
+ useEffect(() => {
+if(searchpop){
+    $(".displaySearchbar").slideDown(100);
+}else{
+    $(".displaySearchbar").slideUp(100);
+}
+ }, [searchpop])
+ 
+const manageOutsideClick = (e) =>{
+   if(myref && myref.current && myref.current.contains(e.target)){
+       console.log("insisde")
+   }
+   else{
+     $(".displaySearchbar").fadeOut(100);
+   }
+}
 
-
+const myref = useRef()
+ useEffect(() => {
+    
+    document.addEventListener("click",manageOutsideClick);
+    return ()=>{
+        document.removeEventListener("click",manageOutsideClick);
+    };
+ }, [])
+ 
   return <>
        
                         <div className="col-lg-12 col-md-12 col-sm-12 UpperNav">
@@ -107,8 +133,8 @@ export default function Uppersidebar() {
                                          )} 
                                     </div>
                                
-                                    <div className="searchbar displaySearchbar">
-                                        <div className="searchBarPosition">
+                                    <div className="searchbar displaySearchbar" ref={myref}>
+                                        <div className="searchBarPosition" >
                                         <input type="text"  className='form-control seachradius' placeholder='Search....'/>
                                         <div className="searchbarabsolute">
                                                 <div className="radiobutton">
