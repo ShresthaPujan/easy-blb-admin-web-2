@@ -12,7 +12,7 @@ const {setMsg,userid} = useContext(cooperativeContext);
             CollectorID: collectorCode
         }
         setLoading(true)
-        const response = await fetch ('api2//BLBApi/Notification/GetNotification',{
+        const response = await fetch ('https://esnep.com/BLBApi/Notification/GetNotification',{
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body:JSON.stringify(formData)
@@ -34,7 +34,7 @@ const {setMsg,userid} = useContext(cooperativeContext);
           CreatedUserID: userid,
           CreatedCoOperativeCode:coopid
         }
-      const response = await fetch("api2/BLBApi/Notification/CreateNotification", {
+      const response = await fetch("https://esnep.com/BLBApi/Notification/CreateNotification", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(notificationValue),

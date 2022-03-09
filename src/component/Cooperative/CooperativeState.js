@@ -43,7 +43,7 @@ const CooperativeState =(props) =>{
    const getCoperative = async()=> {   
         try{
           setLoading(true)
-          const response = await fetch(`api2/BLBApi/BLB/GetCoOperativeList?USerID=${userid}`);
+          const response = await fetch(`https://esnep.com/BLBApi/BLB/GetCoOperativeList?USerID=${userid}`);
           const jsonData = await response.json();
           setLoading(false)
           setCoperative(jsonData.CopayLst)
@@ -56,7 +56,7 @@ const CooperativeState =(props) =>{
       const getCoperativeInfo = async(cooperativecode)=> {   
         try{
           setLoading(true)
-          const response = await fetch(`api2/BLBApi/BLB/GetCoOperativeData?CoOperativeCode=${cooperativecode}`);
+          const response = await fetch(`https://esnep.com/BLBApi/BLB/GetCoOperativeData?CoOperativeCode=${cooperativecode}`);
           setLoading(false)
           return response.json();
          
@@ -82,7 +82,7 @@ const CooperativeState =(props) =>{
           coopertaiveStatus = "Deactivated"
          }
         
-        const response = await fetch ('api2/BLBApi/BLB/StatusUpdates',{
+        const response = await fetch ('https://esnep.com/BLBApi/BLB/StatusUpdates',{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
           body:JSON.stringify(formData)
@@ -143,7 +143,7 @@ const CooperativeState =(props) =>{
 
               if(edit){
                 console.log("here")
-                const response = await fetch ('api2/BLBApi/BLB/CoOperativeUpdate',{
+                const response = await fetch ('https://esnep.com/BLBApi/BLB/CoOperativeUpdate',{
                   method:'POST',
                   headers: {'Content-Type': 'application/json'},
                   body:JSON.stringify(formData)
@@ -184,7 +184,7 @@ const CooperativeState =(props) =>{
               }
               else{
                 console.log(formData)
-                const response = await fetch ('api2/BLBApi/BLB/CoOperativeAdd',{
+                const response = await fetch ('https://esnep.com/BLBApi/BLB/CoOperativeAdd',{
                   method:'POST',
                   headers: {'Content-Type': 'application/json'},
                   body:JSON.stringify(formData)

@@ -42,7 +42,7 @@ const CollectorState = (props) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `api2/BLBApi/Collector/CollectorLst?CoOperativeCode=${coopid}`
+        `https://esnep.com/BLBApi/Collector/CollectorLst?CoOperativeCode=${coopid}`
       );
       const jsonData = await response.json();
       if (jsonData.STATUS_CODE === "0") {
@@ -60,7 +60,7 @@ const CollectorState = (props) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `api2/BLBApi/Collector/CollectorLst?CoOperativeCode=${coopid}`
+        `https://esnep.com/BLBApi/Collector/CollectorLst?CoOperativeCode=${coopid}`
       );
       return response.json();
       setLoading(false)
@@ -73,7 +73,7 @@ const CollectorState = (props) => {
   const getCollectorInfo = async (collectorId) => {
     try {
       const response = await fetch(
-        `api2/BLBApi/Collector/GetCollectorInfo?CoOperativeCode=YT47&CollectorID=${collectorId}`
+        `https://esnep.com/BLBApi/Collector/GetCollectorInfo?CoOperativeCode=YT47&CollectorID=${collectorId}`
       );
       return response.json();
     } catch (err) {
@@ -83,7 +83,7 @@ const CollectorState = (props) => {
   ///// ADD COLLECTOR
   const addCollector = async (collectorData) => {
    
-    const response = await fetch("api2/BLBApi/Collector/AddCollector", {
+    const response = await fetch("https://esnep.com/BLBApi/Collector/AddCollector", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(collectorData),
@@ -121,7 +121,7 @@ const CollectorState = (props) => {
   //// EDIT COLLECTOR
   const editCollector = async (collectorEdits) => {
     console.log(collectorEdits)
-    const response = await fetch("api2/BLBApi/Collector/UpdateCollector", {
+    const response = await fetch("https://esnep.com/BLBApi/Collector/UpdateCollector", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(collectorEdits),
@@ -168,7 +168,7 @@ const CollectorState = (props) => {
       formData.Status = "A";
     }
 
-    const response = await fetch("api2/BLBApi/Collector/StatusUpdates", {
+    const response = await fetch("https://esnep.com/BLBApi/Collector/StatusUpdates", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -217,7 +217,7 @@ const CollectorState = (props) => {
       Pwd: "YT47",
     };
     console.log(formData);
-    const response = await fetch("api2/BLBApi/BLB/CollectorPwdReset", {
+    const response = await fetch("https://esnep.com/BLBApi/BLB/CollectorPwdReset", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
