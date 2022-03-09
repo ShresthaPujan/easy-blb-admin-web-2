@@ -52,7 +52,7 @@ export default function Login() {
                  Pwd: formValues.password,      
             }
             
-            axios.post('api2/BLBApi/BLB/BLBAUTH',dataForm)
+            axios.post('https://esnep.com/BLBApi/BLB/BLBAUTH',dataForm)
               .then(function (response) {
                 const  res = response.data
                 const result = response.data.STATUS_CODE

@@ -20,31 +20,7 @@ export default function Content() {
        useEscapse(setPopup);
 
 
-        function  dateCalculator(licensedate){
-            const now = new Date();
-            const day = now.getDate();
-            const month = now.getMonth() + 1;
-            const year = now.getFullYear();
-            const hour = now.getHours();
-            const min = now.getMinutes();
-        
-            const currentdate = `${month}/${day}/${year}`
-            const date1 = new Date(currentdate);
-            const date2 = new Date(licensedate);
-            var difference=  date2-date1 ;
-            const  days = difference/(1000 * 3600 * 24)
-            if (days < 0){
-                
-                return  <td className='expired tc'> License Expired</td>
-            }
-            else if (days === 0){
-                return <td className=' tc'> Expires Today </td>
-            }
-            else{
-                
-                return <td className=' tc'>{days} days Remaining</td>
-            }
-        }
+      
   useEffect(() => {
     getCoperative()
     

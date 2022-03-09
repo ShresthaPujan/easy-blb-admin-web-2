@@ -20,6 +20,7 @@ function useOutsideAlerter(ref) {
     function handleClickOutside(event) {
      
       if (ref.current && !ref.current.contains(event.target)) {
+
         setPopup(false);
         setnotificationPopup(false);
         contextCcollector.setPopup(false);

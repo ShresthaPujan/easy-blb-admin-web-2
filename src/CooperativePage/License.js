@@ -33,13 +33,7 @@ const Previous = () =>{
 }
 
 useEffect(() => {
-//  if(edit){
-//   var yy =licenseformValue.licenseExipry?.split("T")[0]
-//   var MM =licenseformValue.licenseExipry?.split("T")[2].split("-")[1]
-//   var dd =licenseformValue.licenseExipry?.split("T")[2].split("-")[2]
-//   var date =`${yy}-${MM}-${dd}`
-//   setlicenseformValue({...licenseformValue,licenseExipry:date})
-//  }
+
   if (Object.keys(formErrors).length === 0  && isSubmit) {
     let isPaid;
       if(licenseformValue.IsPaid === true){
