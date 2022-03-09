@@ -64,7 +64,7 @@ export default function CollectorC() {
         <div className="row popUptab">
           <div className="col-lg-3 col-md-4 col-sm-3  Search searchPopup">
             <input type="text" placeholder="Search" onChange={handleSearch} />
-            <i className="fas fa-search"></i>
+            <i className="fas fa-search searchIconPosition"></i>
           </div>
           <div className="col-lg-3"></div>
         </div>

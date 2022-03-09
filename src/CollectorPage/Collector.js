@@ -176,7 +176,7 @@ useEffect(() => {
                                                 <div className="row">
                                                     <div className="col-lg-2 col-md-4 col-sm-4 p-0 py-2 Search">
                                                         <input type="text" placeholder="Search"   onChange={handleSearch}  />
-                                                        <i className="fas fa-search"></i>                                
+                                                        <i className="fas fa-search searchIconPosition"></i>                                
                                                     </div>
                                                     <div className="col-lg-2 col-md-4 col-sm-4 p-2 Search">
                                                     <Select  className="selectT"     options={ncooperativecode} onChange={coopCodeGet}

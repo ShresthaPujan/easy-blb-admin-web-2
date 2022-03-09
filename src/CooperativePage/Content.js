@@ -67,7 +67,7 @@ const handleSearch = (e)=>{
                                                 <div className="row">
                                                     <div className="col-lg-2 col-md-6 col-sm-6 p-2 px-3 Search">
                                                         <input type="text" placeholder="Search" onChange={handleSearch}  value={searchTerm}/>
-                                                        <i className="fas fa-search"></i>
+                                                        <i className="fas fa-search searchIconPosition"></i>
                                                     </div>
                                                    
                                                     <div className="col-lg-6 offset-lg-4 offset-md-0 offset-sm-0 col-md-6 col-sm-6 text-end p-2 px-3">                                 

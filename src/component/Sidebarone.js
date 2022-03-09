@@ -65,6 +65,12 @@ export default function Sidebarone() {
                       <span className='logoHeading'>Easy Software</span>
                         </div>
                         <nav className='MainNavbar'>
+                            <div className="mainNavUserInfo">
+                                <div><img className="userImg"  src="https://geedmo.com/envato/products/wintermin/app/img/user/02.jpg" alt="" /></div>
+                                <div className="userInfotext"> <p className='mb-0'>Welcome User</p>
+                                        <p className='mb-0'>UX-Dev</p>
+                                </div>
+                            </div>
                             <ul >
                                 {/* <li ><NavLink activeclassname={classes.active} to="/" ><i className="bi bi-folder-fill mx-3 icon"></i>DashBoard</NavLink></li>
                                 <li ><NavLink activeclassname={classes.active} className="arrow "  to="/profile"><i className="bi bi-people mx-3 icon"></i>Profile</NavLink> </li> */}
