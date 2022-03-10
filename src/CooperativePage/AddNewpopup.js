@@ -16,7 +16,9 @@ export default function AddNewpopup(props) {
     const {closepopup} =props.setTriggernew;
     const context = useContext(cooperativeContext)
     const {loading,basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue
-      ,setContactFormvalue,setBasicFormvalue,setlicenseformValue,popup,setPopup}=context;
+      ,setContactFormvalue,setBasicFormvalue,setlicenseformValue,popup,setPopup, basicFormErrors, setBasicFormErrors, basicIsSubmit, setBasicIsSubmit} = context;
+
+
     const [activeTab, setActiveTab] = useState({
         tab1:true,
         tab2:false,
@@ -47,6 +49,14 @@ export default function AddNewpopup(props) {
           setlicenseformValue(licenseformValueInitialValue);
           props.setTriggernew(false)
           $('.displayPopup').fadeOut(100);
+          setActiveTab({
+            tab1:true,
+            tab2:false,
+            tab3:false,
+            tab4:false
+        });
+        setBasicFormErrors({});
+        setBasicIsSubmit(false);
       }
 
    useEffect(() => {
@@ -57,7 +67,7 @@ if(props.trigger){
   return (
       
     <div className="popUP displayPopup container-fluid   col-lg-12 col-md-12 col-sm-12 col-xs-12 " style={{overflow:"scroll"}}>
-        <OutsideAlerter>
+        {/* <OutsideAlerter> */}
         <div className={height < 500?"insidePopup ip500":"insidePopup"}>
             <div className="popUpHeader ">
                  <div className='popUpHeaderText '>Cooperative Information</div> 
@@ -81,7 +91,7 @@ if(props.trigger){
               </div>
               )}    
         </div>
-        </OutsideAlerter>
+        {/* </OutsideAlerter> */}
         </div> 
   )
 

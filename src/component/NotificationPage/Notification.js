@@ -5,6 +5,7 @@ import collectorContext from "../Collector/collectorContext";
 import notificationContext from "../Notification/Notificationcontext";
 import Spinner from "../Spinner/Spinner";
 import Notificationpopup from "./Notificationpopup";
+import Transdate from "../../Transdate";
 export default function Notification() {
   const context = useContext(collectorContext);
   const contextCooperative = useContext(cooperativeContext);
@@ -125,10 +126,15 @@ export default function Notification() {
   return (
     <>
       <div className="col-lg-12 col-md-12 col-sm-12 contentMainSection">
-        <div>
-          <div className="fontHeader">Notification</div>
-          <hr style={{ color: "#f1f2f3" }} />
-        </div>
+      <div>
+                <div className="mainHeader">
+                    <div className="fontHeader">Notification List</div>
+                    <div>
+                    <Transdate />
+                    </div>
+                </div>
+                <hr />
+            </div>
         <section className="content-section main-content">
           <div className="content">
             <div className=" col-lg-12 col-sm-12">

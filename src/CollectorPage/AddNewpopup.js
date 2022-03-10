@@ -14,7 +14,9 @@ export default function AddNewpopup(props) {
     const { height} = UsewindowDimension();
     const {closepopup} =props.setTriggernew;
     const context = useContext(cooperativeContext)
-    const {loading,popup,setPopup}=context;
+    const {loading,popup,setPopup,
+      collectorBasicFormError, setCollectorBasicFormError,
+      collectorIsSubmit, setCollectorIsSubmit}=context;
     const [activeTab, setActiveTab] = useState({
         tab1:true,
         tab2:false,
@@ -22,10 +24,8 @@ export default function AddNewpopup(props) {
   
     });
  
-     
-     
-
       const closePopup =(e) =>{
+        
           e.preventDefault();
           setActiveTab({
             tab1:true,
@@ -34,6 +34,8 @@ export default function AddNewpopup(props) {
           })
           $('.displayPopupCollector').fadeOut();
           props.setTriggernew(false)
+          setCollectorBasicFormError({});
+          setCollectorIsSubmit(false);
       }
       useEffect(() => {
         if(props.trigger){
@@ -43,7 +45,7 @@ export default function AddNewpopup(props) {
   return (
       
     <div className="popUP container-fluid  displayPopupCollector col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-          <OutsideAlerter>
+          {/* <OutsideAlerter> */}
                 <div className={height < 500?"insidePopup ip500":"insidePopup"}>
                     <div className="popUpHeader ">
                         <div className='popUpHeaderText '>Collector Information</div> 
@@ -70,7 +72,7 @@ export default function AddNewpopup(props) {
                       </div>
                       )}
                 </div>
-        </OutsideAlerter>
+        {/* </OutsideAlerter> */}
         </div> 
      
   )

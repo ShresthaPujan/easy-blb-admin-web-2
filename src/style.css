@@ -997,6 +997,8 @@ overflow: auto;
 }   
 }
 
+
+
 /* @media only screen and (max-width: 1200px) {
     #side-nav nav li a{
         font-size: 14px;
@@ -1095,3 +1097,24 @@ z-index: 0;
  .expired {
      color:red !important;
  }
+
+
+ /* .css-1okebmr-indicatorSeparator {
+    height: 28px;
+    align-self: stretch;
+    background-color: rgb(204, 204, 204);
+    margin-bottom: 8px;
+    margin-top: 8px;
+    width: 1px;
+    box-sizing: border-box;
+} */
+
+/* .css-1d8n9bt {
+    -webkit-box-align: center;
+    display: grid;
+    flex: 1 1 0%;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+} */

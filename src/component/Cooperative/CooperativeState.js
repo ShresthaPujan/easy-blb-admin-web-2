@@ -43,7 +43,7 @@ const CooperativeState =(props) =>{
    const getCoperative = async()=> {   
         try{
           setLoading(true)
-          const response = await fetch(`https://esnep.com/BLBApi/BLB/GetCoOperativeList?USerID=${userid}`);
+          const response = await fetch(`api2/BLBApi/BLB/GetCoOperativeList?USerID=${userid}`);
           const jsonData = await response.json();
           setLoading(false)
           setCoperative(jsonData.CopayLst)
@@ -56,7 +56,7 @@ const CooperativeState =(props) =>{
       const getCoperativeInfo = async(cooperativecode)=> {   
         try{
           setLoading(true)
-          const response = await fetch(`https://esnep.com/BLBApi/BLB/GetCoOperativeData?CoOperativeCode=${cooperativecode}`);
+          const response = await fetch(`api2/BLBApi/BLB/GetCoOperativeData?CoOperativeCode=${cooperativecode}`);
           setLoading(false)
           return response.json();
          
@@ -82,7 +82,7 @@ const CooperativeState =(props) =>{
           coopertaiveStatus = "Deactivated"
          }
         
-        const response = await fetch ('https://esnep.com/BLBApi/BLB/StatusUpdates',{
+        const response = await fetch ('api2/BLBApi/BLB/StatusUpdates',{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
           body:JSON.stringify(formData)
@@ -143,7 +143,7 @@ const CooperativeState =(props) =>{
 
               if(edit){
                 console.log("here")
-                const response = await fetch ('https://esnep.com/BLBApi/BLB/CoOperativeUpdate',{
+                const response = await fetch ('api2/BLBApi/BLB/CoOperativeUpdate',{
                   method:'POST',
                   headers: {'Content-Type': 'application/json'},
                   body:JSON.stringify(formData)
@@ -182,9 +182,10 @@ const CooperativeState =(props) =>{
                     })
                   }
               }
+              // add ko Api 
               else{
                 console.log(formData)
-                const response = await fetch ('https://esnep.com/BLBApi/BLB/CoOperativeAdd',{
+                const response = await fetch ('api2/BLBApi/BLB/CoOperativeAdd',{
                   method:'POST',
                   headers: {'Content-Type': 'application/json'},
                   body:JSON.stringify(formData)
@@ -240,7 +241,7 @@ const CooperativeState =(props) =>{
      cooperativename:"",
      logo:"",
      NickName:"",
-     ColorCode:"",
+     ColorCode:"#000000",
      ScopeType:"",
      CbsURL:""}
     const[BasicformValue,setBasicFormvalue]=useState(basicformInitialValue)
@@ -268,10 +269,12 @@ const CooperativeState =(props) =>{
    const [resetPassword, setresetPassword] = useState(false)
    const [popup, setPopup] = useState(false);
    const [logoutDropdownactive, setlogoutDropdownactive] = useState(false);
+   const [basicFormErrors, setBasicFormErrors] = useState({})
+   const [basicIsSubmit, setBasicIsSubmit] = useState(false)
  
    
 return (
-    <cooperativeContext.Provider value={{logoutDropdownactive, setlogoutDropdownactive,check, setCheck,basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue,userid,licenseformValue, setlicenseformValue,check, setCheck,contactformValue,setContactFormvalue,BasicformValue,setBasicFormvalue,popup,setPopup,resetPassword,setresetPassword,msg,setMsg,deactivateCooperative,cooperativeEditInitial,first,loading,msg,setMsg,getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert}}>
+    <cooperativeContext.Provider value={{logoutDropdownactive, setlogoutDropdownactive,check, setCheck,basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue,userid,licenseformValue, setlicenseformValue,check, setCheck,contactformValue,setContactFormvalue,BasicformValue,setBasicFormvalue,popup,setPopup,resetPassword,setresetPassword,msg,setMsg,deactivateCooperative,cooperativeEditInitial,first,loading,msg,setMsg,getCoperativeInfo,edit, setEdit,addCoperative,menutoggle,setMenutoggle,logoutdata,setLogout,getCoperative,cooperative,setCoperative,cooperativeEdit,setCoperativeEdit,alert,setAlert, basicFormErrors, setBasicFormErrors, basicIsSubmit, setBasicIsSubmit}}>
       {props.children}
     </cooperativeContext.Provider>
   )

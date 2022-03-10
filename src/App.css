@@ -345,3 +345,36 @@ i.fa.fa-download.fa-rotate-270 {
   border-radius: 50%;
 
 }
+
+/* // Cooperative search box */
+.cooperative-search-field{
+  display: flex;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 4px;
+}
+
+.mainHeader {
+    display: grid;
+    grid-template-columns: auto auto;
+    /* padding: 10px; */
+}
+.tranDate {
+    display: grid;
+    grid-template-columns: auto auto;
+
+}
+
+.tranDates {
+  padding-top: 5px;
+  text-align: center;
+}
+.todayDate {
+  padding-top: 5px;
+  text-align: right;
+}
+
+.downArrow{
+  padding-top: 20px;
+  padding-right: 20px;
+}
+

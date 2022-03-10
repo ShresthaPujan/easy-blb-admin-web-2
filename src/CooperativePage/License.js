@@ -2,9 +2,10 @@ import React, { useContext,useEffect } from "react";
 import { useState } from "react";
 import cooperativeContext from "../component/Cooperative/cooperativeContext";
 import $ from "jquery";
+import Spinner from "../component/Spinner/Spinner";
 export default function License(props) {
   const context = useContext(cooperativeContext);
-  const {edit,basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue,setContactFormvalue,setBasicFormvalue,addCoperative,userid,licenseformValue,contactformValue,BasicformValue, setlicenseformValue, check, setCheck,popup, setPopup,setCoperativeEdit,
+  const {edit,basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue,setContactFormvalue,setBasicFormvalue,addCoperative,userid,licenseformValue,contactformValue,BasicformValue, setlicenseformValue, check, setCheck,popup, setPopup,setCoperativeEdit, loading,
     cooperativeEdit} = context;
     const [formErrors, setformErrors] = useState({ });
     const [isSubmit, setIsSubmit] = useState(false);
@@ -16,14 +17,15 @@ export default function License(props) {
   setCheck(e.target.checked)
   setlicenseformValue({ ...licenseformValue, [name]: value });
 };
+
 const onSubmitForm = (e)=>{
   console.log("here")
   e.preventDefault();
   setformErrors(validate(licenseformValue));
   $('.displayPopup').fadeOut(100);
   setIsSubmit(true);
-
 }
+
 const Previous = () =>{
   props.setActive({
     tab1:false,
@@ -277,7 +279,7 @@ const validate = (values) => {
    
       <div className="p-2 py-3 basicALertfooter mb-4">
       <button className="btn btn-sm btn-cmpy" onClick={   Previous}>   Prev</button>
-        <button className="btn btn-sm btn-cmpy ml-2" onClick={onSubmitForm} style={{background:"red"}}>Submit</button>
+        <button className="btn btn-sm btn-cmpy ml-2" onClick={onSubmitForm} style={{background:"red"}}>{ loading ? <Spinner /> :<span>Submit</span> }</button>
         <button className="btn btn-sm btn-cmpy ml-2" onClick={closePopup}>
           Cancel
         </button>

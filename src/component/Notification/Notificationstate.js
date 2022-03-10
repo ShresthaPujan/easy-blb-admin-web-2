@@ -6,13 +6,13 @@ const NotificationState =(props) =>{
  const [loading, setLoading] = useState(false)
 const {setMsg,userid} = useContext(cooperativeContext);
  
-    const  postNotification = async(collectorCode="2",coopCode="yt47") =>{
+    const postNotification = async(collectorCode="2",coopCode="yt47") =>{
         var formData={
             CoOperativeCode: coopCode,
             CollectorID: collectorCode
         }
         setLoading(true)
-        const response = await fetch ('https://esnep.com/BLBApi/Notification/GetNotification',{
+        const response = await fetch ('api2//BLBApi/Notification/GetNotification',{
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body:JSON.stringify(formData)
@@ -34,12 +34,14 @@ const {setMsg,userid} = useContext(cooperativeContext);
           CreatedUserID: userid,
           CreatedCoOperativeCode:coopid
         }
-      const response = await fetch("https://esnep.com/BLBApi/Notification/CreateNotification", {
+        console.log(notificationValue);
+      const response = await fetch("api2/BLBApi/Notification/CreateNotification", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(notificationValue),
       });
       const notificationData = await response.json();
+      console.log(notificationData)
       if (notificationData.STATUS_CODE === "0") {
         setnotificationList(notificationList.concat({ 
           NotiHead:notificationValue.NotificationHeader,
@@ -56,12 +58,14 @@ const {setMsg,userid} = useContext(cooperativeContext);
     const [notificationPopup,setnotificationPopup] = useState(false)
     const [coopid,setcoopid] =useState("YT47")
     const[collectorpnotificationcode,setcollectornotificationcode] = useState("1")
+    const[notiFormError, setNotiFormError] = useState({});
+    const[notiIsSubmit, setNotiIsSubmit]= useState(false);
     return (
         <notificationContext.Provider value={{addNotification,
           collectorpnotificationcode,setcollectornotificationcode,
           coopid,setcoopid,
         notificationPopup,setnotificationPopup,loading, 
-        setLoading,notificationList,postNotification}}>
+        setLoading,notificationList,postNotification, notiFormError, setNotiFormError, notiIsSubmit, setNotiIsSubmit}}>
           {props.children}
         </notificationContext.Provider>
       )

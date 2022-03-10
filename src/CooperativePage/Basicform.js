@@ -6,10 +6,11 @@ export default function Basicform(props) {
   const context = useContext(cooperativeContext)
   const {basicformInitialValue,contactFormInitailValue,licenseformValueInitialValue
     ,setContactFormvalue,setBasicFormvalue,setlicenseformValue,BasicformValue,popup,setPopup,setCoperativeEdit,
-    cooperativeEdit}=context;
+    cooperativeEdit, basicFormErrors, setBasicFormErrors, basicIsSubmit, setBasicIsSubmit}=context;
 
-    const [formErrors, setformErrors] = useState({ });
-    const [isSubmit, setIsSubmit] = useState(false);
+    // const [basicFormErrors, setformErrors] = useState({ });
+    // const [isSubmit, setIsSubmit] = useState(false);
+
 
     const handleChange = (e) => {
       const target = e.target;
@@ -20,13 +21,12 @@ export default function Basicform(props) {
   const BasicformNext = (e)=>{
     console.log("here")
     e.preventDefault();
-    setformErrors(validate(BasicformValue));
-    setIsSubmit(true);
-
+    setBasicFormErrors(validate(BasicformValue));
+    setBasicIsSubmit(true);
   }
 
   useEffect(() => {
-    if (Object.keys(formErrors).length === 0  && isSubmit) {
+    if (Object.keys(basicFormErrors).length === 0  && basicIsSubmit) {
 
       setCoperativeEdit({...cooperativeEdit,
         CbsURL:  BasicformValue.CbsURL,
@@ -44,7 +44,7 @@ export default function Basicform(props) {
         tab4:false
       })
     }
-  }, [formErrors]);
+  }, [basicFormErrors]);
   const closePopup = (e)=>{
     e.preventDefault();
     setContactFormvalue(contactFormInitailValue);
@@ -52,33 +52,41 @@ export default function Basicform(props) {
     setlicenseformValue(licenseformValueInitialValue);
     $('.displayPopup').fadeOut(100);
     setPopup(false);
+    props.setActive({
+      tab1:true,
+      tab2:false,
+      tab3:false,
+      tab4:false
+    })
+    setBasicFormErrors({});
+    setBasicIsSubmit(false);
   }
   const validate = (values) => {
     const errors = {};
     const numv = /^[0-9]+$/i;
     if (!values.cooperaticecode) {
-      errors.cooperaticecode = "required";
+      errors.cooperaticecode = "Required";
     }
     if (!values.cooperativename) {
-      errors.cooperativename = "required";
+      errors.cooperativename = "Required";
     }
 
     if (!values.logo) {
-      errors.logo = "required";
+      errors.logo = "Required";
     }
  
     if (!values.NickName) {
-      errors.NickName = "required";
+      errors.NickName = "Required";
     }
     if (!values.ColorCode) {
-      errors.ColorCode = "required";
+      errors.ColorCode = "Required";
     }
 
     if (!values.ScopeType) {
-      errors.ScopeType = "required";
+      errors.ScopeType = "Required";
     }
     if (!values.CbsURL) {
-      errors.CbsURL = "required";
+      errors.CbsURL = "Required";
     }
     return errors;
   };
@@ -104,7 +112,7 @@ export default function Basicform(props) {
                           id="cooperaticecode"
                           aria-describedby="addon-wrapping"
                         />
-                        <p className="errormsg ">{formErrors.cooperaticecode}</p>
+                        <p className="errormsg ">{basicFormErrors.cooperaticecode}</p>
                   </div>
                   <div className="col-lg-12  mb-3">
           
@@ -122,7 +130,7 @@ export default function Basicform(props) {
             id="cooperativelogo"
             aria-describedby="addon-wrapping"
           />
-        <p className="errormsg ">{formErrors.logo}</p>
+        <p className="errormsg ">{basicFormErrors.logo}</p>
     </div>
     <div className="col-lg-12  mb-3">
           <label htmlFor="Alias" className="form-label">
@@ -139,7 +147,7 @@ export default function Basicform(props) {
             id="Alias"
             aria-describedby="addon-wrapping"
           />   
-           <p className="errormsg ">{formErrors.NickName}</p>   
+           <p className="errormsg ">{basicFormErrors.NickName}</p>   
     </div>
     <div className="col-lg-12  mb-3">
                 <label htmlFor="color" className="form-label">
@@ -156,7 +164,7 @@ export default function Basicform(props) {
                   id="color"
                   aria-describedby="addon-wrapping"
                 />    
-                   <p className="errormsg ">{formErrors.ColorCode}</p>           
+                   <p className="errormsg ">{basicFormErrors.ColorCode}</p>           
           </div>
           </div>
 
@@ -178,7 +186,7 @@ export default function Basicform(props) {
                   id="cooperativeName"
                   aria-describedby="addon-wrapping"
                 />       
-                     <p className="errormsg ">{formErrors.cooperativename}</p>         
+                     <p className="errormsg ">{basicFormErrors.cooperativename}</p>         
           </div>
           <div className="col-lg-12  mb-3">
                 <label htmlFor="CBSurl" className="form-label">
@@ -195,7 +203,7 @@ export default function Basicform(props) {
                   id="CbsURL"
                   aria-describedby="addon-wrapping"
                 />
-                <p className="errormsg ">{formErrors.CbsURL}</p>               
+                <p className="errormsg ">{basicFormErrors.CbsURL}</p>               
           </div>
           <div className="col-lg-12  mb-3">
                 <label htmlFor="Scopetype" className="form-label">
@@ -212,7 +220,7 @@ export default function Basicform(props) {
                   id="Scopetype"
                   aria-describedby="addon-wrapping"
                 />  
-                  <p className="errormsg ">{formErrors.ScopeType}</p>              
+                  <p className="errormsg ">{basicFormErrors.ScopeType}</p>              
           </div>
           </div>
        
@@ -230,4 +238,3 @@ export default function Basicform(props) {
 
   )
 }
-

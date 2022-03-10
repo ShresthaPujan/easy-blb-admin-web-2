@@ -10,6 +10,7 @@ import EditCollector from './EditCollector';
 import useEscapse from '../component/hooks/Use-escape';
 import Select from 'react-select'
 import AddNewpopup from './AddNewpopup';
+import Transdate from '../Transdate';
 
 export default function Collector() {
 
@@ -166,17 +167,24 @@ useEffect(() => {
   return <>
    <div className="col-lg-12 col-md-12 col-sm-12 contentMainSection">
    <div>
-                                  <div className="fontHeader">Collector List</div>              
-                                                    <hr style={{color:"#f1f2f3"}}/>
-                                                </div>
+                <div className="mainHeader">
+                    <div className="fontHeader">Collector List</div>
+                    <div>
+                    <Transdate />
+                    </div>
+                </div>
+                <hr />
+            </div>
                            <section className="content-section main-content">
                                 <div className="content">
                                         <div className=" col-lg-12 col-sm-12">
                                             <div className="container-fluid ">
                                                 <div className="row">
                                                     <div className="col-lg-2 col-md-4 col-sm-4 p-0 py-2 Search">
-                                                        <input type="text" placeholder="Search"   onChange={handleSearch}  />
-                                                        <i className="fas fa-search searchIconPosition"></i>                                
+                                                    <div className="cooperative-search-field">
+                                    <input type="text" placeholder="Search" onChange={handleSearch} value={searchTerm} style={{ border: "none" }} /> 
+                                    <i style= {{paddingTop : "7px", paddingRight: "5px", color:"#999"}}  className="fas fa-search notificationpositondrop"></i>
+                                </div>                               
                                                     </div>
                                                     <div className="col-lg-2 col-md-4 col-sm-4 p-2 Search">
                                                     <Select  className="selectT"     options={ncooperativecode} onChange={coopCodeGet}

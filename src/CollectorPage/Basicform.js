@@ -11,11 +11,15 @@ export default function Basicform(props) {
     collectorInitianValue,
     edit,
     setEdit,
+    collectorBasicFormError, 
+    setCollectorBasicFormError,
+        collectorIsSubmit, 
+        setCollectorIsSubmit
   } = context;
 
   const { popup, setPopup } = useContext(collectorContext);
-  const [formErrors, setformErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+  // const [formErrors, setformErrors] = useState({});
+  // const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = (e) => {
     const target = e.target;
@@ -27,23 +31,25 @@ export default function Basicform(props) {
   const BasicformNext = (e) => {
     console.log("here");
     e.preventDefault();
-    setformErrors(validate(collectorEdit));
-    setIsSubmit(true);
+    setCollectorBasicFormError(validate(collectorEdit));
+    setCollectorIsSubmit(true);
   };
   useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
+    if (Object.keys(collectorBasicFormError).length === 0 && collectorIsSubmit) {
       props.setActive({
         tab1: false,
         tab2: true,
         tab3: false,
       });
     }
-  }, [formErrors]);
+  }, [collectorBasicFormError]);
   const closePopup = (e) => {
     e.preventDefault();
     setPopup(false);
     $('.displayPopupCollector').fadeOut(100);
     setCollectorEdit(collectorInitianValue)
+    setCollectorBasicFormError({});
+    setCollectorIsSubmit(false)
   };
 
   const validate = (values) => {
@@ -91,7 +97,7 @@ export default function Basicform(props) {
                 id="Fullname"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg ">{formErrors.FullName}</p>
+              <p className="errormsg ">{collectorBasicFormError.FullName}</p>
             </div>
             <div className="col-lg-12  mb-3">
               <label htmlFor="NameNepali" className="form-label">
@@ -108,7 +114,7 @@ export default function Basicform(props) {
                 id="NameNepali"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg ">{formErrors.NameNepali}</p>
+              <p className="errormsg ">{collectorBasicFormError.NameNepali}</p>
             </div>
             <div className="col-lg-12  mb-3">
               <label htmlFor="FatherName" className="form-label">
@@ -125,7 +131,7 @@ export default function Basicform(props) {
                 id="FatherName"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg ">{formErrors.FatherName}</p>
+              <p className="errormsg ">{collectorBasicFormError.FatherName}</p>
             </div>
           </div>
 
@@ -145,7 +151,7 @@ export default function Basicform(props) {
                 id="UserName"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg ">{formErrors.UserName}</p>
+              <p className="errormsg ">{collectorBasicFormError.UserName}</p>
             </div>
             <div className="col-lg-12  mb-3">
               <label htmlFor="BranchID" className="form-label">
@@ -162,7 +168,7 @@ export default function Basicform(props) {
                 id="BranchID"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg ">{formErrors.BranchID}</p>
+              <p className="errormsg ">{collectorBasicFormError.BranchID}</p>
             </div>
           </div>
         </div>

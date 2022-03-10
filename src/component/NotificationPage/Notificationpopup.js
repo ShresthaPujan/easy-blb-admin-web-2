@@ -4,7 +4,12 @@ import Spinner from '../Spinner/Spinner';
 import OutsideAlerter from '../hooks/OutsideAlerter';
 import UsewindowDimension from '../hooks/UsewindowDimension';
 import $ from "jquery";
+import notificationContext from '../Notification/Notificationcontext';
 export default function Notificationpopup(props) {
+
+
+  const{notiFormError, setNotiFormError, notiIsSubmit, setNotiIsSubmit}=useContext(notificationContext)
+
     const { height} = UsewindowDimension();
     const [activeTab, setActiveTab] = useState({
         tab1:true,
@@ -22,6 +27,9 @@ export default function Notificationpopup(props) {
           e.preventDefault();
           $('.displayPopupCollector').fadeOut();
           props.setTrigger(false)
+          setNotiFormError({});
+          setNotiIsSubmit(false);
+
       }
       useEffect(() => {
         if(props.trigger){
@@ -31,7 +39,7 @@ export default function Notificationpopup(props) {
   return (
       
     <div className="popUP container-fluid  displayPopupCollector col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-          <OutsideAlerter>
+          {/* <OutsideAlerter> */}
                 <div className={height < 500?"insidePopup ip500":"insidePopup"}>
                     <div className="popUpHeader ">
                         <div className='popUpHeaderText '>Add Notification</div> 
@@ -45,17 +53,13 @@ export default function Notificationpopup(props) {
 
                         </ul>
                     </nav>
-                 
                         
                     <div className="outlet">
                       <Basicform active={activeTab} setActive={setActiveTab} defaultData={defaultData}/>
-                      
-
 
                       </div>
-
                 </div>
-        </OutsideAlerter>
+        {/* </OutsideAlerter> */}
         </div> 
      
   )

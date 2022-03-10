@@ -5,15 +5,15 @@ import Calendar from '@sbmdkl/nepali-datepicker-reactjs';
 import '@sbmdkl/nepali-datepicker-reactjs/dist/index.css';
 import $ from "jquery";
 export default function Basicform(props) {
-const{ addNotification,collectorpnotificationcode,coopid,setcoopid,notificationPopup,setnotificationPopup,loading, setLoading,postNotification,notificationList}=useContext(notificationContext)
+const{ addNotification,collectorpnotificationcode,coopid,setcoopid,notificationPopup,setnotificationPopup,loading, setLoading,postNotification,notificationList, notiFormError, setNotiFormError, notiIsSubmit, setNotiIsSubmit}=useContext(notificationContext)
  const addcollectornotificationinitialvalue = {
   Nepalidate: "",
   NotificationHeader: "",
   NotificationBody: "",
  }
   const [addcollectornotification, setAddcollectornotification] = useState(addcollectornotificationinitialvalue)
-  const [formErrors, setformErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+  // const [formErrors, setNotiFormError] = useState({});
+  // const [isSubmit, setIsSubmit] = useState(false);
   const [date, setDate] = useState("")
   const handleChange = (e,bsDate) => {
     const target = e.target;
@@ -28,21 +28,24 @@ const{ addNotification,collectorpnotificationcode,coopid,setcoopid,notificationP
   const submitNotification = (e) => {
     console.log("here");
     e.preventDefault();
-    setformErrors(validate(addcollectornotification));
-    setIsSubmit(true);
+    setNotiFormError(validate(addcollectornotification));
+    setNotiIsSubmit(true);
   };
   useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
+    
+    if (Object.keys(notiFormError).length === 0 && notiIsSubmit) {
       addNotification(addcollectornotification)
      $('.displayPopupCollector').fadeOut(100);
      setnotificationPopup(false);
     }
-  }, [formErrors]);
+  }, [notiFormError]);
   const closePopup = (e) => {
     e.preventDefault();
     setnotificationPopup(false);
     $('.displayPopupCollector').fadeOut(100);
+    setNotiIsSubmit(false)
     setAddcollectornotification(addcollectornotificationinitialvalue)
+    setNotiFormError({})
   };
 
   const validate = (values) => {
@@ -81,7 +84,7 @@ const{ addNotification,collectorpnotificationcode,coopid,setcoopid,notificationP
                 id="NotificationHeader"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg ">{formErrors.NotificationHeader}</p>
+              <p className="errormsg ">{notiFormError.NotificationHeader}</p>
             </div>
             <div className="col-lg-12  mb-3">
               <label htmlFor="NotificationBody" className="form-label">
@@ -98,7 +101,7 @@ const{ addNotification,collectorpnotificationcode,coopid,setcoopid,notificationP
                 id="NotificationBody"
                 aria-describedby="addon-wrapping"
               />
-              <p className="errormsg ">{formErrors.NotificationBody}</p>
+              <p className="errormsg ">{notiFormError.NotificationBody}</p>
             </div>
             
           </div>
@@ -107,7 +110,7 @@ const{ addNotification,collectorpnotificationcode,coopid,setcoopid,notificationP
             <div className="col-lg-12  mb-3">
             <label htmlFor="date">Date</label>
             <Calendar onChange={handleDate} className="form-control form-control-sm mb-1" dateFormat="YYYY/MM/DD"theme="default" language="en" />
-              <p className="errormsg ">{formErrors.Nepalidate}</p>
+              <p className="errormsg ">{notiFormError.Nepalidate}</p>
             </div>
            
           </div>
